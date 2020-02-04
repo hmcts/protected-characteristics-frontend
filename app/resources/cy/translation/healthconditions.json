@@ -1,0 +1,15 @@
+{
+  "title": "[CY] Your health conditions",
+  "question": "[CY] Do you have any physical or mental health conditions or illnesses lasting or expected to last 12 months or more?",
+  "optionYes": "[CY] Yes",
+  "optionNo": "[CY] No",
+
+  "errors": {
+    "healthConditions": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your health condition",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

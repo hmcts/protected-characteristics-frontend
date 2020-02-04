@@ -1,0 +1,18 @@
+/*
+Check Your Answers
+*/
+
+@include govuk-media-query($from: tablet) {
+  .govuk-summary-list__key {
+    font-weight: 400;
+    width: 50%;
+  }
+
+  .govuk-summary-list__value {
+    width: 35%;
+  }
+
+  .govuk-summary-list__actions {
+    width: 15%;
+  }
+}

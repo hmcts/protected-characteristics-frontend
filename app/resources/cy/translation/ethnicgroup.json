@@ -1,0 +1,18 @@
+{
+  "title": "[CY] Your ethnic group",
+  "question": "[CY] What is your ethnic group?",
+  "optionWhite": "[CY] White",
+  "optionMixed": "[CY] Mixed or multiple ethnic groups",
+  "optionAsian": "[CY] Asian or Asian British",
+  "optionBlack": "[CY] Black, African, Caribbean or Black British",
+  "optionOther": "[CY] Other",
+
+  "errors": {
+    "ethnicGroup": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your ethnic group",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

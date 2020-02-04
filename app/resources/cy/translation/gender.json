@@ -1,0 +1,15 @@
+{
+  "title": "[CY] Your gender",
+  "question": "[CY] Is your gender the same as the sex you were registered at birth?",
+  "optionYes": "[CY] Yes",
+  "optionNo": "[CY] No",
+
+  "errors": {
+    "gender": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your gender",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

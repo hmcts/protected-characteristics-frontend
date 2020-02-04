@@ -1,0 +1,15 @@
+{
+  "title": "Your ethnic background",
+  "question": "Which one best describes your background?",
+  "optionArab": "Arab",
+  "optionOther": "Another ethnic background",
+
+  "errors": {
+    "ethnicGroupOther": {
+      "required": {
+        "summary": "You need to choose an option for your White ethnic background",
+        "message": "Select an option"
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+    "language": {
+        "bilingual": "optionYes"
+    },
+    "applicant": {
+        "address": {
+            "addressLine1": "dddd"
+        },
+        "email": "blah@gmail.com",
+        "firstName": "Jason",
+        "lastName": "Smith"
+    },
+    "applicationId": "zq1675whyui",
+    "ccdCase": {
+        "id": 1535574519543819,
+        "state": "CaseCreated"
+    },
+    "deceased": {
+        "address": {
+            "addressLine1": "ffff"
+        },
+        "dob_date": "1977-01-01",
+        "dod_date": "2018-11-20",
+        "firstName": "Mike",
+        "lastName": "Samuels",
+        "otherNames": {
+            "name_0": {
+                "firstName": "King",
+                "lastName": "North"
+            }
+        }
+    },
+    "payments": [{
+        "total": 20
+    }],
+    "registry": {
+        "name": "Birmingham"
+    },
+    "type": "Caveat"
+}

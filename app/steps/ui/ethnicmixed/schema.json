@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "ethnicGroupMixed",
+  "type": "object",
+  "properties": {
+    "ethnicGroupMixed": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "ethnicGroupMixed"
+  ]
+}

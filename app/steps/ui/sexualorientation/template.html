@@ -1,0 +1,56 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "sexualOrientation",
+        name: "sexualOrientation",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.sexualOrientation.errorMessage.message | safe } if fields.sexualOrientation.errorMessage,
+        items: [
+            {
+                value: "optionHeterosexual",
+                text: content["optionHeterosexual"] | safe,
+                checked: true if fields.sexualOrientation.value == "optionHeterosexual"
+            },
+            {
+                value: "optionGayLesbian",
+                text: content["optionGayLesbian"] | safe,
+                checked: true if fields.sexualOrientation.value == "optionGayLesbian"
+            },
+            {
+                value: "optionBisexual",
+                text: content["optionBisexual"] | safe,
+                checked: true if fields.sexualOrientation.value == "optionBisexual"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                checked: true if fields.sexualOrientation.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.sexualOrientation.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

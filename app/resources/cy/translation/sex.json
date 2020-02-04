@@ -1,0 +1,15 @@
+{
+  "title": "[CY] Your sex",
+  "question": "[CY] What is your sex?",
+  "optionMale": "[CY] Male",
+  "optionFemale": "[CY] Female",
+
+  "errors": {
+    "sex": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your sex",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

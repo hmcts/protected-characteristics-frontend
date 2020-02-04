@@ -1,0 +1,76 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "religion",
+        name: "religion",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.religion.errorMessage.message | safe } if fields.religion.errorMessage,
+        items: [
+            {
+                value: "optionNoReligion",
+                text: content["optionNoReligion"] | safe,
+                checked: true if fields.religion.value == "optionNoReligion"
+            },
+            {
+                value: "optionChristian",
+                text: content["optionChristian"] | safe,
+                checked: true if fields.religion.value == "optionChristian"
+            },
+            {
+                value: "optionBuddhist",
+                text: content["optionBuddhist"] | safe,
+                checked: true if fields.religion.value == "optionBuddhist"
+            },
+            {
+                value: "optionHindu",
+                text: content["optionHindu"] | safe,
+                checked: true if fields.religion.value == "optionHindu"
+            },
+            {
+                value: "optionJewish",
+                text: content["optionJewish"] | safe,
+                checked: true if fields.religion.value == "optionJewish"
+            },
+            {
+                value: "optionMuslim",
+                text: content["optionMuslim"] | safe,
+                checked: true if fields.religion.value == "optionMuslim"
+            },
+            {
+                value: "optionSikh",
+                text: content["optionSikh"] | safe,
+                checked: true if fields.religion.value == "optionSikh"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                checked: true if fields.religion.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.religion.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

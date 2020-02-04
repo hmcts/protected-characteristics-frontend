@@ -1,0 +1,61 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "ethnicGroupAsian",
+        name: "ethnicGroupAsian",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.ethnicGroupAsian.errorMessage.message | safe } if fields.ethnicGroupAsian.errorMessage,
+        items: [
+            {
+                value: "optionIndian",
+                text: content["optionIndian"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionIndian"
+            },
+            {
+                value: "optionPakistani",
+                text: content["optionPakistani"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionPakistani"
+            },
+            {
+                value: "optionBangladeshi",
+                text: content["optionBangladeshi"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionBangladeshi"
+            },
+            {
+                value: "optionChinese",
+                text: content["optionChinese"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionChinese"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.ethnicGroupAsian.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

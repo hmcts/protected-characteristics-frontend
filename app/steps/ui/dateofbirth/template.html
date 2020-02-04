@@ -1,0 +1,86 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {% if errors %}
+        {% set inlineErrors = {
+            text:
+            (
+                (fields["dob-date"].errorMessage.message + "<br>" if fields["dob-date"].errorMessage) +
+                (fields["dob-day"].errorMessage.message + "<br>" if fields["dob-day"].errorMessage) +
+                (fields["dob-month"].errorMessage.message + "<br>" if fields["dob-month"].errorMessage) +
+                (fields["dob-year"].errorMessage.message + "<br>" if fields["dob-year"].errorMessage)
+            ) | safe
+        } %}
+    {% endif %}
+
+    {% set dateOfBirthHtml %}
+        {{ govukDateInput({
+            id: "dob",
+            namePrefix: "dob",
+            hint: {
+                text: content["enterDateHint"] | safe
+            },
+            errorMessage: inlineErrors,
+            items: [
+                {
+                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-day"].error or fields["dob-date"].error),
+                    name: "day",
+                    value: fields["dob-day"].value
+                },
+                {
+                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-month"].error or fields["dob-date"].error),
+                    name: "month",
+                    value: fields["dob-month"].value
+                },
+                {
+                    classes: "govuk-input--width-4" + (" govuk-input--error" if fields["dob-year"].error or fields["dob-date"].error),
+                    name: "year",
+                    value: fields["dob-year"].value
+                }
+            ]
+        }) }}
+    {% endset -%}
+
+    {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "provideDateOfBirth",
+        name: "provideDateOfBirth",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.provideDateOfBirth.errorMessage.message | safe } if fields.provideDateOfBirth.errorMessage,
+        items: [
+            {
+                value: "optionEnterDate",
+                text: content["optionEnterDate"],
+                checked: true if fields.provideDateOfBirth.value == "optionEnterDate",
+                conditional: {
+                    html: dateOfBirthHtml
+                }
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"],
+                checked: true if fields.provideDateOfBirth.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

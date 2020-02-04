@@ -1,0 +1,21 @@
+{
+  "title": "Your religion",
+  "question": "What is your religion?",
+  "optionNoReligion": "No religion",
+  "optionChristian": "Christian (all denominations)",
+  "optionBuddhist": "Buddhist",
+  "optionHindu": "Hindu",
+  "optionJewish": "Jewish",
+  "optionMuslim": "Muslim",
+  "optionSikh": "Sikh",
+  "optionOther": "Any other religion",
+
+  "errors": {
+    "religion": {
+      "required": {
+        "summary": "You need to choose an option for your religion",
+        "message": "Select an option"
+      }
+    }
+  }
+}

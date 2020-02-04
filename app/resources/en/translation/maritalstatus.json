@@ -1,0 +1,15 @@
+{
+  "title": "Your marital status",
+  "question": "Are you married or in a legally registered civil partnership?",
+  "optionYes": "Yes",
+  "optionNo": "No",
+
+  "errors": {
+    "maritalStatus": {
+      "required": {
+        "summary": "You need to choose an option for your marital status",
+        "message": "Select an option"
+      }
+    }
+  }
+}

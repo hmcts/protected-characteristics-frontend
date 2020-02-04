@@ -1,0 +1,21 @@
+{
+  "title": "[CY] Your religion",
+  "question": "[CY] What is your religion?",
+  "optionNoReligion": "[CY] No religion",
+  "optionChristian": "[CY] Christian (all denominations)",
+  "optionBuddhist": "[CY] Buddhist",
+  "optionHindu": "[CY] Hindu",
+  "optionJewish": "[CY] Jewish",
+  "optionMuslim": "[CY] Muslim",
+  "optionSikh": "[CY] Sikh",
+  "optionOther": "[CY] Any other religion",
+
+  "errors": {
+    "religion": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your religion",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

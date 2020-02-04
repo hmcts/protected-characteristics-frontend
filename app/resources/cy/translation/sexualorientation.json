@@ -1,0 +1,17 @@
+{
+  "title": "[CY] Your sexual orientation",
+  "question": "[CY] Which of the following best describes how you think of yourself?",
+  "optionHeterosexual": "[CY] Heterosexual or straight",
+  "optionGayLesbian": "[CY] Gay or lesbian",
+  "optionBisexual": "[CY] Bisexual",
+  "optionOther": "[CY] Other",
+
+  "errors": {
+    "sexualOrientation": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your sexual orientation",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

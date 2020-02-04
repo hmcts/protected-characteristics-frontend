@@ -1,0 +1,46 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "sex",
+        name: "sex",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.sex.errorMessage.message | safe } if fields.sex.errorMessage,
+        items: [
+            {
+                value: "optionMale",
+                text: content["optionMale"] | safe,
+                checked: true if fields.sex.value == "optionMale"
+            },
+            {
+                value: "optionFemale",
+                text: content["optionFemale"] | safe,
+                checked: true if fields.sex.value == "optionFemale"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.sex.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

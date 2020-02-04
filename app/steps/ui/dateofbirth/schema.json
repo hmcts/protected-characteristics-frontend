@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "date-of-birth",
+  "type": "object",
+  "properties": {},
+  "switch": [
+    {
+      "if": { "properties": { "provideDateOfBirth": { "enum": [""] } } },
+      "then": { "required": ["provideDateOfBirth"] },
+      "continue": false
+    },
+    {
+      "if": { "properties": { "provideDateOfBirth": { "enum": ["optionEnterDate"] } } },
+      "then": {
+        "properties": {
+          "dob-day": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 31
+          },
+          "dob-month": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 12
+          },
+          "dob-year": {
+            "type": "integer",
+            "minimum": 1000,
+            "maximum": 9999
+          },
+          "dob-date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "dob-day",
+          "dob-month",
+          "dob-year"
+        ]
+      },
+      "continue": false
+    }
+  ]
+}

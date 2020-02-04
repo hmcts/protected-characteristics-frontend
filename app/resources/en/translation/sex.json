@@ -1,0 +1,15 @@
+{
+  "title": "Your sex",
+  "question": "What is your sex?",
+  "optionMale": "Male",
+  "optionFemale": "Female",
+
+  "errors": {
+    "sex": {
+      "required": {
+        "summary": "You need to choose an option for your sex",
+        "message": "Select an option"
+      }
+    }
+  }
+}

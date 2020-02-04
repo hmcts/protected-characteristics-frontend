@@ -1,0 +1,56 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "ethnicGroupMixed",
+        name: "ethnicGroupMixed",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.ethnicGroupMixed.errorMessage.message | safe } if fields.ethnicGroupMixed.errorMessage,
+        items: [
+            {
+                value: "optionWhiteBlackCaribbean",
+                text: content["optionWhiteBlackCaribbean"] | safe,
+                checked: true if fields.ethnicGroupMixed.value == "optionWhiteBlackCaribbean"
+            },
+            {
+                value: "optionWhiteBlackAfrican",
+                text: content["optionWhiteBlackAfrican"] | safe,
+                checked: true if fields.ethnicGroupMixed.value == "optionWhiteBlackAfrican"
+            },
+            {
+                value: "optionWhiteAsian",
+                text: content["optionWhiteAsian"] | safe,
+                checked: true if fields.ethnicGroupMixed.value == "optionWhiteAsian"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                checked: true if fields.ethnicGroupMixed.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.ethnicGroupMixed.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

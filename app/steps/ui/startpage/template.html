@@ -1,0 +1,42 @@
+{% extends "includes/layout.html" %}
+
+{% from "govuk/components/panel/macro.njk" import govukPanel %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "widgets/lists.html" import unorderedList %}
+
+{% set title = "" %}
+
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {% set panelContentHtml %}
+                <p class="govuk-body">{{ content.paragraph1 | safe }}</p>
+                <p class="govuk-body">{{ content.paragraph2 | safe }}</p>
+                <p class="govuk-body">{{ content.paragraph3 | safe }}</p>
+            {% endset -%}
+
+            {{ govukPanel({
+                titleText: content.question | safe,
+                html: panelContentHtml
+            }) }}
+
+            <p class="govuk-body">{{ content.paragraph4 | safe }}</p>
+            <p class="govuk-body">{{ content.paragraph5 | safe }}</p>
+        </div>
+    </div>
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continueToQuestions | safe,
+            href: "/date-of-birth"
+        }) }}
+        &nbsp;&nbsp;
+        {{ govukButton({
+            text: common.dontWantToAnswer | safe,
+            classes: "govuk-button--secondary",
+            href: "#"
+        }) }}
+    </div>
+
+    {% include "includes/why_asking.html" %}
+{% endblock %}

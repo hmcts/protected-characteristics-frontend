@@ -1,0 +1,45 @@
+#why-asking {
+  margin-top: 50px;
+
+  p {
+    margin: 0;
+
+    & + h4 {
+      margin-top: 25px;
+    }
+  }
+}
+
+.anchor-margin-left {
+  margin-left: 10px;
+}
+
+.margin-bottom50 {
+  margin-bottom: 50px;
+}
+
+.govuk-box-highlight {
+  .govuk-heading-xl,
+  .govuk-\!-font-size-36 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+}
+
+.govuk-heading-l {
+  word-break: break-word;
+}
+
+.word-wrap {
+  word-wrap: break-word;
+}
+
+.word-break {
+  word-break: break-word;
+}
+
+.icon {
+  display: inline-block;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+}

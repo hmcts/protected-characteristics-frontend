@@ -1,0 +1,76 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "ethnicGroup",
+        name: "ethnicGroup",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.ethnicGroup.errorMessage.message | safe } if fields.ethnicGroup.errorMessage,
+        items: [
+            {
+                value: "optionWhite",
+                text: content["optionWhite"] | safe,
+                hint: {
+                    text: content["optionWhiteHint"] | safe
+                },
+                checked: true if fields.ethnicGroup.value == "optionWhite"
+            },
+            {
+                value: "optionMixed",
+                text: content["optionMixed"] | safe,
+                hint: {
+                    text: content["optionMixedHint"] | safe
+                },
+                checked: true if fields.ethnicGroup.value == "optionMixed"
+            },
+            {
+                value: "optionAsian",
+                text: content["optionAsian"] | safe,
+                hint: {
+                    text: content["optionAsianHint"] | safe
+                },
+                checked: true if fields.ethnicGroup.value == "optionAsian"
+            },
+            {
+                value: "optionBlack",
+                text: content["optionBlack"] | safe,
+                hint: {
+                    text: content["optionBlackHint"] | safe
+                },
+                checked: true if fields.ethnicGroup.value == "optionBlack"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                hint: {
+                    text: content["optionOtherHint"] | safe
+                },
+                checked: true if fields.ethnicGroup.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.ethnicGroup.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

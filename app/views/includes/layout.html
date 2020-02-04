@@ -1,0 +1,55 @@
+{% extends "govuk/template.njk" %}
+
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+
+{% set htmlLang = fields.language.value %}
+
+{% block pageTitle %}
+    {% if title == undefined %}
+      {% set title = content.title %}
+    {% endif %}
+
+    {{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}
+{% endblock %}
+
+{% block head %}
+    {% include "includes/head.html" %}
+{% endblock %}
+
+{% block header %}
+    <div id="global-cookie-message">
+      <p class="govuk-body">{{ cookieText | replace("{cookiesLink}", globals.links.cookies) | safe }}</p>
+    </div>
+
+    {{ govukHeader({
+        homepageUrl: "#",
+        containerClasses: "govuk-width-container",
+        serviceName: serviceName | safe,
+        serviceUrl: (globals.basePath if globals.basePath) + "/"
+    }) }}
+{% endblock %}
+
+{% block beforeContent %}
+    {{ govukPhaseBanner({
+        tag: {
+            text: common.phase | safe
+        },
+        html: (common.feedback + (common.languageToggle if fields.featureToggles.value.pc_welsh_ft === 'true')) | replace("{smartSurveyFeedbackUrl}", globals.links.survey) | replace("{currentPageUrl}", pageUrl) | safe
+    }) }}
+
+    {{ govukBackLink({
+        text: common.back | safe,
+        href: "#"
+    }) }}
+{% endblock %}
+
+{% block footer %}
+    {% include "includes/footer_links.html" %}
+{% endblock %}
+
+{% block bodyEnd %}
+    {% include "includes/scripts.html" %}
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "ethnicGroupWhite",
+        name: "ethnicGroupWhite",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.ethnicGroupWhite.errorMessage.message | safe } if fields.ethnicGroupWhite.errorMessage,
+        items: [
+            {
+                value: "optionBritish",
+                text: content["optionBritish"] | safe,
+                checked: true if fields.ethnicGroupWhite.value == "optionBritish"
+            },
+            {
+                value: "optionIrish",
+                text: content["optionIrish"] | safe,
+                checked: true if fields.ethnicGroupWhite.value == "optionIrish"
+            },
+            {
+                value: "optionGypsy",
+                text: content["optionGypsy"] | safe,
+                checked: true if fields.ethnicGroupWhite.value == "optionGypsy"
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                checked: true if fields.ethnicGroupWhite.value == "optionOther"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.ethnicGroupWhite.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

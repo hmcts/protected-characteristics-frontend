@@ -1,0 +1,18 @@
+{
+  "title": "[CY] Your Asian or Asian British ethnic background",
+  "question": "[CY] Which one best describes your Asian or Asian British background?",
+  "optionIndian": "[CY] Indian",
+  "optionPakistani": "[CY] Pakistani",
+  "optionBangladeshi": "[CY] Bangladeshi",
+  "optionChinese": "[CY] Chinese",
+  "optionOther": "[CY] Another Asian background",
+
+  "errors": {
+    "ethnicGroupAsian": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your Asian or Asian British ethnic background",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

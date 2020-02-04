@@ -1,0 +1,17 @@
+{
+  "title": "Your sexual orientation",
+  "question": "Which of the following best describes how you think of yourself?",
+  "optionHeterosexual": "Heterosexual or straight",
+  "optionGayLesbian": "Gay or lesbian",
+  "optionBisexual": "Bisexual",
+  "optionOther": "Other",
+
+  "errors": {
+    "sexualOrientation": {
+      "required": {
+        "summary": "You need to choose an option for your sexual orientation",
+        "message": "Select an option"
+      }
+    }
+  }
+}

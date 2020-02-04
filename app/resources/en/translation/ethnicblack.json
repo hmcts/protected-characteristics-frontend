@@ -1,0 +1,16 @@
+{
+  "title": "Your Black, African, Black British or Caribbean ethnic background",
+  "question": "Which one best describes your Black, African, Black British or Caribbean background?",
+  "optionAfrican": "African",
+  "optionCaribbean": "Caribbean",
+  "optionOther": "Another Black background",
+
+  "errors": {
+    "ethnicGroupBlack": {
+      "required": {
+        "summary": "You need to choose an option for your Black, African, Black British or Caribbean ethnic background",
+        "message": "Select an option"
+      }
+    }
+  }
+}

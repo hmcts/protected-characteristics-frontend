@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "religion",
+  "type": "object",
+  "properties": {
+    "religion": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "religion"
+  ]
+}

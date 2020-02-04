@@ -1,0 +1,55 @@
+{
+  "title": "Your date of birth",
+  "question": "What is your date of birth?",
+  "enterDateHint": "For example, 12 09 1987",
+  "optionEnterDate": "Enter your date of birth",
+
+  "errors": {
+    "provideDateOfBirth": {
+      "required": {
+        "summary": "You haven&rsquo;t answered the question about whether you want to provide your date of birth or you prefer not to say",
+        "message": "Answer &lsquo;Enter your date of birth&rsquo; if you want to provide your date of birth"
+      }
+    },
+    "dob-day": {
+      "required": {
+        "summary": "You haven&rsquo;t entered the day that you were born",
+        "message": "Enter the day you were born"
+      },
+      "invalid": {
+        "summary": "You haven&rsquo;t entered a valid day that you were born",
+        "message": "Enter a valid day of birth"
+      }
+    },
+    "dob-month": {
+      "required": {
+        "summary": "You haven&rsquo;t entered the month that you were born",
+        "message": "Enter the month you were born"
+      },
+      "invalid": {
+        "summary": "You haven&rsquo;t entered a valid month that you were born",
+        "message": "Enter a valid month of birth"
+      }
+    },
+    "dob-year": {
+      "required": {
+        "summary": "You haven&rsquo;t entered the year that you were born",
+        "message": "Enter the year you were born"
+      },
+      "invalid": {
+        "summary": "You haven&rsquo;t entered a valid year that you were born",
+        "message": "Enter a valid year of birth"
+      }
+    },
+    "dob-date": {
+      "invalid": {
+        "summary": "You need to enter a valid date of birth",
+        "message": "Enter a valid date of birth"
+      },
+      "dateInFuture": {
+        "summary": "You must enter a date of birth in the past",
+        "message": "Enter a date in the past"
+      }
+    }
+  }
+}

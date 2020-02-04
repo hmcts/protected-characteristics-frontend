@@ -1,0 +1,15 @@
+{
+  "title": "Your language",
+  "question": "What is your main language?",
+  "optionEnglishWelsh": "English or Welsh",
+  "optionOther": "Other",
+
+  "errors": {
+    "language": {
+      "required": {
+        "summary": "You need to choose an option for your main language",
+        "message": "Select an option"
+      }
+    }
+  }
+}

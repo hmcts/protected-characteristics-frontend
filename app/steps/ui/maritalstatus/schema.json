@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "maritalStatus",
+  "type": "object",
+  "properties": {
+    "maritalStatus": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "maritalStatus"
+  ]
+}

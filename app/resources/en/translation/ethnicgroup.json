@@ -1,0 +1,23 @@
+{
+  "title": "Your ethnic group",
+  "question": "What is your ethnic group?",
+  "optionWhite": "White",
+  "optionWhiteHint": "Includes any White background",
+  "optionMixed": "Mixed or multiple ethnic groups",
+  "optionMixedHint": "Includes any Mixed background",
+  "optionAsian": "Asian or Asian British",
+  "optionAsianHint": "Includes any Asian background, for example, Bangladeshi, Chinese, Indian, Pakistani",
+  "optionBlack": "Black, African, Caribbean or Black British",
+  "optionBlackHint": "Includes any Black background",
+  "optionOther": "Another ethnic group",
+  "optionOtherHint": "Includes any other ethnic group, for example, Arab",
+
+  "errors": {
+    "ethnicGroup": {
+      "required": {
+        "summary": "You need to choose an option for your ethnic group",
+        "message": "Select an option"
+      }
+    }
+  }
+}

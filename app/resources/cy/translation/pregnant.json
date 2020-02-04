@@ -1,0 +1,15 @@
+{
+  "title": "[CY] Your pregnancy status",
+  "question": "[CY] Are you pregnant or have you been pregnant in the last year?",
+  "optionYes": "[CY] Yes",
+  "optionNo": "[CY] No",
+
+  "errors": {
+    "pregnant": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your pregnancy status",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

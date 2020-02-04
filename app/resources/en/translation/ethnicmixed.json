@@ -1,0 +1,17 @@
+{
+  "title": "Your Mixed or Multiple ethnic groups background",
+  "question": "Which one best describes your Mixed or Multiple ethnic groups background?",
+  "optionWhiteBlackCaribbean": "White and Black Caribbean",
+  "optionWhiteBlackAfrican": "White and Black African",
+  "optionWhiteAsian": "White and Asian",
+  "optionOther": "Another Mixed background",
+
+  "errors": {
+    "ethnicGroupMixed": {
+      "required": {
+        "summary": "You need to choose an option for your Mixed or Multiple ethnic groups background",
+        "message": "Select an option"
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Your White ethnic background",
+  "question": "Which one best describes your White background?",
+  "optionBritish": "English, Welsh, Scottish, Northern Irish or British",
+  "optionIrish": "Irish",
+  "optionGypsy": "Gypsy or Irish Traveller",
+  "optionOther": "Another White background",
+
+  "errors": {
+    "ethnicGroupWhite": {
+      "required": {
+        "summary": "You need to choose an option for your White ethnic background",
+        "message": "Select an option"
+      }
+    }
+  }
+}

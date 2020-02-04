@@ -1,0 +1,76 @@
+/*
+Task List
+*/
+
+.task-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: govuk-spacing(8);
+
+  .govuk-button {
+    margin-bottom: 0;
+  }
+
+  .govuk-tag {
+    margin-bottom: govuk-spacing(3);
+    margin-left: govuk-spacing(5);
+    margin-right: 0;
+
+    @include govuk-media-query($from: desktop) {
+      float: right;
+      margin-left: 0;
+      padding-top: 3px;
+    }
+
+    &.task-completed {
+    }
+
+    &.task-unavailable {
+      background-color: govuk-colour("mid-grey");
+      color: govuk-colour("black");
+    }
+  }
+}
+
+.task-item {
+  border-top: 1px solid govuk-colour("mid-grey");
+  line-height: 1.5;
+  padding: 20px 0 10px 0;
+
+  &:last-child {
+    border-bottom: 1px solid govuk-colour("mid-grey");
+  }
+}
+
+.task-list-section {
+  @include govuk-font(24, $weight: bold);
+  display: table;
+  float: left;
+  margin-bottom: govuk-spacing(3);
+  margin-top: 0;
+  width: 100%;
+
+  @include govuk-media-query($from: desktop) {
+    width: 64%;
+  }
+}
+
+.task-list-section-number {
+  width: govuk-spacing(5);
+  padding-right: 0;
+  display: table-cell;
+
+  @include govuk-media-query($from: desktop) {
+    width: govuk-spacing(8);
+  }
+}
+
+.task-list-items {
+  clear: both;
+  padding-left: govuk-spacing(5);
+
+  @include govuk-media-query($from: desktop) {
+    padding-left: govuk-spacing(8);
+  }
+}
