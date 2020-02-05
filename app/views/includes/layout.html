@@ -44,7 +44,8 @@
         text: common.back | safe,
         href: "#",
         attributes: {
-            "onclick": "history.go(-1); return false;"
+            "onclick": "history.go(-1); return false;",
+            "nonce": globals.nonce
         }
     }) }}
 {% endblock %}
