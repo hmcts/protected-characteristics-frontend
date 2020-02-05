@@ -13,16 +13,17 @@ class ApplicantHealthConditions extends ValidationStep {
         const ctx = super.getContextData(req);
         const formdata = req.session.form;
         ctx.sex = get(formdata, 'sex.sex');
+        ctx.gender = get(formdata, 'gender.gender');
         return ctx;
     }
 
     nextStepOptions(ctx) {
-        ctx.female = ctx.sex === 'optionFemale';
+        ctx.male = ctx.sex === 'optionMale' && ctx.gender === 'optionYes';
 
         return {
             options: [
                 {key: 'healthConditions', value: 'optionYes', choice: 'Yes'},
-                {key: 'female', value: true, choice: 'Female'}
+                {key: 'male', value: false, choice: 'Female'}
             ]
         };
     }
