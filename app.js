@@ -56,7 +56,6 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
         gaTrackingId: config.gaTrackingId,
         enableTracking: config.enableTracking,
         links: config.links,
-        applicationFee: config.payment.applicationFee,
         nonce: uuid,
         basePath: config.app.basePath,
         webChat: {

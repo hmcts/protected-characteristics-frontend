@@ -22,50 +22,12 @@ module.exports = {
         basePath: process.env.APP_BASE_PATH || ''
     },
     services: {
-        postcode: {
-            token: process.env.POSTCODE_SERVICE_TOKEN
-        },
         orchestration: {
             url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:8888',
             port: 8888,
             paths: {
-                checkanswerspdf: 'documents/generate/checkAnswersSummary',
-                payment_updates: '/payment-updates'
+                checkanswerspdf: 'documents/generate/checkAnswersSummary'
             }
-        },
-        idam: {
-            apiUrl: process.env.IDAM_API_URL || 'http://localhost:4501',
-            roles: ['probate-private-beta', 'citizen'],
-            s2s_url: process.env.IDAM_S2S_URL || 'http://localhost:4502',
-            service_name: 'probate_frontend',
-            service_key: process.env.IDAM_SERVICE_KEY || 'AAAAAAAAAAAAAAAA',
-            probate_oauth2_client: 'probate',
-            probate_oauth2_secret: process.env.IDAM_API_OAUTH2_CLIENT_CLIENT_SECRETS_PROBATE || '123456',
-            caveat_user_email: process.env.CAVEAT_USER_EMAIL || 'testusername1@test.com',
-            caveat_user_password: process.env.CAVEAT_USER_PASSWORD || 'password',
-            caveat_redirect_base_url: process.env.CAVEAT_REDIRECT_BASE_URL || 'http://localhost:3000',
-            caveat_redirectUrl: '/oauth2/callback'
-        },
-        payment: {
-            createPaymentUrl: process.env.PAYMENT_CREATE_URL || 'http://localhost:8383/card-payments',
-            authorization: process.env.PAYMENT_AUTHORIZATION || 'dummy_token',
-            serviceAuthorization: process.env.PAYMENT_SERVICE_AUTHORIZATION || 'dummy_token',
-            userId: process.env.PAYMENT_USER_ID || 999999999,
-            returnUrlPath: process.env.PAY_RETURN_URL || '/payment-status'
-        },
-        persistence: {
-            url: process.env.PERSISTENCE_SERVICE_URL || 'http://localhost:8282/formdata',
-            port: 8282,
-            path: '/formdata'
-        },
-        feesRegister: {
-            url: process.env.FEES_REGISTRY_URL || 'http://localhost:4411/fees-register',
-            port: 4411,
-            paths: {
-                fees: '/fees',
-                feesLookup: '/fees/lookup'
-            },
-            ihtMinAmt: 5000
         }
     },
     redis: {
@@ -128,15 +90,6 @@ module.exports = {
             retryDelay: process.env.RETRY_DELAY || 1000,
             timeout: 30000
         }
-    },
-    payment: {
-        applicationFee: 20,
-        applicationFeeThreshold: 5000,
-        applicationFeeCode: process.env.APPLICATION_FEE_CODE || 'FEE0288',
-        serviceId: process.env.SERVICE_ID || 'PROBATE',
-        siteId: process.env.SITE_ID || 'P223',
-        version: process.env.version || '1',
-        currency: process.env.currency || 'GBP'
     },
     livenessEndpoint: '/health/liveness',
     healthEndpoint: '/health',
