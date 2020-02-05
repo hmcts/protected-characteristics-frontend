@@ -15,8 +15,7 @@ describe('privacy-policy', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-
-        it('test right content loaded on the page', (done) => {
+        it('test content loaded on the page', (done) => {
             const contentData = {
                 mojPersonalInformationCharterLink: config.links.mojPersonalInformationCharter,
                 termsLink: config.links.terms,

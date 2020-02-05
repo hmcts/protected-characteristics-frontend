@@ -15,7 +15,7 @@ describe('cookies', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        it('test right content loaded on the page', (done) => {
+        it('test content loaded on the page', (done) => {
             const contentData = {
                 howToManageCookiesLink: config.links.howToManageCookies,
                 googlePrivacyPolicyLink: config.links.googlePrivacyPolicy,

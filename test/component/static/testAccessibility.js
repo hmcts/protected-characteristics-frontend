@@ -16,7 +16,7 @@ describe('accessibility', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        it('test right content loaded on the page', (done) => {
+        it('test content loaded on the page', (done) => {
             const contentData = {
                 myAbilityLink: config.links.myAbilityLink,
                 helpLineNumber: commonContent.helpTelephoneNumber,

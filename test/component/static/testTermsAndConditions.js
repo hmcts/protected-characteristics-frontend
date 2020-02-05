@@ -16,8 +16,7 @@ describe('terms-conditions', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-
-        it('test right content loaded on the page', (done) => {
+        it('test content loaded on the page', (done) => {
             const contentData = {
                 privacyLink: config.links.privacy,
                 cookiesLink: config.links.cookies,

@@ -1,9 +1,9 @@
 'use strict';
 
-const TermsConditions = require('app/steps/ui/static/terms/index');
+const TermsConditions = require('app/steps/ui/static/terms');
 const expect = require('chai').expect;
 
-describe('terms/index.js', () => {
+describe('TermsConditions', () => {
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
             const url = TermsConditions.getUrl();

@@ -1,9 +1,9 @@
 'use strict';
 
-const Cookies = require('app/steps/ui/static/cookies/index');
+const Cookies = require('app/steps/ui/static/cookies');
 const expect = require('chai').expect;
 
-describe('cookies/index.js', () => {
+describe('Cookies', () => {
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
             const url = Cookies.getUrl();

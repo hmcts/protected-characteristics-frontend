@@ -2,14 +2,14 @@
 
 const initSteps = require('app/core/initSteps');
 const expect = require('chai').expect;
-const steps = initSteps([`${__dirname}/../../app/steps/action/`, `${__dirname}/../../app/steps/ui`]);
-const DeceasedDob = steps.DeceasedDob;
-const content = require('app/resources/en/translation/deceased/dob');
+const steps = initSteps([`${__dirname}/../../app/steps/ui`]);
+const ApplicantDateOfBirth = steps.ApplicantDateOfBirth;
+const content = require('app/resources/en/translation/dateofbirth');
 
-describe('DeceasedDob', () => {
+describe('ApplicantDateOfBirth', () => {
     describe('dateName()', () => {
         it('should return the date names array', (done) => {
-            const dateName = DeceasedDob.dateName();
+            const dateName = ApplicantDateOfBirth.dateName();
             expect(dateName).to.deep.equal(['dob']);
             done();
         });
@@ -17,8 +17,8 @@ describe('DeceasedDob', () => {
 
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
-            const url = DeceasedDob.constructor.getUrl();
-            expect(url).to.equal('/deceased-dob');
+            const url = ApplicantDateOfBirth.constructor.getUrl();
+            expect(url).to.equal('/date-of-birth');
             done();
         });
     });
@@ -46,7 +46,7 @@ describe('DeceasedDob', () => {
                 'dob-year': '1952'
             };
             errors = [];
-            [ctx, errors] = DeceasedDob.handlePost(ctx, errors, formdata, session);
+            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
                 'dob-day': '02',
                 'dob-month': '03',
@@ -62,7 +62,7 @@ describe('DeceasedDob', () => {
                 'dob-year': '3000'
             };
             errors = [];
-            [ctx, errors] = DeceasedDob.handlePost(ctx, errors, formdata, session);
+            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(errors).to.deep.equal([
                 {
                     field: 'dob-date',
@@ -70,27 +70,6 @@ describe('DeceasedDob', () => {
                     msg: {
                         summary: content.errors['dob-date'].dateInFuture.summary,
                         message: content.errors['dob-date'].dateInFuture.message
-                    }
-                }
-            ]);
-            done();
-        });
-
-        it('should return the error for DoD before DoB', (done) => {
-            ctx = {
-                'dob-day': '02',
-                'dob-month': '03',
-                'dob-year': '2002'
-            };
-            errors = [];
-            [ctx, errors] = DeceasedDob.handlePost(ctx, errors, formdata, session);
-            expect(errors).to.deep.equal([
-                {
-                    field: 'dob-date',
-                    href: '#dob-date',
-                    msg: {
-                        summary: content.errors['dob-date'].dodBeforeDob.summary,
-                        message: content.errors['dob-date'].dodBeforeDob.message
                     }
                 }
             ]);

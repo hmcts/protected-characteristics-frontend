@@ -8,8 +8,8 @@ const i18next = require('i18next');
 describe('DateStep', () => {
     const steps = {};
     const section = 'deceased';
-    const resourcePath = 'deceased/dob';
-    const schema = require('app/steps/ui/deceased/dob/schema');
+    const resourcePath = 'dateofbirth';
+    const schema = require('app/steps/ui/dateofbirth/schema');
     const language = 'en';
     const dateStep = new DateStep(steps, section, resourcePath, i18next, schema, language);
 

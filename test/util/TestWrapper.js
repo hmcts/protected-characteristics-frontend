@@ -8,7 +8,7 @@ const config = require('app/config');
 const request = require('supertest');
 const journeyMap = require('app/core/journeyMap');
 const initSteps = require('app/core/initSteps');
-const steps = initSteps([`${__dirname}/../../app/steps/action/`, `${__dirname}/../../app/steps/ui`], 'en');
+const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 
 class TestWrapper {
     constructor(stepName) {

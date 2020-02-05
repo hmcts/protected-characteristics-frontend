@@ -26,10 +26,8 @@ describe('shutter-page', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        it('test correct content loaded on the page', (done) => {
-            const excludeContent = ['paragraph3'];
-
-            testWrapper.testContent(done, {}, excludeContent);
+        it('test content loaded on the page', (done) => {
+            testWrapper.testContent(done);
         });
     });
 });
