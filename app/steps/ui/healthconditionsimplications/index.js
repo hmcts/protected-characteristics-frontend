@@ -1,7 +1,6 @@
 'use strict';
 
 const ValidationStep = require('app/core/steps/ValidationStep');
-const get = require('lodash').get;
 
 class ApplicantHealthConditionsImplications extends ValidationStep {
 
@@ -9,30 +8,13 @@ class ApplicantHealthConditionsImplications extends ValidationStep {
         return '/health-conditions-implications';
     }
 
-    getContextData(req) {
-        const ctx = super.getContextData(req);
-        const formdata = req.session.form;
-        ctx.sex = get(formdata, 'sex.sex');
-        ctx.gender = get(formdata, 'gender.gender');
-        return ctx;
-    }
-
-    nextStepOptions(ctx) {
-        ctx.male = ctx.sex === 'optionMale' && ctx.gender === 'optionYes';
-
+    nextStepOptions() {
         return {
             options: [
                 {key: 'healthConditionsImplications', value: 'optionYesLot', choice: 'Yes'},
                 {key: 'healthConditionsImplications', value: 'optionYesLittle', choice: 'Yes'},
-                {key: 'male', value: false, choice: 'Female'}
             ]
         };
-    }
-
-    action(ctx, formdata) {
-        super.action(ctx, formdata);
-        delete ctx.male;
-        return [ctx, formdata];
     }
 }
 
