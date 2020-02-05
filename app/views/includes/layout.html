@@ -42,7 +42,10 @@
 
     {{ govukBackLink({
         text: common.back | safe,
-        href: "#"
+        href: "#",
+        attributes: {
+            "onclick": "history.go(-1); return false;"
+        }
     }) }}
 {% endblock %}
 
