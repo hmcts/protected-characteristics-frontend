@@ -27,7 +27,11 @@ const stepList = {
         Female: 'ApplicantPregnant',
         otherwise: 'EndPage'
     },
-    ApplicantHealthConditionsImplications: 'ApplicantHealthConditionsImplicationAreas',
+    ApplicantHealthConditionsImplications: {
+        Yes: 'ApplicantHealthConditionsImplicationAreas',
+        Female: 'ApplicantPregnant',
+        otherwise: 'EndPage'
+    },
     ApplicantHealthConditionsImplicationAreas: {
         Female: 'ApplicantPregnant',
         otherwise: 'EndPage'

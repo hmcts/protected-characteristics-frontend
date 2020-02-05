@@ -29,7 +29,7 @@ class ApplicantHealthConditionsImplicationAreas extends ValidationStep {
 
     action(ctx, formdata) {
         super.action(ctx, formdata);
-        delete ctx.female;
+        delete ctx.male;
         return [ctx, formdata];
     }
 }
