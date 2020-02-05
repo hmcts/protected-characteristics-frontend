@@ -49,17 +49,16 @@ module.exports = {
     dateFormat: 'DD/MM/YYYY',
     payloadVersion: '4.1.0',
     hostname: process.env.FRONTEND_HOSTNAME || 'localhost:3000',
-    gaTrackingId: process.env.GA_TRACKING_ID || 'UA-93598808-5',
+    gaTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXX-X',
     enableTracking: process.env.ENABLE_TRACKING || 'true',
     webChat: {
-        chatId: process.env.WEBCHAT_CHAT_ID || '3077733355d19fd430f23c7.02555395',
-        tenant: process.env.WEBCHAT_TENANT || 'c2FuZGJveGhtY3RzMDE',
-        buttonNoAgents: process.env.WEBCHAT_BUTTON_NO_AGENTS || '20599210435d19f59cdc3e95.94551214',
-        buttonAgentsBusy: process.env.WEBCHAT_BUTTON_AGENTS_BUSY || '8752254635d19f5bb21ff07.71234899',
-        buttonServiceClosed: process.env.WEBCHAT_BUTTON_SERVICE_CLOSED || '4639879315d19f67c3c1055.15174024',
+        chatId: process.env.WEBCHAT_CHAT_ID || 'XXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXX',
+        tenant: process.env.WEBCHAT_TENANT || 'XXXXXXXXXXXXXXXXXXX',
+        buttonNoAgents: process.env.WEBCHAT_BUTTON_NO_AGENTS || 'XXXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXX',
+        buttonAgentsBusy: process.env.WEBCHAT_BUTTON_AGENTS_BUSY || 'XXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXX',
+        buttonServiceClosed: process.env.WEBCHAT_BUTTON_SERVICE_CLOSED || 'XXXXXXXXXXXXXXXXXXXXXXX.XXXXXXXX'
     },
     links: {
-        accessibility: (process.env.APP_BASE_PATH || '') + '/accessibility-statement',
         cookies: (process.env.APP_BASE_PATH || '') + '/cookies',
         privacy: (process.env.APP_BASE_PATH || '') + '/privacy-policy',
         terms: (process.env.APP_BASE_PATH || '') + '/terms-conditions',
