@@ -1,8 +1,7 @@
 {% from "govuk/components/details/macro.njk" import govukDetails %}
 
 {% block help_info %}
-    {% set whyAskingContent = "<p class=\"govuk-heading-s\">" + (common.whyAskingHeading | safe) + "</p>" %}
-    {% set whyAskingContent = whyAskingContent + "<p class=\"govuk-body\">" + (common.whyAskingParagraph | safe) + "</p>" %}
+    {% set whyAskingContent = "<p class=\"govuk-body\">" + (common.whyAskingParagraph | safe) + "</p>" %}
 
     {{ govukDetails({
         summaryText: common.whyAsking | safe,
