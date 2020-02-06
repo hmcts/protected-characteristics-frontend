@@ -25,18 +25,21 @@
         </div>
     </div>
 
-    <div class="govuk-form-group">
-        {{ govukButton({
-            text: common.continueToQuestions | safe,
-            href: "/date-of-birth"
-        }) }}
-        &nbsp;&nbsp;
-        {{ govukButton({
-            text: common.dontWantToAnswer | safe,
-            classes: "govuk-button--secondary",
-            href: "#"
-        }) }}
-    </div>
+    <ul class="govuk-form-group">
+        <li>
+            {{ govukButton({
+                text: common.continueToQuestions | safe,
+                href: "/date-of-birth"
+            }) }}
+        </li>
+        <li>
+            {{ govukButton({
+                text: common.dontWantToAnswer | safe,
+                classes: "govuk-button--secondary",
+                href: "#"
+            }) }}
+        </li>
+    </ul>
 
     {% include "includes/why_asking.html" %}
 {% endblock %}

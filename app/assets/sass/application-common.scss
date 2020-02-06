@@ -43,3 +43,14 @@
   background-position: 0 0;
   background-repeat: no-repeat;
 }
+
+ul.govuk-form-group {
+  list-style-type: none;
+  margin: 0 0 30px 0;
+  padding: 0;
+
+  li {
+    display: inline-block;
+    margin-right: 15px;
+  }
+}

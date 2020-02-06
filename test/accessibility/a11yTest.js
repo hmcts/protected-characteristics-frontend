@@ -8,20 +8,12 @@ const app = require('app');
 const initSteps = require('app/core/initSteps');
 const {endsWith} = require('lodash');
 const commonContent = require('app/resources/en/translation/common');
-const stepsToExclude = ['AddAlias', 'RemoveAlias', 'AddressLookup', 'Summary', 'PaymentBreakdown', 'PaymentStatus'];
-const steps = initSteps([`${__dirname}/../../app/steps/action/`, `${__dirname}/../../app/steps/ui`], 'en');
+const stepsToExclude = [];
+const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 const nock = require('nock');
 const config = require('app/config');
 const commonSessionData = {
-    form: {
-        applicant: {
-            firstName: 'Applicant FN',
-            lastName: 'Applicant FN'
-        },
-        language: {
-            bilingual: 'Yes'
-        }
-    },
+    form: {},
     back: []
 };
 
@@ -38,10 +30,17 @@ for (const step in steps) {
         describe(`Verify accessibility for the page ${step.name}`, () => {
             let server = null;
             let agent = null;
+            let title;
 
-            const title = `${step.content.title} - ${commonContent.serviceName}`
-                .replace(/&lsquo;/g, '‘')
-                .replace(/&rsquo;/g, '’');
+            if (step.name === 'StartPage' || step.name === 'EndPage') {
+                title = commonContent.serviceName
+                    .replace(/&lsquo;/g, '‘')
+                    .replace(/&rsquo;/g, '’');
+            } else {
+                title = `${step.content.title} - ${commonContent.serviceName}`
+                    .replace(/&lsquo;/g, '‘')
+                    .replace(/&rsquo;/g, '’');
+            }
 
             before((done) => {
                 if (step.name === 'ShutterPage') {
