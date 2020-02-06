@@ -1,7 +1,18 @@
 {% extends "includes/two_thirds_form.html" %}
 
 {% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set otherDetailsHtml %}
+    {{ govukTextarea({
+        name: "otherDetails",
+        id: "otherDetails",
+        label: {
+            text: content["optionOtherDetails"] | safe
+        }
+    }) }}
+{% endset -%}
 
 {% block form_content %}
     {{ govukCheckboxes({
@@ -112,7 +123,10 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionOther" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionOther" in fields.healthConditionsImplicationsAreas.value,
+                conditional: {
+                    html: otherDetailsHtml
+                }
             },
             {
                 value: "optionNone",

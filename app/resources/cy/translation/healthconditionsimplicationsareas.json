@@ -17,6 +17,7 @@
   "optionSocially": "[CY] Socially or behaviourally",
   "optionSociallyHint": "[CY] For example associated with autism, attention deficit disorder or Asperger's syndrome",
   "optionOther": "[CY] Other",
+  "optionOtherDetails": "[CY] Please give details of your disability",
   "optionNone": "[CY] None of the above",
 
   "errors": {
