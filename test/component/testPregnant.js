@@ -1,17 +1,17 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const ApplicantSex = require('app/steps/ui/sex');
+const EndPage = require('app/steps/ui/endpage');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
-describe('ApplicantLanguage', () => {
+describe('ApplicantPregnant', () => {
     let testWrapper;
-    const expectedNextUrlForApplicantSex = basePath + ApplicantSex.getUrl();
+    const expectedNextUrlForEndPage = basePath + EndPage.getUrl();
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ApplicantLanguage');
+        testWrapper = new TestWrapper('ApplicantPregnant');
     });
 
     afterEach(() => {
@@ -19,18 +19,18 @@ describe('ApplicantLanguage', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('ApplicantLanguage');
+        testCommonContent.runTest('ApplicantPregnant');
 
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex}`, (done) => {
+        it(`test it redirects to end page: ${expectedNextUrlForEndPage}`, (done) => {
             const data = {
-                language: 'optionEnglishWelsh'
+                pregnant: 'optionYes'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);
+            testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);
         });
     });
 });

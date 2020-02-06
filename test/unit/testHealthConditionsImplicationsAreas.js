@@ -13,4 +13,28 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
             done();
         });
     });
+
+    describe('getContextData()', () => {
+        it('should return the context with the deceased name', (done) => {
+            const req = {
+                session: {
+                    form: {
+                        healthconditionsimplicationsareas: {
+                            healthConditionsImplicationsAreas: [
+                                'optionMobility',
+                                'optionMemory'
+                            ]
+                        }
+                    }
+                }
+            };
+
+            const ctx = ApplicantHealthConditionsImplicationAreas.getContextData(req);
+            expect(ctx.healthConditionsImplicationsAreas).to.deep.equal([
+                'optionMobility',
+                'optionMemory'
+            ]);
+            done();
+        });
+    });
 });

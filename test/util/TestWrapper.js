@@ -34,29 +34,39 @@ class TestWrapper {
         this.agent = request.agent(this.server.app);
     }
 
-    testContent(done, data, excludeKeys = []) {
+    testContent(done, data = {}, excludeKeys = [], cookies = []) {
         const contentToCheck = cloneDeep(filter(this.content, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
         const substitutedContent = this.substituteContent(data, contentToCheck);
         const res = this.agent.get(this.pageUrl);
+
+        if (cookies.length) {
+            const cookiesString = this.setCookiesString(res, cookies);
+            res.set('Cookie', cookiesString);
+        }
 
         res.expect('Content-type', /html/)
             .then(response => {
                 this.assertContentIsPresent(response.text, substitutedContent);
                 done();
             })
-            .catch(() => done());
+            .catch(done);
     }
 
-    testDataPlayback(done, data = {}, excludeKeys = []) {
-        const res = this.agent.get(this.pageUrl);
+    testDataPlayback(done, data = {}, excludeKeys = [], cookies = []) {
         const dataToCheck = cloneDeep(filter(data, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
+        const res = this.agent.get(this.pageUrl);
+
+        if (cookies.length) {
+            const cookiesString = this.setCookiesString(res, cookies);
+            res.set('Cookie', cookiesString);
+        }
 
         res.expect('Content-type', /html/)
             .then(response => {
                 this.assertContentIsPresent(response.text, dataToCheck);
                 done();
             })
-            .catch(() => done());
+            .catch((err) => done(err));
     }
 
     testContentNotPresent(done, data) {
@@ -65,16 +75,22 @@ class TestWrapper {
                 this.assertContentIsNotPresent(response.text, data);
                 done();
             })
-            .catch(() => done());
+            .catch((err) => done(err));
     }
 
-    testErrors(done, data, type, onlyKeys = []) {
+    testErrors(done, data, type, onlyKeys = [], cookies = []) {
         const contentErrors = get(this.content, 'errors', {});
         const expectedErrors = cloneDeep(isEmpty(onlyKeys) ? contentErrors : filter(contentErrors, (value, key) => onlyKeys.includes(key)));
         assert.isNotEmpty(expectedErrors);
         this.substituteErrorsContent(data, expectedErrors, type);
-        this.agent.post(this.pageUrl)
-            .type('form')
+        const res = this.agent.post(`${this.pageUrl}`);
+
+        if (cookies.length) {
+            const cookiesString = this.setCookiesString(res, cookies);
+            res.set('Cookie', cookiesString);
+        }
+
+        res.type('form')
             .send(data)
             .expect('Content-type', 'text/html; charset=utf-8')
             .then(res => {
@@ -84,7 +100,7 @@ class TestWrapper {
                 });
                 done();
             })
-            .catch(() => done());
+            .catch((err) => done(err));
     }
 
     testStatus500Page(done, postData) {
@@ -107,31 +123,28 @@ class TestWrapper {
                 this.assertContentIsPresent(res.text, contentToCheck);
                 done();
             })
-            .catch(() => done());
+            .catch((err) => done(err));
     }
 
-    testRedirect(done, data, expectedNextUrl) {
-        this.agent.post(this.pageUrl)
-            .type('form')
+    testRedirect(done, data, expectedNextUrl, cookies = []) {
+        const res = this.agent.post(this.pageUrl);
+
+        if (cookies.length) {
+            const cookiesString = this.setCookiesString(res, cookies);
+            res.set('Cookie', cookiesString);
+        }
+
+        res.type('form')
             .send(data)
             .expect('location', expectedNextUrl)
             .expect(302)
             .then(() => done())
-            .catch(() => done());
-    }
-
-    testGetRedirect(done, postData, expectedNextUrl) {
-        this.agent.get(this.pageUrl)
-            .type('form')
-            .send(postData)
-            .expect('location', expectedNextUrl)
-            .expect(302)
-            .then(() => done())
-            .catch(() => done());
+            .catch((err) => done(err));
     }
 
     nextStep(data = {}) {
-        return journeyMap(this.pageToTest, data);
+        const journeyMap = new JourneyMap(journey);
+        return journeyMap.nextStep(this.pageToTest, data);
     }
 
     substituteContent(data, contentToSubstitute) {
@@ -141,14 +154,16 @@ class TestWrapper {
                 const contentValueMatch = contentValue.match(/{(.*?)}/g);
                 if (contentValueMatch) {
                     contentValueMatch.forEach(placeholder => {
+                        const placeholderRegex = new RegExp(placeholder, 'g');
+                        placeholder = placeholder.replace(/[{}]/g, '');
                         if (Array.isArray(data[placeholder])) {
                             data[placeholder].forEach(contentData => {
-                                const contentValueReplace = contentValue.replace(placeholder, contentData);
+                                const contentValueReplace = contentValue.replace(placeholderRegex, contentData);
                                 contentToSubstitute.push(contentValueReplace);
                             });
                             contentToSubstitute[key] = 'undefined';
                         } else {
-                            contentValue = contentValue.replace(placeholder, data[placeholder]);
+                            contentValue = contentValue.replace(placeholderRegex, data[placeholder]);
                             contentToSubstitute[key] = contentValue;
                         }
                     });
@@ -174,15 +189,33 @@ class TestWrapper {
     }
 
     assertContentIsPresent(actualContent, expectedContent) {
-        expectedContent.forEach(value => {
-            expect(actualContent.toLowerCase()).to.contain(value.toString().toLowerCase());
+        expectedContent.forEach(contentValue => {
+            expect(actualContent.toLowerCase()).to.contain(contentValue.toString().toLowerCase());
         });
     }
 
     assertContentIsNotPresent(actualContent, expectedContent) {
-        Object.entries(expectedContent).forEach(contentValue => {
+        forEach(expectedContent, (contentValue) => {
             expect(actualContent.toLowerCase()).to.not.contain(contentValue.toString().toLowerCase());
         });
+    }
+
+    setCookiesString(res, cookies = []) {
+        if (cookies.length) {
+            let cookiesString;
+
+            for (let i=0; i<cookies.length; i++) {
+                const cookieName = cookies[i].name;
+                const cookieContent = JSON.stringify(cookies[i].content);
+                cookiesString = `${cookieName}=${cookieContent},`;
+            }
+
+            cookiesString = cookiesString.substring(0, cookiesString.length - 1);
+
+            return cookiesString;
+        }
+
+        return '';
     }
 
     destroy() {

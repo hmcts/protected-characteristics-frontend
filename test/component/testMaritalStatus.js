@@ -1,17 +1,17 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const ApplicantSex = require('app/steps/ui/sex');
+const ApplicantEthnicGroup = require('app/steps/ui/ethnicgroup');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
-describe('ApplicantLanguage', () => {
+describe('ApplicantMaritalStatus', () => {
     let testWrapper;
-    const expectedNextUrlForApplicantSex = basePath + ApplicantSex.getUrl();
+    const expectedNextUrlForApplicantEthnicGroup = basePath + ApplicantEthnicGroup.getUrl();
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ApplicantLanguage');
+        testWrapper = new TestWrapper('ApplicantMaritalStatus');
     });
 
     afterEach(() => {
@@ -19,18 +19,18 @@ describe('ApplicantLanguage', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('ApplicantLanguage');
+        testCommonContent.runTest('ApplicantMaritalStatus');
 
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex}`, (done) => {
+        it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup}`, (done) => {
             const data = {
-                language: 'optionEnglishWelsh'
+                maritalStatus: 'optionYes'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);
         });
     });
 });

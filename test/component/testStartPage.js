@@ -3,7 +3,7 @@
 const TestWrapper = require('test/util/TestWrapper');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 
-describe('start-page', () => {
+describe('StartPage', () => {
     let testWrapper;
 
     beforeEach(() => {
