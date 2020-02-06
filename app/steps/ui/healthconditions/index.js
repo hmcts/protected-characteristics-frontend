@@ -11,7 +11,7 @@ class ApplicantHealthConditions extends ValidationStep {
     nextStepOptions() {
         return {
             options: [
-                {key: 'healthConditions', value: 'optionYes', choice: 'Yes'},
+                {key: 'healthConditions', value: 'optionYes', choice: 'Yes'}
             ]
         };
     }

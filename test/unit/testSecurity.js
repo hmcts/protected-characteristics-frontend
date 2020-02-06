@@ -5,7 +5,7 @@ const sinon = require('sinon');
 const security = require('app/components/security');
 const utils = require('app/components/api-utils');
 
-describe('security', () => {
+describe('Security', () => {
     describe('getUserToken()', () => {
         let fetchJsonStub;
 

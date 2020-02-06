@@ -12,7 +12,7 @@ class ApplicantHealthConditionsImplications extends ValidationStep {
         return {
             options: [
                 {key: 'healthConditionsImplications', value: 'optionYesLot', choice: 'Yes'},
-                {key: 'healthConditionsImplications', value: 'optionYesLittle', choice: 'Yes'},
+                {key: 'healthConditionsImplications', value: 'optionYesLittle', choice: 'Yes'}
             ]
         };
     }

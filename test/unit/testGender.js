@@ -3,13 +3,13 @@
 const initSteps = require('app/core/initSteps');
 const expect = require('chai').expect;
 const steps = initSteps([`${__dirname}/../../app/steps/ui`]);
-const StartPage = steps.StartPage;
+const ApplicantGenderSameAsSex = steps.ApplicantGenderSameAsSex;
 
-describe('StartPage', () => {
+describe('ApplicantGenderSameAsSex', () => {
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
-            const url = StartPage.constructor.getUrl();
-            expect(url).to.equal('/start-page');
+            const url = ApplicantGenderSameAsSex.constructor.getUrl();
+            expect(url).to.equal('/gender-same-as-sex');
             done();
         });
     });

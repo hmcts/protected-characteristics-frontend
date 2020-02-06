@@ -7,18 +7,18 @@ const ApplicantDateOfBirth = steps.ApplicantDateOfBirth;
 const content = require('app/resources/en/translation/dateofbirth');
 
 describe('ApplicantDateOfBirth', () => {
-    describe('dateName()', () => {
-        it('should return the date names array', (done) => {
-            const dateName = ApplicantDateOfBirth.dateName();
-            expect(dateName).to.deep.equal(['dob']);
-            done();
-        });
-    });
-
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
             const url = ApplicantDateOfBirth.constructor.getUrl();
             expect(url).to.equal('/date-of-birth');
+            done();
+        });
+    });
+
+    describe('dateName()', () => {
+        it('should return the date names array', (done) => {
+            const dateName = ApplicantDateOfBirth.dateName();
+            expect(dateName).to.deep.equal(['dob']);
             done();
         });
     });

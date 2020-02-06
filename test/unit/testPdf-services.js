@@ -6,7 +6,7 @@ const pdfServices = require('app/components/pdf-services');
 const services = require('app/components/services');
 const utils = require('app/components/api-utils');
 
-describe('pdf-services', () => {
+describe('PDFServices', () => {
     describe('createCheckAnswersPdf()', () => {
         let fetchBufferStub;
         let redirect_url;
