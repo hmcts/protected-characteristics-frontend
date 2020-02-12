@@ -1,0 +1,17 @@
+{
+  "title": "Your English level",
+  "question": "How well can you speak English?",
+  "optionVeryWell": "Very well",
+  "optionWell": "Well",
+  "optionNotWell": "Not well",
+  "optionNotAtAll": "Not at all",
+
+  "errors": {
+    "englishlevel": {
+      "required": {
+        "summary": "You need to choose an option for your English level",
+        "message": "Select an option"
+      }
+    }
+  }
+}

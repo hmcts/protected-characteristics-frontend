@@ -1,0 +1,56 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        idPrefix: "englishLevel",
+        name: "englishLevel",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.englishLevel.errorMessage.message | safe } if fields.englishLevel.errorMessage,
+        items: [
+            {
+                value: "optionVeryWell",
+                text: content["optionVeryWell"] | safe,
+                checked: true if fields.englishLevel.value == "optionVeryWell"
+            },
+            {
+                value: "optionWell",
+                text: content["optionWell"] | safe,
+                checked: true if fields.englishLevel.value == "optionWell"
+            },
+            {
+                value: "optionNotWell",
+                text: content["optionNotWell"] | safe,
+                checked: true if fields.englishLevel.value == "optionNotWell"
+            },
+            {
+                value: "optionNotAtAll",
+                text: content["optionNotAtAll"] | safe,
+                checked: true if fields.englishLevel.value == "optionNotAtAll"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"] | safe,
+                checked: true if fields.englishLevel.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

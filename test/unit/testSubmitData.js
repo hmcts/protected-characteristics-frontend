@@ -5,7 +5,7 @@ const fullcaveatform = require('test/data/unit/fullcaveatform.json');
 const minimalcaveatform = require('test/data/unit/minimalcaveatform.json');
 const expect = require('chai').expect;
 
-describe('SubmitData', () => {
+describe.skip('SubmitData', () => {
     describe('correct form created for full details', () => {
         const ctx = {};
         const formdata = {

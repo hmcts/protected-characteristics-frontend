@@ -29,18 +29,9 @@ describe('ApplicantDateOfBirth', () => {
         let formdata;
         const session = {};
 
-        beforeEach(() => {
-            session.form = {
-                deceased: {
-                    'dod-day': '01',
-                    'dod-month': '01',
-                    'dod-year': '2000'
-                }
-            };
-        });
-
         it('should return the ctx with the deceased dob', (done) => {
             ctx = {
+                'provideDateOfBirth': 'optionEnterDate',
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '1952'
@@ -48,6 +39,7 @@ describe('ApplicantDateOfBirth', () => {
             errors = [];
             [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
+                'provideDateOfBirth': 'optionEnterDate',
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '1952'
@@ -57,6 +49,7 @@ describe('ApplicantDateOfBirth', () => {
 
         it('should return the error for a date in the future', (done) => {
             ctx = {
+                'provideDateOfBirth': 'optionEnterDate',
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '3000'

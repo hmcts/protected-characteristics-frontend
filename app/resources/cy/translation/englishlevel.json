@@ -1,0 +1,17 @@
+{
+  "title": "[CY] Your English level",
+  "question": "[CY] How well can you speak English?",
+  "optionVeryWell": "[CY] Very well",
+  "optionWell": "[CY] Well",
+  "optionNotWell": "[CY] Not well",
+  "optionNotAtAll": "[CY] Not at all",
+
+  "errors": {
+    "englishlevel": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your English level",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}
