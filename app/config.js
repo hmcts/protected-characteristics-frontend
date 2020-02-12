@@ -8,7 +8,7 @@ module.exports = {
     externalHostNameUrl: process.env.EXTERNAL_HOSTNAME_URL || '',
     languages: ['en', 'cy'],
     featureToggles: {
-        url: process.env.FEATURE_TOGGLES_API_URL || 'http://localhost:8292',
+        url: process.env.FEATURE_TOGGLES_API_URL || 'http://localhost:9292',
         path: process.env.FEATURE_TOGGLES_PATH || '/api/ff4j/check',
         port: 9292,
         pc_shutter_ft: 'protected-characteristics-shutter',

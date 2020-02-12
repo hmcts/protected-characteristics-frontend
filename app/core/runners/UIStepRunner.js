@@ -34,14 +34,14 @@ class UIStepRunner {
             res.render(step.template, {content, fields, errors, common}, (err, html) => {
                 if (err) {
                     req.log.error(err);
-                    return res.status(500).render('errors/500', {common: commonContent});
+                    return res.status(500).render('errors/error', {common: commonContent, error: '500'});
                 }
                 step.renderPage(res, html);
 
             });
         }).catch((error) => {
             req.log.error(error);
-            res.status(500).render('errors/500', {common: commonContent});
+            res.status(500).render('errors/error', {common: commonContent, error: '500'});
         });
     }
 
@@ -83,7 +83,7 @@ class UIStepRunner {
             req.log.error(error);
             const ctx = step.getContextData(req, res);
             const fields = step.generateFields(req.session.language, ctx, [], {});
-            res.status(500).render('errors/500', {fields, common: commonContent});
+            res.status(500).render('errors/error', {fields, common: commonContent, error: '500'});
         });
     }
 }
