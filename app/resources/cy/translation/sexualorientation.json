@@ -5,6 +5,7 @@
   "optionGayLesbian": "[CY] Gay or lesbian",
   "optionBisexual": "[CY] Bisexual",
   "optionOther": "[CY] Other",
+  "optionOtherDetails": "[CY] Please enter how you think of yourself",
 
   "errors": {
     "sexualOrientation": {

@@ -5,6 +5,7 @@
   "optionGayLesbian": "Gay or lesbian",
   "optionBisexual": "Bisexual",
   "optionOther": "Other",
+  "optionOtherDetails": "Please enter how you think of yourself",
 
   "errors": {
     "sexualOrientation": {
