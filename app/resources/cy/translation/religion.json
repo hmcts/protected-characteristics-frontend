@@ -9,6 +9,7 @@
   "optionMuslim": "[CY] Muslim",
   "optionSikh": "[CY] Sikh",
   "optionOther": "[CY] Any other religion",
+  "optionOtherDetails": "[CY] Please describe your religion",
 
   "errors": {
     "religion": {

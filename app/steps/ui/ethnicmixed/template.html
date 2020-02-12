@@ -1,7 +1,18 @@
 {% extends "includes/two_thirds_form.html" %}
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set otherDetailsHtml %}
+    {{ govukInput({
+        name: "otherDetails",
+        id: "otherDetails",
+        label: {
+            text: content["optionOtherDetails"] | safe
+        }
+    }) }}
+{% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
@@ -34,7 +45,10 @@
             {
                 value: "optionOther",
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicGroupMixed.value == "optionOther"
+                checked: true if fields.ethnicGroupMixed.value == "optionOther",
+                conditional: {
+                    html: otherDetailsHtml
+                }
             },
             {
                 divider: common["or"] | safe

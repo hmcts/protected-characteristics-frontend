@@ -4,6 +4,7 @@
   "optionAfrican": "African",
   "optionCaribbean": "Caribbean",
   "optionOther": "Another Black background",
+  "optionOtherDetails": "Your Black background",
 
   "errors": {
     "ethnicGroupBlack": {
