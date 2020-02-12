@@ -4,15 +4,16 @@ const config = require('app/config');
 const router = require('express').Router();
 const initSteps = require('app/core/initSteps');
 const logger = require('app/components/logger');
-const {get, includes} = require('lodash');
+const get = require('lodash').get;
 const documentDownloads = require('app/documentDownloads');
 const uuidv4 = require('uuid/v4');
 const shutter = require('app/shutter');
 const featureToggles = require('app/featureToggles');
-const FormatUrl = require('app/utils/FormatUrl');
+const registerIncomingServices = require('app/registerIncomingServices');
 
 router.use(shutter);
 router.use(featureToggles);
+router.use(registerIncomingServices);
 
 router.all('*', (req, res, next) => {
     const applicationId = get(req.session.form, 'applicationId', 'init');

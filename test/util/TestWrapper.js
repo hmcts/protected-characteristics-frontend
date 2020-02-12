@@ -6,7 +6,6 @@ const app = require('app');
 const routes = require('app/routes');
 const config = require('app/config');
 const request = require('supertest');
-const journeyMap = require('app/core/journeyMap');
 const initSteps = require('app/core/initSteps');
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 
@@ -140,11 +139,6 @@ class TestWrapper {
             .expect(302)
             .then(() => done())
             .catch((err) => done(err));
-    }
-
-    nextStep(data = {}) {
-        const journeyMap = new JourneyMap(journey);
-        return journeyMap.nextStep(this.pageToTest, data);
     }
 
     substituteContent(data, contentToSubstitute) {

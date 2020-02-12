@@ -13,4 +13,15 @@ describe('StartPage', () => {
             done();
         });
     });
+
+    describe('action()', () => {
+        it('test that context variables are removed and empty object returned', () => {
+            let formdata = {};
+            let ctx = {
+                returnUrl: 'some_url'
+            };
+            [ctx, formdata] = StartPage.action(ctx, formdata);
+            expect(ctx).to.deep.equal({});
+        });
+    });
 });

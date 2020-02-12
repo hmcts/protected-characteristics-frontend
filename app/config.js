@@ -10,14 +10,14 @@ module.exports = {
     featureToggles: {
         url: process.env.FEATURE_TOGGLES_API_URL || 'http://localhost:8292',
         path: process.env.FEATURE_TOGGLES_PATH || '/api/ff4j/check',
-        port: 8292,
+        port: 9292,
         pc_shutter_ft: 'protected-characteristics-shutter',
         pc_welsh_ft: 'protected-characteristics-welsh',
         appwideToggles: ['pc_welsh_ft']
     },
     app: {
         useHttps: process.env.USE_HTTPS || 'false',
-        port: process.env.PORT || '3000',
+        port: process.env.PORT || '4000',
         useCSRFProtection: 'true',
         basePath: process.env.APP_BASE_PATH || ''
     },

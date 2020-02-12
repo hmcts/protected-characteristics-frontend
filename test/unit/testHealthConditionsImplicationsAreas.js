@@ -37,4 +37,18 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
             done();
         });
     });
+
+    describe('action()', () => {
+        it('test that context variables are removed and empty object returned', () => {
+            let formdata = {};
+            let ctx = {
+                healthConditionsImplicationsAreas: [
+                    'optionMemory',
+                    'optionSocially'
+                ]
+            };
+            [ctx, formdata] = ApplicantHealthConditionsImplicationAreas.action(ctx, formdata);
+            expect(ctx).to.deep.equal({});
+        });
+    });
 });

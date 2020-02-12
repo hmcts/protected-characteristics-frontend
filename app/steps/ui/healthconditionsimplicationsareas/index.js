@@ -14,6 +14,12 @@ class ApplicantHealthConditionsImplicationAreas extends ValidationStep {
 
         return ctx;
     }
+
+    action(ctx, formdata) {
+        super.action(ctx, formdata);
+        delete ctx.healthConditionsImplicationsAreas;
+        return [ctx, formdata];
+    }
 }
 
 module.exports = ApplicantHealthConditionsImplicationAreas;
