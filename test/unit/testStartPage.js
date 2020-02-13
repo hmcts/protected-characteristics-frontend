@@ -14,6 +14,21 @@ describe('StartPage', () => {
         });
     });
 
+    describe('getContextData()', () => {
+        it('should return the context with the return url', (done) => {
+            const req = {
+                session: {
+                    returnUrl: 'http://some-return-url/',
+                    form: {}
+                }
+            };
+
+            const ctx = StartPage.getContextData(req);
+            expect(ctx.returnUrl).to.equal('http://some-return-url/');
+            done();
+        });
+    });
+
     describe('action()', () => {
         it('test that context variables are removed and empty object returned', () => {
             let formdata = {};

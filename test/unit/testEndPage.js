@@ -13,4 +13,30 @@ describe('EndPage', () => {
             done();
         });
     });
+
+    describe('getContextData()', () => {
+        it('should return the context with the return url', (done) => {
+            const req = {
+                session: {
+                    returnUrl: 'http://some-return-url/',
+                    form: {}
+                }
+            };
+
+            const ctx = EndPage.getContextData(req);
+            expect(ctx.returnUrl).to.equal('http://some-return-url/');
+            done();
+        });
+    });
+
+    describe('action()', () => {
+        it('test that context variables are removed and empty object returned', () => {
+            let formdata = {};
+            let ctx = {
+                returnUrl: 'some_url'
+            };
+            [ctx, formdata] = EndPage.action(ctx, formdata);
+            expect(ctx).to.deep.equal({});
+        });
+    });
 });

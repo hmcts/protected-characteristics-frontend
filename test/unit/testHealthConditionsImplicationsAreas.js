@@ -15,7 +15,7 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
     });
 
     describe('getContextData()', () => {
-        it('should return the context with the deceased name', (done) => {
+        it('should return the context with the health conditions implications areas', (done) => {
             const req = {
                 session: {
                     form: {
