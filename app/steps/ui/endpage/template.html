@@ -21,11 +21,11 @@
     </div>
 
     <div class="govuk-form-group">
-        {{ govukButton({
-            text: common.continueToNextSteps | safe,
-            href: "#"
-        }) }}
+        {% if fields.returnUrl.value %}
+            {{ govukButton({
+                text: common.continueToNextSteps | safe,
+                href: fields.returnUrl.value
+            }) }}
+        {% endif %}
     </div>
-
-    {% include "includes/why_asking.html" %}
 {% endblock %}

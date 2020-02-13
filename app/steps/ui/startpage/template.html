@@ -33,11 +33,13 @@
             }) }}
         </li>
         <li>
-            {{ govukButton({
-                text: common.dontWantToAnswer | safe,
-                classes: "govuk-button--secondary",
-                href: fields.returnUrl.value
-            }) }}
+            {% if fields.returnUrl.value %}
+                {{ govukButton({
+                    text: common.dontWantToAnswer | safe,
+                    classes: "govuk-button--secondary",
+                    href: fields.returnUrl.value
+                }) }}
+            {% endif %}
         </li>
     </ul>
 
