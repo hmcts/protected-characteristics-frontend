@@ -6,7 +6,7 @@
   "optionBangladeshi": "[CY] Bangladeshi",
   "optionChinese": "[CY] Chinese",
   "optionOther": "[CY] Another Asian background",
-  "optionOtherDetails": "[CY] Your Asian background",
+  "optionOtherDetails": "[CY] Your Asian background (optional)",
 
   "errors": {
     "ethnicGroupAsian": {

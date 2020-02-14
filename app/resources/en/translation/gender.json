@@ -3,6 +3,7 @@
   "question": "Is your gender the same as the sex you were registered at birth?",
   "optionYes": "Yes",
   "optionNo": "No",
+  "optionNoDetails": "Please enter your gender",
 
   "errors": {
     "gender": {

@@ -4,7 +4,7 @@
   "optionAfrican": "[CY] African",
   "optionCaribbean": "[CY] Caribbean",
   "optionOther": "[CY] Another Black background",
-  "optionOtherDetails": "[CY] Your Black background",
+  "optionOtherDetails": "[CY] Your Black background (optional)",
 
   "errors": {
     "ethnicGroupBlack": {
