@@ -1,7 +1,6 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const testCommonContent = require('test/component/common/testCommonContent.js');
 
 describe('EndPage', () => {
     let testWrapper;
@@ -15,10 +14,8 @@ describe('EndPage', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('EndPage');
-
         it('test content loaded on the page', (done) => {
-            testWrapper.testContentNotPresent(done);
+            testWrapper.testContent(done);
         });
     });
 });

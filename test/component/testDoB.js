@@ -25,14 +25,6 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testContent(done);
         });
 
-        it('test errors message displayed for missing data', (done) => {
-            const errorsToTest = ['dob-day', 'dob-month', 'dob-year'];
-            const data = {
-                'provideDateOfBirth': 'optionEnterDate'
-            };
-            testWrapper.testErrors(done, data, 'required', errorsToTest);
-        });
-
         it('test errors message displayed for invalid day', (done) => {
             const errorsToTest = ['dob-day'];
             const data = {
