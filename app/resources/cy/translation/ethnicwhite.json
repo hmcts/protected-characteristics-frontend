@@ -5,7 +5,7 @@
   "optionIrish": "[CY] Irish",
   "optionGypsy": "[CY] Gypsy or Irish Traveller",
   "optionOther": "[CY] Another White background",
-  "optionOtherDetails": "[CY] Your White background",
+  "optionOtherDetails": "[CY] Your White background (optional)",
 
   "errors": {
     "ethnicGroupWhite": {
