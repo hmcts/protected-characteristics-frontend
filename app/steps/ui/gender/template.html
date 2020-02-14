@@ -2,6 +2,17 @@
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
+
+{% set noDetailsHtml %}
+    {{ govukInput({
+        name: "noDetails",
+        id: "noDetails",
+        label: {
+            text: content["optionNoDetails"] | safe
+        }
+    }) }}
+{% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
@@ -24,7 +35,10 @@
             {
                 value: "optionNo",
                 text: content["optionNo"] | safe,
-                checked: true if fields.gender.value == "optionNo"
+                checked: true if fields.gender.value == "optionNo",
+                conditional: {
+                    html: noDetailsHtml
+                }
             },
             {
                 divider: common["or"] | safe
