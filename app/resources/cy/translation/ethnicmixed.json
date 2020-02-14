@@ -5,7 +5,7 @@
   "optionWhiteBlackAfrican": "[CY] White and Black African",
   "optionWhiteAsian": "[CY] White and Asian",
   "optionOther": "[CY] Another Mixed background",
-  "optionOtherDetails": "[CY] Your Mixed background",
+  "optionOtherDetails": "[CY] Your Mixed background (optional)",
 
   "errors": {
     "ethnicGroupMixed": {
