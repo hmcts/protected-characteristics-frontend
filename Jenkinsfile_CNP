@@ -13,7 +13,7 @@ withPipeline(type, product, component) {
   }
 
   installCharts()
-  loadVaultSecrets(secrets)
-  enableSlackNotifications('#pcq-jenkins')
+  // loadVaultSecrets(secrets)
+  // enableSlackNotifications('#pcq-jenkins')
   disableLegacyDeployment()
 }
