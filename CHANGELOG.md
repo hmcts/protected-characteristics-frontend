@@ -1,3 +1,3 @@
-# 0.0.1
+# 1.0.0
 
-Initial alpha release of the caveats nodejs web application
+Initial alpha release of the PCQ nodejs web application
