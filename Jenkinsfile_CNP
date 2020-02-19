@@ -1,0 +1,19 @@
+#!groovy
+
+@Library("Infrastructure")
+
+def type = "nodejs"
+def product = "pcq"
+def component = "frontend"
+
+withPipeline(type, product, component) {
+
+  after('build') {
+    sh 'yarn setup'
+  }
+
+  installCharts()
+  loadVaultSecrets(secrets)
+  enableSlackNotifications('#pcq-jenkins')
+  disableLegacyDeployment()
+}

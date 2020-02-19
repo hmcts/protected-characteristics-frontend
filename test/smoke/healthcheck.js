@@ -19,7 +19,7 @@ const healthcheckRequest = (url, cb) => {
 
 chai.use(chaiHttp);
 
-describe('Probate frontend health check', () => {
+describe('PCQ frontend health check', () => {
     it('should return a 200 status code, body status UP and HOST in the body', done => {
         healthcheckRequest(frontendUrl, res => {
             expect(res).to.have.status(200);

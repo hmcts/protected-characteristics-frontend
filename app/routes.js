@@ -5,7 +5,6 @@ const router = require('express').Router();
 const initSteps = require('app/core/initSteps');
 const logger = require('app/components/logger');
 const get = require('lodash').get;
-const documentDownloads = require('app/documentDownloads');
 const uuidv4 = require('uuid/v4');
 const shutter = require('app/shutter');
 const featureToggles = require('app/featureToggles');
@@ -50,8 +49,6 @@ router.use((req, res, next) => {
     res.locals.pageUrl = req.url;
     next();
 });
-
-router.use(documentDownloads);
 
 router.get('/health/liveness', (req, res) => {
     res.json({status: 'UP'});

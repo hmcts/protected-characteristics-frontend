@@ -26,8 +26,7 @@ describe('accessibility', () => {
                 wcag21Link: config.links.wcag21Link,
                 applicationFormPA15: config.links.applicationFormPA15,
                 deathReportedToCoroner: config.links.deathReportedToCoroner,
-                probateStartApplyLink: config.links.probateStartApplyLink,
-                caveatsStartApplyLink: config.links.caveatsStartApplyLink,
+                pcqStartApplyLink: config.links.pcqStartApplyLink
             };
 
             testWrapper.testContent(done, contentData);
