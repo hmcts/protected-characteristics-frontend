@@ -223,9 +223,7 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
         app.use(utils.forceHttps);
     }
 
-    app.use('/health', healthcheck);
-
-    app.use(`${config.app.basePath}/health`, healthcheck);
+    app.use(healthcheck);
 
     app.use(`${config.livenessEndpoint}`, (req, res) => {
         res.json({status: 'UP'});

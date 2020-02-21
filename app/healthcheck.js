@@ -7,8 +7,9 @@ const commonContent = require('app/resources/en/translation/common');
 const gitRevision = process.env.GIT_REVISION;
 const osHostname = os.hostname();
 const gitCommitId = gitProperties.git.commit.id;
+const config = require('app/config');
 
-router.get('/', (req, res) => {
+router.get(`${config.app.basePath}/health`, (req, res) => {
     res.json({
         'name': commonContent.serviceName,
         'status': 'UP',
@@ -17,6 +18,7 @@ router.get('/', (req, res) => {
         'version': gitRevision,
         gitCommitId
     });
+    res.end();
 });
 
 module.exports = router;
