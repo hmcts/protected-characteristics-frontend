@@ -11,14 +11,13 @@ const config = require('app/config');
 
 router.get(`${config.app.basePath}/health`, (req, res) => {
     res.json({
-        'name': commonContent.serviceName,
-        'status': 'UP',
-        'uptime': process.uptime(),
-        'host': osHostname,
-        'version': gitRevision,
+        name: commonContent.serviceName,
+        status: 'UP',
+        uptime: process.uptime(),
+        host: osHostname,
+        version: gitRevision,
         gitCommitId
     });
-    res.end();
 });
 
 module.exports = router;
