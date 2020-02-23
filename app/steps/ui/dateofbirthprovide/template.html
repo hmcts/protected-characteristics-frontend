@@ -1,0 +1,42 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block form_content %}
+    {{ govukRadios({
+        classes: "govuk-radios",
+        idPrefix: "provideDateOfBirth",
+        name: "provideDateOfBirth",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        errorMessage: { text: fields.provideDateOfBirth.errorMessage.message | safe } if fields.provideDateOfBirth.errorMessage,
+        items: [
+            {
+                value: "optionYes",
+                text: content["optionYes"],
+                checked: true if fields.provideDateOfBirth.value == "optionYes"
+            },
+            {
+                divider: common["or"] | safe
+            },
+            {
+                value: "optionPreferNotToSay",
+                text: common["optionPreferNotToSay"],
+                checked: true if fields.provideDateOfBirth.value == "optionPreferNotToSay"
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue,
+            preventDoubleClick: true
+        }) }}
+    </div>
+{% endblock %}

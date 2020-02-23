@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "provide-date-of-birth",
+  "type": "object",
+  "properties": {
+    "provideDateOfBirth": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -5,12 +5,6 @@
   "optionEnterDate": "Enter your date of birth",
 
   "errors": {
-    "provideDateOfBirth": {
-      "required": {
-        "summary": "You haven&rsquo;t answered the question about whether you want to provide your date of birth or you prefer not to say",
-        "message": "Answer &lsquo;Enter your date of birth&rsquo; if you want to provide your date of birth"
-      }
-    },
     "dob-day": {
       "required": {
         "summary": "You haven&rsquo;t entered the day that you were born",
