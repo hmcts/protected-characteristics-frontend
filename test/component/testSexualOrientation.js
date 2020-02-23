@@ -32,5 +32,11 @@ describe('ApplicantSexualOrientation', () => {
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
         });
+
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - when no data is entered`, (done) => {
+            const data = {};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
+        });
     });
 });

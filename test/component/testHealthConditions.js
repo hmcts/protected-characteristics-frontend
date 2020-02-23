@@ -42,5 +42,11 @@ describe('ApplicantHealthConditions', () => {
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
         });
+
+        it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant} - when no data is entered`, (done) => {
+            const data = {};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
+        });
     });
 });

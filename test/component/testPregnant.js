@@ -32,5 +32,11 @@ describe('ApplicantPregnant', () => {
 
             testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);
         });
+
+        it(`test it redirects to end page: ${expectedNextUrlForEndPage} - when no data is entered`, (done) => {
+            const data = {};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);
+        });
     });
 });

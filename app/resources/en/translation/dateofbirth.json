@@ -2,7 +2,6 @@
   "title": "Your date of birth",
   "question": "What is your date of birth?",
   "enterDateHint": "For example, 12 09 1987",
-  "optionEnterDate": "Enter your date of birth",
 
   "errors": {
     "dob-day": {

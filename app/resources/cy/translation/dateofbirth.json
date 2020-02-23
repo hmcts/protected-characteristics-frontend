@@ -2,7 +2,6 @@
   "title": "[CY] Your date of birth",
   "question": "[CY] What is your date of birth?",
   "enterDateHint": "[CY] For example, 12 09 1987",
-  "optionEnterDate": "[CY] Enter your date of birth",
 
   "errors": {
     "dob-day": {
