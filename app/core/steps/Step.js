@@ -2,7 +2,7 @@
 
 const {mapValues, map, reduce, escape, isObject, isEmpty} = require('lodash');
 const UIStepRunner = require('app/core/runners/UIStepRunner');
-const journeyMap = require('app/core/journeyMap');
+const JourneyMap = require('app/core/JourneyMap');
 const mapErrorsToFields = require('app/components/error').mapErrorsToFields;
 const config = require('app/config');
 const FeatureToggle = require('app/utils/FeatureToggle');
@@ -39,12 +39,13 @@ class Step {
         this.i18next = i18next;
     }
 
-    next(ctx) {
-        return journeyMap(this, ctx);
+    next(req, ctx) {
+        const journeyMap = new JourneyMap(req.session.journey);
+        return journeyMap.nextStep(this, ctx);
     }
 
-    nextStepUrl(ctx) {
-        return config.app.basePath + this.next(ctx).constructor.getUrl();
+    nextStepUrl(req, ctx) {
+        return config.app.basePath + this.next(req, ctx).constructor.getUrl();
     }
 
     getContextData(req) {

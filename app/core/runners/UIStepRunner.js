@@ -18,8 +18,9 @@ class UIStepRunner {
         const commonContent = require(`app/resources/${session.language}/translation/common`);
 
         return co(function * () {
-            let ctx = step.getContextData(req);
-            [ctx, errors] = yield step.handleGet(ctx, formdata, session.language);
+            const featureToggles = session.featureToggles;
+            let ctx = step.getContextData(req, res, featureToggles);
+            [ctx, errors] = yield step.handleGet(ctx, formdata, featureToggles, session.language);
             forEach(errors, (error) =>
                 req.log.info({type: 'Validation Message', url: step.constructor.getUrl()}, JSON.stringify(error))
             );
@@ -37,7 +38,6 @@ class UIStepRunner {
                     return res.status(500).render('errors/error', {common: commonContent, error: '500'});
                 }
                 step.renderPage(res, html);
-
             });
         }).catch((error) => {
             req.log.error(error);
@@ -51,16 +51,16 @@ class UIStepRunner {
         const commonContent = require(`app/resources/${session.language}/translation/common`);
 
         return co(function * () {
-            let ctx = step.getContextData(req);
+            let ctx = step.getContextData(req, res);
             let [isValid, errors] = [];
-            const hostname = FormatUrl.createHostname(req);
             [isValid, errors] = step.validate(ctx, formdata, session.language);
+            const featureToggles = session.featureToggles;
             if (isValid) {
-                [ctx, errors] = yield step.handlePost(ctx, errors, formdata, session, hostname);
+                [ctx, errors] = yield step.handlePost(ctx, errors, formdata, req.session, FormatUrl.createHostname(req), featureToggles);
             }
 
             if (isEmpty(errors)) {
-                const nextStepUrl = step.nextStepUrl(ctx);
+                const nextStepUrl = step.nextStepUrl(req, ctx);
                 [ctx, formdata] = step.action(ctx, formdata);
 
                 set(formdata, step.section, ctx);
