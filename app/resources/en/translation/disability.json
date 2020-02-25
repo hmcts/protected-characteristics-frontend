@@ -1,11 +1,11 @@
 {
-  "title": "Your health conditions",
+  "title": "Your disabilities",
   "question": "Do you have any physical or mental health conditions or illnesses lasting or expected to last 12 months or more?",
   "optionYes": "Yes",
   "optionNo": "No",
 
   "errors": {
-    "healthConditions": {
+    "disability": {
       "required": {
         "summary": "You need to choose an option for your health condition",
         "message": "Select an option"

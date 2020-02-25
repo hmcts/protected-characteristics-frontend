@@ -1,14 +1,14 @@
 {
-  "title": "Your health conditions implications",
+  "title": "Your disabilities implications",
   "question": "Do any of your conditions or illnesses reduce your ability to carry out day-to-day activities?",
   "optionYesLot": "Yes, limited a lot",
   "optionYesLittle": "Yes, limited a little",
   "optionNo": "Not at all",
 
   "errors": {
-    "healthConditionsImplications": {
+    "disabilityImplications": {
       "required": {
-        "summary": "You need to choose an option for your health conditions implications",
+        "summary": "You need to choose an option for your disabilities implications",
         "message": "Select an option"
       }
     }

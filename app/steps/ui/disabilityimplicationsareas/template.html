@@ -17,8 +17,8 @@
 
 {% block form_content %}
     {{ govukCheckboxes({
-        idPrefix: "healthConditionsImplicationsAreas",
-        name: "healthConditionsImplicationsAreas",
+        idPrefix: "disabilityImplicationsAreas",
+        name: "disabilityImplicationsAreas",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -29,7 +29,7 @@
         hint: {
             text: content.questionHint | safe
         },
-        errorMessage: { text: fields.healthConditionsImplicationsAreas.errorMessage.message | safe } if fields.healthConditionsImplicationsAreas.errorMessage,
+        errorMessage: { text: fields.disabilityImplicationsAreas.errorMessage.message | safe } if fields.disabilityImplicationsAreas.errorMessage,
         items: [
             {
                 value: "optionVision",
@@ -40,7 +40,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionVision" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionVision" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionHearing",
@@ -51,7 +51,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionHearing" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionHearing" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionMobility",
@@ -62,7 +62,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMobility" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionMobility" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionDexterity",
@@ -73,7 +73,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionDexterity" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionDexterity" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionLearning",
@@ -81,7 +81,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionLearning" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionLearning" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionMemory",
@@ -89,7 +89,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMemory" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionMemory" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionMentalHealth",
@@ -97,7 +97,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMentalHealth" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionMentalHealth" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionStamina",
@@ -105,7 +105,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionStamina" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionStamina" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionSocially",
@@ -116,7 +116,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionSocially" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionSocially" in fields.disabilityImplicationsAreas.value
             },
             {
                 value: "optionOther",
@@ -124,7 +124,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionOther" in fields.healthConditionsImplicationsAreas.value,
+                checked: true if "optionOther" in fields.disabilityImplicationsAreas.value,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -135,7 +135,7 @@
                 attributes: {
                     "data-mutually-exclusive": "js-deselect-choice"
                 },
-                checked: true if "optionNone" in fields.healthConditionsImplicationsAreas.value
+                checked: true if "optionNone" in fields.disabilityImplicationsAreas.value
             }
         ]
     }) }}

@@ -6,12 +6,12 @@ const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
-describe('ApplicantHealthConditionsImplicationAreas', () => {
+describe('ApplicantDisabilityImplicationAreas', () => {
     let testWrapper;
     const expectedNextUrlForApplicantPregnant = basePath + ApplicantPregnant.getUrl();
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ApplicantHealthConditionsImplicationAreas');
+        testWrapper = new TestWrapper('ApplicantDisabilityImplicationAreas');
     });
 
     afterEach(() => {
@@ -19,7 +19,7 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('ApplicantHealthConditionsImplicationAreas');
+        testCommonContent.runTest('ApplicantDisabilityImplicationAreas');
 
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
@@ -27,7 +27,7 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                healthConditionsImplicationsAreas: ['optionVision', 'optionDexterity']
+                disabilityImplicationsAreas: ['optionVision', 'optionDexterity']
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
