@@ -23,6 +23,7 @@ nodejs:
     USE_IDAM: false
     REQUIRE_CCD_CASE_ID: true
   image: hmctspublic.azurecr.io/pcq/pcq-frontend:latest
+  aadIdentityName: pcq
 
 redis:
   cluster:
