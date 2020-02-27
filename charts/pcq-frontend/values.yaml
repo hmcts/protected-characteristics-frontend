@@ -25,6 +25,12 @@ nodejs:
   image: hmctspublic.azurecr.io/pcq/pcq-frontend:latest
   aadIdentityName: pcq
 
+  keyVaults:
+    pcq:
+      resourceGroup: pcq
+      secrets:
+        - AppInsightsInstrumentationKey
+
 redis:
   cluster:
     enabled: false
