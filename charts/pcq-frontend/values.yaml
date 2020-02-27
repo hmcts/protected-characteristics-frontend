@@ -1,4 +1,3 @@
-
 nodejs:
   memoryRequests: "512Mi"
   cpuRequests: "100m"
