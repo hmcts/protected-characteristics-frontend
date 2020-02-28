@@ -25,16 +25,16 @@ const stepList = {
     ApplicantEthnicBackgroundAsian: 'ApplicantReligion',
     ApplicantEthnicBackgroundBlack: 'ApplicantReligion',
     ApplicantEthnicBackgroundOther: 'ApplicantReligion',
-    ApplicantReligion: 'ApplicantHealthConditions',
-    ApplicantHealthConditions: {
-        Yes: 'ApplicantHealthConditionsImplications',
+    ApplicantReligion: 'ApplicantDisability',
+    ApplicantDisability: {
+        Yes: 'ApplicantDisabilityImplications',
         otherwise: 'ApplicantPregnant'
     },
-    ApplicantHealthConditionsImplications: {
-        Yes: 'ApplicantHealthConditionsImplicationAreas',
+    ApplicantDisabilityImplications: {
+        Yes: 'ApplicantDisabilityImplicationAreas',
         otherwise: 'ApplicantPregnant'
     },
-    ApplicantHealthConditionsImplicationAreas: 'ApplicantPregnant',
+    ApplicantDisabilityImplicationAreas: 'ApplicantPregnant',
     ApplicantPregnant: 'EndPage'
 };
 

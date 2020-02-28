@@ -5,8 +5,8 @@
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "healthConditions",
-        name: "healthConditions",
+        idPrefix: "disability",
+        name: "disability",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -14,17 +14,17 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.healthConditions.errorMessage.message | safe } if fields.healthConditions.errorMessage,
+        errorMessage: { text: fields.disability.errorMessage.message | safe } if fields.disability.errorMessage,
         items: [
             {
                 value: "optionYes",
                 text: content["optionYes"] | safe,
-                checked: true if fields.healthConditions.value == "optionYes"
+                checked: true if fields.disability.value == "optionYes"
             },
             {
                 value: "optionNo",
                 text: content["optionNo"] | safe,
-                checked: true if fields.healthConditions.value == "optionNo"
+                checked: true if fields.disability.value == "optionNo"
             },
             {
                 divider: common["or"] | safe
@@ -32,7 +32,7 @@
             {
                 value: "optionPreferNotToSay",
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.healthConditions.value == "optionPreferNotToSay"
+                checked: true if fields.disability.value == "optionPreferNotToSay"
             }
         ]
     }) }}

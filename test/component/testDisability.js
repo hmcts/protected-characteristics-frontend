@@ -1,19 +1,19 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const ApplicantHealthConditionsImplications = require('app/steps/ui/healthconditionsimplications');
+const ApplicantDisabilityImplications = require('app/steps/ui/disabilityimplications');
 const ApplicantPregnant = require('app/steps/ui/pregnant');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
-describe('ApplicantHealthConditions', () => {
+describe('ApplicantDisability', () => {
     let testWrapper;
-    const expectedNextUrlForApplicantHealthConditionsImplications = basePath + ApplicantHealthConditionsImplications.getUrl();
+    const expectedNextUrlForApplicantDisabilityImplications = basePath + ApplicantDisabilityImplications.getUrl();
     const expectedNextUrlForApplicantPregnant = basePath + ApplicantPregnant.getUrl();
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ApplicantHealthConditions');
+        testWrapper = new TestWrapper('ApplicantDisability');
     });
 
     afterEach(() => {
@@ -21,23 +21,23 @@ describe('ApplicantHealthConditions', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('ApplicantHealthConditions');
+        testCommonContent.runTest('ApplicantDisability');
 
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant health conditions implications page: ${expectedNextUrlForApplicantHealthConditionsImplications}`, (done) => {
+        it(`test it redirects to applicant disability implications page: ${expectedNextUrlForApplicantDisabilityImplications}`, (done) => {
             const data = {
-                healthConditions: 'optionYes'
+                disability: 'optionYes'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantHealthConditionsImplications);
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplications);
         });
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                healthConditions: 'optionNo'
+                disability: 'optionNo'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);

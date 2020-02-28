@@ -1,19 +1,19 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const ApplicantHealthConditionsImplicationAreas = require('app/steps/ui/healthconditionsimplicationsareas');
+const ApplicantDisabilityImplicationAreas = require('app/steps/ui/disabilityimplicationsareas');
 const ApplicantPregnant = require('app/steps/ui/pregnant');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
-describe('ApplicantHealthConditionsImplications', () => {
+describe('ApplicantDisabilityImplications', () => {
     let testWrapper;
-    const expectedNextUrlForApplicantHealthConditionsImplicationAreas = basePath + ApplicantHealthConditionsImplicationAreas.getUrl();
+    const expectedNextUrlForApplicantDisabilityImplicationAreas = basePath + ApplicantDisabilityImplicationAreas.getUrl();
     const expectedNextUrlForApplicantPregnant = basePath + ApplicantPregnant.getUrl();
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ApplicantHealthConditionsImplications');
+        testWrapper = new TestWrapper('ApplicantDisabilityImplications');
     });
 
     afterEach(() => {
@@ -21,31 +21,31 @@ describe('ApplicantHealthConditionsImplications', () => {
     });
 
     describe('Verify Content, Errors and Redirection', () => {
-        testCommonContent.runTest('ApplicantHealthConditionsImplications');
+        testCommonContent.runTest('ApplicantDisabilityImplications');
 
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant health conditions implications areas page: ${expectedNextUrlForApplicantHealthConditionsImplicationAreas}`, (done) => {
+        it(`test it redirects to applicant disability implications areas page: ${expectedNextUrlForApplicantDisabilityImplicationAreas}`, (done) => {
             const data = {
-                healthConditionsImplications: 'optionYesLot'
+                disabilityImplications: 'optionYesLot'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantHealthConditionsImplicationAreas);
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplicationAreas);
         });
 
-        it(`test it redirects to applicant health conditions implications areas page: ${expectedNextUrlForApplicantHealthConditionsImplicationAreas}`, (done) => {
+        it(`test it redirects to applicant disability implications areas page: ${expectedNextUrlForApplicantDisabilityImplicationAreas}`, (done) => {
             const data = {
-                healthConditionsImplications: 'optionYesLittle'
+                disabilityImplications: 'optionYesLittle'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantHealthConditionsImplicationAreas);
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplicationAreas);
         });
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                healthConditionsImplications: 'optionNo'
+                disabilityImplications: 'optionNo'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);

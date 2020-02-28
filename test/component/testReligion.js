@@ -1,14 +1,14 @@
 'use strict';
 
 const TestWrapper = require('test/util/TestWrapper');
-const ApplicantHealthConditions = require('app/steps/ui/healthconditions');
+const ApplicantDisability = require('app/steps/ui/disability');
 const testCommonContent = require('test/component/common/testCommonContent.js');
 const config = require('app/config');
 const basePath = config.app.basePath;
 
 describe('ApplicantReligion', () => {
     let testWrapper;
-    const expectedNextUrlForApplicantHealthConditions = basePath + ApplicantHealthConditions.getUrl();
+    const expectedNextUrlForApplicantDisability = basePath + ApplicantDisability.getUrl();
 
     beforeEach(() => {
         testWrapper = new TestWrapper('ApplicantReligion');
@@ -25,16 +25,18 @@ describe('ApplicantReligion', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant health conditions page: ${expectedNextUrlForApplicantHealthConditions}`, (done) => {
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability}`, (done) => {
             const data = {
                 religion: 'optionNoReligion'
             };
 
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantHealthConditions);
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
         });
 
-        it(`test it redirects to applicant health conditions page: ${expectedNextUrlForApplicantHealthConditions} - when no data is entered`, (done) => {
-            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantHealthConditions);
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - when no data is entered`, (done) => {
+            const data = {};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
         });
     });
 });

@@ -1,5 +1,5 @@
 {
-  "title": "[CY] Your health conditions implications areas",
+  "title": "[CY] Your disabilities implications areas",
   "question": "[CY] Do any of these conditions or illnesses affect you in any of the following areas?",
   "questionHint": "[CY] Select all that apply",
   "optionVision": "[CY] Vision",
@@ -21,9 +21,9 @@
   "optionNone": "[CY] None of the above",
 
   "errors": {
-    "healthConditionsImplicationsAreas": {
+    "disabilityImplicationsAreas": {
       "required": {
-        "summary": "[CY] You need to choose at least one option for your health conditions implications areas",
+        "summary": "[CY] You need to choose at least one option for your disabilities implications areas",
         "message": "[CY] Select at least an option"
       }
     }
