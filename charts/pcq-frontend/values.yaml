@@ -27,8 +27,6 @@ nodejs:
   keyVaults:
     pcq:
       resourceGroup: pcq
-      secrets:
-        - AppInsightsInstrumentationKey
 
 redis:
   enabled: false
