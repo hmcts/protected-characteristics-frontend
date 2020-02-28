@@ -48,7 +48,7 @@ class Step {
         return config.app.basePath + this.next(req, ctx).constructor.getUrl();
     }
 
-    getContextData(req, res, featureToggle, fieldsToClear = []) {
+    getContextData(req, res, featureToggle, fieldsToClearOnPost = []) {
         const session = req.session;
         let ctx = {};
         Object.assign(ctx, session.form[this.section] || {});
@@ -56,7 +56,7 @@ class Step {
         ctx = Object.assign(ctx, req.body);
 
         if (req.method === 'POST') {
-            forEach(fieldsToClear, (field) => {
+            forEach(fieldsToClearOnPost, (field) => {
                 if (!has(req.body, field)) {
                     delete ctx[field];
                 }
