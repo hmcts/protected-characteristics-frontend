@@ -1,11 +1,7 @@
 'use strict';
 
 const stepList = {
-    StartPage: 'ApplicantProvideDateOfBirth',
-    ApplicantProvideDateOfBirth: {
-        Yes: 'ApplicantDateOfBirth',
-        otherwise: 'ApplicantLanguage'
-    },
+    StartPage: 'ApplicantDateOfBirth',
     ApplicantDateOfBirth: 'ApplicantLanguage',
     ApplicantLanguage: {
         otherLanguage: 'ApplicantEnglishLevel',

@@ -1,6 +1,6 @@
 'use strict';
 
-const {mapValues, map, reduce, escape, isObject, isEmpty} = require('lodash');
+const {mapValues, map, reduce, escape, isObject, isEmpty, forEach, has} = require('lodash');
 const UIStepRunner = require('app/core/runners/UIStepRunner');
 const JourneyMap = require('app/core/JourneyMap');
 const mapErrorsToFields = require('app/components/error').mapErrorsToFields;
@@ -48,12 +48,21 @@ class Step {
         return config.app.basePath + this.next(req, ctx).constructor.getUrl();
     }
 
-    getContextData(req) {
+    getContextData(req, res, featureToggle, fieldsToClearOnPost = []) {
         const session = req.session;
         let ctx = {};
         Object.assign(ctx, session.form[this.section] || {});
         ctx.sessionID = req.sessionID;
         ctx = Object.assign(ctx, req.body);
+
+        if (req.method === 'POST') {
+            forEach(fieldsToClearOnPost, (field) => {
+                if (!has(req.body, field)) {
+                    delete ctx[field];
+                }
+            });
+        }
+
         ctx = FeatureToggle.appwideToggles(req, ctx, config.featureToggles.appwideToggles);
 
         return ctx;

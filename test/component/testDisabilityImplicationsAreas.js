@@ -34,9 +34,7 @@ describe('ApplicantDisabilityImplicationAreas', () => {
         });
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantPregnant);
         });
     });
 });

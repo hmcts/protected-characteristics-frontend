@@ -8,8 +8,8 @@ class ApplicantDisabilityImplicationAreas extends ValidationStep {
         return '/disability-implications-areas';
     }
 
-    getContextData(req) {
-        const ctx = super.getContextData(req);
+    getContextData(req, res, featureToggles) {
+        const ctx = super.getContextData(req, res, featureToggles, ['disabilityImplicationsAreas']);
         ctx.disabilityImplicationsAreas = ctx.disabilityImplicationsAreas || [];
 
         return ctx;
