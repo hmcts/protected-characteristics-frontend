@@ -120,7 +120,6 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
         });
 
-
         it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - when no data is entered`, (done) => {
             testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantLanguage);
         });
