@@ -34,9 +34,7 @@ describe('ApplicantSex', () => {
         });
 
         it(`test it redirects to applicant gender same as sex page: ${expectedNextUrlForApplicantGenderSameAsSex} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantGenderSameAsSex);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantGenderSameAsSex);
         });
     });
 });

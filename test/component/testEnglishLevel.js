@@ -34,9 +34,7 @@ describe('ApplicantEnglishLevel', () => {
         });
 
         it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantSex);
         });
     });
 });

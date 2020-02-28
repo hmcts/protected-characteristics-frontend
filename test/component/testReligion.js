@@ -34,9 +34,7 @@ describe('ApplicantReligion', () => {
         });
 
         it(`test it redirects to applicant health conditions page: ${expectedNextUrlForApplicantHealthConditions} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantHealthConditions);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantHealthConditions);
         });
     });
 });

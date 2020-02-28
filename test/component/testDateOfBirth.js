@@ -113,9 +113,7 @@ describe('ApplicantDateOfBirth', () => {
         });
 
         it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantLanguage);
         });
     });
 });
