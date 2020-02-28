@@ -3,24 +3,24 @@
 const initSteps = require('app/core/initSteps');
 const expect = require('chai').expect;
 const steps = initSteps([`${__dirname}/../../app/steps/ui`]);
-const ApplicantHealthConditionsImplicationAreas = steps.ApplicantHealthConditionsImplicationAreas;
+const ApplicantDisabilityImplicationAreas = steps.ApplicantDisabilityImplicationAreas;
 
-describe('ApplicantHealthConditionsImplicationAreas', () => {
+describe('ApplicantDisabilityImplicationAreas', () => {
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
-            const url = ApplicantHealthConditionsImplicationAreas.constructor.getUrl();
-            expect(url).to.equal('/health-conditions-implications-areas');
+            const url = ApplicantDisabilityImplicationAreas.constructor.getUrl();
+            expect(url).to.equal('/disability-implications-areas');
             done();
         });
     });
 
     describe('getContextData()', () => {
-        it('should return the context with the health conditions implications areas', (done) => {
+        it('should return the context with the disability implications areas', (done) => {
             const req = {
                 session: {
                     form: {
-                        healthconditionsimplicationsareas: {
-                            healthConditionsImplicationsAreas: [
+                        disabilityimplicationsareas: {
+                            disabilityImplicationsAreas: [
                                 'optionMobility',
                                 'optionMemory'
                             ]
@@ -29,8 +29,8 @@ describe('ApplicantHealthConditionsImplicationAreas', () => {
                 }
             };
 
-            const ctx = ApplicantHealthConditionsImplicationAreas.getContextData(req);
-            expect(ctx.healthConditionsImplicationsAreas).to.deep.equal([
+            const ctx = ApplicantDisabilityImplicationAreas.getContextData(req);
+            expect(ctx.disabilityImplicationsAreas).to.deep.equal([
                 'optionMobility',
                 'optionMemory'
             ]);

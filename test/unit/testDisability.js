@@ -3,23 +3,23 @@
 const initSteps = require('app/core/initSteps');
 const expect = require('chai').expect;
 const steps = initSteps([`${__dirname}/../../app/steps/ui`]);
-const ApplicantHealthConditions = steps.ApplicantHealthConditions;
+const ApplicantDisability = steps.ApplicantDisability;
 
-describe('ApplicantHealthConditions', () => {
+describe('ApplicantDisability', () => {
     describe('getUrl()', () => {
         it('should return the correct url', (done) => {
-            const url = ApplicantHealthConditions.constructor.getUrl();
-            expect(url).to.equal('/health-conditions');
+            const url = ApplicantDisability.constructor.getUrl();
+            expect(url).to.equal('/disability');
             done();
         });
     });
 
     describe('nextStepOptions()', () => {
         it('should return the correct options', (done) => {
-            const nextStepOptions = ApplicantHealthConditions.nextStepOptions();
+            const nextStepOptions = ApplicantDisability.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'healthConditions', value: 'optionYes', choice: 'Yes'}
+                    {key: 'disability', value: 'optionYes', choice: 'Yes'}
                 ]
             });
             done();
