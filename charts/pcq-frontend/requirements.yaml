@@ -5,8 +5,4 @@ dependencies:
   - name: redis
     version: 5.1.2
     repository: '@stable'
-  - name: idam-pr
-    version: ~2.1.3
-    repository: '@hmctspublic'
-    tags:
-      - idam-pr-pcq-frontend
+    condition: redis.enabled
