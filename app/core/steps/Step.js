@@ -57,8 +57,7 @@ class Step {
 
         if (req.method === 'POST') {
             forEach(fieldsToClear, (field) => {
-                const found = has(req.body, field);
-                if (!found) {
+                if (!has(req.body, field)) {
                     delete ctx[field];
                 }
             });
