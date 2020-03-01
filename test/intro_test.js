@@ -1,5 +1,5 @@
 Feature('probate');
 
-Scenario('test something', (I) => {
-
-});
+// Scenario('test something', (I) => {
+//     I.see('Welcome');
+// });
