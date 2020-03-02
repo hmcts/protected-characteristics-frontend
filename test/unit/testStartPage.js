@@ -25,6 +25,7 @@ describe('StartPage', () => {
 
             const ctx = StartPage.getContextData(req);
             expect(ctx.returnUrl).to.equal('http://some-return-url/');
+            expect(ctx.previousUrl).to.equal('http://some-return-url/');
             done();
         });
     });
@@ -33,7 +34,8 @@ describe('StartPage', () => {
         it('test that context variables are removed and empty object returned', () => {
             let formdata = {};
             let ctx = {
-                returnUrl: 'some_url'
+                returnUrl: 'some_url',
+                previousUrl: 'some_other_url'
             };
             [ctx, formdata] = StartPage.action(ctx, formdata);
             expect(ctx).to.deep.equal({});
