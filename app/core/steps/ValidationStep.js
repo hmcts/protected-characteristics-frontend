@@ -27,7 +27,6 @@ class ValidationStep extends Step {
     }
 
     uniqueProperties(schema) {
-
         if (schema.properties) {
             return schema.properties;
         }

@@ -11,6 +11,7 @@ class StartPage extends Step {
     getContextData(req) {
         const ctx = super.getContextData(req);
         ctx.returnUrl = req.session.returnUrl;
+        ctx.previousUrl = ctx.returnUrl;
 
         return ctx;
     }
@@ -18,6 +19,7 @@ class StartPage extends Step {
     action(ctx, formdata) {
         super.action(ctx, formdata);
         delete ctx.returnUrl;
+        delete ctx.previousUrl;
         return [ctx, formdata];
     }
 }

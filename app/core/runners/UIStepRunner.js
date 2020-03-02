@@ -60,6 +60,8 @@ class UIStepRunner {
             }
 
             if (isEmpty(errors)) {
+                req.session = step.previousStepUrl(req.session, step);
+
                 const nextStepUrl = step.nextStepUrl(req, ctx);
                 [ctx, formdata] = step.action(ctx, formdata);
 

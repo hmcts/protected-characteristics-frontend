@@ -48,12 +48,19 @@ class Step {
         return config.app.basePath + this.next(req, ctx).constructor.getUrl();
     }
 
+    previousStepUrl(session, step) {
+        session.previousUrl = step.constructor.getUrl();
+
+        return session;
+    }
+
     getContextData(req, res, featureToggle, fieldsToClearOnPost = []) {
         const session = req.session;
         let ctx = {};
         Object.assign(ctx, session.form[this.section] || {});
         ctx.sessionID = req.sessionID;
         ctx = Object.assign(ctx, req.body);
+        ctx.previousUrl = req.session.previousUrl;
 
         if (req.method === 'POST') {
             forEach(fieldsToClearOnPost, (field) => {

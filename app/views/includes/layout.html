@@ -40,14 +40,12 @@
         html: (common.feedback + common.languageToggle) | replace("{smartSurveyFeedbackUrl}", globals.links.survey) | replace("{currentPageUrl}", pageUrl) | safe
     }) }}
 
-    {{ govukBackLink({
-        text: common.back | safe,
-        href: "#",
-        attributes: {
-            "onclick": "history.go(-1); return false;",
-            "nonce": globals.nonce
-        }
-    }) }}
+    {% if fields.previousUrl.value %}
+        {{ govukBackLink({
+            text: common.back | safe,
+            href: fields.previousUrl.value
+        }) }}
+    {% endif %}
 {% endblock %}
 
 {% block footer %}
