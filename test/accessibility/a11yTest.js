@@ -47,10 +47,6 @@ for (const step in steps) {
                     nock(config.featureToggles.url)
                         .get(`${config.featureToggles.path}/${config.featureToggles.pc_shutter_ft}`)
                         .reply(200, 'true');
-                } else {
-                    nock(config.featureToggles.url)
-                        .get(`${config.featureToggles.path}/${config.featureToggles.pc_welsh_ft}`)
-                        .reply(200, 'true');
                 }
 
                 server = app.init(true, sessionData);
