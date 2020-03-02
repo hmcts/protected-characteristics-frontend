@@ -35,7 +35,7 @@ const setupConfig = {
         }
     },
     'include': {
-        'I': './pages/steps.js'
+        'I': './pages/probate_steps.js'
     },
     'mocha': {
         'reporterOptions': {
