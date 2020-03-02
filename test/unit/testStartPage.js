@@ -19,13 +19,14 @@ describe('StartPage', () => {
             const req = {
                 session: {
                     returnUrl: 'http://some-return-url/',
+                    language: 'cy',
                     form: {}
                 }
             };
 
             const ctx = StartPage.getContextData(req);
-            expect(ctx.returnUrl).to.equal('http://some-return-url/');
-            expect(ctx.previousUrl).to.equal('http://some-return-url/');
+            expect(ctx.returnUrl).to.equal('http://some-return-url/?locale=cy');
+            expect(ctx.previousUrl).to.equal('http://some-return-url/?locale=cy');
             done();
         });
     });
