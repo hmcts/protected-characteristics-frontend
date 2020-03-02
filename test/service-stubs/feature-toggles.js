@@ -8,8 +8,7 @@ const app = express();
 const featureTogglesPort = config.featureToggles.port;
 
 const featureToggles = {
-    'protected-characteristics-shutter': false,
-    'protected-characteristics-welsh': true
+    'protected-characteristics-shutter': false
 };
 
 Object.entries(featureToggles).forEach(([key, value]) => {

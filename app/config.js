@@ -12,8 +12,7 @@ module.exports = {
         path: process.env.FEATURE_TOGGLES_PATH || '/api/ff4j/check',
         port: 9292,
         pc_shutter_ft: 'protected-characteristics-shutter',
-        pc_welsh_ft: 'protected-characteristics-welsh',
-        appwideToggles: ['pc_welsh_ft']
+        appwideToggles: []
     },
     app: {
         useHttps: process.env.USE_HTTPS || 'false',
