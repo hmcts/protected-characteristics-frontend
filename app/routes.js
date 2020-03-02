@@ -7,12 +7,10 @@ const logger = require('app/components/logger');
 const get = require('lodash').get;
 const uuidv4 = require('uuid/v4');
 const shutter = require('app/shutter');
-const featureToggles = require('app/featureToggles');
 const registerIncomingServices = require('app/registerIncomingServices');
 const setJourney = require('app/middleware/setJourney');
 
 router.use(shutter);
-router.use(featureToggles);
 router.use(registerIncomingServices);
 router.use(setJourney);
 
