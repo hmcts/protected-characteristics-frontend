@@ -18,10 +18,12 @@
     "test": "NODE_PATH=. LOG_LEVEL=error mocha test/unit --reporter spec --recursive --timeout 10000",
     "test:component": "NODE_PATH=. LOG_LEVEL=error mocha test/component --reporter spec --recursive --timeout 10000",
     "test:a11y": "NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 30000",
+    "test:e2e": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
     "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps -p allure",
     "test:crossbrowser": "NODE_PATH=. codeceptjs run -c test/end-to-end/saucelabs.conf.js --steps",
     "test:smoke": "mocha test/smoke/healthcheck.js --timeout 30000 --reporter spec",
     "lint": "NODE_PATH=. eslint .",
+    "eslint": "NODE_PATH=. eslint .",
     "eslint-dev:all": "NODE_PATH=. eslint . -c .eslintrc-dev.js",
     "eslint-dev:file": "NODE_PATH=. eslint -c .eslintrc-dev.js",
     "test:nsp": "NODE_PATH=. nsp check",
@@ -73,6 +75,7 @@
     "validator": "^11.1.0"
   },
   "devDependencies": {
+    "allure-commandline": "2.9.0",
     "codacy-coverage": "3.2.0",
     "codecov": "^4.0.0-0",
     "chai": "^4.2.0",
@@ -103,7 +106,6 @@
     "stryker-mocha-framework": "^0.9.1",
     "stryker-mocha-runner": "^0.11.1",
     "supertest": "^4.0.2",
-    "watch": "^1.0.2",
-    "allure-commandline": "2.9.0"
+    "watch": "^1.0.2"
   }
 }

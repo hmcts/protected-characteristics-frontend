@@ -30,7 +30,7 @@ exports.config = {
         },
     },
     'include': {
-        'I': './pages/probate_steps.js'
+        'I': './pages/steps.js'
     },
     'plugins': {
         'autoDelay': {
