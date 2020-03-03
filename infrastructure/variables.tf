@@ -20,11 +20,6 @@ variable "env" {
 
 variable "ilbIp" { }
 
-variable "deployment_env" {
-  type = "string"
-}
-
-
 variable "node_config_dir" {
   // for Windows
   default = "D:\\home\\site\\wwwroot\\config"

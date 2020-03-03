@@ -59,8 +59,6 @@ module "pcq-frontend" {
     PACKAGES_ENVIRONMENT="${var.packages_environment}"
     PACKAGES_VERSION="${var.packages_version}"
 
-    DEPLOYMENT_ENV="${var.deployment_env}"
-
     // Frontend web details
     PUBLIC_PROTOCOL ="${var.pcq_frontend_protocol}"
 
