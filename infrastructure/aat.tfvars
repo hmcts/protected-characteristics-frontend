@@ -9,3 +9,4 @@ external_hostName_url = "https://pcq.aat.platform.hmcts.net"
 
 packages_environment = "preprod"
 packages_version = "0.0.1"
+vault_section = "preprod"
