@@ -18,7 +18,6 @@ nodejs:
 
   keyVaults:
     pcq:
-      resourceGroup: pcq
       secrets:
         - AppInsightsInstrumentationKey
 
