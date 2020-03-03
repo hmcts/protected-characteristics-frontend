@@ -66,7 +66,7 @@ module "pcq-frontend" {
     SERVICE_NAME = "${var.frontend_service_name}"
 
     USE_HTTPS =  "${var.pcq_frontend_https}"
-    GA_TRACKING_ID = "${var.pcq_google_track_id}"
+//    GA_TRACKING_ID = "${var.pcq_google_track_id}"
 
     // REDIS
     USE_REDIS = "${var.pcq_frontend_use_redis}"

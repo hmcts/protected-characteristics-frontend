@@ -114,10 +114,6 @@ variable "pcq_frontend_https" {
   default = "false"
 }
 
-variable "idam_user_host" {
-  type = "string"
-}
-
 variable "pcq_frontend_protocol" {
   default = "https"
 }
@@ -126,9 +122,9 @@ variable "enable_tracking" {
   default = "true"
 }
 
-variable "pcq_google_track_id" {
-  description = "Google Analytics tracking ID"
-}
+//variable "pcq_google_track_id" {
+//  description = "Google Analytics tracking ID"
+//}
 
 variable "reform_team" {
   default = "probate"
