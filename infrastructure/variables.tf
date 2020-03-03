@@ -160,10 +160,6 @@ variable "website_local_cache_sizeinmb" {
   default = "0"
 }
 
-variable "orchestration_service_url" {
-    type = "string"
-}
-
 variable "external_hostName_url" {
   default = ""
 }
