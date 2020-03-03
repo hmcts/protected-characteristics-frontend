@@ -31,6 +31,6 @@ withPipeline(type, product, component) {
   enableAksStagingDeployment()
   disableLegacyDeployment()
   // loadVaultSecrets(secrets)
-  // enableSlackNotifications('#pcq-build')
+  // enableSlackNotifications('#pcq-builds')
 
 }
