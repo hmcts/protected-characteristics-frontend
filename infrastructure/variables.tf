@@ -7,7 +7,7 @@ variable "raw_product" {
 }
 
 variable "microservice" {
-  default = "pcq-fe"
+  default = "pcq-frontend"
 }
 
 variable "location" {

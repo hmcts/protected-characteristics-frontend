@@ -8,7 +8,7 @@ locals {
   nonPreviewVaultName = "${var.raw_product}-${var.env}"
   vaultName = "${(var.env == "preview" || var.env == "spreview") ? local.previewVaultName : local.nonPreviewVaultName}"
   localenv = "${(var.env == "preview" || var.env == "spreview") ? "aat": "${var.env}"}"
-  pcq_internal_base_url = "http://pcq-fe-${local.localenv}.service.core-compute-${local.localenv}.internal"
+  pcq_internal_base_url = "http://pcq-frontend-${local.localenv}.service.core-compute-${local.localenv}.internal"
 }
 
 data "azurerm_subnet" "core_infra_redis_subnet" {
@@ -17,7 +17,7 @@ data "azurerm_subnet" "core_infra_redis_subnet" {
   resource_group_name = "core-infra-${var.env}"
 }
 
-module "pcq-fe-redis-cache" {
+module "pcq-frontend-redis-cache" {
   source   = "git@github.com:hmcts/cnp-module-redis?ref=master"
   product     = "${(var.env == "preview" || var.env == "spreview") ? "${var.product}-${var.microservice}-pr-redis" : "${var.product}-${var.microservice}-redis-cache"}"
   location = "${var.location}"
@@ -31,7 +31,7 @@ data "azurerm_key_vault" "pcq_key_vault" {
   resource_group_name = "${local.vaultName}"
 }
 
-module "pcq-fe" {
+module "pcq-frontend" {
   source = "git@github.com:hmcts/cnp-module-webapp?ref=master"
   product = "${var.product}-${var.microservice}"
   location = "${var.location}"
@@ -73,9 +73,9 @@ module "pcq-fe" {
     // REDIS
     USE_REDIS = "${var.pcq_frontend_use_redis}"
     REDIS_USE_TLS = "${var.redis_use_tls}"
-    REDIS_HOST      = "${module.pcq-fe-redis-cache.host_name}"
-    REDIS_PORT      = "${module.pcq-fe-redis-cache.redis_port}"
-    REDIS_PASSWORD  = "${module.pcq-fe-redis-cache.access_key}"
+    REDIS_HOST      = "${module.pcq-frontend-redis-cache.host_name}"
+    REDIS_PORT      = "${module.pcq-frontend-redis-cache.redis_port}"
+    REDIS_PASSWORD  = "${module.pcq-frontend-redis-cache.access_key}"
 
     REFORM_ENVIRONMENT = "${var.reform_envirionment_for_test}"
 
