@@ -61,7 +61,7 @@ module.exports = {
         cookies: (process.env.APP_BASE_PATH || '') + '/cookies',
         privacy: (process.env.APP_BASE_PATH || '') + '/privacy-policy',
         terms: (process.env.APP_BASE_PATH || '') + '/terms-conditions',
-        contact: (process.env.APP_BASE_PATH || '') + '/contact-us',
+        accessibility: (process.env.APP_BASE_PATH || '') + '/accessibility-statement',
         callCharges: 'https://www.gov.uk/call-charges',
         howToManageCookies: 'https://www.aboutcookies.org',
         googlePrivacyPolicy: 'https://www.google.com/policies/privacy/partners/',
