@@ -12,7 +12,6 @@ Scenario('Standard Execution Journey', function* (I) {
     I.enterApplicantName('Applicant First Name', 'Applicant Last Name');
     I.enterApplicantEmail('Applicant@email.com');
     I.enterApplicantAddressManually();
-
     // Deceased details
     I.enterDeceasedName('Deceased First Name', 'Deceased Last Name');
     I.enterDeceasedDateOfDeath('01', '01', '2019');
