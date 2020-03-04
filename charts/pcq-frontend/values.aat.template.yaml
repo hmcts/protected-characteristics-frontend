@@ -14,6 +14,3 @@ nodejs:
     SITE_ID: ${PCQ_SITE_ID}
   image: ${IMAGE_NAME}
   ingressHost: ${SERVICE_FQDN}
-
-redis:
-  enabled: true
