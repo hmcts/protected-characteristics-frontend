@@ -1,5 +1,5 @@
 nodejs:
-  applicationPort: 3000
+  applicationPort: 4000
   memoryRequests: "512Mi"
   cpuRequests: "100m"
   memoryLimits: "1024Mi"
