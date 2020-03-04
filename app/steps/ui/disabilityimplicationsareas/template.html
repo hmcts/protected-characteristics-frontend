@@ -1,0 +1,151 @@
+{% extends "includes/two_thirds_form.html" %}
+
+{% from "govuk/components/checkboxes/macro.njk" import govukCheckboxes %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set otherDetailsHtml %}
+    {{ govukTextarea({
+        name: "otherDetails",
+        id: "otherDetails",
+        label: {
+            text: content["optionOtherDetails"] | safe
+        },
+        value: fields.otherDetails.value | safe
+    }) }}
+{% endset -%}
+
+{% block form_content %}
+    {{ govukCheckboxes({
+        idPrefix: "disabilityImplicationsAreas",
+        name: "disabilityImplicationsAreas",
+        fieldset: {
+            legend: {
+                text: content.question | safe,
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+            }
+        },
+        hint: {
+            text: content.questionHint | safe
+        },
+        errorMessage: { text: fields.disabilityImplicationsAreas.errorMessage.message | safe } if fields.disabilityImplicationsAreas.errorMessage,
+        items: [
+            {
+                value: "optionVision",
+                text: content["optionVision"] | safe,
+                hint: {
+                    text: content["optionVisionHint"] | safe
+                },
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionVision" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionHearing",
+                text: content["optionHearing"] | safe,
+                hint: {
+                    text: content["optionHearingHint"] | safe
+                },
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionHearing" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionMobility",
+                text: content["optionMobility"] | safe,
+                hint: {
+                    text: content["optionMobilityHint"] | safe
+                },
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionMobility" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionDexterity",
+                text: content["optionDexterity"] | safe,
+                hint: {
+                    text: content["optionDexterityHint"] | safe
+                },
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionDexterity" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionLearning",
+                text: content["optionLearning"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionLearning" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionMemory",
+                text: content["optionMemory"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionMemory" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionMentalHealth",
+                text: content["optionMentalHealth"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionMentalHealth" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionStamina",
+                text: content["optionStamina"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionStamina" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionSocially",
+                text: content["optionSocially"] | safe,
+                hint: {
+                    text: content["optionSociallyHint"] | safe
+                },
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionSocially" in fields.disabilityImplicationsAreas.value
+            },
+            {
+                value: "optionOther",
+                text: content["optionOther"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-select-choice"
+                },
+                checked: true if "optionOther" in fields.disabilityImplicationsAreas.value,
+                conditional: {
+                    html: otherDetailsHtml
+                }
+            },
+            {
+                value: "optionNone",
+                text: content["optionNone"] | safe,
+                attributes: {
+                    "data-mutually-exclusive": "js-deselect-choice"
+                },
+                checked: true if "optionNone" in fields.disabilityImplicationsAreas.value
+            }
+        ]
+    }) }}
+
+    <div class="govuk-form-group">
+        {{ govukButton({
+            text: common.continue | safe,
+            preventDoubleClick: true
+        }) }}
+    </div>
+
+    <script src="{{ globals.basePath }}/public/javascripts/mutually-exclusive-checkboxes.js"></script>
+{% endblock %}

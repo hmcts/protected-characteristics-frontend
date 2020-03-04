@@ -1,0 +1,31 @@
+{
+  "title": "[CY] Your disabilities implications areas",
+  "question": "[CY] Do any of these conditions or illnesses affect you in any of the following areas?",
+  "questionHint": "[CY] Select all that apply",
+  "optionVision": "[CY] Vision",
+  "optionVisionHint": "[CY] For example blindness or partial sight",
+  "optionHearing": "[CY] Hearing",
+  "optionHearingHint": "[CY] For example deafness or partial hearing",
+  "optionMobility": "[CY] Mobility",
+  "optionMobilityHint": "[CY] For example walking short distances or climbing stairs",
+  "optionDexterity": "[CY] Dexterity",
+  "optionDexterityHint": "[CY] For example lifting and carrying objects, using a keyboard",
+  "optionLearning": "[CY] Learning, understanding or concentrating",
+  "optionMemory": "[CY] Memory",
+  "optionMentalHealth": "[CY] Mental health",
+  "optionStamina": "[CY] Stamina, breathing or fatigue",
+  "optionSocially": "[CY] Socially or behaviourally",
+  "optionSociallyHint": "[CY] For example associated with autism, attention deficit disorder or Asperger's syndrome",
+  "optionOther": "[CY] Other",
+  "optionOtherDetails": "[CY] Please give details of your disability",
+  "optionNone": "[CY] None of the above",
+
+  "errors": {
+    "disabilityImplicationsAreas": {
+      "required": {
+        "summary": "[CY] You need to choose at least one option for your disabilities implications areas",
+        "message": "[CY] Select at least an option"
+      }
+    }
+  }
+}

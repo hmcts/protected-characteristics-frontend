@@ -34,9 +34,7 @@ describe('ApplicantMaritalStatus', () => {
         });
 
         it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantEthnicGroup);
         });
     });
 });

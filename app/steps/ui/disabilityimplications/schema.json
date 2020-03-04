@@ -1,0 +1,11 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "disabilityImplications",
+  "type": "object",
+  "properties": {
+    "disabilityImplications": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

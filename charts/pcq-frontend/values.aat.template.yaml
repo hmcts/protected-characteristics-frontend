@@ -1,0 +1,16 @@
+nodejs:
+  environment:
+    FEATURE_TOGGLES_API_URL: http://${SERVICE_NAME}-ftr-tgl-api
+    SERVICES_AUTH_PROVIDER_BASEURL : http://rpe-service-auth-provider-aat.service.core-compute-aat.internal
+    S2S_URL:
+    VALIDATION_SERVICE_URL:
+    SUBMIT_SERVICE_URL:
+    ORCHESTRATOR_SERVICE_URL:
+    REDIS_HOST: ${SERVICE_NAME}-redis-master
+    REDIS_PORT: 6379
+    SURVEY: ${PCQ_SURVEY}
+    SURVEY_END_OF_APPLICATION: ${PCQ_SURVEY_END_OF_APPLICATIONN}
+    SERVICE_ID: ${PCQ_SERVICE_ID}
+    SITE_ID: ${PCQ_SITE_ID}
+  image: ${IMAGE_NAME}
+  ingressHost: ${SERVICE_FQDN}

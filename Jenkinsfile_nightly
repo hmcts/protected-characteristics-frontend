@@ -12,5 +12,5 @@ def product = "pcq"
 def component = "frontend"
 
 withNightlyPipeline(type, product, component) {
-  enableSlackNotifications('#pcq-build-notices')
+  enableSlackNotifications('#pcq-builds')
 }

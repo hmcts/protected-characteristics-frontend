@@ -3,6 +3,10 @@
   "id": "date-of-birth",
   "type": "object",
   "properties": {
+    "provideDateOfBirth": {
+      "type": "string",
+      "minLength": 1
+    },
     "dob-day": {
       "type": "integer",
       "minimum": 1,

@@ -1,0 +1,16 @@
+{
+  "title": "[CY] Your disabilities implications",
+  "question": "[CY] Do any of your conditions or illnesses reduce your ability to carry out day-to-day activities?",
+  "optionYesLot": "[CY] Yes, limited a lot",
+  "optionYesLittle": "[CY] Yes, limited a little",
+  "optionNo": "[CY] Not at all",
+
+  "errors": {
+    "disabilityImplications": {
+      "required": {
+        "summary": "[CY] You need to choose an option for your disabilities implications",
+        "message": "[CY] Select an option"
+      }
+    }
+  }
+}

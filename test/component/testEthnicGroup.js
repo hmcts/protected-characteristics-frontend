@@ -84,9 +84,7 @@ describe('ApplicantEthnicGroup', () => {
         });
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - when no data is entered`, (done) => {
-            const data = {};
-
-            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+            testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantReligion);
         });
     });
 });

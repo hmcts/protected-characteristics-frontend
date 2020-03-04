@@ -14,13 +14,20 @@ class ApplicantDateOfBirth extends DateStep {
     }
 
     handlePost(ctx, errors) {
-        const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
+        if (ctx.provideDateOfBirth === 'optionEnterDate') {
+            const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 
-        const today = new Date();
-        today.setHours(0, 0, 0, 0);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
 
-        if (dob >= today) {
-            errors.push(FieldError('dob-date', 'dateInFuture', this.resourcePath, this.generateContent()));
+            if (dob >= today) {
+                errors.push(FieldError('dob-date', 'dateInFuture', this.resourcePath, this.generateContent()));
+            }
+        } else {
+            delete ctx['dob-day'];
+            delete ctx['dob-month'];
+            delete ctx['dob-year'];
+            delete ctx['dob-formattedDate'];
         }
 
         return [ctx, errors];

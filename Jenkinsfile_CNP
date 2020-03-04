@@ -6,6 +6,21 @@ def type = "nodejs"
 def product = "pcq"
 def component = "frontend"
 
+def secrets = [
+  'pcq-${env}': [
+
+  ]
+]
+
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+  [ $class: 'AzureKeyVaultSecret',
+    secretType: 'Secret',
+    name: secretName,
+    version: '',
+    envVariable: envVar
+  ]
+}
+
 withPipeline(type, product, component) {
 
   after('build') {
@@ -13,7 +28,9 @@ withPipeline(type, product, component) {
   }
 
   installCharts()
-  // loadVaultSecrets(secrets)
-  // enableSlackNotifications('#pcq-jenkins')
+  enableAksStagingDeployment()
   disableLegacyDeployment()
+  // loadVaultSecrets(secrets)
+  // enableSlackNotifications('#pcq-builds')
+
 }

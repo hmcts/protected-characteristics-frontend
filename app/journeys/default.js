@@ -1,11 +1,7 @@
 'use strict';
 
 const stepList = {
-    StartPage: 'ApplicantProvideDateOfBirth',
-    ApplicantProvideDateOfBirth: {
-        Yes: 'ApplicantDateOfBirth',
-        otherwise: 'ApplicantLanguage'
-    },
+    StartPage: 'ApplicantDateOfBirth',
     ApplicantDateOfBirth: 'ApplicantLanguage',
     ApplicantLanguage: {
         otherLanguage: 'ApplicantEnglishLevel',
@@ -29,16 +25,16 @@ const stepList = {
     ApplicantEthnicBackgroundAsian: 'ApplicantReligion',
     ApplicantEthnicBackgroundBlack: 'ApplicantReligion',
     ApplicantEthnicBackgroundOther: 'ApplicantReligion',
-    ApplicantReligion: 'ApplicantHealthConditions',
-    ApplicantHealthConditions: {
-        Yes: 'ApplicantHealthConditionsImplications',
+    ApplicantReligion: 'ApplicantDisability',
+    ApplicantDisability: {
+        Yes: 'ApplicantDisabilityImplications',
         otherwise: 'ApplicantPregnant'
     },
-    ApplicantHealthConditionsImplications: {
-        Yes: 'ApplicantHealthConditionsImplicationAreas',
+    ApplicantDisabilityImplications: {
+        Yes: 'ApplicantDisabilityImplicationAreas',
         otherwise: 'ApplicantPregnant'
     },
-    ApplicantHealthConditionsImplicationAreas: 'ApplicantPregnant',
+    ApplicantDisabilityImplicationAreas: 'ApplicantPregnant',
     ApplicantPregnant: 'EndPage'
 };
 
