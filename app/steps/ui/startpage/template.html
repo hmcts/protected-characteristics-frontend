@@ -1,4 +1,4 @@
-{% extends "includes/two_thirds_form.html" %}
+{% extends "includes/layout.html" %}
 
 {% from "govuk/components/panel/macro.njk" import govukPanel %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
@@ -6,36 +6,43 @@
 
 {% set title = "" %}
 
-{% block form_content %}
-    {% set panelContentHtml %}
-        <p class="govuk-body">{{ content.paragraph1 | safe }}</p>
-        <p class="govuk-body">{{ content.paragraph2 | safe }}</p>
-        <p class="govuk-body">{{ content.paragraph3 | safe }}</p>
-    {% endset -%}
+{% block content %}
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            {% set panelContentHtml %}
+                <p class="govuk-body">{{ content.paragraph1 | safe }}</p>
+                <p class="govuk-body">{{ content.paragraph2 | safe }}</p>
+                <p class="govuk-body">{{ content.paragraph3 | safe }}</p>
+            {% endset -%}
 
-    {{ govukPanel({
-        titleText: content.question | safe,
-        html: panelContentHtml
-    }) }}
-
-    <p class="govuk-body">{{ content.paragraph4 | safe }}</p>
-    <p class="govuk-body">{{ content.paragraph5 | safe }}</p>
-
-    <ul class="govuk-form-group">
-        <li>
-            {{ govukButton({
-                text: common.continueToQuestions | safe,
-                preventDoubleClick: true
+            {{ govukPanel({
+                titleText: content.question | safe,
+                html: panelContentHtml
             }) }}
-        </li>
-        <li>
-            {% if fields.returnUrl.value %}
-                {{ govukButton({
-                    text: common.dontWantToAnswer | safe,
-                    classes: "govuk-button--secondary",
-                    href: fields.returnUrl.value
-                }) }}
-            {% endif %}
-        </li>
-    </ul>
+
+            <p class="govuk-body">{{ content.paragraph4 | safe }}</p>
+            <p class="govuk-body">{{ content.paragraph5 | safe }}</p>
+
+            <form class="form" method="post" autocomplete="off" action="{{ globals.basePath }}{{ pageUrl }}" novalidate>
+                <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+                <ul class="govuk-form-group">
+                    <li>
+                        {{ govukButton({
+                            text: common.continueToQuestions | safe,
+                            preventDoubleClick: true
+                        }) }}
+                    </li>
+                    <li>
+                        {% if fields.returnUrl.value %}
+                            {{ govukButton({
+                                text: common.dontWantToAnswer | safe,
+                                classes: "govuk-button--secondary",
+                                href: fields.returnUrl.value
+                            }) }}
+                        {% endif %}
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
 {% endblock %}
