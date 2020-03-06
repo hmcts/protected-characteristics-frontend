@@ -1,8 +1,8 @@
 {
   "title": "[CY] Your disabilities",
-  "question": "[CY] Do you have any physical or mental health conditions or illnesses lasting or expected to last 12 months or more?",
-  "optionYes": "[CY] Yes",
-  "optionNo": "[CY] No",
+  "question": "A oes gennych unrhyw gyflwr neu salwch corfforol neu iechyd meddwl sydd wedi para neu sy’n debygol o bara 12 mis neu fwy?",
+  "optionYes": "Oes",
+  "optionNo": "Nac oes",
 
   "errors": {
     "disability": {

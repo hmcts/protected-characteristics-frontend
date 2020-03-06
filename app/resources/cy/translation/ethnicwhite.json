@@ -1,11 +1,11 @@
 {
   "title": "[CY] Your White ethnic background",
-  "question": "[CY] Which one best describes your White background?",
-  "optionBritish": "[CY] English, Welsh, Scottish, Northern Irish or British",
-  "optionIrish": "[CY] Irish",
-  "optionGypsy": "[CY] Gypsy or Irish Traveller",
-  "optionOther": "[CY] Another White background",
-  "optionOtherDetails": "[CY] Your White background (optional)",
+  "question": "Pa un sy’n disgrifio orau eich cefndir gwyn?",
+  "optionBritish": "Cymraeg/Saesneg/Albanaidd/Gwyddelig Gogledd Iwerddon/Prydeinig",
+  "optionIrish": "Gwyddelig",
+  "optionGypsy": "Sipsi neu Deithiwr Gwyddelig",
+  "optionOther": "Cefndir gwyn arall",
+  "optionOtherDetails": "Eich cefndir gwyn (dewisol)",
 
   "errors": {
     "ethnicGroupWhite": {

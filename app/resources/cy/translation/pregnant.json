@@ -1,8 +1,8 @@
 {
   "title": "[CY] Your pregnancy status",
-  "question": "[CY] Are you pregnant or have you been pregnant in the last year?",
-  "optionYes": "[CY] Yes",
-  "optionNo": "[CY] No",
+  "question": "A ydych chi’n feichiog neu wedi rhoi genedigaeth yn y flwyddyn ddiwethaf?",
+  "optionYes": "Ydw",
+  "optionNo": "Nac ydw",
 
   "errors": {
     "pregnant": {
