@@ -11,7 +11,7 @@ nodejs:
     S2S_URL:
     VALIDATION_SERVICE_URL:
     SUBMIT_SERVICE_URL:
-    ORCHESTRATOR_SERVICE_URL:
+    ORCHESTRATION_SERVICE_URL:
     REFORM_ENVIRONMENT: aat
   image: hmctspublic.azurecr.io/pcq/pcq-frontend:latest
   aadIdentityName: pcq

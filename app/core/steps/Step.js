@@ -5,6 +5,7 @@ const UIStepRunner = require('app/core/runners/UIStepRunner');
 const JourneyMap = require('app/core/JourneyMap');
 const mapErrorsToFields = require('app/components/error').mapErrorsToFields;
 const config = require('app/config');
+const ServiceMapper = require('app/utils/ServiceMapper');
 const FeatureToggle = require('app/utils/FeatureToggle');
 const utils = require('app/components/step-utils');
 const moment = require('moment');
@@ -30,7 +31,7 @@ class Step {
         return `${this.templatePath}/template`;
     }
 
-    constructor(steps, section, resourcePath, i18next, schema, language = 'en') {
+    constructor(steps, section = null, resourcePath, i18next, schema, language = 'en') {
         this.steps = steps;
         this.section = section;
         this.resourcePath = resourcePath;
@@ -123,8 +124,17 @@ class Step {
         return fields;
     }
 
+    persistFormData(formdata, sessionID, req) {
+        const formData = ServiceMapper.map(
+            'FormData',
+            [config.services.orchestration.url, sessionID]
+        );
+        return formData.post(req.authToken, req.session.serviceAuthorization, formdata);
+    }
+
     action(ctx, formdata) {
         delete ctx.sessionID;
+        delete ctx.featureToggles;
         delete ctx._csrf;
         return [ctx, formdata];
     }
