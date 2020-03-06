@@ -7,8 +7,8 @@ const express = require('express');
 const app = express();
 const router = express.Router();
 const fs = require('fs');
-const ORCHESTRATION_PORT = config.services.orchestration.port;
-const CHECK_ANSWERS_PDF_URL = config.services.orchestration.paths.checkanswerspdf;
+const ORCHESTRATOR_PORT = config.services.orchestrator.port;
+const CHECK_ANSWERS_PDF_URL = config.services.orchestrator.paths.checkanswerspdf;
 
 router.post('/' + CHECK_ANSWERS_PDF_URL, (req, res) => {
     fs.readFile('test/data/checkAnswersSummary.pdf', function (err, data) {
@@ -42,7 +42,7 @@ router.post('/forms/*/payments', (req, res) => {
 
 app.use(router);
 
-console.log(`Listening on: ${ORCHESTRATION_PORT}`);
-const server = app.listen(ORCHESTRATION_PORT);
+console.log(`Listening on: ${ORCHESTRATOR_PORT}`);
+const server = app.listen(ORCHESTRATOR_PORT);
 
 module.exports = server;

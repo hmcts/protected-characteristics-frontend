@@ -10,7 +10,9 @@ class EndPage extends Step {
 
     getContextData(req) {
         const ctx = super.getContextData(req);
-        ctx.returnUrl = `${req.session.returnUrl}?locale=${req.session.language}`;
+        if (req.session.returnUrl) {
+            ctx.returnUrl = `${req.session.returnUrl}?locale=${req.session.language}`;
+        }
 
         return ctx;
     }
