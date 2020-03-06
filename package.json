@@ -35,7 +35,7 @@
     "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner -Dsonar.projectName='pcq-frontend' -Dsonar.sources=app -Dsonar.cpd.exclusions=app/steps/** -Dsonar.exclusions=app/journeys/**,app/assets/** -Dsonar.language=js -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info",
     "git-info": "node-git-info-json",
     "//": "The below scripts are just stubs, don't use them in production",
-    "stub:orchestrator": "NODE_PATH=. node test/service-stubs/orchestrator.js",
+    "stub:orchestration": "NODE_PATH=. node test/service-stubs/orchestration.js",
     "stub:s2s": "NODE_PATH=. node test/service-stubs/s2s.js",
     "stub:feature-toggles": "NODE_PATH=. node test/service-stubs/feature-toggles.js"
   },

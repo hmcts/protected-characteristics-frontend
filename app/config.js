@@ -21,8 +21,8 @@ module.exports = {
         basePath: process.env.APP_BASE_PATH || ''
     },
     services: {
-        orchestrator: {
-            url: process.env.ORCHESTRATOR_SERVICE_URL || 'http://localhost:8888',
+        orchestration: {
+            url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:8888',
             port: 8888,
             paths: {
                 forms: '/forms'

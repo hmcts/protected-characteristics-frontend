@@ -127,7 +127,7 @@ class Step {
     persistFormData(formdata, sessionID, req) {
         const formData = ServiceMapper.map(
             'FormData',
-            [config.services.orchestrator.url, sessionID]
+            [config.services.orchestration.url, sessionID]
         );
         return formData.post(req.authToken, req.session.serviceAuthorization, formdata);
     }

@@ -24,7 +24,7 @@ describe('FormDataService', () => {
                 Authorization: authToken,
                 ServiceAuthorization: serviceAuthorisation
             }
-        }).post(config.services.orchestrator.paths.forms, expectedForm)
+        }).post(config.services.orchestration.paths.forms, expectedForm)
             .reply(200, expectedForm);
 
         co(function* () {
