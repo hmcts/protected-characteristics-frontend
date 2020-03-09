@@ -1,7 +1,7 @@
 {
   "title": "Accessibility statement",
-  "heading1": "Accessibility statement for &lsquo;Stopping a probate application&rsquo; service",
-  "paragraph1": "This service allows users to apply to stop an application for a grant of representation (also known as probate) online.",
+  "heading1": "Accessibility statement for &lsquo;Equality and diversity questionnaire&rsquo; service",
+  "paragraph1": "This service will ask a set of questions that will help us check we are treating people fairly and equally. It helps us to meet our commitment to equality (under the Equality Act 2010).",
   "paragraph2": "This website is run by HM Courts and Tribunals. We want as many people as possible to be able to use this website, so we have designed it to be accessible. For example, that means you should be able to:",
   "list1-item1": "change colours, contrast levels and fonts",
   "list1-item2": "zoom in up to 300% without the text spilling off the screen",
@@ -21,7 +21,7 @@
 
   "heading3": "What to do if you cannot access parts of this website",
   "paragraph7": "If you need information on this website in a different format like accessible PDF, large print, easy read or braille then email <a href=\"mailto:HMCTSforms@justice.gov.uk\" class=\"govuk-link\">HMCTSforms@justice.gov.uk</a> or phone:",
-  "paragraph8": "<strong>Probate helpline:</strong><br>Telephone: {helpLineNumber}<br>{helpLineHours}",
+  "paragraph8": "<strong>Equality and diversity questionnaire helpline:</strong><br>Telephone: {helpLineNumber}<br>{helpLineHours}",
   "paragraph9": "<a target=\"_blank\" rel=\"external noopener\" href=\"{callChargesLink}\" class=\"govuk-link\">Find out about call charges</a>",
   "paragraph10": "We&rsquo;ll consider your request and get back to you within 10 working days.",
 
@@ -51,7 +51,7 @@
   "heading9-1": "PDFs and other documents",
   "paragraph19": "PDFs, documents and attachments to email notifications published before 23 September 2018 may not meet accessibility standards. For example, they may not be structured so they&rsquo;re accessible to a screen reader.",
   "heading9-2": "Third party content that&rsquo;s under someone else&rsquo;s control",
-  "paragraph20": "Pages and websites that are linked to and from the probate service may not be fully accessible. These include:",
+  "paragraph20": "Pages and websites that are linked to and from this questionnaire may not be fully accessible. These include:",
   "list4-item1": "External pages hosting PDF documents e.g.<br><a href=\"{applicationFormPA15}\" class=\"govuk-link\" target=\"_blank\" rel=\"external noopener\">{applicationFormPA15}</a>",
   "list4-item2": "The login and payment pages",
   "list4-item3": "Emails sent by gov.uk.notify",

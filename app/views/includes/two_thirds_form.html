@@ -16,9 +16,9 @@
                 {% block form_content %}{% endblock %}
             </form>
 
-            {% block executor_summary %}{% endblock %}
-
-            {% include "includes/why_asking.html" %}
+            {% block why_asking %}
+                {% include "includes/why_asking.html" %}
+            {% endblock %}
         </div>
     </div>
 {% endblock %}

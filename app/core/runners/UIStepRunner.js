@@ -18,8 +18,8 @@ class UIStepRunner {
         const commonContent = require(`app/resources/${session.language}/translation/common`);
 
         return co(function * () {
+            let ctx = step.getContextData(req, res);
             const featureToggles = session.featureToggles;
-            let ctx = step.getContextData(req, res, featureToggles);
             [ctx, errors] = yield step.handleGet(ctx, formdata, featureToggles, session.language);
             forEach(errors, (error) =>
                 req.log.info({type: 'Validation Message', url: step.constructor.getUrl()}, JSON.stringify(error))
@@ -64,6 +64,15 @@ class UIStepRunner {
                 [ctx, formdata] = step.action(ctx, formdata);
 
                 set(formdata, step.section, ctx);
+
+                const result = yield step.persistFormData(formdata, session.id, req);
+
+                if (result.name === 'Error') {
+                    req.log.error('Could not persist user data', result.message);
+                } else if (result) {
+                    session.form = Object.assign(session.form, result);
+                    req.log.info('Successfully persisted user data');
+                }
 
                 if (session.back[session.back.length - 1] !== step.constructor.getUrl()) {
                     session.back.push(step.constructor.getUrl());
