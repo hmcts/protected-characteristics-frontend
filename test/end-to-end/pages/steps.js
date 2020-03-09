@@ -5,7 +5,7 @@ const steps = requireDirectory(module);
 
 module.exports = () => {
     return actor({
-        startapply: steps.intropage.intropage,
+        startapply: steps.startpage.startpage,
         dateofbirth: steps.dateofbirth.dateofbirth,
         mainlanguage: steps.language.language,
         selectsex: steps.sex.sex,
