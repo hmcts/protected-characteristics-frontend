@@ -3,7 +3,7 @@ exports.config = {
     helpers: {
         Puppeteer: {
             url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            show: true,
+            show: false,
             chrome: {
                 'ignoreHTTPSErrors': true,
                 'ignore-certificate-errors': true,
