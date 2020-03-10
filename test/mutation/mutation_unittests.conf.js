@@ -13,16 +13,16 @@ const strykerConfiguration = config => {
         coverageAnalysis: 'perTest',
         mutate:
       [
-          'app/steps/ui/**/index.js'
+          'app/steps/ui/**/index.js', '!app/healthcheck.js'
       ],
-        files: ['*.js', '*.json', 'app/**', '**.*', !'app/healthcheck.js.*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
+        // files: ['*.js', '*.json', 'app/**', '**.*', !'app/healthcheck.js.*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
         maxConcurrentTestRunners: 1,
         symlinkNodeModules: true,
         htmlReporter: {baseDir: 'functional-output/mutation-unittests'},
         mochaOptions: {
             files:
         [
-            'test/unit/*.js'
+            'test/unit/*'
         ],
             timeout: 8000
         },
