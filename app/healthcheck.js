@@ -2,7 +2,7 @@
 
 const router = require('express').Router();
 const os = require('os');
-const gitProperties = require('git.properties');
+const gitProperties = require('git.properties.json');
 const commonContent = require('app/resources/en/translation/common');
 const gitRevision = process.env.GIT_REVISION;
 const osHostname = os.hostname();
