@@ -22,7 +22,7 @@ const strykerConfiguration = config => {
         mochaOptions: {
             files:
         [
-            'test/unit/*'
+            'test/unit/*.js'
         ],
             timeout: 8000
         },
