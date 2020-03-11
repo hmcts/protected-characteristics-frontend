@@ -17,6 +17,7 @@ describe('StartPage', () => {
     describe('getContextData()', () => {
         it('should return the context with the return url', (done) => {
             const req = {
+                sessionID: 'some session id',
                 session: {
                     returnUrl: 'http://some-return-url/',
                     language: 'cy',
@@ -25,7 +26,26 @@ describe('StartPage', () => {
             };
 
             const ctx = StartPage.getContextData(req);
-            expect(ctx.returnUrl).to.equal('http://some-return-url/?locale=cy');
+            expect(ctx).to.deep.equal({
+                sessionID: 'some session id',
+                returnUrl: 'http://some-return-url/?locale=cy'
+            });
+            done();
+        });
+
+        it('should return the context when no return url is present', (done) => {
+            const req = {
+                sessionID: 'some session id',
+                session: {
+                    language: 'cy',
+                    form: {}
+                }
+            };
+
+            const ctx = StartPage.getContextData(req);
+            expect(ctx).to.deep.equal({
+                sessionID: 'some session id'
+            });
             done();
         });
     });
