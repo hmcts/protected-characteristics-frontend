@@ -9,5 +9,4 @@ Feature: Probate
     When I invoke the PCQs task
     Then I am presented with the PCQ Intro page
     And continue button exists
-    And there is an opt out option
 

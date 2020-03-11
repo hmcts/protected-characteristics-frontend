@@ -17,7 +17,3 @@ Then('I am presented with the PCQ Intro page', () => {
 Then('continue button exists', () => {
     I.see('Continue to the question');
 });
-
-Then('there is an opt out option', () => {
-    I.see('I don\'t want to answer these questions');
-});
