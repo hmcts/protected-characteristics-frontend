@@ -2,20 +2,34 @@ exports.config = {
     output: './output',
     helpers: {
         Puppeteer: {
-            url: 'http://localhost:4000',
-            show: false
+            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            show: false,
+            chrome: {
+                'ignoreHTTPSErrors': true,
+                'ignore-certificate-errors': true,
+                'defaultViewport': {
+                    'width': 1280,
+                    'height': 960
+                },
+                args: [
+                    '--no-sandbox',
+                    '--proxy-server=proxyout.reform.hmcts.net:8080',
+                    '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
+                    '--window-size=1440,1400'
+                ]
+            }
         }
     },
     include: {
-        I: './pages/steps_file.js'
+        I: 'test/end-to-end/pages/steps.js'
     },
     mocha: {},
     bootstrap: null,
     teardown: null,
     hooks: [],
     gherkin: {
-        features: 'features/*.feature',
-        steps: ['./step_definitions/steps.js']
+        features: 'features/probate.feature',
+        steps: ['./step_definitions/probatepcqjourney.js']
     },
     plugins: {
         screenshotOnFail: {

@@ -1,14 +1,12 @@
 Feature: Probate
-  As a probate service user 
-  I need an introduction page 
+  As a probate service user
+  I need an introduction page
   so that I know what the PCQ service is about.
-    
 
-  Scenario: HP 1.1: CITIZEN answers ONE question, leaves all others blank and completes
-    Given I am a Citizen
-    And I have logged into the PROBATE service
-    And I am on the task list page
-    And the optional task to answer PCQs is available and incomplete
-    When I invoke the PCQs for PROBATE from the task list page
+
+  Scenario: Probate CITIZEN invokes pcq
+    Given  I am a probate Citizen user
+    When I invoke the PCQs task
     Then I am presented with the PCQ Intro page
-    And there is an opt out option
+    And continue button exists
+
