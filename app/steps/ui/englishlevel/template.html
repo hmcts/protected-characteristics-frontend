@@ -17,32 +17,32 @@
         errorMessage: { text: fields.englishLevel.errorMessage.message | safe } if fields.englishLevel.errorMessage,
         items: [
             {
-                value: "optionVeryWell",
+                value: 1,
                 text: content["optionVeryWell"] | safe,
-                checked: true if fields.englishLevel.value == "optionVeryWell"
+                checked: true if fields.englishLevel.value == 1
             },
             {
-                value: "optionWell",
+                value: 2,
                 text: content["optionWell"] | safe,
-                checked: true if fields.englishLevel.value == "optionWell"
+                checked: true if fields.englishLevel.value == 2
             },
             {
-                value: "optionNotWell",
+                value: 3,
                 text: content["optionNotWell"] | safe,
-                checked: true if fields.englishLevel.value == "optionNotWell"
+                checked: true if fields.englishLevel.value == 3
             },
             {
-                value: "optionNotAtAll",
+                value: 4,
                 text: content["optionNotAtAll"] | safe,
-                checked: true if fields.englishLevel.value == "optionNotAtAll"
+                checked: true if fields.englishLevel.value == 4
             },
             {
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.englishLevel.value == "optionPreferNotToSay"
+                checked: true if fields.englishLevel.value == 0
             }
         ]
     }) }}

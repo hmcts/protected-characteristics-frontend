@@ -29,29 +29,29 @@
         errorMessage: { text: fields.ethnicGroupAsian.errorMessage.message | safe } if fields.ethnicGroupAsian.errorMessage,
         items: [
             {
-                value: "optionIndian",
+                value: 9,
                 text: content["optionIndian"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionIndian"
+                checked: true if fields.ethnicGroupAsian.value == 9
             },
             {
-                value: "optionPakistani",
+                value: 10,
                 text: content["optionPakistani"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionPakistani"
+                checked: true if fields.ethnicGroupAsian.value == 10
             },
             {
-                value: "optionBangladeshi",
+                value: 11,
                 text: content["optionBangladeshi"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionBangladeshi"
+                checked: true if fields.ethnicGroupAsian.value == 11
             },
             {
-                value: "optionChinese",
+                value: 12,
                 text: content["optionChinese"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionChinese"
+                checked: true if fields.ethnicGroupAsian.value == 12
             },
             {
-                value: "optionOther",
+                value: 13,
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionOther",
+                checked: true if fields.ethnicGroupAsian.value == 13,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -60,9 +60,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicGroupAsian.value == "optionPreferNotToSay"
+                checked: true if fields.ethnicGroupAsian.value == 0
             }
         ]
     }) }}

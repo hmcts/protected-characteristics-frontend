@@ -17,22 +17,22 @@
         errorMessage: { text: fields.maritalStatus.errorMessage.message | safe } if fields.maritalStatus.errorMessage,
         items: [
             {
-                value: "optionYes",
+                value: 1,
                 text: content["optionYes"] | safe,
-                checked: true if fields.maritalStatus.value == "optionYes"
+                checked: true if fields.maritalStatus.value == 1
             },
             {
-                value: "optionNo",
+                value: 2,
                 text: content["optionNo"] | safe,
-                checked: true if fields.maritalStatus.value == "optionNo"
+                checked: true if fields.maritalStatus.value == 2
             },
             {
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.maritalStatus.value == "optionPreferNotToSay"
+                checked: true if fields.maritalStatus.value == 0
             }
         ]
     }) }}

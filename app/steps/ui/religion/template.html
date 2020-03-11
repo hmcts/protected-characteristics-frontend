@@ -29,44 +29,44 @@
         errorMessage: { text: fields.religion.errorMessage.message | safe } if fields.religion.errorMessage,
         items: [
             {
-                value: "optionNoReligion",
+                value: 1,
                 text: content["optionNoReligion"] | safe,
-                checked: true if fields.religion.value == "optionNoReligion"
+                checked: true if fields.religion.value == 1
             },
             {
-                value: "optionChristian",
+                value: 2,
                 text: content["optionChristian"] | safe,
-                checked: true if fields.religion.value == "optionChristian"
+                checked: true if fields.religion.value == 2
             },
             {
-                value: "optionBuddhist",
+                value: 3,
                 text: content["optionBuddhist"] | safe,
-                checked: true if fields.religion.value == "optionBuddhist"
+                checked: true if fields.religion.value == 3
             },
             {
-                value: "optionHindu",
+                value: 4,
                 text: content["optionHindu"] | safe,
-                checked: true if fields.religion.value == "optionHindu"
+                checked: true if fields.religion.value == 4
             },
             {
-                value: "optionJewish",
+                value: 5,
                 text: content["optionJewish"] | safe,
-                checked: true if fields.religion.value == "optionJewish"
+                checked: true if fields.religion.value == 5
             },
             {
-                value: "optionMuslim",
+                value: 6,
                 text: content["optionMuslim"] | safe,
-                checked: true if fields.religion.value == "optionMuslim"
+                checked: true if fields.religion.value == 6
             },
             {
-                value: "optionSikh",
+                value: 7,
                 text: content["optionSikh"] | safe,
-                checked: true if fields.religion.value == "optionSikh"
+                checked: true if fields.religion.value == 7
             },
             {
-                value: "optionOther",
+                value: 8,
                 text: content["optionOther"] | safe,
-                checked: true if fields.religion.value == "optionOther",
+                checked: true if fields.religion.value == 8,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -75,9 +75,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.religion.value == "optionPreferNotToSay"
+                checked: true if fields.religion.value == 0
             }
         ]
     }) }}

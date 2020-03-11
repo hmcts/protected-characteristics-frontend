@@ -11,7 +11,7 @@ class ApplicantDisability extends ValidationStep {
     nextStepOptions() {
         return {
             options: [
-                {key: 'disability', value: 'optionYes', choice: 'Yes'}
+                {key: 'disability', value: '1', choice: 'Yes'}
             ]
         };
     }

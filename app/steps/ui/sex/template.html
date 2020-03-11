@@ -17,22 +17,22 @@
         errorMessage: { text: fields.sex.errorMessage.message | safe } if fields.sex.errorMessage,
         items: [
             {
-                value: "optionMale",
+                value: 1,
                 text: content["optionMale"] | safe,
-                checked: true if fields.sex.value == "optionMale"
+                checked: true if fields.sex.value == 1
             },
             {
-                value: "optionFemale",
+                value: 2,
                 text: content["optionFemale"] | safe,
-                checked: true if fields.sex.value == "optionFemale"
+                checked: true if fields.sex.value == 2
             },
             {
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.sex.value == "optionPreferNotToSay"
+                checked: true if fields.sex.value == 0
             }
         ]
     }) }}

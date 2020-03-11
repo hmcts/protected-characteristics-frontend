@@ -59,9 +59,9 @@
         errorMessage: { text: fields.provideDateOfBirth.errorMessage.message | safe } if fields.provideDateOfBirth.errorMessage,
         items: [
             {
-                value: "optionEnterDate",
+                value: 1,
                 text: content["optionEnterDate"],
-                checked: true if fields.provideDateOfBirth.value == "optionEnterDate",
+                checked: true if fields.provideDateOfBirth.value == 1,
                 conditional: {
                 html: dateOfBirthHtml
             }
@@ -70,9 +70,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"],
-                checked: true if fields.provideDateOfBirth.value == "optionPreferNotToSay"
+                checked: true if fields.provideDateOfBirth.value == 0
             }
         ]
     }) }}

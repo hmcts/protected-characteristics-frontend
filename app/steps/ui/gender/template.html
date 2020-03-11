@@ -29,14 +29,14 @@
         errorMessage: { text: fields.gender.errorMessage.message | safe } if fields.gender.errorMessage,
         items: [
             {
-                value: "optionYes",
+                value: 1,
                 text: content["optionYes"] | safe,
-                checked: true if fields.gender.value == "optionYes"
+                checked: true if fields.gender.value == 1
             },
             {
-                value: "optionNo",
+                value: 2,
                 text: content["optionNo"] | safe,
-                checked: true if fields.gender.value == "optionNo",
+                checked: true if fields.gender.value == 2,
                 conditional: {
                     html: noDetailsHtml
                 }
@@ -45,9 +45,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.gender.value == "optionPreferNotToSay"
+                checked: true if fields.gender.value == 0
             }
         ]
     }) }}

@@ -11,7 +11,7 @@ class ApplicantLanguage extends ValidationStep {
     nextStepOptions() {
         return {
             options: [
-                {key: 'language', value: 'optionOther', choice: 'otherLanguage'}
+                {key: 'language', value: '2', choice: 'otherLanguage'}
             ]
         };
     }

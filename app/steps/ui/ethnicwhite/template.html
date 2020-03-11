@@ -29,24 +29,24 @@
         errorMessage: { text: fields.ethnicGroupWhite.errorMessage.message | safe } if fields.ethnicGroupWhite.errorMessage,
         items: [
             {
-                value: "optionBritish",
+                value: 1,
                 text: content["optionBritish"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionBritish"
+                checked: true if fields.ethnicGroupWhite.value == 1
             },
             {
-                value: "optionIrish",
+                value: 2,
                 text: content["optionIrish"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionIrish"
+                checked: true if fields.ethnicGroupWhite.value == 2
             },
             {
-                value: "optionGypsy",
+                value: 3,
                 text: content["optionGypsy"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionGypsy"
+                checked: true if fields.ethnicGroupWhite.value == 3
             },
             {
-                value: "optionOther",
+                value: 4,
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionOther",
+                checked: true if fields.ethnicGroupWhite.value == 4,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -55,9 +55,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionPreferNotToSay"
+                checked: true if fields.ethnicGroupWhite.value == 0
             }
         ]
     }) }}

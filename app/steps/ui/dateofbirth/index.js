@@ -14,7 +14,7 @@ class ApplicantDateOfBirth extends DateStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.provideDateOfBirth === 'optionEnterDate') {
+        if (ctx.provideDateOfBirth === '1') {
             const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 
             const today = new Date();

@@ -29,14 +29,14 @@
         errorMessage: { text: fields.language.errorMessage.message | safe } if fields.language.errorMessage,
         items: [
             {
-                value: "optionEnglishWelsh",
+                value: 1,
                 text: content["optionEnglishWelsh"] | safe,
-                checked: true if fields.language.value == "optionEnglishWelsh"
+                checked: true if fields.language.value == 1
             },
             {
-                value: "optionOther",
+                value: 2,
                 text: content["optionOther"] | safe,
-                checked: true if fields.language.value == "optionOther",
+                checked: true if fields.language.value == 2,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -45,9 +45,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.language.value == "optionPreferNotToSay"
+                checked: true if fields.language.value == 0
             }
         ]
     }) }}

@@ -17,22 +17,22 @@
         errorMessage: { text: fields.disability.errorMessage.message | safe } if fields.disability.errorMessage,
         items: [
             {
-                value: "optionYes",
+                value: 1,
                 text: content["optionYes"] | safe,
-                checked: true if fields.disability.value == "optionYes"
+                checked: true if fields.disability.value == 1
             },
             {
-                value: "optionNo",
+                value: 2,
                 text: content["optionNo"] | safe,
-                checked: true if fields.disability.value == "optionNo"
+                checked: true if fields.disability.value == 2
             },
             {
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.disability.value == "optionPreferNotToSay"
+                checked: true if fields.disability.value == 0
             }
         ]
     }) }}

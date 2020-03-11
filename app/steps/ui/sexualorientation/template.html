@@ -29,24 +29,24 @@
         errorMessage: { text: fields.sexualOrientation.errorMessage.message | safe } if fields.sexualOrientation.errorMessage,
         items: [
             {
-                value: "optionHeterosexual",
+                value: 1,
                 text: content["optionHeterosexual"] | safe,
-                checked: true if fields.sexualOrientation.value == "optionHeterosexual"
+                checked: true if fields.sexualOrientation.value == 1
             },
             {
-                value: "optionGayLesbian",
+                value: 2,
                 text: content["optionGayLesbian"] | safe,
-                checked: true if fields.sexualOrientation.value == "optionGayLesbian"
+                checked: true if fields.sexualOrientation.value == 2
             },
             {
-                value: "optionBisexual",
+                value: 3,
                 text: content["optionBisexual"] | safe,
-                checked: true if fields.sexualOrientation.value == "optionBisexual"
+                checked: true if fields.sexualOrientation.value == 3
             },
             {
-                value: "optionOther",
+                value: 4,
                 text: content["optionOther"] | safe,
-                checked: true if fields.sexualOrientation.value == "optionOther",
+                checked: true if fields.sexualOrientation.value == 4,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -55,9 +55,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.sexualOrientation.value == "optionPreferNotToSay"
+                checked: true if fields.sexualOrientation.value == 0
             }
         ]
     }) }}
