@@ -19,4 +19,3 @@ router.get(`${config.app.basePath}/health`, (req, res) => {
 
 module.exports = router;
 module.exports.osHostname = osHostname;
-
