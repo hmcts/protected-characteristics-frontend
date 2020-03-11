@@ -16,6 +16,7 @@ const strykerConfiguration = config => {
           'app/steps/ui/**/index.js'
       ],
         files: ['*.js', '*.json', 'app/**', 'git.properties*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
+        maxConcurrentTestRunners: 1,
         symlinkNodeModules: true,
         htmlReporter: {baseDir: 'functional-output/mutation-unittests'},
         mochaOptions: {
