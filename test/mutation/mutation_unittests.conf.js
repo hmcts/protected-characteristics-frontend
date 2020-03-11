@@ -13,9 +13,9 @@ const strykerConfiguration = config => {
         coverageAnalysis: 'perTest',
         mutate:
       [
-          'app/steps/ui/**/index.js'
+          'app/steps/ui/**/index.js', '!app/healthcheck.js'
       ],
-        files: ['*.js', '*.json', 'app/**', 'git.properties*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
+        // files: ['*.js', '*.json', 'app/**', '**.*', !'app/healthcheck.js.*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
         maxConcurrentTestRunners: 1,
         symlinkNodeModules: true,
         htmlReporter: {baseDir: 'functional-output/mutation-unittests'},
