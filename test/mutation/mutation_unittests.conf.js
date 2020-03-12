@@ -10,10 +10,11 @@ const strykerConfiguration = config => {
         ],
         testFramework: 'mocha',
         coverageAnalysis: 'perTest',
-        mutate: [
-            'app/steps/ui/**/index.js'
-        ],
-        files: ['*.js', '*.json', 'app/**', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
+        mutate:
+      [
+          'app/steps/ui/**/index.js'
+      ],
+        files: ['*.js', '*.json', 'app/**', 'git.properties*', 'test/unit/*', 'test/data/**', 'test/service-stubs/**'],
         maxConcurrentTestRunners: 1,
         symlinkNodeModules: true,
         htmlReporter: {baseDir: 'functional-output/mutation-unittests'},
