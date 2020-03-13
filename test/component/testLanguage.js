@@ -29,7 +29,7 @@ describe('ApplicantLanguage', () => {
 
         it(`test it redirects to applicant english level page: ${expectedNextUrlForApplicantEnglishLevel}`, (done) => {
             const data = {
-                language: 'optionOther'
+                language: '2'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEnglishLevel);
@@ -37,7 +37,7 @@ describe('ApplicantLanguage', () => {
 
         it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex}`, (done) => {
             const data = {
-                language: 'optionEnglishWelsh'
+                language: '1'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);

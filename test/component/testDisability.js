@@ -29,7 +29,7 @@ describe('ApplicantDisability', () => {
 
         it(`test it redirects to applicant disability implications page: ${expectedNextUrlForApplicantDisabilityImplications}`, (done) => {
             const data = {
-                disability: 'optionYes'
+                disability: '1'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplications);
@@ -37,7 +37,7 @@ describe('ApplicantDisability', () => {
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                disability: 'optionNo'
+                disability: '2'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);

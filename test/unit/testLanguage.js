@@ -19,7 +19,7 @@ describe('ApplicantLanguage', () => {
             const nextStepOptions = ApplicantLanguage.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'language', value: 'optionOther', choice: 'otherLanguage'},
+                    {key: 'language', value: '2', choice: 'otherLanguage'},
                 ]
             });
             done();
