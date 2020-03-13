@@ -3,12 +3,11 @@ const strykerConfiguration = config => {
         testRunner: 'mocha',
         mutator: 'javascript',
         transpilers: [],
-        reporter:
-      [
-          'clear-text',
-          'progress',
-          'html'
-      ],
+        reporter: [
+            'clear-text',
+            'progress',
+            'html'
+        ],
         testFramework: 'mocha',
         coverageAnalysis: 'perTest',
         mutate:
@@ -20,20 +19,18 @@ const strykerConfiguration = config => {
         symlinkNodeModules: true,
         htmlReporter: {baseDir: 'functional-output/mutation-unittests'},
         mochaOptions: {
-            files:
-        [
-            'test/unit/*'
-        ],
+            files: [
+                'test/unit/*'
+            ],
             timeout: 8000
         },
         // logLevel: 'debug',
-        plugins:
-      [
-          'stryker-mocha-runner',
-          'stryker-mocha-framework',
-          'stryker-javascript-mutator',
-          'stryker-html-reporter'
-      ]
+        plugins: [
+            'stryker-mocha-runner',
+            'stryker-mocha-framework',
+            'stryker-javascript-mutator',
+            'stryker-html-reporter'
+        ]
     });
 };
 
