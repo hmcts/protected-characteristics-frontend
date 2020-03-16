@@ -22,14 +22,14 @@ describe('ApplicantReligion', () => {
 
         it('should return the ctx with the ethnicity', (done) => {
             ctx = {
-                'ethnicity': '8',
-                'ethnicity_other': 'Other ethnicity'
+                'religion': '8',
+                'religion_other': 'Other religion'
             };
             errors = [];
             [ctx, errors] = ApplicantReligion.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                ethnicity: '8',
-                ethnicity_other: 'Other ethnicity'
+                religion: '8',
+                religion_other: 'Other religion'
             });
             done();
         });
