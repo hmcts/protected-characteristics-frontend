@@ -35,7 +35,7 @@
 //                 'dod-date': '2018-11-20T00:00:00.000Z',
 //                 'dod-formattedDate': '20 November 2018',
 //                 'dobknown': 'optionYes',
-//                 'dob-date': '1977-01-01T00:00:00.000Z',
+//                 'dob': '1977-01-01T00:00:00.000Z',
 //                 'alias': 'optionYes',
 //                 'deceasedName': 'Mike Samuels',
 //                 'address': {

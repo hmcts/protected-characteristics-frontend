@@ -18,11 +18,11 @@ describe('ApplicantDisabilityImplicationAreas', () => {
         it('should return the context with the disability implications areas', (done) => {
             const req = {
                 session: {
-                    form: {
+                    ctx: {
                         disabilityimplicationsareas: {
                             disabilityImplicationsAreas: [
-                                'optionMobility',
-                                'optionMemory'
+                                'disability_vision',
+                                'disability_memory'
                             ]
                         }
                     }
@@ -31,8 +31,8 @@ describe('ApplicantDisabilityImplicationAreas', () => {
 
             const ctx = ApplicantDisabilityImplicationAreas.getContextData(req);
             expect(ctx.disabilityImplicationsAreas).to.deep.equal([
-                'optionMobility',
-                'optionMemory'
+                'disability_vision',
+                'disability_memory'
             ]);
             done();
         });

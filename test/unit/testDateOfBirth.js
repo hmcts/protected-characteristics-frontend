@@ -58,11 +58,11 @@ describe('ApplicantDateOfBirth', () => {
             [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(errors).to.deep.equal([
                 {
-                    field: 'dob-date',
-                    href: '#dob-date',
+                    field: 'dob',
+                    href: '#dob',
                     msg: {
-                        summary: content.errors['dob-date'].dateInFuture.summary,
-                        message: content.errors['dob-date'].dateInFuture.message
+                        summary: content.errors.dob.dateInFuture.summary,
+                        message: content.errors.dob.dateInFuture.message
                     }
                 }
             ]);

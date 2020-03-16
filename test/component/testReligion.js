@@ -27,7 +27,7 @@ describe('ApplicantReligion', () => {
 
         it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability}`, (done) => {
             const data = {
-                religion: 'optionNoReligion'
+                religion: '1'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);

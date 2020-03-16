@@ -27,7 +27,8 @@ describe('ApplicantDisabilityImplicationAreas', () => {
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                disabilityImplicationsAreas: ['optionVision', 'optionDexterity']
+                disability_vision: '1',
+                disability_dexterity: '1'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
