@@ -8,10 +8,6 @@ const ApplicantEthnicBackgroundBlack = require('app/steps/ui/ethnicblack');
 const ApplicantEthnicBackgroundOther = require('app/steps/ui/ethnicother');
 const ApplicantReligion = require('app/steps/ui/religion');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const expect = require('chai').expect;
-const initSteps = require('app/core/initSteps');
-const steps = initSteps([`${__dirname}/../../app/steps/ui`]);
-const ApplicantEthnicGroup = steps.ApplicantEthnicGroup;
 const config = require('app/config');
 const basePath = config.app.basePath;
 
@@ -89,26 +85,6 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - when no data is entered`, (done) => {
             testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantReligion);
-        });
-    });
-
-    describe('handlePost()', () => {
-        let ctx;
-        let errors;
-        let formdata;
-        const session = {};
-        it('sets the ethnicity and resets "other" text when selecting "None"', (done) => {
-            ctx = {
-                'ethnic_group': '0'
-            };
-            errors = [];
-            [ctx, errors] = ApplicantEthnicGroup.handlePost(ctx, errors, formdata, session);
-            expect(ctx).to.deep.equal({
-                'ethnic_group': '0',
-                'ethnicity': '0',
-                'ethnicity_other': null
-            });
-            done();
         });
     });
 });

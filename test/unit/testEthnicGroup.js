@@ -29,4 +29,24 @@ describe('ApplicantEthnicGroup', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+        it('sets the ethnicity and resets "other" text when selecting "None"', (done) => {
+            ctx = {
+                'ethnic_group': '0'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantEthnicGroup.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'ethnic_group': '0',
+                'ethnicity': '0',
+                'ethnicity_other': null
+            });
+            done();
+        });
+    });
 });
