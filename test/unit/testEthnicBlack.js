@@ -13,4 +13,25 @@ describe('ApplicantEthnicBackgroundBlack', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should set the ethnicity_other field to null when not selected', (done) => {
+            ctx = {
+                'ethnicity': '14',
+                'ethnicity_other': 'To be set to null'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantEthnicBackgroundBlack.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                ethnicity: '14',
+                ethnicity_other: null
+            });
+            done();
+        });
+    });
 });

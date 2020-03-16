@@ -10,7 +10,7 @@ class ApplicantEthnicBackgroundWhite extends ValidationStep {
 
     handlePost(ctx, errors) {
         if (ctx.ethnicity !== '4') {
-            delete ctx.ethnicity_other;
+            ctx.ethnicity_other = null;
         }
         return [ctx, errors];
     }

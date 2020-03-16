@@ -13,4 +13,24 @@ describe('ApplicantGenderSameAsSex', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should delete the gender_other field from the context when not selected', (done) => {
+            ctx = {
+                'gender_different': '1',
+                'gender_other': 'To be deleted'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantGenderSameAsSex.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                gender_different: '1'
+            });
+            done();
+        });
+    });
 });
