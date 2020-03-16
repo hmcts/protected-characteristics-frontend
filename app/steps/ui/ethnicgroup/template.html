@@ -5,8 +5,8 @@
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "ethnicGroup",
-        name: "ethnicGroup",
+        idPrefix: "ethnic_group",
+        name: "ethnic_group",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -14,47 +14,47 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.ethnicGroup.errorMessage.message | safe } if fields.ethnicGroup.errorMessage,
+        errorMessage: { text: fields.ethnic_group.errorMessage.message | safe } if fields.ethnic_group.errorMessage,
         items: [
             {
-                value: "optionWhite",
+                value: 1,
                 text: content["optionWhite"] | safe,
                 hint: {
                     text: content["optionWhiteHint"] | safe
                 },
-                checked: true if fields.ethnicGroup.value == "optionWhite"
+                checked: true if fields.ethnic_group.value == 1
             },
             {
-                value: "optionMixed",
+                value: 2,
                 text: content["optionMixed"] | safe,
                 hint: {
                     text: content["optionMixedHint"] | safe
                 },
-                checked: true if fields.ethnicGroup.value == "optionMixed"
+                checked: true if fields.ethnic_group.value == 2
             },
             {
-                value: "optionAsian",
+                value: 3,
                 text: content["optionAsian"] | safe,
                 hint: {
                     text: content["optionAsianHint"] | safe
                 },
-                checked: true if fields.ethnicGroup.value == "optionAsian"
+                checked: true if fields.ethnic_group.value == 3
             },
             {
-                value: "optionBlack",
+                value: 4,
                 text: content["optionBlack"] | safe,
                 hint: {
                     text: content["optionBlackHint"] | safe
                 },
-                checked: true if fields.ethnicGroup.value == "optionBlack"
+                checked: true if fields.ethnic_group.value == 4
             },
             {
-                value: "optionOther",
+                value: 5,
                 text: content["optionOther"] | safe,
                 hint: {
                     text: content["optionOtherHint"] | safe
                 },
-                checked: true if fields.ethnicGroup.value == "optionOther"
+                checked: true if fields.ethnic_group.value == 5
             },
             {
                 divider: common["or"] | safe
@@ -62,7 +62,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicGroup.value == 0
+                checked: true if fields.ethnic_group.value == 0
             }
         ]
     }) }}

@@ -19,11 +19,11 @@ describe('ApplicantEthnicGroup', () => {
             const nextStepOptions = ApplicantEthnicGroup.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'ethnicGroup', value: 'optionWhite', choice: 'White'},
-                    {key: 'ethnicGroup', value: 'optionMixed', choice: 'Mixed'},
-                    {key: 'ethnicGroup', value: 'optionAsian', choice: 'Asian'},
-                    {key: 'ethnicGroup', value: 'optionBlack', choice: 'Black'},
-                    {key: 'ethnicGroup', value: 'optionOther', choice: 'Other'},
+                    {key: 'ethnic_group', value: '1', choice: 'White'},
+                    {key: 'ethnic_group', value: '2', choice: 'Mixed'},
+                    {key: 'ethnic_group', value: '3', choice: 'Asian'},
+                    {key: 'ethnic_group', value: '4', choice: 'Black'},
+                    {key: 'ethnic_group', value: '5', choice: 'Other'},
                 ]
             });
             done();

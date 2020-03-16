@@ -3,7 +3,7 @@
   "id": "ethnicGroup",
   "type": "object",
   "properties": {
-    "ethnicGroup": {
+    "ethnic_group": {
       "type": "string",
       "minLength": 1
     },
