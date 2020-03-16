@@ -20,6 +20,20 @@ describe('ApplicantReligion', () => {
         let formdata;
         const session = {};
 
+        it('should return the ctx with the ethnicity', (done) => {
+            ctx = {
+                'ethnicity': '8',
+                'ethnicity_other': 'Other ethnicity'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantReligion.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                ethnicity: '8',
+                ethnicity_other: 'Other ethnicity'
+            });
+            done();
+        });
+
         it('should delete the religion_other field from the context when not selected', (done) => {
             ctx = {
                 'religion': '1',

@@ -20,6 +20,20 @@ describe('ApplicantEthnicBackgroundMixed', () => {
         let formdata;
         const session = {};
 
+        it('should return the ctx with the ethnicity', (done) => {
+            ctx = {
+                'ethnicity': '8',
+                'ethnicity_other': 'Other ethnicity'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantEthnicBackgroundMixed.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                ethnicity: '8',
+                ethnicity_other: 'Other ethnicity'
+            });
+            done();
+        });
+
         it('should set the ethnicity_other field to null when not selected', (done) => {
             ctx = {
                 'ethnicity': '5',
