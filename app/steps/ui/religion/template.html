@@ -6,12 +6,12 @@
 
 {% set otherDetailsHtml %}
     {{ govukTextarea({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "religion_other",
+        id: "religion_other",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.religion_other.value | safe
     }) }}
 {% endset -%}
 

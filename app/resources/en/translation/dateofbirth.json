@@ -35,7 +35,7 @@
         "message": "Enter a valid year of birth"
       }
     },
-    "dob-date": {
+    "dob": {
       "invalid": {
         "summary": "You need to enter a valid date of birth",
         "message": "Enter a valid date of birth"

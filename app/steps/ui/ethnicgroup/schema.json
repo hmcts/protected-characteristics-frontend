@@ -6,6 +6,10 @@
     "ethnicGroup": {
       "type": "string",
       "minLength": 1
+    },
+    "ethnicity": {
+      "type": "string",
+      "minLength": 1
     }
   }
 }

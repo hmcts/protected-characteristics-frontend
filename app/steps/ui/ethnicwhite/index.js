@@ -7,6 +7,14 @@ class ApplicantEthnicBackgroundWhite extends ValidationStep {
     static getUrl() {
         return '/white-ethnic-group';
     }
+
+    handlePost(ctx, errors) {
+        if (ctx.ethnicity !== '4') {
+            delete ctx.ethnicity_other;
+        }
+        return [ctx, errors];
+    }
+
 }
 
 module.exports = ApplicantEthnicBackgroundWhite;

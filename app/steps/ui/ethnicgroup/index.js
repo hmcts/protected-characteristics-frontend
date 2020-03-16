@@ -8,6 +8,18 @@ class ApplicantEthnicGroup extends ValidationStep {
         return '/ethnic-group';
     }
 
+    handlePost(ctx, errors) {
+        if (ctx.ethnicGroup === '0') {
+            ctx.ethnicity = '0';
+            ctx.ethnicity_other = null;
+        }
+        return [ctx, errors];
+    }
+
+    ignoreFieldsOnPost() {
+        return ['ethnicGroup'];
+    }
+
     nextStepOptions() {
         return {
             options: [

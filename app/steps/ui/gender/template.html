@@ -6,19 +6,19 @@
 
 {% set noDetailsHtml %}
     {{ govukInput({
-        name: "noDetails",
-        id: "noDetails",
+        name: "gender_other",
+        id: "gender_other",
         label: {
             text: content["optionNoDetails"] | safe
         },
-        value: fields.noDetails.value | safe
+        value: fields.gender_other.value | safe
     }) }}
 {% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "gender",
-        name: "gender",
+        idPrefix: "gender_different",
+        name: "gender_different",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -26,17 +26,17 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.gender.errorMessage.message | safe } if fields.gender.errorMessage,
+        errorMessage: { text: fields.gender_different.errorMessage.message | safe } if fields.gender_different.errorMessage,
         items: [
             {
                 value: 1,
                 text: content["optionYes"] | safe,
-                checked: true if fields.gender.value == 1
+                checked: true if fields.gender_different.value == 1
             },
             {
                 value: 2,
                 text: content["optionNo"] | safe,
-                checked: true if fields.gender.value == 2,
+                checked: true if fields.gender_different.value == 2,
                 conditional: {
                     html: noDetailsHtml
                 }
@@ -47,7 +47,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.gender.value == 0
+                checked: true if fields.gender_different.value == 0
             }
         ]
     }) }}

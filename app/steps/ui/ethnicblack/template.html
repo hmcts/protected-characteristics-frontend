@@ -6,19 +6,19 @@
 
 {% set otherDetailsHtml %}
     {{ govukInput({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "ethnicity_other",
+        id: "ethnicity_other",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.ethnicity_other.value | safe
     }) }}
 {% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "ethnicGroupBlack",
-        name: "ethnicGroupBlack",
+        idPrefix: "ethnicity",
+        name: "ethnicity",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -26,22 +26,22 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.ethnicGroupBlack.errorMessage.message | safe } if fields.ethnicGroupBlack.errorMessage,
+        errorMessage: { text: fields.ethnicity.errorMessage.message | safe } if fields.ethnicity.errorMessage,
         items: [
             {
                 value: 14,
                 text: content["optionAfrican"] | safe,
-                checked: true if fields.ethnicGroupBlack.value == 14
+                checked: true if fields.ethnicity.value == 14
             },
             {
                 value: 15,
                 text: content["optionCaribbean"] | safe,
-                checked: true if fields.ethnicGroupBlack.value == 15
+                checked: true if fields.ethnicity.value == 15
             },
             {
                 value: 16,
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicGroupBlack.value == 16,
+                checked: true if fields.ethnicity.value == 16,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -52,7 +52,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicGroupBlack.value == 0
+                checked: true if fields.ethnicity.value == 0
             }
         ]
     }) }}

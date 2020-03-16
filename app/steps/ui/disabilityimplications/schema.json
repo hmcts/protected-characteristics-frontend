@@ -3,7 +3,7 @@
   "id": "disabilityImplications",
   "type": "object",
   "properties": {
-    "disabilityImplications": {
+    "disability_impact": {
       "type": "string",
       "minLength": 1
     }

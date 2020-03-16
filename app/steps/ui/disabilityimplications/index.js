@@ -11,8 +11,8 @@ class ApplicantDisabilityImplications extends ValidationStep {
     nextStepOptions() {
         return {
             options: [
-                {key: 'disabilityImplications', value: '1', choice: 'Yes'},
-                {key: 'disabilityImplications', value: '2', choice: 'Yes'}
+                {key: 'disability_impact', value: '1', choice: 'Yes'},
+                {key: 'disability_impact', value: '2', choice: 'Yes'}
             ]
         };
     }

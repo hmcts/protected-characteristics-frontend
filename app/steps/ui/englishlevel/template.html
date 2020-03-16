@@ -5,8 +5,8 @@
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "englishLevel",
-        name: "englishLevel",
+        idPrefix: "english_language_level",
+        name: "english_language_level",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -14,27 +14,27 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.englishLevel.errorMessage.message | safe } if fields.englishLevel.errorMessage,
+        errorMessage: { text: fields.english_language_level.errorMessage.message | safe } if fields.english_language_level.errorMessage,
         items: [
             {
                 value: 1,
                 text: content["optionVeryWell"] | safe,
-                checked: true if fields.englishLevel.value == 1
+                checked: true if fields.english_language_level.value == 1
             },
             {
                 value: 2,
                 text: content["optionWell"] | safe,
-                checked: true if fields.englishLevel.value == 2
+                checked: true if fields.english_language_level.value == 2
             },
             {
                 value: 3,
                 text: content["optionNotWell"] | safe,
-                checked: true if fields.englishLevel.value == 3
+                checked: true if fields.english_language_level.value == 3
             },
             {
                 value: 4,
                 text: content["optionNotAtAll"] | safe,
-                checked: true if fields.englishLevel.value == 4
+                checked: true if fields.english_language_level.value == 4
             },
             {
                 divider: common["or"] | safe
@@ -42,7 +42,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.englishLevel.value == 0
+                checked: true if fields.english_language_level.value == 0
             }
         ]
     }) }}

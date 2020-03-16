@@ -3,7 +3,7 @@
   "id": "maritalStatus",
   "type": "object",
   "properties": {
-    "maritalStatus": {
+    "marriage": {
       "type": "string",
       "minLength": 1
     }

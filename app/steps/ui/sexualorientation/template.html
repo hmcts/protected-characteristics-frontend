@@ -6,19 +6,19 @@
 
 {% set otherDetailsHtml %}
     {{ govukInput({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "sexuality_other",
+        id: "sexuality_other",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.sexuality_other.value | safe
     }) }}
 {% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "sexualOrientation",
-        name: "sexualOrientation",
+        idPrefix: "sexuality",
+        name: "sexuality",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -26,27 +26,27 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.sexualOrientation.errorMessage.message | safe } if fields.sexualOrientation.errorMessage,
+        errorMessage: { text: fields.sexuality.errorMessage.message | safe } if fields.sexuality.errorMessage,
         items: [
             {
                 value: 1,
                 text: content["optionHeterosexual"] | safe,
-                checked: true if fields.sexualOrientation.value == 1
+                checked: true if fields.sexuality.value == 1
             },
             {
                 value: 2,
                 text: content["optionGayLesbian"] | safe,
-                checked: true if fields.sexualOrientation.value == 2
+                checked: true if fields.sexuality.value == 2
             },
             {
                 value: 3,
                 text: content["optionBisexual"] | safe,
-                checked: true if fields.sexualOrientation.value == 3
+                checked: true if fields.sexuality.value == 3
             },
             {
                 value: 4,
                 text: content["optionOther"] | safe,
-                checked: true if fields.sexualOrientation.value == 4,
+                checked: true if fields.sexuality.value == 4,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -57,7 +57,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.sexualOrientation.value == 0
+                checked: true if fields.sexuality.value == 0
             }
         ]
     }) }}

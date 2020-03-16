@@ -5,8 +5,8 @@
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "pregnant",
-        name: "pregnant",
+        idPrefix: "pregnancy",
+        name: "pregnancy",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -14,17 +14,17 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.pregnant.errorMessage.message | safe } if fields.pregnant.errorMessage,
+        errorMessage: { text: fields.pregnancy.errorMessage.message | safe } if fields.pregnancy.errorMessage,
         items: [
             {
                 value: 1,
                 text: content["optionYes"] | safe,
-                checked: true if fields.pregnant.value == 1
+                checked: true if fields.pregnancy.value == 1
             },
             {
                 value: 2,
                 text: content["optionNo"] | safe,
-                checked: true if fields.pregnant.value == 2
+                checked: true if fields.pregnancy.value == 2
             },
             {
                 divider: common["or"] | safe
@@ -32,7 +32,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.pregnant.value == 0
+                checked: true if fields.pregnancy.value == 0
             }
         ]
     }) }}

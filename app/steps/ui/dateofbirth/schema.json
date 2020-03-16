@@ -3,7 +3,7 @@
   "id": "date-of-birth",
   "type": "object",
   "properties": {
-    "provideDateOfBirth": {
+    "dob_provided": {
       "type": "string",
       "minLength": 1
     },
@@ -22,7 +22,7 @@
       "minimum": 1000,
       "maximum": 9999
     },
-    "dob-date": {
+    "dob": {
       "type": "string",
       "format": "date-time"
     }

@@ -3,7 +3,7 @@
   "id": "pregnant",
   "type": "object",
   "properties": {
-    "pregnant": {
+    "pregnancy": {
       "type": "string",
       "minLength": 1
     }

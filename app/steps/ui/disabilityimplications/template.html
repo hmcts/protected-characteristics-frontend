@@ -5,8 +5,8 @@
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "disabilityImplications",
-        name: "disabilityImplications",
+        idPrefix: "disability_impact",
+        name: "disability_impact",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -14,22 +14,22 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.disabilityImplications.errorMessage.message | safe } if fields.disabilityImplications.errorMessage,
+        errorMessage: { text: fields.disability_impact.errorMessage.message | safe } if fields.disability_impact.errorMessage,
         items: [
             {
                 value: 1,
                 text: content["optionYesLot"] | safe,
-                checked: true if fields.disabilityImplications.value == 1
+                checked: true if fields.disability_impact.value == 1
             },
             {
                 value: 2,
                 text: content["optionYesLittle"] | safe,
-                checked: true if fields.disabilityImplications.value == 2
+                checked: true if fields.disability_impact.value == 2
             },
             {
                 value: 3,
                 text: content["optionNo"] | safe,
-                checked: true if fields.disabilityImplications.value == 3
+                checked: true if fields.disability_impact.value == 3
             },
             {
                 divider: common["or"] | safe
@@ -37,7 +37,7 @@
             {
                 value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.disabilityImplications.value == 0
+                checked: true if fields.disability_impact.value == 0
             }
         ]
     }) }}

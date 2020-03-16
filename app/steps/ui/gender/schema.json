@@ -3,7 +3,7 @@
   "id": "gender",
   "type": "object",
   "properties": {
-    "gender": {
+    "gender_different": {
       "type": "string",
       "minLength": 1
     }

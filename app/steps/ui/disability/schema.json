@@ -3,7 +3,7 @@
   "id": "disability",
   "type": "object",
   "properties": {
-    "disability": {
+    "disability_conditions": {
       "type": "string",
       "minLength": 1
     }

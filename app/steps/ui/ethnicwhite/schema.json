@@ -3,7 +3,7 @@
   "id": "ethnicGroupWhite",
   "type": "object",
   "properties": {
-    "ethnicGroupWhite": {
+    "ethnicity": {
       "type": "string",
       "minLength": 1
     }
