@@ -52,7 +52,7 @@ class Step {
     getContextData(req, res, featureToggle, fieldsToClearOnPost = []) {
         const session = req.session;
         let ctx = {};
-        Object.assign(ctx, session.form[this.section] || {});
+        Object.assign(ctx, session.ctx[this.section] || {});
         ctx.sessionID = req.sessionID;
         ctx = Object.assign(ctx, req.body);
 
@@ -122,6 +122,11 @@ class Step {
             fields = mapErrorsToFields(fields, errors);
         }
         return fields;
+    }
+
+    // Returns an array of fields to be ignored by the form data
+    ignoreFieldsOnPost() {
+        return [];
     }
 
     persistFormData(formdata, sessionID, req) {
