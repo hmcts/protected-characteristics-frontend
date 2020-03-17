@@ -4,8 +4,11 @@
   "type": "object",
   "properties": {
     "religion": {
-      "type": "string",
-      "minLength": 1
+      "type": [ "integer", "null" ],
+      "enum": [ 1, 2, 3, 4, 5, 6, 7, 8, null ]
+    },
+    "religion_other": {
+      "type": [ "string", "null" ]
     }
   }
 }

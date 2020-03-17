@@ -37,7 +37,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant white ethnic group page: ${expectedNextUrlForApplicantEthnicBackgroundWhite}`, (done) => {
             const data = {
-                ethnicGroup: 'optionWhite'
+                ethnic_group: '1'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicBackgroundWhite);
@@ -45,7 +45,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant mixed ethnic group page: ${expectedNextUrlForApplicantEthnicBackgroundMixed}`, (done) => {
             const data = {
-                ethnicGroup: 'optionMixed'
+                ethnic_group: '2'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicBackgroundMixed);
@@ -53,7 +53,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant asian ethnic group page: ${expectedNextUrlForApplicantEthnicBackgroundAsian}`, (done) => {
             const data = {
-                ethnicGroup: 'optionAsian'
+                ethnic_group: '3'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicBackgroundAsian);
@@ -61,7 +61,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant black ethnic group page: ${expectedNextUrlForApplicantEthnicBackgroundBlack}`, (done) => {
             const data = {
-                ethnicGroup: 'optionBlack'
+                ethnic_group: '4'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicBackgroundBlack);
@@ -69,7 +69,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant other ethnic group page: ${expectedNextUrlForApplicantEthnicBackgroundOther}`, (done) => {
             const data = {
-                ethnicGroup: 'optionOther'
+                ethnic_group: '5'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicBackgroundOther);
@@ -77,7 +77,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
             const data = {
-                ethnicGroup: 'optionPreferNotToSay'
+                ethnic_group: '0'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);

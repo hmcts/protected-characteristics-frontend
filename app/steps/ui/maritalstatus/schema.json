@@ -3,9 +3,9 @@
   "id": "maritalStatus",
   "type": "object",
   "properties": {
-    "maritalStatus": {
-      "type": "string",
-      "minLength": 1
+    "marriage": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, null ]
     }
   }
 }

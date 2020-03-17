@@ -27,7 +27,7 @@ describe('ApplicantEnglishLevel', () => {
 
         it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex}`, (done) => {
             const data = {
-                englishLevel: 'optionVeryWell'
+                english_language_level: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);

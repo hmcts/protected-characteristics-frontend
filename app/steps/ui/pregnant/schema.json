@@ -3,9 +3,9 @@
   "id": "pregnant",
   "type": "object",
   "properties": {
-    "pregnant": {
-      "type": "string",
-      "minLength": 1
+    "pregnancy": {
+      "type": ["integer", "null"],
+      "enum": [ 0, 1, 2, null ]
     }
   }
 }

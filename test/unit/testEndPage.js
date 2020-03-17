@@ -21,7 +21,7 @@ describe('EndPage', () => {
                 session: {
                     returnUrl: 'http://some-return-url/',
                     language: 'cy',
-                    form: {}
+                    ctx: {}
                 }
             };
 
@@ -38,7 +38,7 @@ describe('EndPage', () => {
                 sessionID: 'some session id',
                 session: {
                     language: 'cy',
-                    form: {}
+                    ctx: {}
                 }
             };
 

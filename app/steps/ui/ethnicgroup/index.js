@@ -8,14 +8,26 @@ class ApplicantEthnicGroup extends ValidationStep {
         return '/ethnic-group';
     }
 
+    handlePost(ctx, errors) {
+        if (ctx.ethnic_group === 0) {
+            ctx.ethnicity = 0;
+            ctx.ethnicity_other = null;
+        }
+        return [ctx, errors];
+    }
+
+    ignoreFieldsOnPost() {
+        return ['ethnic_group'];
+    }
+
     nextStepOptions() {
         return {
             options: [
-                {key: 'ethnicGroup', value: 'optionWhite', choice: 'White'},
-                {key: 'ethnicGroup', value: 'optionMixed', choice: 'Mixed'},
-                {key: 'ethnicGroup', value: 'optionAsian', choice: 'Asian'},
-                {key: 'ethnicGroup', value: 'optionBlack', choice: 'Black'},
-                {key: 'ethnicGroup', value: 'optionOther', choice: 'Other'},
+                {key: 'ethnic_group', value: 1, choice: 'White'},
+                {key: 'ethnic_group', value: 2, choice: 'Mixed'},
+                {key: 'ethnic_group', value: 3, choice: 'Asian'},
+                {key: 'ethnic_group', value: 4, choice: 'Black'},
+                {key: 'ethnic_group', value: 5, choice: 'Other'},
             ]
         };
     }
