@@ -124,18 +124,19 @@ class Step {
         return fields;
     }
 
-    // Returns an array of fields which need to be converted from strings to integers
-    integerFields() {
+    // Returns an array of fields which do not need to be parsed into integers
+    nonIntegerFields() {
         return [];
     }
 
     parseFields(fields) {
-        this.integerFields().forEach(field => {
-            if (fields[field] && !isNaN(parseInt(fields[field]))) {
-                fields[field] = parseInt(fields[field]);
-            }
-        });
-
+        if (fields) {
+            Object.keys(fields).forEach(field => {
+                if (!this.nonIntegerFields().includes(field)) {
+                    fields[field] = parseInt(fields[field]);
+                }
+            });
+        }
         return fields;
     }
 

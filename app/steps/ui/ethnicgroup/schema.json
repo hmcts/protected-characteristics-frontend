@@ -4,8 +4,7 @@
   "type": "object",
   "properties": {
     "ethnic_group": {
-      "type": "string",
-      "minLength": 1
+      "type": "integer"
     },
     "ethnicity": {
       "type": "integer"

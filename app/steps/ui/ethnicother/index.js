@@ -15,8 +15,8 @@ class ApplicantEthnicBackgroundOther extends ValidationStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['ethnicity'];
+    nonIntegerFields() {
+        return ['ethnicity_other'];
     }
 
 }

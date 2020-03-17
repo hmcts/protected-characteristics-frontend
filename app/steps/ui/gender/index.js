@@ -15,8 +15,8 @@ class ApplicantGenderSameAsSex extends ValidationStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['gender_different'];
+    nonIntegerFields() {
+        return ['gender_other'];
     }
 
 }

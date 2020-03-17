@@ -15,8 +15,8 @@ class ApplicantLanguage extends ValidationStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['language_main'];
+    nonIntegerFields() {
+        return ['language_other'];
     }
 
     nextStepOptions() {

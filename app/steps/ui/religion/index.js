@@ -15,8 +15,8 @@ class ApplicantReligion extends ValidationStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['religion'];
+    nonIntegerFields() {
+        return ['religion_other'];
     }
 
 }

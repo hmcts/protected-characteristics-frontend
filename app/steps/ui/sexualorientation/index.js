@@ -15,8 +15,8 @@ class ApplicantSexualOrientation extends ValidationStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['sexuality'];
+    nonIntegerFields() {
+        return ['sexuality_other'];
     }
 
 }

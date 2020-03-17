@@ -7,10 +7,6 @@ class ApplicantMaritalStatus extends ValidationStep {
     static getUrl() {
         return '/marital-status';
     }
-
-    integerFields() {
-        return ['marriage'];
-    }
 }
 
 module.exports = ApplicantMaritalStatus;

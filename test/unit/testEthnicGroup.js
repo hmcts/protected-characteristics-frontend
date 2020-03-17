@@ -19,11 +19,11 @@ describe('ApplicantEthnicGroup', () => {
             const nextStepOptions = ApplicantEthnicGroup.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'ethnic_group', value: '1', choice: 'White'},
-                    {key: 'ethnic_group', value: '2', choice: 'Mixed'},
-                    {key: 'ethnic_group', value: '3', choice: 'Asian'},
-                    {key: 'ethnic_group', value: '4', choice: 'Black'},
-                    {key: 'ethnic_group', value: '5', choice: 'Other'},
+                    {key: 'ethnic_group', value: 1, choice: 'White'},
+                    {key: 'ethnic_group', value: 2, choice: 'Mixed'},
+                    {key: 'ethnic_group', value: 3, choice: 'Asian'},
+                    {key: 'ethnic_group', value: 4, choice: 'Black'},
+                    {key: 'ethnic_group', value: 5, choice: 'Other'},
                 ]
             });
             done();
@@ -37,12 +37,12 @@ describe('ApplicantEthnicGroup', () => {
         const session = {};
         it('sets the ethnicity and resets "other" text when selecting "None"', (done) => {
             ctx = {
-                'ethnic_group': '0'
+                'ethnic_group': 0
             };
             errors = [];
             [ctx, errors] = ApplicantEthnicGroup.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                'ethnic_group': '0',
+                'ethnic_group': 0,
                 'ethnicity': 0,
                 'ethnicity_other': null
             });

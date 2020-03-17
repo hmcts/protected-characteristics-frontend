@@ -34,8 +34,8 @@ class ApplicantDateOfBirth extends DateStep {
         return [ctx, errors];
     }
 
-    integerFields() {
-        return ['dob_provided'];
+    nonIntegerFields() {
+        return ['dob', 'dob-day', 'dob-month', 'dob-year', 'dob-formattedDate'];
     }
 
     ignoreFieldsOnPost() {

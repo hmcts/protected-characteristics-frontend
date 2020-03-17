@@ -8,10 +8,6 @@ class ApplicantDisability extends ValidationStep {
         return '/disability';
     }
 
-    integerFields() {
-        return ['disability_conditions'];
-    }
-
     nextStepOptions() {
         return {
             options: [

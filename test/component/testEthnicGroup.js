@@ -77,7 +77,7 @@ describe('ApplicantEthnicGroup', () => {
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
             const data = {
-                ethnic_group: 'optionPreferNotToSay'
+                ethnic_group: '0'
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);

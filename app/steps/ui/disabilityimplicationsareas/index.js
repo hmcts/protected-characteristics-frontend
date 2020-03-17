@@ -52,6 +52,10 @@ class ApplicantDisabilityImplicationAreas extends ValidationStep {
         return [ctx, errors];
     }
 
+    nonIntegerFields() {
+        return ['disabilityImplicationsAreas', 'disability_other_details'];
+    }
+
 }
 
 module.exports = ApplicantDisabilityImplicationAreas;

@@ -9,7 +9,7 @@ class ApplicantEthnicGroup extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.ethnic_group === '0') {
+        if (ctx.ethnic_group === 0) {
             ctx.ethnicity = 0;
             ctx.ethnicity_other = null;
         }
@@ -23,11 +23,11 @@ class ApplicantEthnicGroup extends ValidationStep {
     nextStepOptions() {
         return {
             options: [
-                {key: 'ethnic_group', value: '1', choice: 'White'},
-                {key: 'ethnic_group', value: '2', choice: 'Mixed'},
-                {key: 'ethnic_group', value: '3', choice: 'Asian'},
-                {key: 'ethnic_group', value: '4', choice: 'Black'},
-                {key: 'ethnic_group', value: '5', choice: 'Other'},
+                {key: 'ethnic_group', value: 1, choice: 'White'},
+                {key: 'ethnic_group', value: 2, choice: 'Mixed'},
+                {key: 'ethnic_group', value: 3, choice: 'Asian'},
+                {key: 'ethnic_group', value: 4, choice: 'Black'},
+                {key: 'ethnic_group', value: 5, choice: 'Other'},
             ]
         };
     }
