@@ -4,8 +4,8 @@
   "type": "object",
   "properties": {
     "ethnicity": {
-      "type": "string",
-      "minLength": 1
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 9, 10, 11, 12, 13, null ]
     }
   }
 }

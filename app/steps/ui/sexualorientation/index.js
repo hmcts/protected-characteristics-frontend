@@ -9,10 +9,14 @@ class ApplicantSexualOrientation extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.sexuality !== '4' && ctx.sexuality_other) {
+        if (ctx.sexuality !== 4 && ctx.sexuality_other) {
             delete ctx.sexuality_other;
         }
         return [ctx, errors];
+    }
+
+    integerFields() {
+        return ['sexuality'];
     }
 
 }

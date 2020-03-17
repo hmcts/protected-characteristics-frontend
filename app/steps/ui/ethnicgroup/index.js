@@ -10,7 +10,7 @@ class ApplicantEthnicGroup extends ValidationStep {
 
     handlePost(ctx, errors) {
         if (ctx.ethnic_group === '0') {
-            ctx.ethnicity = '0';
+            ctx.ethnicity = 0;
             ctx.ethnicity_other = null;
         }
         return [ctx, errors];

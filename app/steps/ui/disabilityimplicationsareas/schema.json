@@ -2,5 +2,53 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "id": "disabilityImplicationsAreas",
   "type": "object",
-  "properties": {}
+  "properties": {
+    "disability_vision": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_hearing": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_mobility": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_dexterity": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_learning": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_memory": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_mental_health": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_stamina": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_social": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_other": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    },
+    "disability_other_details": {
+      "type": [ "string", "null" ]
+    },
+    "disability_none": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
+    }
+  }
 }

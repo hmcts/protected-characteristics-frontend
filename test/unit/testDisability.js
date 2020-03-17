@@ -19,7 +19,7 @@ describe('ApplicantDisability', () => {
             const nextStepOptions = ApplicantDisability.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'disability_conditions', value: '1', choice: 'Yes'}
+                    {key: 'disability_conditions', value: 1, choice: 'Yes'}
                 ]
             });
             done();

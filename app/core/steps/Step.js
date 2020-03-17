@@ -54,7 +54,7 @@ class Step {
         let ctx = {};
         Object.assign(ctx, session.ctx[this.section] || {});
         ctx.sessionID = req.sessionID;
-        ctx = Object.assign(ctx, req.body);
+        ctx = Object.assign(ctx, this.parseFields(req.body));
 
         if (req.method === 'POST') {
             forEach(fieldsToClearOnPost, (field) => {
@@ -121,6 +121,21 @@ class Step {
         if (!isEmpty(errors)) {
             fields = mapErrorsToFields(fields, errors);
         }
+        return fields;
+    }
+
+    // Returns an array of fields which need to be converted from strings to integers
+    integerFields() {
+        return [];
+    }
+
+    parseFields(fields) {
+        this.integerFields().forEach(field => {
+            if (fields[field] && !isNaN(parseInt(fields[field]))) {
+                fields[field] = parseInt(fields[field]);
+            }
+        });
+
         return fields;
     }
 

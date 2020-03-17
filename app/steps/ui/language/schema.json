@@ -4,7 +4,11 @@
   "type": "object",
   "properties": {
     "language_main": {
-      "type": "string",
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, null ]
+    },
+    "language_other": {
+      "type": [ "string", "null" ],
       "minLength": 1
     }
   }

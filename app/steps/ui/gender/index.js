@@ -9,10 +9,14 @@ class ApplicantGenderSameAsSex extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.gender_different !== '2' && ctx.gender_other) {
+        if (ctx.gender_different !== 2 && ctx.gender_other) {
             delete ctx.gender_other;
         }
         return [ctx, errors];
+    }
+
+    integerFields() {
+        return ['gender_different'];
     }
 
 }

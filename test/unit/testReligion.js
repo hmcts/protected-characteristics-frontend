@@ -22,13 +22,13 @@ describe('ApplicantReligion', () => {
 
         it('should return the ctx with the ethnicity', (done) => {
             ctx = {
-                'religion': '8',
+                'religion': 8,
                 'religion_other': 'Other religion'
             };
             errors = [];
             [ctx, errors] = ApplicantReligion.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                religion: '8',
+                religion: 8,
                 religion_other: 'Other religion'
             });
             done();
@@ -36,13 +36,13 @@ describe('ApplicantReligion', () => {
 
         it('should delete the religion_other field from the context when not selected', (done) => {
             ctx = {
-                'religion': '1',
+                'religion': 1,
                 'religion_other': 'To be deleted'
             };
             errors = [];
             [ctx, errors] = ApplicantReligion.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                religion: '1'
+                religion: 1
             });
             done();
         });

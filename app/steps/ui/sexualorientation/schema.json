@@ -4,8 +4,11 @@
   "type": "object",
   "properties": {
     "sexuality": {
-      "type": "string",
-      "minLength": 1
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, 3, 4, null ]
+    },
+    "sexuality_other": {
+      "type": [ "string", "null" ]
     }
   }
 }

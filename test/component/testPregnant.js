@@ -27,7 +27,7 @@ describe('ApplicantPregnant', () => {
 
         it(`test it redirects to end page: ${expectedNextUrlForEndPage}`, (done) => {
             const data = {
-                pregnancy: '1'
+                pregnancy: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);

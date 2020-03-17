@@ -9,16 +9,20 @@ class ApplicantLanguage extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.language_main !== '2' && ctx.language_other) {
+        if (ctx.language_main !== 2 && ctx.language_other) {
             delete ctx.language_other;
         }
         return [ctx, errors];
     }
 
+    integerFields() {
+        return ['language_main'];
+    }
+
     nextStepOptions() {
         return {
             options: [
-                {key: 'language_main', value: '2', choice: 'otherLanguage'}
+                {key: 'language_main', value: 2, choice: 'otherLanguage'}
             ]
         };
     }

@@ -27,7 +27,7 @@ describe('ApplicantSexualOrientation', () => {
 
         it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus}`, (done) => {
             const data = {
-                sexuality: '1'
+                sexuality: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);

@@ -27,7 +27,7 @@ describe('ApplicantEthnicBackgroundBlack', () => {
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
             const data = {
-                ethnicity: '14'
+                ethnicity: 14
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);

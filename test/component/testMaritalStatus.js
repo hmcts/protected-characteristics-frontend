@@ -27,7 +27,7 @@ describe('ApplicantMaritalStatus', () => {
 
         it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup}`, (done) => {
             const data = {
-                marriage: '1'
+                marriage: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);

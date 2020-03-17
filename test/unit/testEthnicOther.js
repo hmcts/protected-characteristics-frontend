@@ -22,13 +22,13 @@ describe('ApplicantEthnicBackgroundOther', () => {
 
         it('should return the ctx with the ethnicity', (done) => {
             ctx = {
-                'ethnicity': '18',
+                'ethnicity': 18,
                 'ethnicity_other': 'Other ethnicity'
             };
             errors = [];
             [ctx, errors] = ApplicantEthnicBackgroundOther.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                ethnicity: '18',
+                ethnicity: 18,
                 ethnicity_other: 'Other ethnicity'
             });
             done();
@@ -36,13 +36,13 @@ describe('ApplicantEthnicBackgroundOther', () => {
 
         it('should set the ethnicity_other field to null when not selected', (done) => {
             ctx = {
-                'ethnicity': '17',
+                'ethnicity': 17,
                 'ethnicity_other': 'To be set to null'
             };
             errors = [];
             [ctx, errors] = ApplicantEthnicBackgroundOther.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                ethnicity: '17',
+                ethnicity: 17,
                 ethnicity_other: null
             });
             done();

@@ -8,10 +8,14 @@ class ApplicantDisability extends ValidationStep {
         return '/disability';
     }
 
+    integerFields() {
+        return ['disability_conditions'];
+    }
+
     nextStepOptions() {
         return {
             options: [
-                {key: 'disability_conditions', value: '1', choice: 'Yes'}
+                {key: 'disability_conditions', value: 1, choice: 'Yes'}
             ]
         };
     }

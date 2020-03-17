@@ -27,7 +27,7 @@ describe('ApplicantGenderSameAsSex', () => {
 
         it(`test it redirects to applicant sexual orientation page: ${expectedNextUrlForApplicantSexualOrientation}`, (done) => {
             const data = {
-                gender_different: '1'
+                gender_different: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSexualOrientation);

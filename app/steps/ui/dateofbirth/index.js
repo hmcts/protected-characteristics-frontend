@@ -14,7 +14,7 @@ class ApplicantDateOfBirth extends DateStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.dob_provided === '1') {
+        if (ctx.dob_provided === 1) {
             const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 
             const today = new Date();
@@ -32,6 +32,10 @@ class ApplicantDateOfBirth extends DateStep {
         }
 
         return [ctx, errors];
+    }
+
+    integerFields() {
+        return ['dob_provided'];
     }
 
     ignoreFieldsOnPost() {

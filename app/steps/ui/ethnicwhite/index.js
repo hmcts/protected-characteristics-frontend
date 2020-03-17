@@ -9,10 +9,14 @@ class ApplicantEthnicBackgroundWhite extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.ethnicity !== '4') {
+        if (ctx.ethnicity !== 4) {
             ctx.ethnicity_other = null;
         }
         return [ctx, errors];
+    }
+
+    integerFields() {
+        return ['ethnicity'];
     }
 
 }

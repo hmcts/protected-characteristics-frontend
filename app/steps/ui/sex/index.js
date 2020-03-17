@@ -7,6 +7,10 @@ class ApplicantSex extends ValidationStep {
     static getUrl() {
         return '/sex';
     }
+
+    integerFields() {
+        return ['sex'];
+    }
 }
 
 module.exports = ApplicantSex;

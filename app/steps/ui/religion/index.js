@@ -9,10 +9,14 @@ class ApplicantReligion extends ValidationStep {
     }
 
     handlePost(ctx, errors) {
-        if (ctx.religion !== '8') {
+        if (ctx.religion !== 8) {
             delete ctx.religion_other;
         }
         return [ctx, errors];
+    }
+
+    integerFields() {
+        return ['religion'];
     }
 
 }

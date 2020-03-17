@@ -22,13 +22,13 @@ describe('ApplicantEthnicBackgroundWhite', () => {
 
         it('should return the ctx with the ethnicity', (done) => {
             ctx = {
-                'ethnicity': '4',
+                'ethnicity': 4,
                 'ethnicity_other': 'Other ethnicity'
             };
             errors = [];
             [ctx, errors] = ApplicantEthnicBackgroundWhite.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                ethnicity: '4',
+                ethnicity: 4,
                 ethnicity_other: 'Other ethnicity'
             });
             done();
@@ -36,13 +36,13 @@ describe('ApplicantEthnicBackgroundWhite', () => {
 
         it('should set the ethnicity_other field to null when not selected', (done) => {
             ctx = {
-                'ethnicity': '1',
+                'ethnicity': 1,
                 'ethnicity_other': 'To be set to null'
             };
             errors = [];
             [ctx, errors] = ApplicantEthnicBackgroundWhite.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                ethnicity: '1',
+                ethnicity: 1,
                 ethnicity_other: null
             });
             done();
