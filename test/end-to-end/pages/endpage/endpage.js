@@ -1,11 +1,10 @@
 'use strict';
 
-const pageUnderTest = require('app/steps/ui/startpage/index');
+const pageUnderTest = require('app/steps/ui/endpage/index');
 
 module.exports = function () {
     const I = this;
     I.amOnPage(pageUnderTest.getUrl());
     I.seeCurrentUrlEquals(pageUnderTest.getUrl());
-    I.see('Continue to the question');
-    I.click('Continue to the question');
+    I.see('have answered the equality questions');
 };

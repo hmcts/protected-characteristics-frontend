@@ -3,7 +3,8 @@ exports.config = {
     helpers: {
         Puppeteer: {
             url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            show: false,
+            show: true,
+            headless: false,
             chrome: {
                 'ignoreHTTPSErrors': true,
                 'ignore-certificate-errors': true,
@@ -17,7 +18,16 @@ exports.config = {
                     '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
                     '--window-size=1440,1400'
                 ]
-            }
+            },
+            firefox: {
+                args: [
+                    '--ignore-certificate-errors',
+                    '--no-sandbox',
+                    '--proxy-server=proxyout.reform.hmcts.net:8080',
+                    '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
+                    '--window-size=1440,1400'
+                ],
+            },
         }
     },
     include: {
