@@ -27,7 +27,7 @@ describe('ApplicantEthnicBackgroundAsian', () => {
 
         it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
             const data = {
-                ethnicGroupAsian: 'optionIndian'
+                ethnicity: 9
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);

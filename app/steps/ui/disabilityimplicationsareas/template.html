@@ -6,12 +6,12 @@
 
 {% set otherDetailsHtml %}
     {{ govukTextarea({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "disability_other_details",
+        id: "disability_other_details",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.disability_other_details.value | safe
     }) }}
 {% endset -%}
 
@@ -32,7 +32,7 @@
         errorMessage: { text: fields.disabilityImplicationsAreas.errorMessage.message | safe } if fields.disabilityImplicationsAreas.errorMessage,
         items: [
             {
-                value: "optionVision",
+                value: "disability_vision",
                 text: content["optionVision"] | safe,
                 hint: {
                     text: content["optionVisionHint"] | safe
@@ -40,10 +40,10 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionVision" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_vision.value == 1
             },
             {
-                value: "optionHearing",
+                value: "disability_hearing",
                 text: content["optionHearing"] | safe,
                 hint: {
                     text: content["optionHearingHint"] | safe
@@ -51,10 +51,10 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionHearing" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_hearing.value == 1
             },
             {
-                value: "optionMobility",
+                value: "disability_mobility",
                 text: content["optionMobility"] | safe,
                 hint: {
                     text: content["optionMobilityHint"] | safe
@@ -62,10 +62,10 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMobility" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_mobility.value == 1
             },
             {
-                value: "optionDexterity",
+                value: "disability_dexterity",
                 text: content["optionDexterity"] | safe,
                 hint: {
                     text: content["optionDexterityHint"] | safe
@@ -73,42 +73,42 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionDexterity" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_dexterity.value == 1
             },
             {
-                value: "optionLearning",
+                value: "disability_learning",
                 text: content["optionLearning"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionLearning" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_learning.value == 1
             },
             {
-                value: "optionMemory",
+                value: "disability_memory",
                 text: content["optionMemory"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMemory" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_memory.value == 1
             },
             {
-                value: "optionMentalHealth",
+                value: "disability_health",
                 text: content["optionMentalHealth"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionMentalHealth" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_health.value == 1
             },
             {
-                value: "optionStamina",
+                value: "disability_stamina",
                 text: content["optionStamina"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionStamina" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_stamina.value == 1
             },
             {
-                value: "optionSocially",
+                value: "disability_social",
                 text: content["optionSocially"] | safe,
                 hint: {
                     text: content["optionSociallyHint"] | safe
@@ -116,26 +116,26 @@
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionSocially" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_social.value == 1
             },
             {
-                value: "optionOther",
+                value: "disability_other",
                 text: content["optionOther"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-select-choice"
                 },
-                checked: true if "optionOther" in fields.disabilityImplicationsAreas.value,
+                checked: true if fields.disability_other.value == 1,
                 conditional: {
                     html: otherDetailsHtml
                 }
             },
             {
-                value: "optionNone",
+                value: "disability_none",
                 text: content["optionNone"] | safe,
                 attributes: {
                     "data-mutually-exclusive": "js-deselect-choice"
                 },
-                checked: true if "optionNone" in fields.disabilityImplicationsAreas.value
+                checked: true if fields.disability_none.value == 1
             }
         ]
     }) }}

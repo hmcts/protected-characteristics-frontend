@@ -7,8 +7,6 @@
                 for (const elementToDeselect of elementsList2) {
                     const controls = elementToDeselect.getAttribute('aria-controls');
                     if (controls) {
-                        console.log(elementToDeselect);
-                        console.log('Controls: ', controls);
                         const controlledElement = document.querySelector('#' + controls);
                         controlledElement.classList.add('govuk-checkboxes__conditional--hidden');
                     }

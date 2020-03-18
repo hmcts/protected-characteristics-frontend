@@ -7,6 +7,18 @@ class ApplicantReligion extends ValidationStep {
     static getUrl() {
         return '/religion';
     }
+
+    handlePost(ctx, errors) {
+        if (ctx.religion !== 8) {
+            delete ctx.religion_other;
+        }
+        return [ctx, errors];
+    }
+
+    nonIntegerFields() {
+        return ['religion_other'];
+    }
+
 }
 
 module.exports = ApplicantReligion;

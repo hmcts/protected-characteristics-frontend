@@ -3,9 +3,9 @@
   "id": "englishLevel",
   "type": "object",
   "properties": {
-    "englishLevel": {
-      "type": "string",
-      "minLength": 1
+    "english_language_level": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, 3, 4, null ]
     }
   }
 }

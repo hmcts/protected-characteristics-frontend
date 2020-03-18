@@ -3,9 +3,11 @@
   "id": "ethnicGroup",
   "type": "object",
   "properties": {
-    "ethnicGroup": {
-      "type": "string",
-      "minLength": 1
+    "ethnic_group": {
+      "type": "integer"
+    },
+    "ethnicity": {
+      "type": "integer"
     }
   }
 }

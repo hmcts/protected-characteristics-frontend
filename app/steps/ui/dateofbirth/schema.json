@@ -3,9 +3,9 @@
   "id": "date-of-birth",
   "type": "object",
   "properties": {
-    "provideDateOfBirth": {
-      "type": "string",
-      "minLength": 1
+    "dob_provided": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, null ]
     },
     "dob-day": {
       "type": "integer",
@@ -22,7 +22,7 @@
       "minimum": 1000,
       "maximum": 9999
     },
-    "dob-date": {
+    "dob": {
       "type": "string",
       "format": "date-time"
     }

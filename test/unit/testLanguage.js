@@ -19,8 +19,28 @@ describe('ApplicantLanguage', () => {
             const nextStepOptions = ApplicantLanguage.nextStepOptions();
             expect(nextStepOptions).to.deep.equal({
                 options: [
-                    {key: 'language', value: 'optionOther', choice: 'otherLanguage'},
+                    {key: 'language_main', value: 2, choice: 'otherLanguage'},
                 ]
+            });
+            done();
+        });
+    });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should delete the language_other field from the context when not selected', (done) => {
+            ctx = {
+                'language': 1,
+                'language_other': 'To be deleted'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                language: 1
             });
             done();
         });

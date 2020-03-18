@@ -9,7 +9,7 @@
         {% set inlineErrors = {
             text:
             (
-            (fields["dob-date"].errorMessage.message + "<br>" if fields["dob-date"].errorMessage) +
+            (fields["dob"].errorMessage.message + "<br>" if fields["dob"].errorMessage) +
             (fields["dob-day"].errorMessage.message + "<br>" if fields["dob-day"].errorMessage) +
             (fields["dob-month"].errorMessage.message + "<br>" if fields["dob-month"].errorMessage) +
             (fields["dob-year"].errorMessage.message + "<br>" if fields["dob-year"].errorMessage)
@@ -27,17 +27,17 @@
             errorMessage: inlineErrors,
             items: [
                 {
-                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-day"].error or fields["dob-date"].error),
+                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-day"].error or fields["dob"].error),
                     name: "day",
                     value: fields["dob-day"].value | safe
                 },
                 {
-                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-month"].error or fields["dob-date"].error),
+                    classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-month"].error or fields["dob"].error),
                     name: "month",
                     value: fields["dob-month"].value | safe
                 },
                 {
-                    classes: "govuk-input--width-4" + (" govuk-input--error" if fields["dob-year"].error or fields["dob-date"].error),
+                    classes: "govuk-input--width-4" + (" govuk-input--error" if fields["dob-year"].error or fields["dob"].error),
                     name: "year",
                     value: fields["dob-year"].value | safe
                 }
@@ -47,8 +47,8 @@
 
     {{ govukRadios({
         classes: "govuk-radios",
-        idPrefix: "provideDateOfBirth",
-        name: "provideDateOfBirth",
+        idPrefix: "dob_provided",
+        name: "dob_provided",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -56,12 +56,12 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.provideDateOfBirth.errorMessage.message | safe } if fields.provideDateOfBirth.errorMessage,
+        errorMessage: { text: fields.dob_provided.errorMessage.message | safe } if fields.provideDateOfBirth.errorMessage,
         items: [
             {
-                value: "optionEnterDate",
+                value: 1,
                 text: content["optionEnterDate"],
-                checked: true if fields.provideDateOfBirth.value == "optionEnterDate",
+                checked: true if fields.dob_provided.value == 1,
                 conditional: {
                 html: dateOfBirthHtml
             }
@@ -70,9 +70,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"],
-                checked: true if fields.provideDateOfBirth.value == "optionPreferNotToSay"
+                checked: true if fields.dob_provided.value == 0
             }
         ]
     }) }}

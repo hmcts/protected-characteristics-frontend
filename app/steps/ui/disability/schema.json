@@ -3,9 +3,9 @@
   "id": "disability",
   "type": "object",
   "properties": {
-    "disability": {
-      "type": "string",
-      "minLength": 1
+    "disability_conditions": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, null ]
     }
   }
 }
