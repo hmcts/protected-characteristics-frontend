@@ -146,11 +146,12 @@ class Step {
     }
 
     persistFormData(formdata, sessionID, req) {
+        const correlationId = req.session.correlationId;
         const formData = ServiceMapper.map(
             'FormData',
             [config.services.orchestration.url, sessionID]
         );
-        return formData.post(req.authToken, req.session.serviceAuthorization, formdata);
+        return formData.post(correlationId, req.authToken, req.session.serviceAuthorization, formdata);
     }
 
     action(ctx, formdata) {

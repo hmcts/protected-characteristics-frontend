@@ -15,6 +15,7 @@ describe('FormDataService', () => {
         const endpoint = 'http://localhost';
         const inputForm = {deceased: {name: 'test'}};
         const expectedForm = {deceased: {name: 'test'}};
+        const correlationId = 'correlationId';
         const authToken = 'authToken';
         const serviceAuthorisation = 'serviceAuthorisation';
         const formData = new FormData(endpoint, 'abc123');
@@ -28,7 +29,7 @@ describe('FormDataService', () => {
             .reply(200, expectedForm);
 
         co(function* () {
-            const actualForm = yield formData.post(authToken, serviceAuthorisation, inputForm);
+            const actualForm = yield formData.post(correlationId, authToken, serviceAuthorisation, inputForm);
             expect(actualForm).to.deep.equal(expectedForm);
             done();
         }).catch(err => {

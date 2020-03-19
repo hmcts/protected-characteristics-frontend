@@ -25,7 +25,7 @@ module.exports = {
             url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:8888',
             port: 8888,
             paths: {
-                forms: '/forms'
+                forms: '/pcq/backend/submitAnswers'
             }
         }
     },

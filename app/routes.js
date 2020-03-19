@@ -15,26 +15,25 @@ router.use(registerIncomingService);
 router.use(setJourney);
 
 router.all('*', (req, res, next) => {
-    const applicationId = get(req.session.form, 'applicationId', 'init');
-    req.log = logger(applicationId);
+    const correlationId = get(req.session, 'correlationId', 'init');
+    req.log = logger(correlationId);
     req.log.info(`Processing ${req.method} for ${req.originalUrl}`);
     next();
 });
 
 router.use((req, res, next) => {
+    if (!req.session.correlationId) {
+        req.session.correlationId = uuidv4();
+    }
+    if (!req.session.ctx) {
+        req.session.ctx = {};
+    }
     if (!req.session.form) {
         req.session.form = {
             payloadVersion: config.payloadVersion,
             applicationId: uuidv4()
         };
         req.session.back = [];
-    }
-    next();
-});
-
-router.use((req, res, next) => {
-    if (!req.session.ctx) {
-        req.session.ctx = {};
     }
     next();
 });
