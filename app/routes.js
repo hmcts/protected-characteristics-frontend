@@ -21,6 +21,7 @@ router.all('*', (req, res, next) => {
     next();
 });
 
+// Initialise session objects
 router.use((req, res, next) => {
     if (!req.session.correlationId) {
         req.session.correlationId = uuidv4();
