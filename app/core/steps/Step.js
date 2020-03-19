@@ -151,6 +151,9 @@ class Step {
             'FormData',
             [config.services.orchestration.url, sessionID]
         );
+        // Set the completed date
+        formdata.completedDate = moment().toISOString();
+
         return formData.post(correlationId, req.authToken, req.session.serviceAuthorization, formdata);
     }
 

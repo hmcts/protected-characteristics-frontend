@@ -5,12 +5,13 @@ const router = require('express').Router();
 const initSteps = require('app/core/initSteps');
 const logger = require('app/components/logger');
 const get = require('lodash').get;
-const uuidv4 = require('uuid/v4');
 const shutter = require('app/shutter');
+const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const setJourney = require('app/middleware/setJourney');
 
 router.use(shutter);
+router.use(initSession);
 router.use(registerIncomingService);
 router.use(setJourney);
 
@@ -18,23 +19,6 @@ router.all('*', (req, res, next) => {
     const correlationId = get(req.session, 'correlationId', 'init');
     req.log = logger(correlationId);
     req.log.info(`Processing ${req.method} for ${req.originalUrl}`);
-    next();
-});
-
-// Initialise session objects
-router.use((req, res, next) => {
-    if (!req.session.correlationId) {
-        req.session.correlationId = uuidv4();
-    }
-    if (!req.session.ctx) {
-        req.session.ctx = {};
-    }
-    if (!req.session.form) {
-        req.session.form = {
-            payloadVersion: config.payloadVersion
-        };
-        req.session.back = [];
-    }
     next();
 });
 

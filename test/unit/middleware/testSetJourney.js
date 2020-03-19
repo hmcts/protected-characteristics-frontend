@@ -7,9 +7,9 @@ const defaultJourney = require('app/journeys/default');
 const probateJourney = require('app/journeys/probate');
 
 describe('setJourney', () => {
-    it('should set req.journey with the default journey when no servide id', (done) => {
+    it('should set req.journey with the default journey when no service id', (done) => {
         const req = {
-            session: {}
+            session: {form: {}}
         };
         const res = {};
         const next = sinon.spy();
@@ -17,7 +17,8 @@ describe('setJourney', () => {
         setJourney(req, res, next);
 
         expect(req.session).to.deep.equal({
-            journey: defaultJourney
+            journey: defaultJourney,
+            form: {}
         });
         expect(next.calledOnce).to.equal(true);
 
@@ -27,7 +28,9 @@ describe('setJourney', () => {
     it('should set req.journey with the probate journey when serviceId is PROBATE', (done) => {
         const req = {
             session: {
-                serviceId: 'PROBATE'
+                form: {
+                    serviceId: 'PROBATE'
+                }
             }
         };
         const res = {};
@@ -36,7 +39,9 @@ describe('setJourney', () => {
         setJourney(req, res, next);
 
         expect(req.session).to.deep.equal({
-            serviceId: 'PROBATE',
+            form: {
+                serviceId: 'PROBATE',
+            },
             journey: probateJourney
         });
         expect(next.calledOnce).to.equal(true);

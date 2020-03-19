@@ -22,6 +22,7 @@ describe('FormDataService', () => {
         nock(endpoint, {
             reqheaders: {
                 'Content-Type': 'application/json',
+                'X-Correlation-Id': correlationId,
                 Authorization: authToken,
                 ServiceAuthorization: serviceAuthorisation
             }
