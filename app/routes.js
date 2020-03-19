@@ -31,8 +31,7 @@ router.use((req, res, next) => {
     }
     if (!req.session.form) {
         req.session.form = {
-            payloadVersion: config.payloadVersion,
-            applicationId: uuidv4()
+            payloadVersion: config.payloadVersion
         };
         req.session.back = [];
     }
