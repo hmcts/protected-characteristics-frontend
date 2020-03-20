@@ -6,7 +6,7 @@ const formParams = [
     'serviceId',
     'actor',
     'pcqId',
-    'caseId',
+    'ccdCaseId',
     'partyId'
 ];
 
