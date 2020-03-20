@@ -29,24 +29,24 @@
         errorMessage: { text: fields.ethnicity.errorMessage.message | safe } if fields.ethnicity.errorMessage,
         items: [
             {
-                value: 1,
+                value: '1',
                 text: content["optionBritish"] | safe,
-                checked: true if fields.ethnicity.value == 1
+                checked: true if fields.ethnicity.value == '1'
             },
             {
-                value: 2,
+                value: '2',
                 text: content["optionIrish"] | safe,
-                checked: true if fields.ethnicity.value == 2
+                checked: true if fields.ethnicity.value == '2'
             },
             {
-                value: 3,
+                value: '3',
                 text: content["optionGypsy"] | safe,
-                checked: true if fields.ethnicity.value == 3
+                checked: true if fields.ethnicity.value == '3'
             },
             {
-                value: 4,
+                value: '4',
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicity.value == 4,
+                checked: true if fields.ethnicity.value == '4',
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -55,9 +55,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: 0,
+                value: '0',
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicity.value == 0
+                checked: true if fields.ethnicity.value == '0'
             }
         ]
     }) }}
