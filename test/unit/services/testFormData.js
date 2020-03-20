@@ -16,21 +16,17 @@ describe('FormDataService', () => {
         const inputForm = {deceased: {name: 'test'}};
         const expectedForm = {deceased: {name: 'test'}};
         const correlationId = 'correlationId';
-        const authToken = 'authToken';
-        const serviceAuthorisation = 'serviceAuthorisation';
         const formData = new FormData(endpoint, 'abc123');
         nock(endpoint, {
             reqheaders: {
                 'Content-Type': 'application/json',
-                'X-Correlation-Id': correlationId,
-                Authorization: authToken,
-                ServiceAuthorization: serviceAuthorisation
+                'X-Correlation-Id': correlationId
             }
         }).post(config.services.orchestration.paths.forms, expectedForm)
             .reply(200, expectedForm);
 
         co(function* () {
-            const actualForm = yield formData.post(correlationId, authToken, serviceAuthorisation, inputForm);
+            const actualForm = yield formData.post(correlationId, inputForm);
             expect(actualForm).to.deep.equal(expectedForm);
             done();
         }).catch(err => {
