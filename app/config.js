@@ -23,8 +23,8 @@ module.exports = {
     },
     services: {
         orchestration: {
-            url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:8888',
-            port: 8888,
+            url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:4550',
+            port: 4550,
             paths: {
                 forms: '/pcq/backend/submitAnswers'
             }
