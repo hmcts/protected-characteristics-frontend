@@ -27,7 +27,7 @@ describe('DateStep', () => {
             const req = {
                 session: {
                     language: 'en',
-                    form: {
+                    ctx: {
                         deceased: {
                             'firstName': 'Dee',
                             'lastName': 'Ceased',
@@ -94,11 +94,11 @@ describe('DateStep', () => {
                 'dob-day': 15,
                 'dob-month': 13,
                 'dob-year': 1956,
-                'dob-date': '',
+                'dob': '',
                 'dod-day': 4,
                 'dod-month': 6,
                 'dod-year': 2018,
-                'dod-date': '2018-06-04T00:00:00.000Z',
+                'dod': '2018-06-04T00:00:00.000Z',
                 'dod-formattedDate': '4 June 2018'
             });
             done();
@@ -119,12 +119,12 @@ describe('DateStep', () => {
                 'dob-day': 15,
                 'dob-month': 12,
                 'dob-year': 1956,
-                'dob-date': '1956-12-15T00:00:00.000Z',
+                'dob': '1956-12-15T00:00:00.000Z',
                 'dob-formattedDate': '15 December 1956',
                 'dod-day': 4,
                 'dod-month': 6,
                 'dod-year': 2018,
-                'dod-date': '2018-06-04T00:00:00.000Z',
+                'dod': '2018-06-04T00:00:00.000Z',
                 'dod-formattedDate': '4 June 2018'
             });
             done();

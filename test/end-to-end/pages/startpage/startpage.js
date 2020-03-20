@@ -1,9 +1,9 @@
 'use strict';
 
-const pageUnderTest = require('app/steps/ui/thankyou/index');
+const pageUnderTest = require('app/steps/ui/startpage/index');
 
 module.exports = function () {
     const I = this;
-
+    I.amOnPage(pageUnderTest.getUrl());
     I.seeCurrentUrlEquals(pageUnderTest.getUrl());
 };

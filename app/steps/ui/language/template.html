@@ -6,19 +6,19 @@
 
 {% set otherDetailsHtml %}
     {{ govukInput({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "language_other",
+        id: "language_other",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.language_other.value | safe
     }) }}
 {% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "language",
-        name: "language",
+        idPrefix: "language_main",
+        name: "language_main",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -26,17 +26,17 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.language.errorMessage.message | safe } if fields.language.errorMessage,
+        errorMessage: { text: fields.language_main.errorMessage.message | safe } if fields.language_main.errorMessage,
         items: [
             {
-                value: "optionEnglishWelsh",
+                value: 1,
                 text: content["optionEnglishWelsh"] | safe,
-                checked: true if fields.language.value == "optionEnglishWelsh"
+                checked: true if fields.language_main.value == 1
             },
             {
-                value: "optionOther",
+                value: 2,
                 text: content["optionOther"] | safe,
-                checked: true if fields.language.value == "optionOther",
+                checked: true if fields.language_main.value == 2,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -45,9 +45,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.language.value == "optionPreferNotToSay"
+                checked: true if fields.language_main.value == 0
             }
         ]
     }) }}

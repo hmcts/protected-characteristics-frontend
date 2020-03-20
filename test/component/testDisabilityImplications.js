@@ -29,7 +29,7 @@ describe('ApplicantDisabilityImplications', () => {
 
         it(`test it redirects to applicant disability implications areas page: ${expectedNextUrlForApplicantDisabilityImplicationAreas}`, (done) => {
             const data = {
-                disabilityImplications: 'optionYesLot'
+                disability_impact: 1
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplicationAreas);
@@ -37,7 +37,7 @@ describe('ApplicantDisabilityImplications', () => {
 
         it(`test it redirects to applicant disability implications areas page: ${expectedNextUrlForApplicantDisabilityImplicationAreas}`, (done) => {
             const data = {
-                disabilityImplications: 'optionYesLittle'
+                disability_impact: 2
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisabilityImplicationAreas);
@@ -45,7 +45,7 @@ describe('ApplicantDisabilityImplications', () => {
 
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
-                disabilityImplications: 'optionNo'
+                disability_impact: 3
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);

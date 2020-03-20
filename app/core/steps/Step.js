@@ -52,9 +52,9 @@ class Step {
     getContextData(req, res, featureToggle, fieldsToClearOnPost = []) {
         const session = req.session;
         let ctx = {};
-        Object.assign(ctx, session.form[this.section] || {});
+        Object.assign(ctx, session.ctx[this.section] || {});
         ctx.sessionID = req.sessionID;
-        ctx = Object.assign(ctx, req.body);
+        ctx = Object.assign(ctx, this.parseFields(req.body));
 
         if (req.method === 'POST') {
             forEach(fieldsToClearOnPost, (field) => {
@@ -122,6 +122,27 @@ class Step {
             fields = mapErrorsToFields(fields, errors);
         }
         return fields;
+    }
+
+    // Returns an array of fields which do not need to be parsed into integers
+    nonIntegerFields() {
+        return [];
+    }
+
+    parseFields(fields) {
+        if (fields) {
+            Object.keys(fields).forEach(field => {
+                if (!this.nonIntegerFields().includes(field)) {
+                    fields[field] = parseInt(fields[field]);
+                }
+            });
+        }
+        return fields;
+    }
+
+    // Returns an array of fields to be ignored by the form data
+    ignoreFieldsOnPost() {
+        return [];
     }
 
     persistFormData(formdata, sessionID, req) {
