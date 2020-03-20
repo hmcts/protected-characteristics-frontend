@@ -20,7 +20,6 @@ coverage
 package-lock.json
 yarn-error.log
 git.properties.json
-/functional-output/
 .scannerwork/
 infrastructure/.terraform
 /mochawesome-report/
