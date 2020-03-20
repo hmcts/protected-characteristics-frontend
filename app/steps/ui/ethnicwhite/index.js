@@ -8,7 +8,12 @@ class ApplicantEthnicBackgroundWhite extends ValidationStep {
         return '/white-ethnic-group';
     }
 
+    get requiredFields() {
+        return ['ethnicity'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.ethnicity !== 4) {
             ctx.ethnicity_other = null;
         }

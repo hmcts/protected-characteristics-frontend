@@ -32,5 +32,15 @@ describe('ApplicantGenderSameAsSex', () => {
             });
             done();
         });
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantGenderSameAsSex.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'gender_different': null
+            });
+            done();
+        });
     });
 });

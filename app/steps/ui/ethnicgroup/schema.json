@@ -7,7 +7,7 @@
       "type": "integer"
     },
     "ethnicity": {
-      "type": "integer"
+      "type": ["integer", "null"]
     }
   }
 }

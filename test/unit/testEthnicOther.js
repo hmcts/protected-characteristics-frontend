@@ -47,5 +47,16 @@ describe('ApplicantEthnicBackgroundOther', () => {
             });
             done();
         });
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantEthnicBackgroundOther.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'ethnicity': null,
+                'ethnicity_other': null
+            });
+            done();
+        });
     });
 });

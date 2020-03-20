@@ -8,6 +8,10 @@ class ApplicantDisabilityImplications extends ValidationStep {
         return '/disability-implications';
     }
 
+    get requiredFields() {
+        return ['disability_impact'];
+    }
+
     nextStepOptions() {
         return {
             options: [

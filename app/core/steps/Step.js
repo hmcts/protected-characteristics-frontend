@@ -31,6 +31,10 @@ class Step {
         return `${this.templatePath}/template`;
     }
 
+    get requiredFields() {
+        return [];
+    }
+
     constructor(steps, section = null, resourcePath, i18next, schema, language = 'en') {
         this.steps = steps;
         this.section = section;
@@ -74,6 +78,12 @@ class Step {
     }
 
     handlePost(ctx, errors) {
+        // Set required fields to null if not set
+        this.requiredFields.forEach(field => {
+            if (!(field in ctx)) {
+                ctx[field] = null;
+            }
+        });
         return [ctx, errors];
     }
 

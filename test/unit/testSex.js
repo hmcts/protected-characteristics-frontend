@@ -13,4 +13,21 @@ describe('ApplicantSex', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantSex.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'sex': null
+            });
+            done();
+        });
+    });
 });

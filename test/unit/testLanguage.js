@@ -34,13 +34,23 @@ describe('ApplicantLanguage', () => {
 
         it('should delete the language_other field from the context when not selected', (done) => {
             ctx = {
-                'language': 1,
+                'language_main': 1,
                 'language_other': 'To be deleted'
             };
             errors = [];
             [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                language: 1
+                language_main: 1
+            });
+            done();
+        });
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'language_main': null
             });
             done();
         });
