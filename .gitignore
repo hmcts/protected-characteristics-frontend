@@ -23,4 +23,4 @@ git.properties.json
 .scannerwork/
 infrastructure/.terraform
 /mochawesome-report/
-
+functional-output
