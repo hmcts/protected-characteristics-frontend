@@ -3,9 +3,12 @@
   "id": "gender",
   "type": "object",
   "properties": {
-    "gender": {
-      "type": "string",
-      "minLength": 1
+    "gender_different": {
+      "type": [ "integer", "null" ],
+      "enum": [ 0, 1, 2, null ]
+    },
+    "gender_other": {
+      "type": [ "string", "null" ]
     }
   }
 }

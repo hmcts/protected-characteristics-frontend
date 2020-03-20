@@ -6,19 +6,19 @@
 
 {% set otherDetailsHtml %}
     {{ govukInput({
-        name: "otherDetails",
-        id: "otherDetails",
+        name: "ethnicity_other",
+        id: "ethnicity_other",
         label: {
             text: content["optionOtherDetails"] | safe
         },
-        value: fields.otherDetails.value | safe
+        value: fields.ethnicity_other.value | safe
     }) }}
 {% endset -%}
 
 {% block form_content %}
     {{ govukRadios({
-        idPrefix: "ethnicGroupWhite",
-        name: "ethnicGroupWhite",
+        idPrefix: "ethnicity",
+        name: "ethnicity",
         fieldset: {
             legend: {
                 text: content.question | safe,
@@ -26,27 +26,27 @@
                 classes: "govuk-fieldset__legend--l"
             }
         },
-        errorMessage: { text: fields.ethnicGroupWhite.errorMessage.message | safe } if fields.ethnicGroupWhite.errorMessage,
+        errorMessage: { text: fields.ethnicity.errorMessage.message | safe } if fields.ethnicity.errorMessage,
         items: [
             {
-                value: "optionBritish",
+                value: 1,
                 text: content["optionBritish"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionBritish"
+                checked: true if fields.ethnicity.value == 1
             },
             {
-                value: "optionIrish",
+                value: 2,
                 text: content["optionIrish"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionIrish"
+                checked: true if fields.ethnicity.value == 2
             },
             {
-                value: "optionGypsy",
+                value: 3,
                 text: content["optionGypsy"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionGypsy"
+                checked: true if fields.ethnicity.value == 3
             },
             {
-                value: "optionOther",
+                value: 4,
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionOther",
+                checked: true if fields.ethnicity.value == 4,
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -55,9 +55,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: "optionPreferNotToSay",
+                value: 0,
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicGroupWhite.value == "optionPreferNotToSay"
+                checked: true if fields.ethnicity.value == 0
             }
         ]
     }) }}

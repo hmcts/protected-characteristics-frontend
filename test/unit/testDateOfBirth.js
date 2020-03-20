@@ -31,7 +31,7 @@ describe('ApplicantDateOfBirth', () => {
 
         it('should return the ctx with the deceased dob', (done) => {
             ctx = {
-                'provideDateOfBirth': 'optionEnterDate',
+                'dob_provided': 1,
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '1952'
@@ -39,7 +39,7 @@ describe('ApplicantDateOfBirth', () => {
             errors = [];
             [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                'provideDateOfBirth': 'optionEnterDate',
+                'dob_provided': 1,
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '1952'
@@ -49,7 +49,7 @@ describe('ApplicantDateOfBirth', () => {
 
         it('should return the error for a date in the future', (done) => {
             ctx = {
-                'provideDateOfBirth': 'optionEnterDate',
+                'dob_provided': 1,
                 'dob-day': '02',
                 'dob-month': '03',
                 'dob-year': '3000'
@@ -58,14 +58,29 @@ describe('ApplicantDateOfBirth', () => {
             [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(errors).to.deep.equal([
                 {
-                    field: 'dob-date',
-                    href: '#dob-date',
+                    field: 'dob',
+                    href: '#dob',
                     msg: {
-                        summary: content.errors['dob-date'].dateInFuture.summary,
-                        message: content.errors['dob-date'].dateInFuture.message
+                        summary: content.errors.dob.dateInFuture.summary,
+                        message: content.errors.dob.dateInFuture.message
                     }
                 }
             ]);
+            done();
+        });
+
+        it('should delete the dob variables if the user doesn\'t want to provide it', (done) => {
+            ctx = {
+                'dob_provided': 0,
+                'dob-day': '02',
+                'dob-month': '03',
+                'dob-year': '1952'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'dob_provided': 0
+            });
             done();
         });
     });

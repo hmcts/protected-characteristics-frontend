@@ -27,10 +27,10 @@ class DateStep extends ValidationStep {
 
             const date = moment(`${ctx[day]}/${ctx[month]}/${ctx[year]}`, config.dateFormat).parseZone();
 
-            ctx[`${dateName}-date`] = '';
+            ctx[`${dateName}`] = '';
 
             if (date.isValid()) {
-                ctx[`${dateName}-date`] = date.toISOString();
+                ctx[`${dateName}`] = date.toISOString();
                 ctx[`${dateName}-formattedDate`] = utils.formattedDate(date, language);
             }
         });

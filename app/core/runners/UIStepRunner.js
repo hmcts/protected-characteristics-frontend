@@ -1,7 +1,7 @@
 'use strict';
 
 const co = require('co');
-const {curry, set, isEmpty, forEach} = require('lodash');
+const {curry, isEmpty, forEach, omit, set} = require('lodash');
 const FormatUrl = require('app/utils/FormatUrl');
 
 class UIStepRunner {
@@ -17,7 +17,7 @@ class UIStepRunner {
         const formdata = session.form;
         const commonContent = require(`app/resources/${session.language}/translation/common`);
 
-        return co(function * () {
+        return co(function* () {
             let ctx = step.getContextData(req, res);
             const featureToggles = session.featureToggles;
             [ctx, errors] = yield step.handleGet(ctx, formdata, featureToggles, session.language);
@@ -48,9 +48,10 @@ class UIStepRunner {
     handlePost(step, req, res) {
         const session = req.session;
         let formdata = session.form;
+        formdata.pcqAnswers = formdata.pcqAnswers || {};
         const commonContent = require(`app/resources/${session.language}/translation/common`);
 
-        return co(function * () {
+        return co(function* () {
             let ctx = step.getContextData(req, res);
             let [isValid, errors] = [];
             [isValid, errors] = step.validate(ctx, formdata, session.language);
@@ -63,7 +64,17 @@ class UIStepRunner {
                 const nextStepUrl = step.nextStepUrl(req, ctx);
                 [ctx, formdata] = step.action(ctx, formdata);
 
-                set(formdata, step.section, ctx);
+                // Gets the difference between the session ctx fields for the session and the current context.
+                const removedFields = Object.keys(session.ctx[step.section] || {})
+                    .filter(key => !Object.keys(ctx).includes(key));
+                // Remove these fields from the form data
+                removedFields.forEach(field => delete formdata.pcqAnswers[field]);
+
+                // Add the current section context to the session context.
+                set(session.ctx, step.section, ctx);
+
+                // Assign the field data to the form (omitting any fields specified to ignore)
+                Object.assign(formdata.pcqAnswers, omit(ctx, step.ignoreFieldsOnPost()));
 
                 const result = yield step.persistFormData(formdata, session.id, req);
 

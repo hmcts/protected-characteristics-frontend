@@ -32,6 +32,13 @@ router.use((req, res, next) => {
     next();
 });
 
+router.use((req, res, next) => {
+    if (!req.session.ctx) {
+        req.session.ctx = {};
+    }
+    next();
+});
+
 router.get('/', (req, res) => {
     req.log.info({tags: 'Analytics'}, 'Application Started');
     res.redirect(`${config.app.basePath}/start-page`);
