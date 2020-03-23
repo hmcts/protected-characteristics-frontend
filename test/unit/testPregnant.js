@@ -13,4 +13,21 @@ describe('ApplicantPregnant', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantPregnant.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'pregnancy': null
+            });
+            done();
+        });
+    });
 });

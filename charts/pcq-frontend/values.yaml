@@ -11,9 +11,10 @@ nodejs:
     S2S_URL:
     VALIDATION_SERVICE_URL:
     SUBMIT_SERVICE_URL:
-    ORCHESTRATION_SERVICE_URL:
-    REFORM_ENVIRONMENT: aat
+    ORCHESTRATION_SERVICE_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
+    REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
   image: hmctspublic.azurecr.io/pcq/pcq-frontend:latest
+  ingressHost: pcq.{{ .Values.global.environment }}.platform.hmcts.net
   aadIdentityName: pcq
 
   keyVaults:

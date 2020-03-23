@@ -8,7 +8,12 @@ class ApplicantEthnicGroup extends ValidationStep {
         return '/ethnic-group';
     }
 
+    get requiredFields() {
+        return ['ethnicity'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.ethnic_group === 0) {
             ctx.ethnicity = 0;
             ctx.ethnicity_other = null;

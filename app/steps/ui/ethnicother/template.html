@@ -29,14 +29,14 @@
         errorMessage: { text: fields.ethnicity.errorMessage.message | safe } if fields.ethnicity.errorMessage,
         items: [
             {
-                value: 17,
+                value: '17',
                 text: content["optionArab"] | safe,
-                checked: true if fields.ethnicity.value == 17
+                checked: true if fields.ethnicity.value == '17'
             },
             {
-                value: 18,
+                value: '18',
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicity.value == 18,
+                checked: true if fields.ethnicity.value == '18',
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -45,9 +45,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: 0,
+                value: '0',
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicity.value == 0
+                checked: true if fields.ethnicity.value == '0'
             }
         ]
     }) }}

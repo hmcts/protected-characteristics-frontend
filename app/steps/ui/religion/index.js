@@ -8,7 +8,12 @@ class ApplicantReligion extends ValidationStep {
         return '/religion';
     }
 
+    get requiredFields() {
+        return ['religion'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.religion !== 8) {
             delete ctx.religion_other;
         }

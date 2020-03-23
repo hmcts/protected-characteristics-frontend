@@ -9,11 +9,16 @@ class ApplicantDateOfBirth extends DateStep {
         return '/date-of-birth';
     }
 
+    get requiredFields() {
+        return ['dob_provided'];
+    }
+
     dateName() {
         return ['dob'];
     }
 
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.dob_provided === 1) {
             const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 

@@ -26,4 +26,21 @@ describe('ApplicantDisabilityImplications', () => {
             done();
         });
     });
+
+    describe('handlePost()', () => {
+        let ctx;
+        let errors;
+        let formdata;
+        const session = {};
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantDisabilityImplications.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'disability_impact': null
+            });
+            done();
+        });
+    });
 });
