@@ -12,6 +12,8 @@ def product = "pcq"
 def component = "frontend"
 
 withNightlyPipeline(type, product, component) {
+  env.TEST_URL = "http://pcq-frontend-staging.service.core-compute-aat.internal"
   enableMutationTest();
   enableSlackNotifications('#pcq-builds')
+  enableSecurityScan()
 }

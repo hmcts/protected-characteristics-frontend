@@ -8,7 +8,12 @@ class ApplicantEthnicBackgroundMixed extends ValidationStep {
         return '/mixed-ethnic-group';
     }
 
+    get requiredFields() {
+        return ['ethnicity'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.ethnicity !== 8) {
             ctx.ethnicity_other = null;
         }

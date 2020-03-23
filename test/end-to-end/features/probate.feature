@@ -26,3 +26,4 @@ Feature: Probate
     Then I am presented with the PCQ Intro page
     When I submit No for all pcq questions
     Then a record successfully created in database
+
