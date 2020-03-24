@@ -9,6 +9,8 @@ const getBrowserConfig = (browserGroup) => {
         if (candidateBrowser) {
             const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
             desiredCapability.tunnelIdentifier = tunnelName;
+            desiredCapability.acceptSslCerts = 'true';
+            desiredCapability.acceptInsecureCerts = 'true';
             desiredCapability.tags = ['pcq'];
             browserConfig.push({
                 browser: desiredCapability.browserName,
@@ -26,9 +28,7 @@ const setupConfig = {
     helpers: {
         WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            acceptInsecureCerts: 'true',
             browser: 'chrome',
-            chromeOptions: {'args': ['--ignore-certificate-errors']},
             waitforTimeout: 60000,
             cssSelectorsEnabled: 'true',
             windowSize: '1600x900',
