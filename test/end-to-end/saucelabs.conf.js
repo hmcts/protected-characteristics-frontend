@@ -5,7 +5,7 @@ const setupConfig = {
     output: './functional-output',
     timeout: 60000,
     helpers: {
-        WebDriver: {
+        WebDriverIO: {
             url: process.env.E2E_FRONTEND_URL ||'http://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
             chrome: {
