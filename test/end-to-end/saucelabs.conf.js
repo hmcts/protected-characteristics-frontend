@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
-const CONF = require('config');
+const CONF = require('/Users/riyan/Documents/PCQ/pcq-frontend/config');
 
 const waitForTimeout = parseInt(CONF.saucelabs.waitForTimeoutValue);
 const smartWait = parseInt(CONF.saucelabs.smartWait);
