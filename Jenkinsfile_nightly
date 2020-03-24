@@ -16,4 +16,9 @@ withNightlyPipeline(type, product, component) {
   enableMutationTest();
   enableSlackNotifications('#pcq-builds')
   enableSecurityScan()
+  enableCrossBrowserTest()
+  after('crossBrowserTest') {
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+  }
+
 }

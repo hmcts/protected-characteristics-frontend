@@ -1,0 +1,166 @@
+appName: 'frontend'
+project: 'divorce'
+environment: 'laptop'
+version: 'x.x-laptop'
+deployment_env: 'local'
+showSitemap: false
+
+log:
+  ERROR: 1
+  INFO: 1
+  LOG: 1
+  WARN: 1
+  DEBUG: 1
+
+http:
+  port: 3000
+  healthCheckport: 3000
+
+service:
+  name: 'divorce-frontend'
+
+session:
+  expires: 3600000 # ms (60 min)
+  ttl: 86400 # s (1 day)
+
+paths:
+  index: '/'
+
+services:
+  redis:
+    host: 'redis://localhost:6379'
+  postcodeInfo:
+    token: # Defined by POST_CODE_ACCESS_TOKEN in env
+    url: # Defined by POST_CODE_URL in env
+    timeout: 10000
+  idamAuthentication:
+    health: 'https://localhost:8000/health'
+  idamApp:
+    health: 'http://localhost:8001/health'
+  serviceAuthProvider:
+    baseUrl: 'http://localhost:4502'
+    health: 'http://localhost:4502/health'
+    microserviceName: 'divorce_frontend'
+    microserviceKey: # Microservice key should be defined as MICROSERVICE_KEY in env
+  payment:
+    baseUrl: 'http://localhost:4401'
+    health: 'http://localhost:4401/health'
+    serviceIdentification: 'DIV1'
+  transformation:
+    baseUrl: 'http://localhost:4012'
+    draftBaseUrl: 'http://localhost:4012/draftsapi/version/1'
+    health: 'http://localhost:4012/health'
+  feesAndPayments:
+    baseUrl: 'http://localhost:4009'
+    health: 'http://localhost:4009/health'
+  webchat:
+    chatId: 3833071605d5d4518036a09.30917386
+    tenant: aG1jdHNzdGFnaW5nMDE
+    buttonNoAgents: 7732814745cac6f4603c4d1.53357933
+    buttonAgentsBusy: 2042157415cc19c95669039.65793052
+    buttonServiceClosed: 20199488815cc1a89e0861d5.73103009
+
+defaultEnvironmentNodeEnv: 'development'
+
+secret: setasecretyoufool
+sessionEncryptionSecret: myVeryTopSecretK
+
+dateFormat: 'DD/MM/YYYY'
+paymentDateFormat: 'DDMMYYYY'
+
+testUrl: 'https://localhost:3000'
+
+commonProps:
+  applicationFee:
+    feeCode: 'FEE0002'
+    version: 4
+    amount: 550.00
+  amendFee:
+    feeCode: 'FEE0269'
+    version: 1
+    amount: 95.00
+  financialOrderApplicationFee: 255
+  smartSurveyFeedbackUrl: 'https://www.smartsurvey.co.uk/s/Divorce_Feedback'
+  smartSurveyFeedbackDonePageUrl: 'https://www.smartsurvey.co.uk/s/Divorce_ExitSurvey_Applicant'
+  courtPhoneNumber: '0000 111 2220'
+  courtOpeningHour: 'Monday to Friday, 8am to 8pm, Saturday 8am to 2pm'
+  courtEmail: 'simulate-delivered@notifications.service.gov.uk'
+
+features:
+  idam: false
+  ignoreSessionValidation: false
+  browserSupport: false
+  strategicPay: false
+  webchat: true
+
+idamArgs:
+  redirectUri: 'https://localhost:3000/authenticated'
+  indexUrl: '/index'
+  idamApiUrl: 'http://localhost:8001'
+  idamLoginUrl: 'https://localhost:3000/authenticated'
+  idamSecret: '123456'
+  idamClientID: 'divorce'
+
+evidenceManagmentClient:
+  url: http://localhost:4009
+  health: http://localhost:4009/status/health
+  uploadEndpoint: /emclientapi/version/1/uploadFiles
+
+logging:
+  tags:
+    - divorce
+    - frontend
+    - application
+    - D8
+
+health:
+  timeout: 5000
+  deadline: 15000
+
+ssl:
+  hpkp:
+    maxAge: 86400
+    sha256s: 'AbCdEf123=,XyzABC123='
+
+google_analytics:
+  eventTrackingUrl: https://localhost:3000/
+
+rateLimiter:
+  total: 3600 # 1 req/s on average per hour
+  expire: 3600000
+  enabled: false
+
+applicationInsights:
+  instrumentationKey: 'dummy-key'
+
+e2e:
+  frontendUrl: 'https://pcq-frontend-staging.service.core-compute-aat.internal'
+  proxyServer: ''
+  proxyBypassList: ''
+  outputDirectory: './functional-output'
+  defaultEnvironmentNodeEnv: 'development'
+  waitForTimeoutValue: 5000
+  waitForActionValue: 100
+  runBasicTests: false
+
+saucelabs:
+  browser: 'chrome'
+  username: 'username'
+  key: 'privatekey'
+  tunnelId: 'reformtunnel'
+  waitForTimeout: 5000
+  smartWait: 5000
+
+public:
+  protocol: 'https'
+
+apps:
+  dn:
+    url: 'https://localhost:3000'
+    landing: '/authenticated'
+
+ccd:
+  d8States:
+    - 'AwaitingPayment'
+  courts:
+    - 'serviceCentre'
