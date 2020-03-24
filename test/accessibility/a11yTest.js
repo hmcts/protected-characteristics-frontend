@@ -32,7 +32,7 @@ for (const step in steps) {
             let agent = null;
             let title;
 
-            if (step.name === 'StartPage' || step.name === 'EndPage') {
+            if (step.name === 'StartPage') {
                 title = commonContent.serviceName
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
