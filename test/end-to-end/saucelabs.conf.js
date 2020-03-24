@@ -25,7 +25,7 @@ const setupConfig = {
     tests: './step_definitions/**/probatepcqjourney.js',
     output: process.cwd() + '/functional-output',
     helpers: {
-        WebDriverIO: {
+        WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
             waitforTimeout: 60000,
