@@ -44,10 +44,11 @@
         text: common.back | safe,
         href: "#",
         attributes: {
-            "onclick": "history.go(-1); return false;",
-            "nonce": globals.nonce
+            "id": "back-button"
         }
     }) }}
+
+    <script src="{{ globals.basePath }}/public/javascripts/back-button.js"></script>
 {% endblock %}
 
 {% block footer %}
