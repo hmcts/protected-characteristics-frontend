@@ -16,14 +16,7 @@ const setupConfig = {
             user: process.env.SAUCE_USERNAME,
             key: process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: getDesiredCapabilities(),
-            waitforTimeout: 60000,
-            // eslint-disable-next-line no-dupe-keys
-            args: [
-                '--no-sandbox',
-                '--proxy-server=proxyout.reform.hmcts.net:8080',
-                '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
-                '--window-size=1440,1400'
-            ],
+            waitforTimeout: 60000
         }
     },
     gerkin: {
