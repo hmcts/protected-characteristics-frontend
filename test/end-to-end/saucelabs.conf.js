@@ -39,10 +39,7 @@ const setupConfig = {
             desiredCapabilities: {}
         },
         SauceLabsReportingHelper: {require: './helpers/SauceLabsReportingHelper.js'},
-        JSWait: {require: './helpers/JSWait.js'},
-        ElementExist: {require: './helpers/ElementExist.js'},
-        IdamHelper: {require: './helpers/idamHelper.js'},
-        SessionHelper: {require: './helpers/SessionHelper.js'}
+        JSWait: {require: './helpers/JSWait.js'}
     },
     include: {
         I: 'test/end-to-end/pages/steps.js'

@@ -1,6 +1,6 @@
-class JSWaitHelper extends codecept_helper { // eslint-disable-line camelcase
+class JSWait extends codecept_helper { // eslint-disable-line camelcase
     _beforeStep(step) {
-        const helper = this.helpers.WebDriverIO || this.helpers.Puppeteer;
+        const helper = this.helpers.WebDriver || this.helpers.Puppeteer;
 
         // Wait for content to load before checking URL
         if (step.name === 'seeCurrentUrlEquals') {
@@ -8,5 +8,4 @@ class JSWaitHelper extends codecept_helper { // eslint-disable-line camelcase
         }
     }
 }
-
-module.exports = JSWaitHelper;
+module.exports = JSWait;
