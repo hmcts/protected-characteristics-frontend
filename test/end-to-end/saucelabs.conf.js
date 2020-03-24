@@ -6,7 +6,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriver: {
-            url: process.env.E2E_FRONTEND_URL || 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
             cssSelectorsEnabled: true,
             host: 'ondemand.eu-central-1.saucelabs.com',
