@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
-const browser = process.env.SAUCELABS_BROWSER || 'chrome';
+
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
 
 const getBrowserConfig = (browserGroup) => {
@@ -26,8 +26,8 @@ const setupConfig = {
     output: process.cwd() + '/functional-output',
     helpers: {
         WebDriverIO: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            browser: supportedBrowsers[browser].browserName,
+            url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            browser: 'chrome',
             waitforTimeout: 60000,
             cssSelectorsEnabled: 'true',
             windowSize: '1600x900',
