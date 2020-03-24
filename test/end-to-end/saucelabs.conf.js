@@ -6,9 +6,10 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriver: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: process.env.E2E_FRONTEND_URL ||'http://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
-            cssSelectorsEnabled: true,
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'],
+            cssSelectorsEnabled: 'true',
             host: 'ondemand.eu-central-1.saucelabs.com',
             port: 80,
             region: 'eu',
@@ -18,7 +19,7 @@ const setupConfig = {
             waitforTimeout: 60000
         }
     },
-    gerkin: {
+    gherkin: {
         features: 'features/probate.feature',
         steps: ['./step_definitions/probatepcqjourney.js']
     },
@@ -34,12 +35,10 @@ const setupConfig = {
         }
     },
 };
-
 function getDesiredCapabilities() {
     const desiredCapability = supportedBrowsers[browser];
     desiredCapability.tunnelIdentifier = tunnelName;
     desiredCapability.acceptSslCerts = true;
     return desiredCapability;
 }
-
 exports.config = setupConfig;
