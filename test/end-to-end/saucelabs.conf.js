@@ -29,6 +29,7 @@ const setupConfig = {
         WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
+            args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'],
             waitforTimeout: 60000,
             ignoreHTTPSErrors: true,
             cssSelectorsEnabled: true,
