@@ -8,7 +8,7 @@ const setupConfig = {
         WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'http://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
-            args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'],
+            ignoreHTTPSErrors: true,
             cssSelectorsEnabled: 'true',
             host: 'ondemand.eu-central-1.saucelabs.com',
             port: 80,
@@ -39,6 +39,7 @@ function getDesiredCapabilities() {
     const desiredCapability = supportedBrowsers[browser];
     desiredCapability.tunnelIdentifier = tunnelName;
     desiredCapability.acceptSslCerts = true;
+    desiredCapability.acceptInsecureCerts = true;
     return desiredCapability;
 }
 exports.config = setupConfig;
