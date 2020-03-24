@@ -1,12 +1,8 @@
 /* eslint-disable no-console */
-
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
-const CONF = require('./../../config/default.yaml');
+const browser = process.env.SAUCELABS_BROWSER || 'chrome';
+const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
 
-const waitForTimeout = parseInt(CONF.saucelabs.waitForTimeoutValue);
-const smartWait = parseInt(CONF.saucelabs.smartWait);
-const browser = process.env.SAUCE_BROWSER || CONF.saucelabs.browser;
-const tunnelName = process.env.SAUCE_TUNNEL_IDENTIFIER || CONF.saucelabs.tunnelId;
 const getBrowserConfig = (browserGroup) => {
     const browserConfig = [];
     for (const candidateBrowser in supportedBrowsers[browserGroup]) {
@@ -31,15 +27,15 @@ const setupConfig = {
     helpers: {
         WebDriverIO: {
             url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            browser,
-            waitForTimeout,
-            smartWait,
+            browser: supportedBrowsers[browser].browserName,
+            waitforTimeout: 60000,
             cssSelectorsEnabled: 'true',
+            windowSize: '1600x900',
             host: 'ondemand.eu-central-1.saucelabs.com',
             port: 80,
             region: 'eu',
-            user: process.env.SAUCE_USERNAME || CONF.saucelabs.username,
-            key: process.env.SAUCE_ACCESS_KEY || CONF.saucelabs.key,
+            user: process.env.SAUCE_USERNAME || 'username',
+            key: process.env.SAUCE_ACCESS_KEY || 'privatekey',
             desiredCapabilities: {}
         },
         SauceLabsReportingHelper: {require: './helpers/SauceLabsReportingHelper.js'},
@@ -59,12 +55,12 @@ const setupConfig = {
             },
             'mocha-junit-reporter': {
                 stdout: '-',
-                options: {mochaFile: `${CONF.e2e.outputDir}/result.xml`}
+                options: {mochaFile: '/functional-output/result.xml'}
             },
             mochawesome: {
                 stdout: './functional-output/console.log',
                 options: {
-                    reportDir: CONF.e2e.outputDirectory,
+                    reportDir: './functional-output',
                     reportName: 'index',
                     inlineAssets: true
                 }
