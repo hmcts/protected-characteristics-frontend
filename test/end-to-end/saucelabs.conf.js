@@ -39,11 +39,6 @@ function getDesiredCapabilities() {
     const desiredCapability = supportedBrowsers[browser];
     desiredCapability.tunnelIdentifier = tunnelName;
     desiredCapability.acceptSslCerts = true;
-    // eslint-disable-next-line no-lone-blocks
-    {
-        // eslint-disable-next-line no-undef
-        args = ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'];
-    }
     return desiredCapability;
 }
 
