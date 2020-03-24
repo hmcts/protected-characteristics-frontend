@@ -1,4 +1,4 @@
-const supportedBrowsers = require('./src/test/js/config/supportedBrowsers.js');
+const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
 const setupConfig = {
