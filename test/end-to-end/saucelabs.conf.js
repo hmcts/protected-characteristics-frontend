@@ -7,7 +7,7 @@ const setupConfig = {
     helpers: {
         WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'http://pcq-frontend-staging.service.core-compute-aat.internal',
-            browser: supportedBrowsers[browser].browserName,
+            browser: 'chrome',
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'],
             cssSelectorsEnabled: true,
             host: 'ondemand.eu-central-1.saucelabs.com',
