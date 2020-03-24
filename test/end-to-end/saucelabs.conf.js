@@ -7,19 +7,26 @@ const setupConfig = {
     helpers: {
         WebDriver: {
             url: process.env.E2E_FRONTEND_URL ||'http://pcq-frontend-staging.service.core-compute-aat.internal',
-            browser: 'chrome',
+            browser: supportedBrowsers[browser].browserName,
             args: ['--no-sandbox', '--disable-setuid-sandbox', '--ignore-certificate-errors', '--allow-running-insecure-content'],
-            cssSelectorsEnabled: 'true',
+            cssSelectorsEnabled: true,
             host: 'ondemand.eu-central-1.saucelabs.com',
             port: 80,
             region: 'eu',
             user: process.env.SAUCE_USERNAME,
             key: process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: getDesiredCapabilities(),
-            waitforTimeout: 60000
+            waitforTimeout: 60000,
+            // eslint-disable-next-line no-dupe-keys
+            args: [
+                '--no-sandbox',
+                '--proxy-server=proxyout.reform.hmcts.net:8080',
+                '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
+                '--window-size=1440,1400'
+            ],
         }
     },
-    gherkin: {
+    gerkin: {
         features: 'features/probate.feature',
         steps: ['./step_definitions/probatepcqjourney.js']
     },
