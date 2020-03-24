@@ -22,7 +22,6 @@ const getBrowserConfig = (browserGroup) => {
 };
 
 const setupConfig = {
-    tests: './step_definitions/**/probatepcqjourney.js',
     output: process.cwd() + '/functional-output',
     helpers: {
         WebDriver: {
@@ -40,6 +39,10 @@ const setupConfig = {
         },
         SauceLabsReportingHelper: {require: './helpers/SauceLabsReportingHelper.js'},
         JSWait: {require: './helpers/JSWait.js'}
+    },
+    gherkin: {
+        features: 'features/probate.feature',
+        steps: ['./step_definitions/probatepcqjourney.js']
     },
     include: {
         I: 'test/end-to-end/pages/steps.js'
