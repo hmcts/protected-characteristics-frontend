@@ -26,11 +26,11 @@ const getBrowserConfig = (browserGroup) => {
 };
 
 const setupConfig = {
-    tests: './step_definitions/probatepcqjourney.js',
+    tests: './step_definitions/**/probatepcqjourney.js',
     output: process.cwd() + '/functional-output',
     helpers: {
         WebDriverIO: {
-            url: process.env.E2E_FRONTEND_URL || CONF.e2e.frontendUrl,
+            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser,
             waitForTimeout,
             smartWait,
