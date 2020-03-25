@@ -26,7 +26,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser,
             smartWait: 10000,
             waitforTimeout: 60000,
@@ -40,8 +40,6 @@ const setupConfig = {
             'host': 'ondemand.eu-central-1.saucelabs.com',
             'port': 80,
             'region': 'eu',
-            'user': process.env.SAUCE_USERNAME,
-            'key': process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: {}
         }
     },
@@ -97,9 +95,6 @@ const setupConfig = {
         },
         firefox: {
             browsers: getBrowserConfig('firefox')
-        },
-        safari: {
-            browsers: getBrowserConfig('safari')
         }
     }
 };
