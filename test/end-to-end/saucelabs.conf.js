@@ -1,6 +1,6 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 
-const browser = process.env.SAUCELABS_BROWSER;
+const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
 
 const getBrowserConfig = (browserGroup) => {
@@ -26,7 +26,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: process.env.TEST_E2E_URL || 'https://localhost:3000',
+            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser,
             smartWait: 10000,
             waitforTimeout: 60000,
