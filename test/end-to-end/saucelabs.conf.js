@@ -1,15 +1,18 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 
+// eslint-disable-next-line no-unused-vars
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
-
+const waitForTimeout = 60000;
+const smartWait = 45000;
 const getBrowserConfig = (browserGroup) => {
     const browserConfig = [];
     for (const candidateBrowser in supportedBrowsers[browserGroup]) {
         if (candidateBrowser) {
             const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
             desiredCapability.tunnelIdentifier = tunnelName;
-            desiredCapability.tags = ['pcq'];
+            desiredCapability.acceptSslCerts = true;
+            desiredCapability.tags = ['pcq-frontend'];
             browserConfig.push({
                 browser: desiredCapability.browserName,
                 desiredCapabilities: desiredCapability
@@ -22,14 +25,14 @@ const getBrowserConfig = (browserGroup) => {
 };
 
 const setupConfig = {
-    output: './functional-output',
+    output: `${process.cwd()}/functional-output`,
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: process.env.E2E_FRONTEND_URL ||'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            browser,
-            smartWait: 10000,
-            waitforTimeout: 60000,
+            url: process.env.TEST_URL,
+            browser: 'chrome',
+            smartWait,
+            waitForTimeout,
             cssSelectorsEnabled: 'true',
             windowSize: '1600x900',
             timeouts: {
@@ -40,6 +43,8 @@ const setupConfig = {
             'host': 'ondemand.eu-central-1.saucelabs.com',
             'port': 80,
             'region': 'eu',
+            sauceConnect: true,
+            services: ['sauce'],
             'user': process.env.SAUCE_USERNAME,
             'key': process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: {}
