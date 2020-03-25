@@ -38,7 +38,8 @@
     "stub:orchestration": "NODE_PATH=. node test/service-stubs/orchestration.js",
     "stub:s2s": "NODE_PATH=. node test/service-stubs/s2s.js",
     "stub:feature-toggles": "NODE_PATH=. node test/service-stubs/feature-toggles.js",
-    "test-crossbrowser-e2e": "NODE_ENV=testing LOG_LEVEL=OFF NODE_PATH=. node_modules/.bin/codeceptjs run-multiple  ${BROWSER_GROUP:-'--all'} -c test/end-to-end/saucelabs.conf.js --steps --reporter mocha-multi"
+    "test-crossbrowser-e2e": "NODE_ENV=testing LOG_LEVEL=OFF NODE_PATH=. node_modules/.bin/codeceptjs ${BROWSER_GROUP:-'--all'} -c test/end-to-end/saucelabs.conf.js --steps --reporter mocha-multi",
+    "test:crossbrowser_chrome": "NODE_PATH=. codeceptjs run-multiple chrome -c test/end-to-end/saucelabs.conf.js --plugins retryFailedStep --steps --reporter mocha-multi"
   },
   "pre-commit": [
     "lint"
@@ -83,7 +84,7 @@
     "codecov": "^4.0.0-0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "codeceptjs": "^2.2.1",
+    "codeceptjs": "^2.5.0",
     "eslint": "^6.1.0",
     "eslint-plugin-mocha": "^6.0.0",
     "istanbul": "^1.1.0-alpha.1",

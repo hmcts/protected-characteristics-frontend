@@ -1,6 +1,25 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 const browser = process.env.SAUCELABS_BROWSER || 'chrome';
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
+
+const getBrowserConfig = (browserGroup) => {
+    const browserConfig = [];
+    for (const candidateBrowser in supportedBrowsers[browserGroup]) {
+        if (candidateBrowser) {
+            const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
+            desiredCapability.tunnelIdentifier = tunnelName;
+            desiredCapability.tags = ['pcq'];
+            browserConfig.push({
+                browser: desiredCapability.browserName,
+                desiredCapabilities: desiredCapability
+            });
+        } else {
+            console.error('ERROR: supportedBrowsers.js is empty or incorrectly defined');
+        }
+    }
+    return browserConfig;
+};
+
 const setupConfig = {
     output: './functional-output',
     timeout: 60000,
@@ -37,7 +56,22 @@ const setupConfig = {
             inlineAssets: true
         }
     },
+    multiple: {
+        microsoftIE11: {
+            browsers: getBrowserConfig('microsoftIE11')
+        },
+        microsoftEdge: {
+            browsers: getBrowserConfig('microsoftEdge')
+        },
+        chrome: {
+            browsers: getBrowserConfig('chrome')
+        },
+        firefox: {
+            browsers: getBrowserConfig('firefox')
+        }
+    }
 };
+
 function getDesiredCapabilities() {
     const desiredCapability = supportedBrowsers[browser];
     desiredCapability.tunnelIdentifier = tunnelName;
