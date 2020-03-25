@@ -1,6 +1,6 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 
-const browser = process.env.SAUCELABS_BROWSER || 'chrome';
+const browser = process.env.SAUCELABS_BROWSER || '';
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
 
 const getBrowserConfig = (browserGroup) => {
@@ -40,10 +40,8 @@ const setupConfig = {
             'host': 'ondemand.eu-central-1.saucelabs.com',
             'port': 80,
             'region': 'eu',
-            'user': 'Douglas.Rice',
-            'key': 'b3a35058-1ba1-43a2-97eb-def34e296d34',
-            // 'user': process.env.SAUCE_USERNAME,
-            // 'key': process.env.SAUCE_ACCESS_KEY,
+            'user': process.env.SAUCE_USERNAME,
+            'key': process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: {}
         }
     },
@@ -53,6 +51,21 @@ const setupConfig = {
     },
     include: {
         'I': './pages/steps.js'
+    },
+    plugins: {
+        autoDelay: {
+            enabled: true,
+            delayAfter: 2000
+        }
+    },
+    SauceLabsReportingHelper: {
+        require: './helpers/SauceLabsReportingHelper.js'
+    },
+    WebDriverHelper: {
+        require: './helpers/WebDriverHelper.js'
+    },
+    JSWait: {
+        require: './helpers/JSWait.js'
     },
     mocha: {
         reporterOptions: {
@@ -64,7 +77,7 @@ const setupConfig = {
             'mochawesome': {
                 stdout: process.env.E2E_CROSSBROWSER_OUTPUT_DIR + 'console.log',
                 'options': {
-                    'reportDir': process.env.E2E_CROSSBROWSER_OUTPUT_DIR || './output',
+                    'reportDir': process.env.E2E_CROSSBROWSER_OUTPUT_DIR || './functional-output',
                     'reportName': 'index',
                     'reportTitle': 'Crossbrowser results',
                     'inlineAssets': true
@@ -72,7 +85,7 @@ const setupConfig = {
             }
         }
     },
-    'multiple': {
+    multiple: {
         microsoftIE11: {
             browsers: getBrowserConfig('microsoftIE11')
         },
@@ -84,6 +97,9 @@ const setupConfig = {
         },
         firefox: {
             browsers: getBrowserConfig('firefox')
+        },
+        safari: {
+            browsers: getBrowserConfig('safari')
         }
     }
 };
