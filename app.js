@@ -212,6 +212,7 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
     app.use(function (req, res, next) {
         const commonContent = require(`app/resources/${req.session.language}/translation/common`);
 
+        res.locals.govuk = commonContent.govuk;
         res.locals.serviceName = commonContent.serviceName;
         res.locals.cookieText = commonContent.cookieText;
         res.locals.releaseVersion = 'v' + releaseVersion;
