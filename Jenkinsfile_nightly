@@ -19,7 +19,15 @@ withNightlyPipeline(type, product, component) {
     enableSlackNotifications('#pcq-builds')
     enableCrossBrowserTest()
     after('crossBrowserTest') {
-        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
-    }
 
+        try {
+            withSauceConnect("reform_tunnel") {
+                sh "./gradlew functionalSauce"
+                steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+            }
+        }
+        finally {
+            steps.saucePublisher()
+        }
+    }
 }
