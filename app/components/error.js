@@ -33,7 +33,7 @@ const generateErrors = (errs, ctx, formdata, errorPath, language = 'en') => {
     const errors = map(errs, (e) => {
         let param;
         try {
-            if (e.keyword === 'required' || e.keyword === 'switch') {
+            if (e.keyword === 'required' || e.keyword === 'switch' || e.keyword === 'dependencies') {
                 param = e.params.missingProperty;
                 return FieldError(param, 'required', errorPath, ctx, language);
             }
