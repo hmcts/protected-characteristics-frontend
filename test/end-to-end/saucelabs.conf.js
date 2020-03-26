@@ -29,7 +29,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal/start-page',
+            url: process.env.E2E_FRONTEND_URL || 'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
             smartWait,
             waitForTimeout,
@@ -103,6 +103,9 @@ const setupConfig = {
         firefox: {
             browsers: getBrowserConfig('firefox')
         }
+        // safari: {
+        //     browsers: getBrowserConfig('safari')
+        // }
     }
 };
 

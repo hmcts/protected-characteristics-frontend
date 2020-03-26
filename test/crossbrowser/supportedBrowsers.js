@@ -41,7 +41,17 @@ const supportedBrowsers = {
             name: 'MAC_FIREFOX_LATEST',
             platform: 'macOS 10.13',
             version: 'latest'
-        }
+        },
+        // safari: {
+        //     safari11: {
+        //         browserName: 'safari',
+        //         name: 'DIV_SAFARI_11',
+        //         platform: 'macOS 10.13',
+        //         OS: 'Mac 10.13',
+        //         Browser: 'safari',
+        //         version: '11.1'
+        //     }
+        // }
     }
 };
 
