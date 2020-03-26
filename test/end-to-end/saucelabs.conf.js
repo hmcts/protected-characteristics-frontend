@@ -29,7 +29,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: process.env.E2E_FRONTEND_URL || 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: process.env.URL_TO_TEST || 'https://pcq-frontend-staging.service.core-compute-aat.internal',
             browser: 'chrome',
             smartWait,
             waitForTimeout,
