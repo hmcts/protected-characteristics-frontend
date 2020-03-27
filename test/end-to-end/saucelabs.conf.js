@@ -40,13 +40,13 @@ const setupConfig = {
                 'page load': 60000,
                 implicit: 20000
             },
-            'host': 'ondemand.eu-central-1.saucelabs.com',
-            'port': 80,
-            'region': 'eu',
+            host: 'ondemand.eu-central-1.saucelabs.com',
+            port: 80,
+            region: 'eu',
             sauceConnect: true,
             services: ['sauce'],
-            'user': process.env.SAUCE_USERNAME,
-            'key': process.env.SAUCE_ACCESS_KEY,
+            user: process.env.SAUCE_USERNAME,
+            key: process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: {}
         }
     },
