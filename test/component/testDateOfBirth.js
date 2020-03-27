@@ -109,7 +109,7 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testErrors(done, data, 'dateInFuture', errorsToTest);
         });
 
-        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - dob entered`, (done) => {
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB entered`, (done) => {
             const data = {
                 'dob_provided': 1,
                 'dob-day': '01',
@@ -120,7 +120,7 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
         });
 
-        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB entered`, (done) => {
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB fields empty`, (done) => {
             const data = {'dob_provided': 1};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
