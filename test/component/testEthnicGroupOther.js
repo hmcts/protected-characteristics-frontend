@@ -25,9 +25,25 @@ describe('ApplicantEthnicBackgroundOther', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Arab`, (done) => {
             const data = {
                 ethnicity: 17
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Another`, (done) => {
+            const data = {
+                ethnicity: 17
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Prefer not to say`, (done) => {
+            const data = {
+                ethnicity: 0
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
