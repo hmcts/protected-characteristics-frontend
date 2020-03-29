@@ -18,7 +18,6 @@ withNightlyPipeline(type, product, component) {
     env.TEST_URL = params.URL_TO_TEST
     enableSlackNotifications('#pcq-builds')
     enableCrossBrowserTest()
-    before('DependencyCheckNightly') {sh 'yarn test:audit'}
     after('crossBrowserTest') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
     }
