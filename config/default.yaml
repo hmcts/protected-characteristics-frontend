@@ -20,8 +20,8 @@ e2e:
 
 saucelabs:
   browser: 'chrome'
-  username: 'username'
-  key: 'privatekey'
+  username: 'salivendra'
+  key: 'd8c2d5fc-1807-434d-bdbd-133e326416ec'
   tunnelId: 'reformtunnel'
   waitForTimeout: 5000
   smartWait: 5000
