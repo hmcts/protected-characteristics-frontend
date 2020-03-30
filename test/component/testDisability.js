@@ -43,6 +43,14 @@ describe('ApplicantDisability', () => {
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
         });
 
+        it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant} - Prefer not to say`, (done) => {
+            const data = {
+                disability_conditions: 0
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
+        });
+
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant} - when no data is entered`, (done) => {
             testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantPregnant);
         });

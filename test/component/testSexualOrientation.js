@@ -25,10 +25,32 @@ describe('ApplicantSexualOrientation', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus}`, (done) => {
-            const data = {
-                sexuality: 1
-            };
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - Heterosexual`, (done) => {
+            const data = {sexuality: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
+        });
+
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - Gay/Lesbian`, (done) => {
+            const data = {sexuality: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
+        });
+
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - Bisexual`, (done) => {
+            const data = {sexuality: 3};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
+        });
+
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - Other`, (done) => {
+            const data = {sexuality: 4};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
+        });
+
+        it(`test it redirects to applicant marital status page: ${expectedNextUrlForApplicantMaritalStatus} - Prefer not to say`, (done) => {
+            const data = {sexuality: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantMaritalStatus);
         });

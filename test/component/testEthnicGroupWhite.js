@@ -25,10 +25,32 @@ describe('ApplicantEthnicBackgroundWhite', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
-            const data = {
-                ethnicity: 1
-            };
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - British`, (done) => {
+            const data = {ethnicity: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Irish`, (done) => {
+            const data = {ethnicity: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Traveller`, (done) => {
+            const data = {ethnicity: 3};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Another`, (done) => {
+            const data = {ethnicity: 4};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Prefer not to say`, (done) => {
+            const data = {ethnicity: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
         });

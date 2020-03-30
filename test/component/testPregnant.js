@@ -25,9 +25,25 @@ describe('ApplicantPregnant', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to end page: ${expectedNextUrlForEndPage}`, (done) => {
+        it(`test it redirects to end page: ${expectedNextUrlForEndPage} - Yes`, (done) => {
             const data = {
                 pregnancy: 1
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);
+        });
+
+        it(`test it redirects to end page: ${expectedNextUrlForEndPage} - No`, (done) => {
+            const data = {
+                pregnancy: 2
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);
+        });
+
+        it(`test it redirects to end page: ${expectedNextUrlForEndPage} - Prefer not to say`, (done) => {
+            const data = {
+                pregnancy: 0
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForEndPage);

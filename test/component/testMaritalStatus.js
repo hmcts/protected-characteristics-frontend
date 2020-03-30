@@ -25,10 +25,20 @@ describe('ApplicantMaritalStatus', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup}`, (done) => {
-            const data = {
-                marriage: 1
-            };
+        it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup} - Yes`, (done) => {
+            const data = {marriage: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);
+        });
+
+        it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup} - No`, (done) => {
+            const data = {marriage: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);
+        });
+
+        it(`test it redirects to applicant ethnic group page: ${expectedNextUrlForApplicantEthnicGroup} - Prefer not to say`, (done) => {
+            const data = {marriage: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantEthnicGroup);
         });
