@@ -25,10 +25,20 @@ describe('ApplicantGenderSameAsSex', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant sexual orientation page: ${expectedNextUrlForApplicantSexualOrientation}`, (done) => {
-            const data = {
-                gender_different: 1
-            };
+        it(`test it redirects to applicant sexual orientation page: ${expectedNextUrlForApplicantSexualOrientation} - Yes`, (done) => {
+            const data = {gender_different: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSexualOrientation);
+        });
+
+        it(`test it redirects to applicant sexual orientation page: ${expectedNextUrlForApplicantSexualOrientation} - No`, (done) => {
+            const data = {gender_different: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSexualOrientation);
+        });
+
+        it(`test it redirects to applicant sexual orientation page: ${expectedNextUrlForApplicantSexualOrientation} - Prefer not to say`, (done) => {
+            const data = {gender_different: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSexualOrientation);
         });
