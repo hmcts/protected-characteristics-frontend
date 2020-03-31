@@ -1,9 +1,13 @@
 const event = require('codeceptjs').event;
 const container = require('codeceptjs').container;
 const exec = require('child_process').exec;
+const CONF = require('config');
+const sauceUsername = process.env.SAUCE_USERNAME || CONF.saucelabs.username;
+const sauceKey = process.env.SAUCE_ACCESS_KEY || CONF.saucelabs.key;
 
 function updateSauceLabsResult(result, sessionId) {
-    return 'curl -X PUT -s -d \'{"passed": ' + result + '}\' -u ' + process.env.SAUCE_USERNAME + ':' + process.env.SAUCE_ACCESS_KEY + 'https://eu-central-1.saucelabs.com/rest/v1/' + process.env.SAUCE_USERNAME + '/jobs/' + sessionId;
+    console.log('SauceOnDemandSessionID=' + sessionId + ' job-name=div-petitioner-frontend'); /* eslint-disable-line no-console, prefer-template */
+    return 'curl -X PUT -s -d \'{"passed": ' + result + '}\' -u ' + sauceUsername + ':' + sauceKey + ' https://eu-central-1.saucelabs.com/rest/v1/' + sauceUsername + '/jobs/' + sessionId;
 }
 
 module.exports = function() {
