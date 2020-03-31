@@ -109,13 +109,25 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testErrors(done, data, 'dateInFuture', errorsToTest);
         });
 
-        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage}`, (done) => {
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB entered`, (done) => {
             const data = {
                 'dob_provided': 1,
                 'dob-day': '01',
                 'dob-month': '01',
                 'dob-year': '1999'
             };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB fields empty`, (done) => {
+            const data = {'dob_provided': 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - Prefer not to say`, (done) => {
+            const data = {'dob_provided': 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
         });

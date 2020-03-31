@@ -7,6 +7,10 @@ class ApplicantPregnant extends ValidationStep {
     static getUrl() {
         return '/pregnant';
     }
+
+    get requiredFields() {
+        return ['pregnancy'];
+    }
 }
 
 module.exports = ApplicantPregnant;

@@ -8,7 +8,12 @@ class ApplicantSexualOrientation extends ValidationStep {
         return '/sexual-orientation';
     }
 
+    get requiredFields() {
+        return ['sexuality'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.sexuality !== 4 && ctx.sexuality_other) {
             delete ctx.sexuality_other;
         }

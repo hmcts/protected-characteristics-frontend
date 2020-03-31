@@ -29,29 +29,29 @@
         errorMessage: { text: fields.ethnicity.errorMessage.message | safe } if fields.ethnicity.errorMessage,
         items: [
             {
-                value: 9,
+                value: '9',
                 text: content["optionIndian"] | safe,
-                checked: true if fields.ethnicity.value == 9
+                checked: true if fields.ethnicity.value == '9'
             },
             {
-                value: 10,
+                value: '10',
                 text: content["optionPakistani"] | safe,
-                checked: true if fields.ethnicity.value == 10
+                checked: true if fields.ethnicity.value == '10'
             },
             {
-                value: 11,
+                value: '11',
                 text: content["optionBangladeshi"] | safe,
-                checked: true if fields.ethnicity.value == 11
+                checked: true if fields.ethnicity.value == '11'
             },
             {
-                value: 12,
+                value: '12',
                 text: content["optionChinese"] | safe,
-                checked: true if fields.ethnicity.value == 12
+                checked: true if fields.ethnicity.value == '12'
             },
             {
-                value: 13,
+                value: '13',
                 text: content["optionOther"] | safe,
-                checked: true if fields.ethnicity.value == 13,
+                checked: true if fields.ethnicity.value == '13',
                 conditional: {
                     html: otherDetailsHtml
                 }
@@ -60,9 +60,9 @@
                 divider: common["or"] | safe
             },
             {
-                value: 0,
+                value: '0',
                 text: common["optionPreferNotToSay"] | safe,
-                checked: true if fields.ethnicity.value == 0
+                checked: true if fields.ethnicity.value == '0'
             }
         ]
     }) }}

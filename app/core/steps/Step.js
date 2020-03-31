@@ -31,6 +31,10 @@ class Step {
         return `${this.templatePath}/template`;
     }
 
+    get requiredFields() {
+        return [];
+    }
+
     constructor(steps, section = null, resourcePath, i18next, schema, language = 'en') {
         this.steps = steps;
         this.section = section;
@@ -74,6 +78,12 @@ class Step {
     }
 
     handlePost(ctx, errors) {
+        // Set required fields to null if not set
+        this.requiredFields.forEach(field => {
+            if (!(field in ctx)) {
+                ctx[field] = null;
+            }
+        });
         return [ctx, errors];
     }
 
@@ -146,11 +156,16 @@ class Step {
     }
 
     persistFormData(formdata, sessionID, req) {
+        const token = req.session.token;
+        const correlationId = req.session.correlationId;
         const formData = ServiceMapper.map(
             'FormData',
             [config.services.orchestration.url, sessionID]
         );
-        return formData.post(req.authToken, req.session.serviceAuthorization, formdata);
+        // Set the completed date
+        formdata.completedDate = moment().toISOString();
+
+        return formData.post(token, correlationId, formdata);
     }
 
     action(ctx, formdata) {

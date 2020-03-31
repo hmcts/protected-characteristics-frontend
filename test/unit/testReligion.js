@@ -46,5 +46,15 @@ describe('ApplicantReligion', () => {
             });
             done();
         });
+
+        it('should return the required fields set to null if no options are selected', (done) => {
+            ctx = {};
+            errors = [];
+            [ctx, errors] = ApplicantReligion.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                'religion': null
+            });
+            done();
+        });
     });
 });

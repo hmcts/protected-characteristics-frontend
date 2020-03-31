@@ -32,12 +32,12 @@ for (const step in steps) {
             let agent = null;
             let title;
 
-            if (step.name === 'StartPage' || step.name === 'EndPage') {
-                title = commonContent.serviceName
+            if (step.name === 'StartPage') {
+                title = `${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             } else {
-                title = `${step.content.title} - ${commonContent.serviceName}`
+                title = `${step.content.question || step.content.title} - ${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             }

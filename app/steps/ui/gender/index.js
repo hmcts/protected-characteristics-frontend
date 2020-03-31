@@ -8,7 +8,12 @@ class ApplicantGenderSameAsSex extends ValidationStep {
         return '/gender-same-as-sex';
     }
 
+    get requiredFields() {
+        return ['gender_different'];
+    }
+
     handlePost(ctx, errors) {
+        [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.gender_different !== 2 && ctx.gender_other) {
             delete ctx.gender_other;
         }

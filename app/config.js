@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+    questionsVersion: 1,
     frontendPublicHttpProtocol: process.env.PUBLIC_PROTOCOL || 'http',
     environment: process.env.REFORM_ENVIRONMENT || 'prod',
     nodeEnvironment: process.env.NODE_ENV,
@@ -20,12 +21,18 @@ module.exports = {
         useCSRFProtection: 'true',
         basePath: process.env.APP_BASE_PATH || ''
     },
+    auth: {
+        jwt: {
+            ttl: '8h',
+            secret: process.env.JWT_SECRET || 'OVERWRITE_THIS'
+        }
+    },
     services: {
         orchestration: {
-            url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:8888',
-            port: 8888,
+            url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:4550',
+            port: 4550,
             paths: {
-                forms: '/forms'
+                forms: '/pcq/backend/submitAnswers'
             }
         }
     },
@@ -46,7 +53,6 @@ module.exports = {
         }
     },
     dateFormat: 'DD/MM/YYYY',
-    payloadVersion: '4.1.0',
     hostname: process.env.FRONTEND_HOSTNAME || 'localhost:3000',
     gaTrackingId: process.env.GA_TRACKING_ID || 'UA-XXXXXXXX-X',
     enableTracking: process.env.ENABLE_TRACKING || 'true',
