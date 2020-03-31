@@ -22,6 +22,7 @@ nodejs:
       resourceGroup: pcq
       secrets:
         - AppInsightsInstrumentationKey
+        - jwt-secret
 
 redis:
   enabled: false

@@ -21,6 +21,12 @@ module.exports = {
         useCSRFProtection: 'true',
         basePath: process.env.APP_BASE_PATH || ''
     },
+    auth: {
+        jwt: {
+            ttl: '8h',
+            secret: process.env.JWT_SECRET || 'OVERWRITE_THIS'
+        }
+    },
     services: {
         orchestration: {
             url: process.env.ORCHESTRATION_SERVICE_URL || 'http://localhost:4550',
