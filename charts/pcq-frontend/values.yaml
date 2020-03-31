@@ -13,7 +13,7 @@ nodejs:
     SUBMIT_SERVICE_URL:
     ORCHESTRATION_SERVICE_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
-  image: hmctspublic.azurecr.io/pcq/pcq-frontend:latest
+  image: hmctspublic.azurecr.io/pcq/frontend:latest
   ingressHost: "pcq-frontend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal"
   aadIdentityName: pcq
 
