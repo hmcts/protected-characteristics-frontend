@@ -2,7 +2,7 @@ exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
         Puppeteer: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: 'http://pcq-frontend-staging.service.core-compute-aat.internal',
             show: false,
             headless: false,
             chrome: {
