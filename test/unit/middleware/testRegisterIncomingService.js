@@ -48,7 +48,7 @@ describe('registerIncomingService', () => {
         done();
     });
 
-    it('should assign a valid JWT token to the session', (done) => {
+    it('should assign default params to the session when none passed and redirect to the start page', (done) => {
         const req = {
             query: {},
             session: {
@@ -73,7 +73,7 @@ describe('registerIncomingService', () => {
         done();
     });
 
-    it('should assign default params to the session when none passed and redirect to the start page', (done) => {
+    it('should assign a valid JWT token to the session', (done) => {
         const req = {
             query: {
                 partyId: 'applicant@email.com',
