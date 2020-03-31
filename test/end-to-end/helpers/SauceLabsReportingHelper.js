@@ -1,9 +1,8 @@
 const event = require('codeceptjs').event;
 const container = require('codeceptjs').container;
 const exec = require('child_process').exec;
-const CONF = require('config');
-const sauceUsername = process.env.SAUCE_USERNAME || CONF.saucelabs.username;
-const sauceKey = process.env.SAUCE_ACCESS_KEY || CONF.saucelabs.key;
+const sauceUsername = process.env.SAUCE_USERNAME || 'salivendra';
+const sauceKey = process.env.SAUCE_ACCESS_KEY || 'd8c2d5fc-1807-434d-bdbd-133e326416ec';
 
 function updateSauceLabsResult(result, sessionId) {
     console.log('SauceOnDemandSessionID=' + sessionId + ' job-name=div-petitioner-frontend'); /* eslint-disable-line no-console, prefer-template */
