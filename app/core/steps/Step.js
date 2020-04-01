@@ -156,6 +156,7 @@ class Step {
     }
 
     persistFormData(formdata, sessionID, req) {
+        const token = req.session.token;
         const correlationId = req.session.correlationId;
         const formData = ServiceMapper.map(
             'FormData',
@@ -164,7 +165,7 @@ class Step {
         // Set the completed date
         formdata.completedDate = moment().toISOString();
 
-        return formData.post(correlationId, formdata);
+        return formData.post(token, correlationId, formdata);
     }
 
     action(ctx, formdata) {

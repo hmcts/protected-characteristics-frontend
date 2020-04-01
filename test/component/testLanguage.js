@@ -43,6 +43,12 @@ describe('ApplicantLanguage', () => {
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);
         });
 
+        it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex} - Prefer not to say`, (done) => {
+            const data = {language_main: 0};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantSex);
+        });
+
         it(`test it redirects to applicant sex page: ${expectedNextUrlForApplicantSex} - when no data is entered`, (done) => {
             testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantSex);
         });
