@@ -118,7 +118,7 @@ class Step {
             if (key.includes('formattedDate')) {
                 const dateName = key.split('-')[0];
                 const date = moment(ctx[`${dateName}-day`] + '/' + ctx[`${dateName}-month`] + '/' + ctx[`${dateName}-year`], config.dateFormat).parseZone();
-                returnValue = utils.formattedDate(date, language);
+                returnValue = date.isValid() ? utils.formattedDate(date, language) : null;
             } else {
                 returnValue = isObject(value) ? value : escape(value);
             }

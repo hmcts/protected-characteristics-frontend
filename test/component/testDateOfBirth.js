@@ -109,7 +109,28 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testErrors(done, data, 'dateInFuture', errorsToTest);
         });
 
-        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB entered`, (done) => {
+        it('test error message displayed for missing dob fields', (done) => {
+            const errorsToTest = ['dob-month', 'dob-year'];
+            const data = {
+                'dob_provided': 1,
+                'dob-day': '12',
+            };
+
+            testWrapper.testErrors(done, data, 'required', errorsToTest);
+        });
+
+        it('test error message displayed for missing dob field', (done) => {
+            const errorsToTest = ['dob-year'];
+            const data = {
+                'dob_provided': 1,
+                'dob-day': '12',
+                'dob-month': '12',
+            };
+
+            testWrapper.testErrors(done, data, 'required', errorsToTest);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage}  - DoB entered`, (done) => {
             const data = {
                 'dob_provided': 1,
                 'dob-day': '01',
