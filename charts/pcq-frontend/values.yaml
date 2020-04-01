@@ -1,16 +1,9 @@
 nodejs:
   applicationPort: 4000
-  memoryRequests: "512Mi"
-  cpuRequests: "100m"
-  memoryLimits: "1024Mi"
-  cpuLimits: "500m"
   environment:
     PUBLIC_PROTOCOL: https
     REFORM_TEAM: pcq
     REFORM_SERVICE_NAME: pcq-frontend
-    S2S_URL:
-    VALIDATION_SERVICE_URL:
-    SUBMIT_SERVICE_URL:
     ORCHESTRATION_SERVICE_URL: http://pcq-backend-{{ .Values.global.environment }}.service.core-compute-{{ .Values.global.environment }}.internal
     REFORM_ENVIRONMENT: '{{ .Values.global.environment }}'
   image: hmctspublic.azurecr.io/pcq/frontend:latest
