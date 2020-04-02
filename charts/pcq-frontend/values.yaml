@@ -23,7 +23,7 @@ nodejs:
       resourceGroup: pcq
       secrets:
         - AppInsightsInstrumentationKey
-        - pcq-frontend-redis-access-key
+        - frontend-redis-access-key
         - jwt-secret
 
 redis:
