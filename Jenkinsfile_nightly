@@ -4,7 +4,7 @@ properties([
 // H allow predefined but random minute see https://en.wikipedia.org/wiki/Cron#Non-standard_characters
 pipelineTriggers([cron('H 05 * * *')]),
 parameters([
-        string(name: 'URL_TO_TEST', defaultValue: 'https://Google.com', description: 'The URL you want to run these tests against')
+        string(name: 'URL_TO_TEST', defaultValue: 'https://pcq.aat.platform.hmcts.net', description: 'The URL you want to run these tests against')
 ])
 ])
 
@@ -19,8 +19,14 @@ withNightlyPipeline(type, product, component) {
     enableSlackNotifications('#pcq-builds')
     enableCrossBrowserTest()
 
-        after('crossBrowserTest') {
-            steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+    after('crossBrowserTest') {
+        try {
+            withSauceConnect("reform_tunnel") {
+                steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+            }
+        }
+        finally {
             steps.saucePublisher()
         }
+    }
 }

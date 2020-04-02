@@ -2,7 +2,7 @@ exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
         Puppeteer: {
-            url: 'https://Google.com',
+            url: 'http://pcq-frontend-staging.service.core-compute-aat.internal',
             show: true,
             headless: false,
             chrome: {

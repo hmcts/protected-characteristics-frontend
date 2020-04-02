@@ -15,18 +15,18 @@ Then('I am presented with the PCQ Intro page', () => {
 });
 
 When('I submit all pcq questions', () => {
-    // I.dateofbirth();
-    // I.selectenglishorwelsh();
-    // I.selectsexmale();
-    // I.selectyesgendersameassex();
-    // I.selecthetersexualorientation();
-    // I.selectyesmaritalstatus();
-    // I.selectethnicgroup();
-    // I.selectenglishethnicgroup();
-    // I.selectchristianreligion();
-    // I.selectyesdisability();
-    // I.selectyespregnant();
-    // I.see('You have answered the equality questions');
+    I.dateofbirth();
+    I.selectenglishorwelsh();
+    I.selectsexmale();
+    I.selectyesgendersameassex();
+    I.selecthetersexualorientation();
+    I.selectyesmaritalstatus();
+    I.selectethnicgroup();
+    I.selectenglishethnicgroup();
+    I.selectchristianreligion();
+    I.selectyesdisability();
+    I.selectyespregnant();
+    I.see('You have answered the equality questions');
 });
 
 Then('a record successfully created in database', () => {
