@@ -27,7 +27,6 @@ nodejs:
         - jwt-secret
 
 redis:
-  enabled: false
   cluster:
     enabled: false
     slaveCount: 0
@@ -35,3 +34,4 @@ redis:
   master:
     persistence:
       enabled: false
+  enabled: false
