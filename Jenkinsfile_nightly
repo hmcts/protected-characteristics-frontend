@@ -20,13 +20,6 @@ withNightlyPipeline(type, product, component) {
     enableCrossBrowserTest()
 
     after('crossBrowserTest') {
-        try {
-            withSauceConnect("reform_tunnel") {
                 steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
-            }
-        }
-        finally {
-            steps.saucePublisher()
-        }
     }
 }

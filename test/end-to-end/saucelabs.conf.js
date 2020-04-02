@@ -48,7 +48,10 @@ const setupConfig = {
             user: process.env.SAUCE_USERNAME,
             key: process.env.SAUCE_ACCESS_KEY,
             desiredCapabilities: {}
-        }
+        },
+        SauceLabsReportingHelper: {
+            require: './helpers/SauceLabsReportingHelper.js'
+        },
     },
     gherkin: {
         features: 'features/probate.feature',
@@ -62,15 +65,6 @@ const setupConfig = {
             enabled: true,
             delayAfter: 2000
         }
-    },
-    SauceLabsReportingHelper: {
-        require: './helpers/SauceLabsReportingHelper.js'
-    },
-    WebDriverHelper: {
-        require: './helpers/WebDriverHelper.js'
-    },
-    JSWait: {
-        require: './helpers/JSWait.js'
     },
     mocha: {
         reporterOptions: {
