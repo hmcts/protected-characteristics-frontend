@@ -266,8 +266,9 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
     });
 
     app.use((err, req, res, next) => {
-        const commonContent = require(`app/resources/${req.session.language}/translation/common`);
-        const content = require(`app/resources/${req.session.language}/translation/errors/500`);
+        const lang = req.session ? req.session.language : 'en';
+        const commonContent = require(`app/resources/${lang}/translation/common`);
+        const content = require(`app/resources/${lang}/translation/errors/500`);
 
         logger(req.sessionID).error(err);
         res.status(500).render('errors/error', {common: commonContent, content: content, error: '500'});
