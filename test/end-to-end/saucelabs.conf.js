@@ -29,7 +29,7 @@ const setupConfig = {
     timeout: 60000,
     helpers: {
         WebDriverIO: {
-            url: process.env.TEST_URL,
+            url: process.env.TEST_URL || 'https://pcq.aat.platform.hmcts.net',
             browser: 'chrome',
             smartWait,
             waitForTimeout,
