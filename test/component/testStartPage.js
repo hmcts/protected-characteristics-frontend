@@ -2,7 +2,7 @@
 
 const TestWrapper = require('test/util/TestWrapper');
 const ApplicantDateOfBirth = require('app/steps/ui/dateofbirth');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('StartPage', () => {

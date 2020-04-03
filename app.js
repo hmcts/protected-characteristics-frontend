@@ -12,7 +12,7 @@ const routes = require(`${__dirname}/app/routes`);
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const config = require(`${__dirname}/app/config`);
+const config = require('config');
 const utils = require(`${__dirname}/app/components/utils`);
 const packageJson = require(`${__dirname}/package`);
 const helmet = require('helmet');
@@ -57,14 +57,7 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
         enableTracking: config.enableTracking,
         links: config.links,
         nonce: uuid,
-        basePath: config.app.basePath,
-        webChat: {
-            chatId: config.webChat.chatId,
-            tenant: config.webChat.tenant,
-            buttonNoAgents: config.webChat.buttonNoAgents,
-            buttonAgentsBusy: config.webChat.buttonAgentsBusy,
-            buttonServiceClosed: config.webChat.buttonServiceClosed
-        }
+        basePath: config.app.basePath
     };
     njkEnv.addGlobal('globals', globals);
 

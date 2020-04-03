@@ -8,7 +8,7 @@ const ApplicantEthnicBackgroundBlack = require('app/steps/ui/ethnicblack');
 const ApplicantEthnicBackgroundOther = require('app/steps/ui/ethnicother');
 const ApplicantReligion = require('app/steps/ui/religion');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantEthnicGroup', () => {
