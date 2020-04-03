@@ -10,7 +10,6 @@ featureToggles:
 app:
   useHttps: USE_HTTPS
   port: PORT
-  basePath: APP_BASE_PATH
 auth:
   jwt:
     secret: JWT_SECRET
