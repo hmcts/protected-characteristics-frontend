@@ -3,8 +3,8 @@ const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 // eslint-disable-next-line no-unused-vars
 const browser = process.env.SAUCELABS_BROWSER;
 const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
-const waitForTimeout = 60000;
-const smartWait = 45000;
+const waitForTimeout = 10000;
+const smartWait = 10000;
 const getBrowserConfig = (browserGroup) => {
     const browserConfig = [];
     for (const candidateBrowser in supportedBrowsers[browserGroup]) {
@@ -26,7 +26,6 @@ const getBrowserConfig = (browserGroup) => {
 
 const setupConfig = {
     output: `${process.cwd()}/functional-output`,
-    timeout: 60000,
     helpers: {
         WebDriverIO: {
             url: process.env.TEST_URL || 'https://pcq.aat.platform.hmcts.net',
