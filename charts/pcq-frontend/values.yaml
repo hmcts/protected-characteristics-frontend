@@ -8,7 +8,7 @@ nodejs:
     PUBLIC_PROTOCOL: https
     REFORM_TEAM: pcq
     REFORM_SERVICE_NAME: pcq-frontend
-    USE_REDIS: true
+    USE_REDIS: false
     REDIS_USE_TLS: true
     REDIS_PORT: 6380
     REDIS_HOST: pcq-frontend-redis-cache-{{ .Values.global.environment }}.redis.cache.windows.net
