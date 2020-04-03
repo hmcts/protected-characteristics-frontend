@@ -9,7 +9,7 @@ const setSecret = (secretPath, configPath) => {
 
 const setupSecrets = () => {
     if (config.has('secrets.pcq')) {
-        setSecret('secrets.pcq.pcq-frontend-redis-access-key', 'redis.password');
+        setSecret('secrets.pcq.frontend-redis-access-key', 'redis.password');
         setSecret('secrets.pcq.jwt-secret', 'auth.jwt.secret');
         setSecret('secrets.pcq.AppInsightsInstrumentationKey', 'appInsights.instrumentationKey');
 
