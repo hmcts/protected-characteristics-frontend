@@ -34,12 +34,6 @@ const setupConfig = {
             smartWait,
             waitForTimeout,
             cssSelectorsEnabled: 'true',
-            windowSize: '1600x900',
-            timeouts: {
-                script: 60000,
-                'page load': 60000,
-                implicit: 20000
-            },
             host: 'ondemand.eu-central-1.saucelabs.com',
             port: 80,
             region: 'eu',
