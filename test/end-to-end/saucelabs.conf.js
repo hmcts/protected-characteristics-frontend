@@ -52,12 +52,6 @@ const setupConfig = {
         SauceLabsReportingHelper: {
             require: './helpers/SauceLabsReportingHelper.js'
         },
-        WebDriverHelper: {
-            require: './helpers/WebDriverHelper.js'
-        },
-        JSWait: {
-            require: './helpers/JSWait.js'
-        }
     },
     gherkin: {
         features: 'features/probate.feature',
