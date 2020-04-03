@@ -1,9 +1,9 @@
 {
-  "question": "[CY] Which one best describes your Black, African, Black British or Caribbean background?",
-  "optionAfrican": "[CY] African",
-  "optionCaribbean": "[CY] Caribbean",
-  "optionOther": "[CY] Another Black background",
-  "optionOtherDetails": "[CY] Your Black background (optional)",
+  "question": "Pa un sy’n disgrifio orau eich cefndir Du/Affricanaidd/Du Prydeinig/Caribïaidd?",
+  "optionAfrican": "Affricanaidd",
+  "optionCaribbean": "Caribïaidd",
+  "optionOther": "Cefndir Du arall",
+  "optionOtherDetails": "Eich cefndir du (dewisol)",
 
   "errors": {
     "ethnicGroupBlack": {

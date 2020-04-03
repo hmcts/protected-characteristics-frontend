@@ -1,9 +1,9 @@
 {
-  "question": "[CY] How well can you speak English?",
-  "optionVeryWell": "[CY] Very well",
-  "optionWell": "[CY] Well",
-  "optionNotWell": "[CY] Not well",
-  "optionNotAtAll": "[CY] Not at all",
+  "question": "Pa mor dda ydych chi’n gallu siarad Cymraeg?",
+  "optionVeryWell": "Da iawn",
+  "optionWell": "Da",
+  "optionNotWell": "Dim yn dda",
+  "optionNotAtAll": "Dim o gwbl",
 
   "errors": {
     "englishlevel": {

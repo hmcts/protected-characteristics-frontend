@@ -1,7 +1,7 @@
 {
-  "question": "[CY] What is your date of birth?",
-  "enterDateHint": "[CY] For example, 12 09 1987",
-  "optionEnterDate": "[CY] Enter your date of birth",
+  "question": "Beth yw eich dyddiad geni?",
+  "enterDateHint": "Er enghraifft, 31 3 1980",
+  "optionEnterDate": "Rhowch eich dyddiad geni",
 
   "errors": {
     "dob-day": {

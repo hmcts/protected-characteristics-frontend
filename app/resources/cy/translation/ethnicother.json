@@ -1,8 +1,8 @@
 {
-  "question": "[CY] Which one best describes your background?",
-  "optionArab": "[CY] Arab",
-  "optionOther": "[CY] Another ethnic background",
-  "optionOtherDetails": "[CY] Your ethnic background (optional)",
+  "question": "Pa un sy’n disgrifio orau eich cefndir?",
+  "optionArab": "Arabaidd",
+  "optionOther": "Cefndir ethnig arall",
+  "optionOtherDetails": "Eich cefndir ethnig (dewisol)",
 
   "errors": {
     "ethnicGroupOther": {

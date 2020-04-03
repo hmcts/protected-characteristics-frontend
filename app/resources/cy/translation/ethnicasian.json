@@ -1,11 +1,11 @@
 {
-  "question": "[CY] Which one best describes your Asian or Asian British background?",
-  "optionIndian": "[CY] Indian",
-  "optionPakistani": "[CY] Pakistani",
-  "optionBangladeshi": "[CY] Bangladeshi",
-  "optionChinese": "[CY] Chinese",
-  "optionOther": "[CY] Another Asian background",
-  "optionOtherDetails": "[CY] Your Asian background (optional)",
+  "question": "Pa un sy’n disgrifio orau eich cefndir Asiaidd neu Asiaidd Prydeinig?",
+  "optionIndian": "Indiaidd",
+  "optionPakistani": "Pacistanaidd",
+  "optionBangladeshi": "Bangladeshaidd",
+  "optionChinese": "Tsieineaidd",
+  "optionOther": "Cefndir asiaidd arall",
+  "optionOtherDetails": "Eich cefndir asiaidd (dewisol)",
 
   "errors": {
     "ethnicGroupAsian": {

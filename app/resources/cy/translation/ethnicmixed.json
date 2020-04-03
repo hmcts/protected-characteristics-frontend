@@ -1,10 +1,10 @@
 {
-  "question": "[CY] Which one best describes your Mixed or Multiple ethnic groups background?",
-  "optionWhiteBlackCaribbean": "[CY] White and Black Caribbean",
-  "optionWhiteBlackAfrican": "[CY] White and Black African",
-  "optionWhiteAsian": "[CY] White and Asian",
-  "optionOther": "[CY] Another Mixed background",
-  "optionOtherDetails": "[CY] Your Mixed background (optional)",
+  "question": "Pa un sy’n disgrifio orau eich grwp ethnig Cymysg neu Aml-ethnig?",
+  "optionWhiteBlackCaribbean": "Gwyn a Du Caribïaidd",
+  "optionWhiteBlackAfrican": "Gwyn a Du Affricanaidd",
+  "optionWhiteAsian": "Gwyn ac Asiaidd",
+  "optionOther": "Cefndir Cymysg arall",
+  "optionOtherDetails": "Eich cefndir cymysg (dewisol)",
 
   "errors": {
     "ethnicGroupMixed": {
