@@ -16,7 +16,7 @@ describe(modulePath, () => {
         it('should set config values when secrets path is set', () => {
             mockConfig.secrets = {
                 pcq: {
-                    'pcq-frontend-redis-access-key': 'redisValue',
+                    'frontend-redis-access-key': 'redisValue',
                     'jwt-secret': 'jwtValue',
                 }
             };
@@ -27,7 +27,7 @@ describe(modulePath, () => {
             setupSecrets();
 
             expect(mockConfig.redis.password)
-                .to.equal(mockConfig.secrets.pcq['pcq-frontend-redis-access-key']);
+                .to.equal(mockConfig.secrets.pcq['frontend-redis-access-key']);
             expect(mockConfig.auth.jwt.secret)
                 .to.equal(mockConfig.secrets.pcq['jwt-secret']);
         });
