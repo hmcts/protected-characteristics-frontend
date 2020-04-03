@@ -3,7 +3,7 @@
   "description": "Protected Characteristics web app",
   "version": "1.0.0",
   "engines": {
-    "node": ">=8.9"
+    "node": ">=12.15.0"
   },
   "scripts": {
     "setup": "NODE_PATH=. npm run sass && npm run git-info && npm run sass-ie8",
