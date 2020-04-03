@@ -1,7 +1,7 @@
 'use strict';
 
 const utils = require('app/components/api-utils');
-const config = require('app/config');
+const config = require('config');
 const FEATURE_TOGGLE_URL = config.featureToggles.url;
 const logger = require('app/components/logger');
 const logInfo = (message, correlationId = 'Init') => logger(correlationId).info(message);

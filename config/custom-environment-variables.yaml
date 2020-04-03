@@ -1,0 +1,37 @@
+---
+frontendPublicHttpProtocol: PUBLIC_PROTOCOL
+environment: REFORM_ENVIRONMENT
+nodeEnvironment: NODE_ENV
+gitRevision: GIT_REVISION
+externalHostNameUrl: EXTERNAL_HOSTNAME_URL
+featureToggles:
+  url: FEATURE_TOGGLES_API_URL
+  path: FEATURE_TOGGLES_PATH
+app:
+  useHttps: USE_HTTPS
+  port: PORT
+  basePath: APP_BASE_PATH
+auth:
+  jwt:
+    secret: JWT_SECRET
+services:
+  orchestration:
+    url: ORCHESTRATION_SERVICE_URL
+redis:
+  host: REDIS_HOST
+  port: REDIS_PORT
+  password: REDIS_PASSWORD
+  useTLS: REDIS_USE_TLS
+  enabled: USE_REDIS
+  secret: REDIS_SECRET
+hostname: FRONTEND_HOSTNAME
+gaTrackingId: GA_TRACKING_ID
+enableTracking: ENABLE_TRACKING
+links:
+  survey: SURVEY
+utils:
+  api:
+    retries: RETRIES_NUMBER
+    retryDelay: RETRY_DELAY
+appInsights:
+  instrumentationKey: APPINSIGHTS_INSTRUMENTATION_KEY

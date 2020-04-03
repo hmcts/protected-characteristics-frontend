@@ -4,7 +4,7 @@ const TestWrapper = require('test/util/TestWrapper');
 const ApplicantEnglishLevel = require('app/steps/ui/englishlevel');
 const ApplicantSex = require('app/steps/ui/sex');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantLanguage', () => {

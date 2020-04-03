@@ -3,7 +3,7 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const jwt = require('jsonwebtoken');
-const config = require('app/config');
+const config = require('config');
 const registerIncomingService = require('app/middleware/registerIncomingService');
 
 describe('registerIncomingService', () => {

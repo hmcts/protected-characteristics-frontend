@@ -4,7 +4,7 @@ const TestWrapper = require('test/util/TestWrapper');
 const ApplicantDisabilityImplicationAreas = require('app/steps/ui/disabilityimplicationsareas');
 const ApplicantPregnant = require('app/steps/ui/pregnant');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantDisabilityImplications', () => {
