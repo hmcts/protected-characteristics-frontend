@@ -11,7 +11,7 @@ const commonContent = require('app/resources/en/translation/common');
 const stepsToExclude = [];
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 const nock = require('nock');
-const config = require('app/config');
+const config = require('config');
 const commonSessionData = {
     form: {},
     back: []
