@@ -31,7 +31,7 @@ const registerIncomingService = (req, res) => {
     }
 
     // Create the JWT Token after the required parameters have been set.
-    auth.createToken(req, {partyId: req.session.form.partyId});
+    auth.createToken(req, req.session.form.partyId);
 
     if (req.query.language) {
         req.session.language = req.query.language;

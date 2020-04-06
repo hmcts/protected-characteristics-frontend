@@ -3,9 +3,11 @@
 const jwt = require('jsonwebtoken');
 const config = require('config');
 
-const createToken = (req, payload) => {
+const createToken = (req, partyId, payload = {}) => {
     const conf = config.auth.jwt;
-    const token = jwt.sign(payload, conf.secret, {expiresIn: conf.ttl});
+
+    payload.authorities = [];
+    const token = jwt.sign(payload, conf.secret, {subject: partyId, expiresIn: conf.ttl});
 
     req.session.token = token;
     return token;
