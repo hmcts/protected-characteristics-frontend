@@ -20,7 +20,7 @@ app:
 auth:
   jwt:
     ttl: '8h'
-    secret: 'OVERWRITE_THIS'
+    secret: 'JwtSecretKey'
 services:
   orchestration:
     url: 'http://localhost:4550'
