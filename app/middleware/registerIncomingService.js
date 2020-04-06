@@ -30,8 +30,8 @@ const registerIncomingService = (req, res) => {
         logger.warn('Missing parameter from incoming service: returnUrl');
     }
 
-    // Create the JWT Token after the required parameters have been set.
-    auth.createToken(req, req.session.form.partyId);
+    // Create the JWT Token after the required parameters have been set
+    auth.createToken(req, req.session.form.partyId || '');
 
     if (req.query.language) {
         req.session.language = req.query.language;
