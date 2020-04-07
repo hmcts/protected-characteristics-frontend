@@ -8,11 +8,13 @@ const get = require('lodash').get;
 const shutter = require('app/shutter');
 const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
+const validateParams = require('app/middleware/validateParams');
 const setJourney = require('app/middleware/setJourney');
 
 router.use(shutter);
 router.use(initSession);
 router.use(registerIncomingService);
+router.use(validateParams);
 router.use(setJourney);
 
 router.all('*', (req, res, next) => {

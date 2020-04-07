@@ -1,6 +1,5 @@
 {
-  "title": "Service temporarily unavailable",
-  "header": "Sorry, the service is unavailable",
-  "paragraph1": "We are making improvements to the service. Try again later.",
-  "paragraph2": "If you started an application, we did not save your answers."
+  "title": "Sorry, there is a problem with the service",
+  "header": "Sorry, there is a problem with the service",
+  "paragraph1": "We have saved your answers and will direct you back to your application now."
 }
