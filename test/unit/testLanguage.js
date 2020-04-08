@@ -40,7 +40,8 @@ describe('ApplicantLanguage', () => {
             errors = [];
             [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                language_main: 1
+                language_main: 1,
+                english_language_level: null
             });
             done();
         });
@@ -50,7 +51,21 @@ describe('ApplicantLanguage', () => {
             errors = [];
             [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
-                'language_main': null
+                'language_main': null,
+                'english_language_level': null
+            });
+            done();
+        });
+
+        it('should set english_language_level to null if not selecting "other" option', (done) => {
+            ctx = {
+                'language_main': 1
+            };
+            errors = [];
+            [ctx, errors] = ApplicantLanguage.handlePost(ctx, errors, formdata, session);
+            expect(ctx).to.deep.equal({
+                language_main: 1,
+                english_language_level: null
             });
             done();
         });

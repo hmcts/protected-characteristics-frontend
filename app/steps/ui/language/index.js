@@ -14,8 +14,11 @@ class ApplicantLanguage extends ValidationStep {
 
     handlePost(ctx, errors) {
         [ctx, errors] = super.handlePost(ctx, errors);
-        if (ctx.language_main !== 2 && ctx.language_other) {
-            delete ctx.language_other;
+        if (ctx.language_main !== 2) {
+            ctx.english_language_level = null;
+            if (ctx.language_other) {
+                delete ctx.language_other;
+            }
         }
         return [ctx, errors];
     }
