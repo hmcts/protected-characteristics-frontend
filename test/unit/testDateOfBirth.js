@@ -23,6 +23,29 @@ describe('ApplicantDateOfBirth', () => {
         });
     });
 
+    describe('getContextData()', () => {
+        it('should delete the dob variables if the user doesn\'t want to provide it', (done) => {
+            const req = {
+                session: {
+                    ctx: {
+                        dateofbirth: {
+                            'dob_provided': 0,
+                            'dob-day': '02',
+                            'dob-month': '03',
+                            'dob-year': '3000'
+                        }
+                    }
+                }
+            };
+            const ctx = ApplicantDateOfBirth.getContextData(req);
+            expect(ctx).to.deep.equal({
+                'dob_provided': 0,
+                sessionID: ctx.sessionID
+            });
+            done();
+        });
+    });
+
     describe('handlePost()', () => {
         let ctx;
         let errors;
@@ -66,21 +89,6 @@ describe('ApplicantDateOfBirth', () => {
                     }
                 }
             ]);
-            done();
-        });
-
-        it('should delete the dob variables if the user doesn\'t want to provide it', (done) => {
-            ctx = {
-                'dob_provided': 0,
-                'dob-day': '02',
-                'dob-month': '03',
-                'dob-year': '1952'
-            };
-            errors = [];
-            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
-            expect(ctx).to.deep.equal({
-                'dob_provided': 0
-            });
             done();
         });
 

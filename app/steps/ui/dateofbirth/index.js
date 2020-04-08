@@ -17,6 +17,19 @@ class ApplicantDateOfBirth extends DateStep {
         return ['dob'];
     }
 
+    getContextData(req) {
+        const ctx = super.getContextData(req);
+        if (ctx.dob_provided === 0) {
+            delete ctx.dob;
+            delete ctx['dob-day'];
+            delete ctx['dob-month'];
+            delete ctx['dob-year'];
+            delete ctx['dob-formattedDate'];
+        }
+
+        return ctx;
+    }
+
     handlePost(ctx, errors) {
         [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.dob_provided === 1) {
@@ -28,12 +41,6 @@ class ApplicantDateOfBirth extends DateStep {
             if (dob >= today) {
                 errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent()));
             }
-        } else {
-            delete ctx.dob;
-            delete ctx['dob-day'];
-            delete ctx['dob-month'];
-            delete ctx['dob-year'];
-            delete ctx['dob-formattedDate'];
         }
 
         return [ctx, errors];
