@@ -24,7 +24,7 @@
     "test:e2e": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
     "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps -p allure",
     "test:crossbrowser": "./bin/run-crossbrowser-tests.sh",
-    "test:smoke": "mocha test/smoke/healthcheck.js --timeout 30000 --reporter spec",
+    "test:smoke": "NODE_ENV=testing mocha test/smoke/healthcheck.js --timeout 30000 --reporter spec",
     "lint": "NODE_PATH=. eslint .",
     "eslint": "NODE_PATH=. eslint .",
     "eslint-dev:all": "NODE_PATH=. eslint . -c .eslintrc-dev.js",
