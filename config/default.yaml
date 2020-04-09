@@ -9,7 +9,7 @@ service:
   name: 'pcq-frontend'
 
 e2e:
-  frontendUrl: 'https://pcq-frontend-staging.service.core-compute-aat.internal'
+  frontendUrl: 'https://pcq.aat.platform.hmcts.net'
   proxyServer: ''
   proxyBypassList: ''
   outputDirectory: './functional-output'

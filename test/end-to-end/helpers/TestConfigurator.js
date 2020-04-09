@@ -1,6 +1,7 @@
 'use strict';
 // eslint-disable-next-line no-unused-vars
 const testConfig = require('test/config');
+const uuidv4 = require('uuid/v4');
 const request = require('request');
 const assert = require('chai').assert;
 
@@ -39,9 +40,7 @@ class TestConfigurator {
     }
 
     setPcqId() {
-        const id = Math.floor(Math
-            .random() * (99999 - 10000 + 1)) + 10000;
-        return '58e' + id + '-2468-4370-a88e-bea2a80fa77f';
+        return uuidv4();
     }
 }
 
