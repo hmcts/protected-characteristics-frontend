@@ -8,6 +8,15 @@ class EndPage extends Step {
         return '/end-page';
     }
 
+    getContextData(req) {
+        const ctx = super.getContextData(req);
+        if (req.session.returnUrl) {
+            ctx.returnUrl = `${req.session.returnUrl}`;
+        }
+
+        return ctx;
+    }
+
     action(ctx, formdata) {
         super.action(ctx, formdata);
         delete ctx.returnUrl;

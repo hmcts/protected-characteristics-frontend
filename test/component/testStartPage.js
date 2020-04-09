@@ -25,5 +25,21 @@ describe('StartPage', () => {
         it(`test it redirects to applicant date of birth page: ${expectedNextUrlForApplicantDateOfBirth}`, (done) => {
             testWrapper.testRedirect(done, {}, expectedNextUrlForApplicantDateOfBirth);
         });
+
+        it('test link to return URL is present', (done) => {
+            const sessionData = {
+                returnUrl: 'http://invoking-service-return-url'
+            };
+
+            testWrapper.agent.post('/prepare-session-field')
+                .send(sessionData)
+                .end(() => {
+                    const playbackData = {
+                        returnUrl: 'http://invoking-service-return-url'
+                    };
+
+                    testWrapper.testDataPlayback(done, playbackData);
+                });
+        });
     });
 });

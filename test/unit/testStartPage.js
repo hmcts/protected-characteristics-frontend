@@ -14,6 +14,40 @@ describe('StartPage', () => {
         });
     });
 
+    describe('getContextData()', () => {
+        it('should return the context with the return url', (done) => {
+            const req = {
+                sessionID: 'some session id',
+                session: {
+                    returnUrl: 'http://some-return-url/',
+                    ctx: {}
+                }
+            };
+
+            const ctx = StartPage.getContextData(req);
+            expect(ctx).to.deep.equal({
+                sessionID: 'some session id',
+                returnUrl: 'http://some-return-url/'
+            });
+            done();
+        });
+
+        it('should return the context when no return url is present', (done) => {
+            const req = {
+                sessionID: 'some session id',
+                session: {
+                    ctx: {}
+                }
+            };
+
+            const ctx = StartPage.getContextData(req);
+            expect(ctx).to.deep.equal({
+                sessionID: 'some session id'
+            });
+            done();
+        });
+    });
+
     describe('action()', () => {
         it('test that context variables are removed and empty object returned', () => {
             let formdata = {};

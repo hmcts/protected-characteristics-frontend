@@ -17,5 +17,21 @@ describe('EndPage', () => {
         it('test content loaded on the page', (done) => {
             testWrapper.testContent(done);
         });
+
+        it('test link to return URL is present', (done) => {
+            const sessionData = {
+                returnUrl: 'http://invoking-service-return-url'
+            };
+
+            testWrapper.agent.post('/prepare-session-field')
+                .send(sessionData)
+                .end(() => {
+                    const playbackData = {
+                        returnUrl: 'http://invoking-service-return-url'
+                    };
+
+                    testWrapper.testDataPlayback(done, playbackData);
+                });
+        });
     });
 });
