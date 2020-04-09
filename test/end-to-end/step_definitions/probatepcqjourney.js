@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
+'use strict';
 /* eslint-disable no-undef */
 const {I} = inject();
-
+const TestConfigurator = new (require('test/end-to-end/helpers/TestConfigurator'))();
+const pcqId = TestConfigurator.setPcqId();
 Given('I am a probate Citizen user', () => {
     //To:Do : Probate team
 });
@@ -11,7 +13,7 @@ When('I invoke the PCQs task', () => {
 });
 
 Then('I am presented with the PCQ Intro page', () => {
-    I.startapply();
+    I.startapply(pcqId);
 });
 
 When('I submit all pcq questions', () => {
@@ -30,8 +32,9 @@ When('I submit all pcq questions', () => {
 });
 
 Then('a record successfully created in database', () => {
-    //To:Do : Database insertion
+    //To:Do : Probate team
 });
+
 When('I submit No for all pcq questions', () => {
     I.dobvalidations();
     I.selectotherlanguage();
@@ -47,6 +50,7 @@ When('I submit No for all pcq questions', () => {
     I.selectnopregnant();
     I.see('You have answered the equality questions');
 });
+
 When('I submit prefer not to say for all pcq questions', () => {
     I.dobprefernottosay();
     I.selectlanguageprefernottosay();
@@ -60,4 +64,8 @@ When('I submit prefer not to say for all pcq questions', () => {
     I.disabilityprefernottosay();
     I.selectpregnantprefernottosay();
     I.see('You have answered the equality questions');
+});
+
+After(() => {
+    TestConfigurator.getUserData(pcqId);
 });

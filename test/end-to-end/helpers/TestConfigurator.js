@@ -2,33 +2,34 @@
 // eslint-disable-next-line no-unused-vars
 const testConfig = require('test/config');
 const request = require('request');
-const assert = require('assert');
+const assert = require('chai').assert;
 
 class TestConfigurator {
     constructor() {
         this.testBaseUrl = testConfig.TestGetUserUrl;
         this.testProxy = testConfig.TestProxy;
+        this.testUseProxy = testConfig.TestUseProxy;
     }
 
     getUserData(pcqid) {
         request({
-            url: this.testBaseUrl + pcqid,
+            url: `http://pcq-backend-aat.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
             method: 'GET',
+            proxy: this.testProxy,
+            headers: {'content-type': 'application/json'},
             // eslint-disable-next-line no-unused-vars
-        }, function (error, response, body) {
-            // eslint-disable-next-line eqeqeq
-            if (response.statusCode == 200) {
-                const userData = JSON.parse(body);
-                console.log('this is id :' + userData.id);
-                console.log('this is address :' + userData.address.street);
-                assert.strictEqual(userData.address.street, 'Kulas Light');
-                console.log('success');
+        },
+        function (err, res, body) {
+            if (!res) {
+                err = new Error('node-librato-metrics: No response received!');
             } else {
-                // eslint-disable-next-line eqeqeq
-                if (response.statusCode == 500) {
-                    console.log('Internal Server Error!!');
-                }
-                console.log('The Response is  :' + response.statusCode);
+                const userData = JSON.parse(body);
+                assert.equal(userData.pcqId, pcqid, 'pcqid verfication');
+                assert.equal(userData.ccdCaseId, testConfig.TestccdCaseId, 'Caseid verification');
+                assert.equal(userData.partyId, testConfig.TestpartyId);
+                assert.equal(userData.serviceId, testConfig.TestserviceId);
+                assert.equal(userData.actor, testConfig.Testactor);
+                assert.equal(userData.versionNo, testConfig.TestVerison);
             }
         });
     }
@@ -37,6 +38,11 @@ class TestConfigurator {
         return this.testProxy;
     }
 
+    setPcqId() {
+        const id = Math.floor(Math
+            .random() * (99999 - 10000 + 1)) + 10000;
+        return '58e' + id + '-2468-4370-a88e-bea2a80fa77f';
+    }
 }
 
 module.exports = TestConfigurator;

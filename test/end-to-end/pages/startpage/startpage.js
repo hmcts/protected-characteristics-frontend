@@ -1,10 +1,18 @@
 'use strict';
-
-const pageUnderTest = require('app/steps/ui/startpage/index');
-module.exports = function () {
+const serviceEndpointUrl = require('test/end-to-end/utils').serviceEndpointUrl;
+module.exports = function (pcqId) {
     const I = this;
-    I.amOnPage(pageUnderTest.getUrl());
-    console.log('this is the url '+ process.env.TEST_URL);
+    // eslint-disable-next-line no-unused-vars
+    I.amOnPage(serviceEndpointUrl(
+        {
+            serviceId: 'PROBATE',
+            actor: 'CITIZEN',
+            pcqId: pcqId,
+            ccdCaseId: '1234567890123456',
+            partyId: 'test@gmail.com',
+            returnUrl: 'dummy-return-url',
+            language: 'en'
+        }));
     I.see('Continue to the question');
     I.click('Continue to the question');
 };

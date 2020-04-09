@@ -7,4 +7,5 @@ module.exports = function () {
     I.amOnPage(pageUnderTest.getUrl());
     I.seeCurrentUrlEquals(pageUnderTest.getUrl());
     I.click('Female');
+    I.click('Continue');
 };
