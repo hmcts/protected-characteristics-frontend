@@ -4,7 +4,7 @@ const TestWrapper = require('test/util/TestWrapper');
 const ApplicantDisabilityImplications = require('app/steps/ui/disabilityimplications');
 const ApplicantPregnant = require('app/steps/ui/pregnant');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantDisability', () => {
@@ -38,6 +38,14 @@ describe('ApplicantDisability', () => {
         it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant}`, (done) => {
             const data = {
                 disability_conditions: 2
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);
+        });
+
+        it(`test it redirects to applicant pregnant page: ${expectedNextUrlForApplicantPregnant} - Prefer not to say`, (done) => {
+            const data = {
+                disability_conditions: 0
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantPregnant);

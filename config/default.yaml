@@ -1,6 +1,6 @@
+
 appName: 'frontend'
 project: 'pcq'
-environment: 'laptop'
 version: 'x.x-laptop'
 deployment_env: 'local'
 showSitemap: false
@@ -26,3 +26,82 @@ saucelabs:
   waitForTimeout: 5000
   smartWait: 5000
 
+
+questionsVersion: 1
+frontendPublicHttpProtocol: 'http'
+environment: 'prod'
+externalHostNameUrl: ''
+languages:
+  - en
+  - cy
+featureToggles:
+  url: 'http://localhost:9292'
+  path: '/api/ff4j/check'
+  port: 9292
+  pc_shutter_ft: 'protected-characteristics-shutter'
+  appwideToggles: []
+app:
+  useHttps: 'false'
+  port: '4000'
+  useCSRFProtection: 'true'
+  basePath: ''
+auth:
+  jwt:
+    ttl: '8h'
+    secret: 'JwtSecretKey'
+services:
+  orchestration:
+    url: 'http://localhost:4550'
+    port: 4550
+    paths:
+      forms: '/pcq/backend/submitAnswers'
+redis:
+  host: 'localhost'
+  port: 6379
+  password: 'dummy_password'
+  useTLS: 'false'
+  enabled: 'false'
+  secret: 'OVERWRITE_THIS'
+  proxy: true
+  resave: false
+  saveUninitialized: false
+  cookie:
+    secure: false
+    httpOnly: true
+    sameSite: 'lax'
+dateFormat: 'DD/MM/YYYY'
+hostname: 'localhost:3000'
+gaTrackingId: 'UA-XXXXXXXX-X'
+enableTracking: 'true'
+links:
+  cookies: '/cookies'
+  privacy: '/privacy-policy'
+  terms: '/terms-conditions'
+  accessibility: '/accessibility-statement'
+  callCharges: 'https://www.gov.uk/call-charges'
+  howToManageCookies: 'https://www.aboutcookies.org'
+  googlePrivacyPolicy: 'https://www.google.com/policies/privacy/partners/'
+  googleAnalyticsOptOut: 'https://tools.google.com/dlpage/gaoptout/'
+  mojPersonalInformationCharter: 'https://www.gov.uk/government/organisations/ministry-of-justice/about/personal-information-charter'
+  survey: 'https://www.smartsurvey.co.uk/s/PCQ_Feedback/'
+  applicationFormPA8A: 'https://www.gov.uk/government/publications/form-pa8a-caveat-application-form'
+  whoInheritsLink: 'https://www.gov.uk/inherits-someone-dies-without-will'
+  citizenAdvice: 'https://www.citizensadvice.org.uk/'
+  goodThingsFoundation: 'https://www.goodthingsfoundation.org'
+  subjectAccessRequest: 'https://www.gov.uk/government/publications/request-your-personal-data-from-moj'
+  complaintsProcedure: 'https://www.gov.uk/government/organisations/hm-courts-and-tribunals-service/about/complaints-procedure'
+  informationCommissionersOffice: 'https://ico.org.uk/global/contact-us'
+  applicationFormPA15: 'https://www.gov.uk/government/publications/form-pa15-apply-for-renunciation-will'
+  deathReportedToCoroner: 'https://www.gov.uk/after-a-death/when-a-death-is-reported-to-a-coroner'
+  myAbilityLink: 'https://mcmw.abilitynet.org.uk/'
+  equalityAdvisorLink: 'https://www.equalityadvisoryservice.com/'
+  wcag21Link: 'https://www.w3.org/TR/WCAG21/'
+utils:
+  api:
+    retries: 10
+    retryDelay: 1000
+    timeout: 30000
+livenessEndpoint: "/health/liveness"
+healthEndpoint: "/health"
+appInsights:
+  instrumentationKey: ''

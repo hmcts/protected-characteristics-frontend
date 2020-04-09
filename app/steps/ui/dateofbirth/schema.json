@@ -26,5 +26,10 @@
       "type": "string",
       "format": "date-time"
     }
+  },
+  "dependencies": {
+    "dob-day": ["dob-month", "dob-year"],
+    "dob-month":  ["dob-day", "dob-year"],
+    "dob-year": ["dob-day", "dob-month"]
   }
 }

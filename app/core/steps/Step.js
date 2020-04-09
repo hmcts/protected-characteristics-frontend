@@ -4,7 +4,7 @@ const {mapValues, map, reduce, escape, isObject, isEmpty, forEach, has} = requir
 const UIStepRunner = require('app/core/runners/UIStepRunner');
 const JourneyMap = require('app/core/JourneyMap');
 const mapErrorsToFields = require('app/components/error').mapErrorsToFields;
-const config = require('app/config');
+const config = require('config');
 const ServiceMapper = require('app/utils/ServiceMapper');
 const FeatureToggle = require('app/utils/FeatureToggle');
 const utils = require('app/components/step-utils');
@@ -118,7 +118,7 @@ class Step {
             if (key.includes('formattedDate')) {
                 const dateName = key.split('-')[0];
                 const date = moment(ctx[`${dateName}-day`] + '/' + ctx[`${dateName}-month`] + '/' + ctx[`${dateName}-year`], config.dateFormat).parseZone();
-                returnValue = utils.formattedDate(date, language);
+                returnValue = date.isValid() ? utils.formattedDate(date, language) : null;
             } else {
                 returnValue = isObject(value) ? value : escape(value);
             }
@@ -156,6 +156,7 @@ class Step {
     }
 
     persistFormData(formdata, sessionID, req) {
+        const token = req.session.token;
         const correlationId = req.session.correlationId;
         const formData = ServiceMapper.map(
             'FormData',
@@ -164,7 +165,7 @@ class Step {
         // Set the completed date
         formdata.completedDate = moment().toISOString();
 
-        return formData.post(correlationId, formdata);
+        return formData.post(token, correlationId, formdata);
     }
 
     action(ctx, formdata) {

@@ -9,7 +9,7 @@ const CHECKBOX_FIELDS = [
     'disability_dexterity',
     'disability_learning',
     'disability_memory',
-    'disability_health',
+    'disability_mental_health',
     'disability_stamina',
     'disability_social',
     'disability_other',

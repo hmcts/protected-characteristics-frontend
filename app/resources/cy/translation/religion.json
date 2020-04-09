@@ -1,15 +1,14 @@
 {
-  "title": "[CY] Your religion",
-  "question": "[CY] What is your religion?",
-  "optionNoReligion": "[CY] No religion",
-  "optionChristian": "[CY] Christian (all denominations)",
-  "optionBuddhist": "[CY] Buddhist",
-  "optionHindu": "[CY] Hindu",
-  "optionJewish": "[CY] Jewish",
-  "optionMuslim": "[CY] Muslim",
-  "optionSikh": "[CY] Sikh",
-  "optionOther": "[CY] Any other religion",
-  "optionOtherDetails": "[CY] Please describe your religion",
+  "question": "Beth yw eich crefydd?",
+  "optionNoReligion": "Dim crefydd",
+  "optionChristian": "Cristnogaeth",
+  "optionBuddhist": "Bwdhaeth",
+  "optionHindu": "Hindŵaeth",
+  "optionJewish": "Iddewiaeth",
+  "optionMuslim": "Mwslimaidd",
+  "optionSikh": "Siciaeth",
+  "optionOther": "Unrhyw grefydd arall",
+  "optionOtherDetails": "Disgrifiwch eich crefydd",
 
   "errors": {
     "religion": {

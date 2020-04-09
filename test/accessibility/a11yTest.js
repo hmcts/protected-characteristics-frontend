@@ -11,7 +11,7 @@ const commonContent = require('app/resources/en/translation/common');
 const stepsToExclude = [];
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 const nock = require('nock');
-const config = require('app/config');
+const config = require('config');
 const commonSessionData = {
     form: {},
     back: []
@@ -32,12 +32,12 @@ for (const step in steps) {
             let agent = null;
             let title;
 
-            if (step.name === 'StartPage' || step.name === 'EndPage') {
-                title = commonContent.serviceName
+            if (step.name === 'StartPage') {
+                title = `${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             } else {
-                title = `${step.content.title} - ${commonContent.serviceName}`
+                title = `${step.content.question || step.content.title} - ${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             }

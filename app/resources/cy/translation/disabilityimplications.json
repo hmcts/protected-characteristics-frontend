@@ -1,9 +1,8 @@
 {
-  "title": "[CY] Your disabilities implications",
-  "question": "[CY] Do any of your conditions or illnesses reduce your ability to carry out day-to-day activities?",
-  "optionYesLot": "[CY] Yes, limited a lot",
-  "optionYesLittle": "[CY] Yes, limited a little",
-  "optionNo": "[CY] Not at all",
+  "question": "A yw eich cyflwr neu salwch yn lleihau eich gallu i gyflawni gweithgareddau bob dydd?",
+  "optionYesLot": "Ydy yn sylweddol",
+  "optionYesLittle": "Ydy, ychydig bach",
+  "optionNo": "Dim o gwbl",
 
   "errors": {
     "disabilityImplications": {

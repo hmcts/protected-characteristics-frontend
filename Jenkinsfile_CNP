@@ -8,7 +8,8 @@ def component = "frontend"
 
 def secrets = [
   'pcq-${env}': [
-
+    secret('jwt-secret', 'JWT_SECRET'),
+    secret('frontend-redis-access-key', 'REDIS_PASSWORD')
   ]
 ]
 
@@ -30,7 +31,7 @@ withPipeline(type, product, component) {
   installCharts()
   enableAksStagingDeployment()
   disableLegacyDeployment()
-  // loadVaultSecrets(secrets)
+  loadVaultSecrets(secrets)
   // enableSlackNotifications('#pcq-builds')
 
 }

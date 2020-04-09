@@ -1,11 +1,10 @@
 {
-  "title": "[CY] Your sexual orientation",
-  "question": "[CY] Which of the following best describes how you think of yourself?",
-  "optionHeterosexual": "[CY] Heterosexual or straight",
-  "optionGayLesbian": "[CY] Gay or lesbian",
-  "optionBisexual": "[CY] Bisexual",
-  "optionOther": "[CY] Other",
-  "optionOtherDetails": "[CY] Please enter how you think of yourself",
+  "question": "Pa un o'r canlynol sy'n disgrifio orau sut yr ydych yn meddwl amdanoch chi’ch hun?",
+  "optionHeterosexual": "Hetrorywiol neu syth",
+  "optionGayLesbian": "Hoyw neu lesbiaidd",
+  "optionBisexual": "Deurywiol",
+  "optionOther": "Arall",
+  "optionOtherDetails": "Sut yr ydych yn meddwl amdanoch chi’ch hun",
 
   "errors": {
     "sexualOrientation": {

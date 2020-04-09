@@ -2,6 +2,8 @@
 
 const expect = require('chai').expect;
 const sinon = require('sinon');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 const registerIncomingService = require('app/middleware/registerIncomingService');
 
 describe('registerIncomingService', () => {
@@ -37,7 +39,8 @@ describe('registerIncomingService', () => {
                 ccdCaseId: 1234567890123456,
                 partyId: 'applicant@email.com',
                 channel: 2
-            }
+            },
+            token: req.session.token
         });
         expect(res.redirect.calledOnce).to.equal(true);
         expect(res.redirect.calledWith('/start-page')).to.equal(true);
@@ -61,10 +64,35 @@ describe('registerIncomingService', () => {
         expect(req.session).to.deep.equal({
             form: {
                 channel: 1
-            }
+            },
+            token: req.session.token
         });
         expect(res.redirect.calledOnce).to.equal(true);
         expect(res.redirect.calledWith('/start-page')).to.equal(true);
+
+        done();
+    });
+
+    it('should assign a valid JWT token to the session', (done) => {
+        const req = {
+            query: {
+                partyId: 'applicant@email.com',
+            },
+            session: {
+                form: {}
+            }
+        };
+        const res = {
+            redirect: sinon.spy()
+        };
+
+        registerIncomingService(req, res);
+
+        const validToken = jwt.verify(req.session.token, config.auth.jwt.secret, (err) => {
+            return !err;
+        });
+
+        expect(validToken).to.equal(true);
 
         done();
     });

@@ -1,6 +1,6 @@
 'use strict';
 
-const config = require('app/config');
+const config = require('config');
 const uuidv4 = require('uuid/v4');
 
 const initSession = (req, res, next) => {

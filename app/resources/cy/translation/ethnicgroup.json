@@ -1,11 +1,15 @@
 {
-  "title": "[CY] Your ethnic group",
-  "question": "[CY] What is your ethnic group?",
-  "optionWhite": "[CY] White",
-  "optionMixed": "[CY] Mixed or multiple ethnic groups",
-  "optionAsian": "[CY] Asian or Asian British",
-  "optionBlack": "[CY] Black, African, Caribbean or Black British",
-  "optionOther": "[CY] Other",
+  "question": "Beth yw eich grŵp ethnig?",
+  "optionWhite": "Gwyn",
+  "optionWhiteHint": "Unrhyw gefndir Gwyn",
+  "optionMixed": "Grwpiau Cymysg / Aml-ethnig",
+  "optionMixedHint": "Unrhyw gefndir cymysg",
+  "optionAsian": "Asiaidd neu Asiaidd Prydeinig",
+  "optionAsianHint": "Unrhyw gefndir Asiaidd, er enghraifft, Bangladeshaidd, Tsieineaidd, Indiaidd, Pacistanaidd",
+  "optionBlack": "Du/Affricanaidd/Caribïaidd/Du Prydeinig",
+  "optionBlackHint": "Unrhyw gefndir Du",
+  "optionOther": "Grŵp ethnig arall",
+  "optionOtherHint": "Unrhyw gefndir ethnig arall, er enghraifft, Arabaidd ",
 
   "errors": {
     "ethnicGroup": {

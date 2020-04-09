@@ -1,9 +1,8 @@
 {
-  "title": "[CY] Your language",
-  "question": "[CY] What is your main language?",
-  "optionEnglishWelsh": "[CY] English or Welsh",
-  "optionOther": "[CY] Other",
-  "optionOtherDetails": "[CY] Enter your main language (including British Sign Language)",
+  "question": "Beth yw eich iaith gyntaf?",
+  "optionEnglishWelsh": "Cymraeg neu Saesneg",
+  "optionOther": "Arall",
+  "optionOtherDetails": "Nodwch eich prif iaith (yn cynnwys Iaith Arwyddion Prydain)",
 
   "errors": {
     "language": {

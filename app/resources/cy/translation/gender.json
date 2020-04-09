@@ -1,9 +1,8 @@
 {
-  "title": "[CY] Your gender",
-  "question": "[CY] Is your gender the same as the sex you were registered at birth?",
-  "optionYes": "[CY] Yes",
-  "optionNo": "[CY] No",
-  "optionNoDetails": "[CY] Please enter your gender",
+  "question": "A yw eich rhywedd yr un fath â’r rhyw pan gawsoch eich geni?",
+  "optionYes": "Ydy",
+  "optionNo": "Nac ydy",
+  "optionNoDetails": "Nodwch eich rhywedd",
 
   "errors": {
     "gender": {

@@ -1,8 +1,7 @@
 {
-  "title": "[CY] Your marital status",
-  "question": "[CY] Are you married or in a legally registered civil partnership?",
-  "optionYes": "[CY] Yes",
-  "optionNo": "[CY] No",
+  "question": "Ydych chi wedi priodi/mewn partneriaeth sifil a gofrestrwyd yn gyfreithiol?",
+  "optionYes": "Ydw",
+  "optionNo": "Nac ydw",
 
   "errors": {
     "maritalStatus": {

@@ -3,7 +3,7 @@
 const TestWrapper = require('test/util/TestWrapper');
 const ApplicantLanguage = require('app/steps/ui/language');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantDateOfBirth', () => {
@@ -109,13 +109,46 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testErrors(done, data, 'dateInFuture', errorsToTest);
         });
 
-        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage}`, (done) => {
+        it('test error message displayed for missing dob fields', (done) => {
+            const errorsToTest = ['dob-month', 'dob-year'];
+            const data = {
+                'dob_provided': 1,
+                'dob-day': '12',
+            };
+
+            testWrapper.testErrors(done, data, 'required', errorsToTest);
+        });
+
+        it('test error message displayed for missing dob field', (done) => {
+            const errorsToTest = ['dob-year'];
+            const data = {
+                'dob_provided': 1,
+                'dob-day': '12',
+                'dob-month': '12',
+            };
+
+            testWrapper.testErrors(done, data, 'required', errorsToTest);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage}  - DoB entered`, (done) => {
             const data = {
                 'dob_provided': 1,
                 'dob-day': '01',
                 'dob-month': '01',
                 'dob-year': '1999'
             };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - DoB fields empty`, (done) => {
+            const data = {'dob_provided': 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
+        });
+
+        it(`test it redirects to applicant language page: ${expectedNextUrlForApplicantLanguage} - Prefer not to say`, (done) => {
+            const data = {'dob_provided': 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantLanguage);
         });

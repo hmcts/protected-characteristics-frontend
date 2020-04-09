@@ -3,7 +3,7 @@
 const TestWrapper = require('test/util/TestWrapper');
 const ApplicantDisability = require('app/steps/ui/disability');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantReligion', () => {
@@ -25,10 +25,56 @@ describe('ApplicantReligion', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability}`, (done) => {
-            const data = {
-                religion: 1
-            };
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - None`, (done) => {
+            const data = {religion: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Christian`, (done) => {
+            const data = {religion: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Buddhist`, (done) => {
+            const data = {religion: 3};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Hindu`, (done) => {
+            const data = {religion: 4};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Jewish`, (done) => {
+            const data = {religion: 5};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Muslim`, (done) => {
+            const data = {religion: 6};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Sikh`, (done) => {
+            const data = {religion: 7};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Other`, (done) => {
+            const data = {religion: 8};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
+        });
+
+        it(`test it redirects to applicant disability page: ${expectedNextUrlForApplicantDisability} - Prefer not to say`, (done) => {
+            const data = {religion: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantDisability);
         });
