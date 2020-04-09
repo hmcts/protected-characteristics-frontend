@@ -20,15 +20,14 @@ describe('EndPage', () => {
 
         it('test link to return URL is present', (done) => {
             const sessionData = {
-                returnUrl: 'http://invoking-service-return-url',
-                language: 'cy'
+                returnUrl: 'http://invoking-service-return-url'
             };
 
             testWrapper.agent.post('/prepare-session-field')
                 .send(sessionData)
                 .end(() => {
                     const playbackData = {
-                        returnUrl: 'http://invoking-service-return-url?locale=cy'
+                        returnUrl: 'http://invoking-service-return-url'
                     };
 
                     testWrapper.testDataPlayback(done, playbackData);
