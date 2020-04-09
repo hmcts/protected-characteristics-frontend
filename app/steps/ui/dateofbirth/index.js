@@ -17,19 +17,6 @@ class ApplicantDateOfBirth extends DateStep {
         return ['dob'];
     }
 
-    getContextData(req) {
-        const ctx = super.getContextData(req);
-        if (ctx.dob_provided === 0) {
-            delete ctx.dob;
-            delete ctx['dob-day'];
-            delete ctx['dob-month'];
-            delete ctx['dob-year'];
-            delete ctx['dob-formattedDate'];
-        }
-
-        return ctx;
-    }
-
     handlePost(ctx, errors) {
         [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.dob_provided === 1) {
@@ -44,6 +31,25 @@ class ApplicantDateOfBirth extends DateStep {
         }
 
         return [ctx, errors];
+    }
+
+    validate(ctx, formdata, language) {
+        let [isValid, errors] = [true, {}];
+        if (ctx.dob_provided !== 0) {
+            [isValid, errors] = super.validate(ctx, formdata, language);
+        }
+        return [isValid, errors];
+    }
+    action(ctx, formdata) {
+        super.action(ctx, formdata);
+        if (ctx.dob_provided === 0) {
+            delete ctx.dob;
+            delete ctx['dob-day'];
+            delete ctx['dob-month'];
+            delete ctx['dob-year'];
+            delete ctx['dob-formattedDate'];
+        }
+        return [ctx, formdata];
     }
 
     nonIntegerFields() {
