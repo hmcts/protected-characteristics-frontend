@@ -23,6 +23,7 @@ const https = require('https');
 const appInsights = require('applicationinsights');
 const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
+const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
 
 exports.init = function(isA11yTest = false, a11yTestSession = {}) {
@@ -215,6 +216,8 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
     if (useHttps === 'true') {
         app.use(utils.forceHttps);
     }
+
+    app.post('*', sanitizeRequestBody);
 
     app.use(healthcheck);
 
