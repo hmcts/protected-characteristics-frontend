@@ -1,4 +1,4 @@
----
+
 questionsVersion: 1
 frontendPublicHttpProtocol: 'http'
 environment: 'prod'
