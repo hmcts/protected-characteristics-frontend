@@ -228,7 +228,8 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
     });
 
     app.use((req, res, next) => {
-        if (['development', 'test', 'testing'].includes(app.get('env'))) {
+        // if (['development', 'test', 'testing'].includes(app.get('env'))) {
+        if (config.featureToggles.launchDarklyKey === 'SDK_KEY') {
             res.locals.launchDarkly = {
                 client: LaunchDarkly.init(config.featureToggles.launchDarklyKey, {offline: true}),
                 ftValue: ftValue
