@@ -6,8 +6,9 @@ module.exports = function () {
     const I = this;
     I.amOnPage(pageUnderTest.getUrl());
     I.seeCurrentUrlEquals(pageUnderTest.getUrl());
-    I.click('#provideDateOfBirth');
+    I.click('Enter your date of birth');
     I.fillField('#dob-day', '10');
     I.fillField('#dob-month', '2');
     I.fillField('#dob-year', '2019');
+    I.click('Continue');
 };

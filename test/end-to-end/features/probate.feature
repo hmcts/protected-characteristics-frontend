@@ -4,9 +4,26 @@ Feature: Probate
   so that I know what the PCQ service is about.
 
 
-  Scenario: Probate CITIZEN invokes pcq
+  Scenario: User answer Yes to all pcq questions
     Given  I am a probate Citizen user
     When I invoke the PCQs task
     Then I am presented with the PCQ Intro page
-    And continue button exists
-    And there is an opt out option
+    When I submit all pcq questions
+    Then a record successfully created in database
+
+
+  Scenario: User Answers Prefer not to say to all pcq questions
+    Given  I am a probate Citizen user
+    When I invoke the PCQs task
+    Then I am presented with the PCQ Intro page
+    When I submit prefer not to say for all pcq questions
+    Then a record successfully created in database
+
+
+  Scenario: User Answers No to all pcq questions
+    Given  I am a probate Citizen user
+    When I invoke the PCQs task
+    Then I am presented with the PCQ Intro page
+    When I submit No for all pcq questions
+    Then a record successfully created in database
+

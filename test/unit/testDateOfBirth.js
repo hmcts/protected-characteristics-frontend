@@ -69,27 +69,63 @@ describe('ApplicantDateOfBirth', () => {
             done();
         });
 
-        it('should delete the dob variables if the user doesn\'t want to provide it', (done) => {
-            ctx = {
-                'dob_provided': 0,
-                'dob-day': '02',
-                'dob-month': '03',
-                'dob-year': '1952'
-            };
-            errors = [];
-            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
-            expect(ctx).to.deep.equal({
-                'dob_provided': 0
-            });
-            done();
-        });
-
         it('should return the required fields set to null if no options are selected', (done) => {
             ctx = {};
             errors = [];
             [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
             expect(ctx).to.deep.equal({
                 'dob_provided': null
+            });
+            done();
+        });
+    });
+
+    describe('validate()', () => {
+        it('should not try to validate dob prefer not to say option', (done) => {
+            const formdata = {};
+            const ctx = {
+                'dob_provided': 0,
+                'dob-day': 'ab',
+                'dob-month': 3,
+                'dob-year': 2000
+            };
+            const language = 'en';
+
+            const [isValid, errors] = ApplicantDateOfBirth.validate(ctx, formdata, language);
+            expect(isValid).to.equal(true);
+            expect(errors).to.deep.equal({});
+            done();
+        });
+
+        it('should error on an invalid dob', (done) => {
+            const formdata = {};
+            const ctx = {
+                'dob_provided': 1,
+                'dob-day': 'ab',
+                'dob-month': 3,
+                'dob-year': 2000
+            };
+            const language = 'en';
+
+            const [isValid, errors] = ApplicantDateOfBirth.validate(ctx, formdata, language);
+            expect(isValid).to.equal(false);
+            expect(errors.length).to.equal(1);
+            done();
+        });
+    });
+
+    describe('action()', () => {
+        it('should delete the dob variables if the user doesn\'t want to provide it', (done) => {
+            let formdata = {};
+            let ctx = {
+                'dob_provided': 0,
+                'dob-day': '02',
+                'dob-month': '03',
+                'dob-year': '3000'
+            };
+            [ctx, formdata] = ApplicantDateOfBirth.action(ctx, formdata);
+            expect(ctx).to.deep.equal({
+                dob_provided: 0
             });
             done();
         });

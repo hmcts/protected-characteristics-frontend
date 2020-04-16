@@ -43,13 +43,9 @@ for (const step in steps) {
             }
 
             before((done) => {
-                if (step.name === 'ShutterPage') {
-                    nock(config.featureToggles.url)
-                        .get(`${config.featureToggles.path}/${config.featureToggles.pc_shutter_ft}`)
-                        .reply(200, 'true');
-                }
+                const ftValue = step.name === 'ShutterPage' ? {ft_shutter_all: true} : null;
+                server = app.init(true, sessionData, ftValue);
 
-                server = app.init(true, sessionData);
                 agent = request.agent(server.app);
                 co(function* () {
                     let urlSuffix = '';

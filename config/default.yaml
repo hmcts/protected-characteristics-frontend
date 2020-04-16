@@ -1,4 +1,4 @@
----
+
 questionsVersion: 1
 frontendPublicHttpProtocol: 'http'
 environment: 'prod'
@@ -7,10 +7,12 @@ languages:
   - en
   - cy
 featureToggles:
-  url: 'http://localhost:9292'
-  path: '/api/ff4j/check'
-  port: 9292
-  pc_shutter_ft: 'protected-characteristics-shutter'
+  launchDarklyKey: 'SDK_KEY'
+  launchDarklyUser:
+    firstName: 'PCQ'
+    lastName: 'Frontend'
+    key: '3a96565155d056217ec19ac363a5b7a7'
+  ft_shutter_all: 'shutter-all'
   appwideToggles: []
 app:
   useHttps: 'false'

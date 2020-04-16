@@ -20,7 +20,6 @@ describe('EndPage', () => {
                 sessionID: 'some session id',
                 session: {
                     returnUrl: 'http://some-return-url/',
-                    language: 'cy',
                     ctx: {}
                 }
             };
@@ -28,7 +27,7 @@ describe('EndPage', () => {
             const ctx = EndPage.getContextData(req);
             expect(ctx).to.deep.equal({
                 sessionID: 'some session id',
-                returnUrl: 'http://some-return-url/?locale=cy'
+                returnUrl: 'http://some-return-url/'
             });
             done();
         });
@@ -37,7 +36,6 @@ describe('EndPage', () => {
             const req = {
                 sessionID: 'some session id',
                 session: {
-                    language: 'cy',
                     ctx: {}
                 }
             };

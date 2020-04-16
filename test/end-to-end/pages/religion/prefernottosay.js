@@ -1,11 +1,11 @@
 'use strict';
 
-const pageUnderTest = require('app/steps/ui/language/index');
+const pageUnderTest = require('app/steps/ui/religion/index');
 
 module.exports = function () {
     const I = this;
     I.amOnPage(pageUnderTest.getUrl());
     I.seeCurrentUrlEquals(pageUnderTest.getUrl());
-    I.click('#language');
+    I.click('Prefer not to say');
     I.click('Continue');
 };

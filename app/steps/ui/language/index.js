@@ -12,12 +12,14 @@ class ApplicantLanguage extends ValidationStep {
         return ['language_main'];
     }
 
-    handlePost(ctx, errors) {
-        [ctx, errors] = super.handlePost(ctx, errors);
-        if (ctx.language_main !== 2 && ctx.language_other) {
-            delete ctx.language_other;
+    action(ctx, formdata) {
+        if (ctx.language_main !== 2) {
+            ctx.english_language_level = null;
+            if (ctx.language_other) {
+                delete ctx.language_other;
+            }
         }
-        return [ctx, errors];
+        return super.action(ctx, formdata);
     }
 
     nonIntegerFields() {

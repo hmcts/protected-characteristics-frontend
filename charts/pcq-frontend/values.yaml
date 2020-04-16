@@ -25,6 +25,7 @@ nodejs:
         - AppInsightsInstrumentationKey
         - frontend-redis-access-key
         - jwt-secret
+        - launchdarkly-key
 
 redis:
   cluster:

@@ -1,9 +1,10 @@
 exports.config = {
-    output: './output',
+    output: process.cwd()+'/functional-output',
     helpers: {
         Puppeteer: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: 'https://pcq.aat.platform.hmcts.net',
             show: false,
+            headless: false,
             chrome: {
                 'ignoreHTTPSErrors': true,
                 'ignore-certificate-errors': true,
