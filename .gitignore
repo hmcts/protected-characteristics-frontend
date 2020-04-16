@@ -24,4 +24,4 @@ git.properties.json
 infrastructure/.terraform
 /mochawesome-report/
 functional-output
-config/dev.yaml
+/config/dev.yaml

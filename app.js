@@ -42,7 +42,6 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
     app.set('view engine', 'html');
     app.set('views', ['app/steps', 'app/views']);
 
-    logger('init').info('Environment: ' + app.get('env'));
     const isDev = app.get('env') === 'development';
 
     const njkEnv = nunjucks.configure([
