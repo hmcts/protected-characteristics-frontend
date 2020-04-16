@@ -5,8 +5,7 @@ nodeEnvironment: NODE_ENV
 gitRevision: GIT_REVISION
 externalHostNameUrl: EXTERNAL_HOSTNAME_URL
 featureToggles:
-  url: FEATURE_TOGGLES_API_URL
-  path: FEATURE_TOGGLES_PATH
+  launchDarklyKey: LAUNCHDARKLY_KEY
 app:
   useHttps: USE_HTTPS
   port: PORT

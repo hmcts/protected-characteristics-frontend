@@ -25,8 +25,9 @@ const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
 const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
+const LaunchDarkly = require('launchdarkly-node-server-sdk');
 
-exports.init = function(isA11yTest = false, a11yTestSession = {}) {
+exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
     const port = config.app.port;
     const releaseVersion = packageJson.version;
@@ -223,6 +224,21 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
 
     app.use(`${config.livenessEndpoint}`, (req, res) => {
         res.json({status: 'UP'});
+    });
+
+    app.use((req, res, next) => {
+        if (['test', 'testing'].includes(app.get('env'))) {
+            res.locals.launchDarkly = {
+                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey, {offline: true}),
+                ftValue: ftValue
+            };
+        } else {
+            res.locals.launchDarkly = {
+                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey)
+            };
+        }
+
+        next();
     });
 
     app.use(`${config.app.basePath}/`, (req, res, next) => {

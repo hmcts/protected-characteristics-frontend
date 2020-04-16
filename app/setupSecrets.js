@@ -12,7 +12,7 @@ const setupSecrets = () => {
         setSecret('secrets.pcq.frontend-redis-access-key', 'redis.password');
         setSecret('secrets.pcq.jwt-secret', 'auth.jwt.secret');
         setSecret('secrets.pcq.AppInsightsInstrumentationKey', 'appInsights.instrumentationKey');
-
+        setSecret('secrets.pcq.launchdarkly-key', 'featureToggles.launchDarklyKey');
     }
 };
 
