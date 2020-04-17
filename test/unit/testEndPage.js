@@ -58,4 +58,24 @@ describe('EndPage', () => {
             expect(ctx).to.deep.equal({});
         });
     });
+
+    describe('generateContent()', () => {
+        it('should return variable text for a service', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = EndPage.generateContent({}, formdata);
+            expect(content.paragraph1).to.equal('The next steps are to check your claim details.');
+        });
+
+        it('should return variable text for a service in welsh', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = EndPage.generateContent({}, formdata, 'cy');
+            expect(content.paragraph1).to.equal('Y cam nesaf yw gwirio manylion eich hawliad.');
+        });
+    });
 });
