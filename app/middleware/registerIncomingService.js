@@ -2,6 +2,7 @@
 
 const logger = require('app/components/logger')('Init');
 const auth = require('app/components/auth');
+const registeredServices = require('app/registeredServices');
 
 const formParams = [
     {name: 'serviceId', required: true},
@@ -35,17 +36,22 @@ const registerIncomingService = (req, res) => {
         req.session.language = req.query.language;
     }
 
-    // If any missing required params then redirect to service unavailable
     if (missingRequiredParams.length > 0) {
         logger.error('Missing required parameters: ' + missingRequiredParams.join(', '));
+    } else if (!validatedService(req.query.serviceId)) {
+        logger.error(`Service ${req.query.serviceId} is not registered with PCQ`);
     } else {
         req.session.validParameters = true;
         // Create the JWT Token after the required parameters have been set.
         auth.createToken(req, req.session.form.partyId);
-
-        res.redirect('/start-page');
     }
 
+    res.redirect('/start-page');
+};
+
+const validatedService = (serviceId) => {
+    return Boolean(serviceId &&
+        registeredServices.map(s => s.serviceId.toLowerCase()).includes(serviceId.toLowerCase()));
 };
 
 module.exports = registerIncomingService;

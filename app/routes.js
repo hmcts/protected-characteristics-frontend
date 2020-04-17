@@ -14,8 +14,9 @@ const setJourney = require('app/middleware/setJourney');
 router.use(shutter);
 router.use(initSession);
 router.use(registerIncomingService);
-router.use(validateParams);
 router.use(setJourney);
+
+router.get('*', (req, res, next) => validateParams(req, res, next));
 
 router.all('*', (req, res, next) => {
     const correlationId = get(req.session, 'correlationId', 'init');

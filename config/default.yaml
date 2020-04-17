@@ -13,6 +13,7 @@ featureToggles:
     lastName: 'Frontend'
     key: '3a96565155d056217ec19ac363a5b7a7'
   ft_shutter_all: 'shutter-all'
+  ft_enforce_params: 'enforce-params'
   appwideToggles: []
 app:
   useHttps: 'false'
