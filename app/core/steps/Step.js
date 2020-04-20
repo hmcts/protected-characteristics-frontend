@@ -111,9 +111,9 @@ class Step {
             } catch (e) {
                 throw new ReferenceError(`Step ${this.name} has no variable-text.json file in its resource folder for service ${formdata.serviceId}`);
             }
-            const variableSectionContent = variableContent[formdata.actor][this.section];
-            if (variableSectionContent) {
-                Object.assign(this.content, variableSectionContent);
+            variableContent = variableContent[formdata.actor.toLowerCase()];
+            if (variableContent) {
+                Object.assign(this.content, variableContent[this.section]);
             }
         }
 
