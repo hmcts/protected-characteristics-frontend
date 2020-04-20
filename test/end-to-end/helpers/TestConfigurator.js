@@ -14,7 +14,7 @@ class TestConfigurator {
 
     getUserData(pcqid) {
         request({
-            url: `http://pcq-backend-aat.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
+            url: `http://pcq-backend-staging.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
             method: 'GET',
             proxy: this.testProxy,
             headers: {'content-type': 'application/json'},
@@ -27,9 +27,9 @@ class TestConfigurator {
                 const userData = JSON.parse(body);
                 assert.equal(userData.pcqId, pcqid, 'pcqid verfication');
                 assert.equal(userData.ccdCaseId, testConfig.TestccdCaseId, 'Caseid verification');
-                assert.equal(userData.partyId, testConfig.TestpartyId);
-                assert.equal(userData.serviceId, testConfig.TestserviceId);
-                assert.equal(userData.actor, testConfig.Testactor);
+                assert.equal(userData.partyId, testConfig.TestpartyId.toLowerCase());
+                assert.equal(userData.serviceId, testConfig.TestserviceId.toLowerCase());
+                assert.equal(userData.actor, testConfig.Testactor.toLowerCase());
                 assert.equal(userData.versionNo, testConfig.TestVerison);
             }
         });
