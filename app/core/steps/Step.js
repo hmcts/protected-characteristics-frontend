@@ -102,7 +102,22 @@ class Step {
         const contentCtx = Object.assign({}, formdata, ctx, this.commonProps);
         this.i18next.changeLanguage(language);
 
-        return mapValues(this.content, (value, key) => this.i18next.t(`${this.resourcePath.replace(/\//g, '.')}.${key}`, contentCtx));
+        mapValues(this.content, (value, key) => this.i18next.t(`${this.resourcePath.replace(/\//g, '.')}.${key}`, contentCtx));
+
+        if (formdata && formdata.serviceId && formdata.actor) {
+            let variableContent;
+            try {
+                variableContent = require(`app/resources/${language}/translation/variable/${formdata.serviceId}`);
+            } catch (e) {
+                throw new ReferenceError(`Step ${this.name} has no variable-text.json file in its resource folder for service ${formdata.serviceId}`);
+            }
+            const variableSectionContent = variableContent[formdata.actor][this.section];
+            if (variableSectionContent) {
+                Object.assign(this.content, variableSectionContent);
+            }
+        }
+
+        return this.content;
     }
 
     commonContent(language = 'en') {

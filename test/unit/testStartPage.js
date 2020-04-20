@@ -58,4 +58,24 @@ describe('StartPage', () => {
             expect(ctx).to.deep.equal({});
         });
     });
+
+    describe('generateContent()', () => {
+        it('should return variable text for a service', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = StartPage.generateContent({}, formdata);
+            expect(content.paragraph2).to.equal('Your answers won&rsquo;t affect your claim.');
+        });
+
+        it('should return variable text for a service in welsh', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = StartPage.generateContent({}, formdata, 'cy');
+            expect(content.paragraph2).to.equal('Ni fydd eich atebion yn effeithio ar eich hawliad.');
+        });
+    });
 });

@@ -58,4 +58,24 @@ describe('ShutterPage', () => {
             expect(ctx).to.deep.equal({});
         });
     });
+
+    describe('generateContent()', () => {
+        it('should return variable text for a service', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = ShutterPage.generateContent({}, formdata);
+            expect(content.paragraph1).to.equal('We have saved your answers and will direct you back to your application now.');
+        });
+
+        it('should return variable text for a service in welsh', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = ShutterPage.generateContent({}, formdata, 'cy');
+            expect(content.paragraph1).to.equal('Rydym wedi arbed eich atebion a byddwn yn eich cyfeirio yn ôl at eich hawliad yn awr.');
+        });
+    });
 });
