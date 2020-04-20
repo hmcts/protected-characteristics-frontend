@@ -15,7 +15,7 @@ describe('registerIncomingService', () => {
                 pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                 ccdCaseId: 1234567890123456,
                 partyId: 'applicant@email.com',
-                returnUrl: 'http://invoking-service-return-url/',
+                returnUrl: 'invoking-service-return-url/',
                 language: 'en',
                 channel: 2
             },
@@ -30,7 +30,7 @@ describe('registerIncomingService', () => {
         registerIncomingService(req, res);
 
         expect(req.session).to.deep.equal({
-            returnUrl: 'http://invoking-service-return-url/',
+            returnUrl: 'https://invoking-service-return-url/',
             language: 'en',
             form: {
                 serviceId: 'probate',
@@ -80,7 +80,7 @@ describe('registerIncomingService', () => {
                 actor: 'APPLICANT',
                 pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                 partyId: 'applicant@email.com',
-                returnUrl: 'http://invoking-service-return-url/'
+                returnUrl: 'invoking-service-return-url/'
             },
             session: {
                 form: {}

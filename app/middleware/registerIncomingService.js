@@ -20,8 +20,8 @@ const registerIncomingService = (req, res) => {
 
     const form = req.session.form;
     formParams.forEach(param => {
-        if (req.query[param]) {
-            form[param] = typeof req.query[param] === 'string' ? req.query[param].toLowerCase() : req.query[param];
+        if (req.query[param.name]) {
+            form[param.name] = typeof req.query[param.name] === 'string' ? req.query[param.name].toLowerCase() : req.query[param.name];
         } else if (param.required) {
             missingRequiredParams.push(param.name);
         }
