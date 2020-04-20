@@ -6,7 +6,7 @@ module.exports = function (pcqId) {
     I.amOnPage(serviceEndpointUrl(
         {
             serviceId: 'PROBATE',
-            actor: 'CITIZEN',
+            actor: 'APPLICANT',
             pcqId: pcqId,
             ccdCaseId: '1234567890123456',
             partyId: 'test@gmail.com',
