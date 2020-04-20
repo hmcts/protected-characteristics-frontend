@@ -20,7 +20,6 @@ describe('EndPage', () => {
                 sessionID: 'some session id',
                 session: {
                     returnUrl: 'http://some-return-url/',
-                    language: 'cy',
                     ctx: {}
                 }
             };
@@ -28,7 +27,7 @@ describe('EndPage', () => {
             const ctx = EndPage.getContextData(req);
             expect(ctx).to.deep.equal({
                 sessionID: 'some session id',
-                returnUrl: 'http://some-return-url/?locale=cy'
+                returnUrl: 'http://some-return-url/'
             });
             done();
         });
@@ -37,7 +36,6 @@ describe('EndPage', () => {
             const req = {
                 sessionID: 'some session id',
                 session: {
-                    language: 'cy',
                     ctx: {}
                 }
             };
@@ -58,6 +56,26 @@ describe('EndPage', () => {
             };
             [ctx, formdata] = EndPage.action(ctx, formdata);
             expect(ctx).to.deep.equal({});
+        });
+    });
+
+    describe('generateContent()', () => {
+        it('should return variable text for a service', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = EndPage.generateContent({}, formdata);
+            expect(content.paragraph1).to.equal('The next steps are to check your claim details.');
+        });
+
+        it('should return variable text for a service in welsh', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = EndPage.generateContent({}, formdata, 'cy');
+            expect(content.paragraph1).to.equal('Y cam nesaf yw gwirio manylion eich hawliad.');
         });
     });
 });

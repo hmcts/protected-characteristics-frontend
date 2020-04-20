@@ -11,7 +11,7 @@ const commonContent = require('app/resources/en/translation/common');
 const stepsToExclude = [];
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 const nock = require('nock');
-const config = require('app/config');
+const config = require('config');
 const commonSessionData = {
     form: {},
     back: []
@@ -33,23 +33,19 @@ for (const step in steps) {
             let title;
 
             if (step.name === 'StartPage') {
-                title = commonContent.serviceName
+                title = `${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             } else {
-                title = `${step.content.title} - ${commonContent.serviceName}`
+                title = `${step.content.question || step.content.title} - ${commonContent.serviceName} - ${commonContent.govuk}`
                     .replace(/&lsquo;/g, '‘')
                     .replace(/&rsquo;/g, '’');
             }
 
             before((done) => {
-                if (step.name === 'ShutterPage') {
-                    nock(config.featureToggles.url)
-                        .get(`${config.featureToggles.path}/${config.featureToggles.pc_shutter_ft}`)
-                        .reply(200, 'true');
-                }
+                const ftValue = step.name === 'ShutterPage' ? {ft_shutter_all: true} : null;
+                server = app.init(true, sessionData, ftValue);
 
-                server = app.init(true, sessionData);
                 agent = request.agent(server.app);
                 co(function* () {
                     let urlSuffix = '';

@@ -9,10 +9,14 @@
 
 {% block pageTitle %}
     {% if title == undefined %}
-      {% set title = content.title %}
+        {% if content.question == undefined %}
+            {% set title = content.title %}
+        {% else %}
+            {% set title = content.question %}
+        {% endif %}
     {% endif %}
 
-    {{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}
+    {{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}{% if govuk %} - {{ govuk }}{% endif %}
 {% endblock %}
 
 {% block head %}
@@ -20,10 +24,6 @@
 {% endblock %}
 
 {% block header %}
-    <div id="global-cookie-message">
-      <p class="govuk-body">{{ cookieText | replace("{cookiesLink}", globals.links.cookies) | safe }}</p>
-    </div>
-
     {{ govukHeader({
         homepageUrl: "#",
         containerClasses: "govuk-width-container",

@@ -3,7 +3,7 @@
 const TestWrapper = require('test/util/TestWrapper');
 const ApplicantGenderSameAsSex = require('app/steps/ui/gender');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantSex', () => {
@@ -25,10 +25,20 @@ describe('ApplicantSex', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant gender same as sex page: ${expectedNextUrlForApplicantGenderSameAsSex}`, (done) => {
-            const data = {
-                sex: 1
-            };
+        it(`test it redirects to applicant gender same as sex page: ${expectedNextUrlForApplicantGenderSameAsSex} - Male`, (done) => {
+            const data = {sex: 1};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantGenderSameAsSex);
+        });
+
+        it(`test it redirects to applicant gender same as sex page: ${expectedNextUrlForApplicantGenderSameAsSex} - Female`, (done) => {
+            const data = {sex: 2};
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantGenderSameAsSex);
+        });
+
+        it(`test it redirects to applicant gender same as sex page: ${expectedNextUrlForApplicantGenderSameAsSex} - Prefer not to say`, (done) => {
+            const data = {sex: 0};
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantGenderSameAsSex);
         });

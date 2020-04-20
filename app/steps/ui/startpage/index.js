@@ -11,7 +11,7 @@ class StartPage extends Step {
     getContextData(req) {
         const ctx = super.getContextData(req);
         if (req.session.returnUrl) {
-            ctx.returnUrl = `${req.session.returnUrl}?locale=${req.session.language}`;
+            ctx.returnUrl = `${req.session.returnUrl}`;
         }
 
         return ctx;

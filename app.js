@@ -12,7 +12,7 @@ const routes = require(`${__dirname}/app/routes`);
 const favicon = require('serve-favicon');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const config = require(`${__dirname}/app/config`);
+const config = require('config');
 const utils = require(`${__dirname}/app/components/utils`);
 const packageJson = require(`${__dirname}/package`);
 const helmet = require('helmet');
@@ -23,9 +23,11 @@ const https = require('https');
 const appInsights = require('applicationinsights');
 const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
+const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
+const LaunchDarkly = require('launchdarkly-node-server-sdk');
 
-exports.init = function(isA11yTest = false, a11yTestSession = {}) {
+exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
     const port = config.app.port;
     const releaseVersion = packageJson.version;
@@ -57,14 +59,7 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
         enableTracking: config.enableTracking,
         links: config.links,
         nonce: uuid,
-        basePath: config.app.basePath,
-        webChat: {
-            chatId: config.webChat.chatId,
-            tenant: config.webChat.tenant,
-            buttonNoAgents: config.webChat.buttonNoAgents,
-            buttonAgentsBusy: config.webChat.buttonAgentsBusy,
-            buttonServiceClosed: config.webChat.buttonServiceClosed
-        }
+        basePath: config.app.basePath
     };
     njkEnv.addGlobal('globals', globals);
 
@@ -212,8 +207,8 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
     app.use(function (req, res, next) {
         const commonContent = require(`app/resources/${req.session.language}/translation/common`);
 
+        res.locals.govuk = commonContent.govuk;
         res.locals.serviceName = commonContent.serviceName;
-        res.locals.cookieText = commonContent.cookieText;
         res.locals.releaseVersion = 'v' + releaseVersion;
         next();
     });
@@ -223,10 +218,27 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
         app.use(utils.forceHttps);
     }
 
+    app.post('*', sanitizeRequestBody);
+
     app.use(healthcheck);
 
     app.use(`${config.livenessEndpoint}`, (req, res) => {
         res.json({status: 'UP'});
+    });
+
+    app.use((req, res, next) => {
+        if (['test', 'testing'].includes(app.get('env'))) {
+            res.locals.launchDarkly = {
+                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey, {offline: true}),
+                ftValue: ftValue
+            };
+        } else {
+            res.locals.launchDarkly = {
+                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey)
+            };
+        }
+
+        next();
     });
 
     app.use(`${config.app.basePath}/`, (req, res, next) => {
@@ -266,8 +278,9 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}) {
     });
 
     app.use((err, req, res, next) => {
-        const commonContent = require(`app/resources/${req.session.language}/translation/common`);
-        const content = require(`app/resources/${req.session.language}/translation/errors/500`);
+        const lang = req.session ? req.session.language : 'en';
+        const commonContent = require(`app/resources/${lang}/translation/common`);
+        const content = require(`app/resources/${lang}/translation/errors/500`);
 
         logger(req.sessionID).error(err);
         res.status(500).render('errors/error', {common: commonContent, content: content, error: '500'});

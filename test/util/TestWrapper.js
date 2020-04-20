@@ -4,13 +4,13 @@ const {forEach, filter, isEmpty, set, get, cloneDeep} = require('lodash');
 const {expect, assert} = require('chai');
 const app = require('app');
 const routes = require('app/routes');
-const config = require('app/config');
+const config = require('config');
 const request = require('supertest');
 const initSteps = require('app/core/initSteps');
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
 
 class TestWrapper {
-    constructor(stepName) {
+    constructor(stepName, ftValue) {
         this.pageToTest = steps[stepName];
         this.pageUrl = this.pageToTest.constructor.getUrl();
 
@@ -29,7 +29,7 @@ class TestWrapper {
         });
 
         config.app.useCSRFProtection = 'false';
-        this.server = app.init();
+        this.server = app.init(false, {}, ftValue);
         this.agent = request.agent(this.server.app);
     }
 

@@ -2,17 +2,22 @@
 
 const expect = require('chai').expect;
 const sinon = require('sinon');
-const rewire = require('rewire');
-const FeatureToggle = rewire('app/utils/FeatureToggle');
+const FeatureToggle = require('app/utils/FeatureToggle');
+const config = require('config');
 
 describe('FeatureToggle', () => {
     describe('checkToggle()', () => {
         it('should call the callback function when the api returns successfully', (done) => {
-            const revert = FeatureToggle.__set__('FeatureToggleService', class {
-                get() {
-                    return Promise.resolve('true');
-                }
+            const LaunchDarkly = require('launchdarkly-node-server-sdk');
+            const dataSource = LaunchDarkly.FileDataSource({
+                paths: ['test/data/launchdarkly/simple_flag_data.yaml']
             });
+            const ldConfig = {
+                updateProcessor: dataSource
+            };
+
+            const ldClient = LaunchDarkly.init(config.featureToggles.launchDarklyKey, ldConfig);
+
             const params = {
                 req: {
                     session: {
@@ -21,25 +26,35 @@ describe('FeatureToggle', () => {
                 },
                 res: {},
                 next: () => true,
-                featureToggleKey: 'pc_welsh_ft',
+                redirectPage: '/dummy-page',
+                launchDarkly: {
+                    client: ldClient
+                },
+                featureToggleKey: 'ft_shutter_all',
                 callback: sinon.spy()
             };
             const featureToggle = new FeatureToggle();
 
-            featureToggle.checkToggle(params).then(() => {
+            featureToggle.checkToggle(params);
+
+            setTimeout(() => {
                 expect(params.callback.calledOnce).to.equal(true);
-                expect(params.callback.firstCall.args[0].isEnabled).to.equal(true);
-                revert();
+                expect(params.callback.calledWith({
+                    req: params.req,
+                    res: params.res,
+                    next: params.next,
+                    redirectPage: params.redirectPage,
+                    isEnabled: true,
+                    featureToggleKey: params.featureToggleKey
+                })).to.equal(true);
+
+                ldClient.close();
+
                 done();
-            });
+            }, 1000);
         });
 
         it('should call next() with an error when the api returns an error', (done) => {
-            const revert = FeatureToggle.__set__('FeatureToggleService', class {
-                get() {
-                    return Promise.resolve('false');
-                }
-            });
             const params = {
                 req: {
                     session: {
@@ -48,17 +63,21 @@ describe('FeatureToggle', () => {
                 },
                 res: {},
                 next: sinon.spy(),
-                featureToggleKey: 'pc_welsh_ft',
-                callback: sinon.spy()
+                redirectPage: '/dummy-page',
+                launchDarkly: {
+                    client: false
+                },
+                featureToggleKey: 'ft_fees_api',
+                callback: () => true
             };
             const featureToggle = new FeatureToggle();
 
-            featureToggle.checkToggle(params).then(() => {
-                expect(params.next.calledOnce).to.equal(false);
-                expect(params.callback.firstCall.args[0].isEnabled).to.equal(false);
-                revert();
-                done();
-            });
+            featureToggle.checkToggle(params);
+
+            expect(params.next.calledOnce).to.equal(true);
+            expect(params.next.calledWith(new Error())).to.equal(true);
+
+            done();
         });
     });
 
@@ -133,7 +152,7 @@ describe('FeatureToggle', () => {
             it('when the session contains a featureToggles object and call next()', (done) => {
                 const params = {
                     req: {session: {featureToggles: {}}},
-                    featureToggleKey: 'pc_welsh_ft',
+                    featureToggleKey: 'document_upload',
                     isEnabled: true,
                     next: sinon.spy()
                 };
@@ -141,7 +160,7 @@ describe('FeatureToggle', () => {
 
                 featureToggle.toggleFeature(params);
 
-                expect(params.req.session.featureToggles).to.deep.equal({pc_welsh_ft: true});
+                expect(params.req.session.featureToggles).to.deep.equal({document_upload: true});
                 expect(params.next.calledOnce).to.equal(true);
                 expect(params.next.calledWith()).to.equal(true);
                 done();
@@ -150,7 +169,7 @@ describe('FeatureToggle', () => {
             it('when the session does not contain a featureToggles object and call next()', (done) => {
                 const params = {
                     req: {session: {}},
-                    featureToggleKey: 'pc_welsh_ft',
+                    featureToggleKey: 'document_upload',
                     isEnabled: true,
                     next: sinon.spy()
                 };
@@ -158,7 +177,7 @@ describe('FeatureToggle', () => {
 
                 featureToggle.toggleFeature(params);
 
-                expect(params.req.session.featureToggles).to.deep.equal({pc_welsh_ft: true});
+                expect(params.req.session.featureToggles).to.deep.equal({document_upload: true});
                 expect(params.next.calledOnce).to.equal(true);
                 expect(params.next.calledWith()).to.equal(true);
                 done();
@@ -207,8 +226,8 @@ describe('FeatureToggle', () => {
     describe('isEnabled()', () => {
         describe('should return true', () => {
             it('if the feature toggle exists and is true', (done) => {
-                const featureToggles = {pc_welsh_ft: true};
-                const key = 'pc_welsh_ft';
+                const featureToggles = {document_upload: true};
+                const key = 'document_upload';
                 const isEnabled = FeatureToggle.isEnabled(featureToggles, key);
                 expect(isEnabled).to.equal(true);
                 done();
@@ -217,8 +236,8 @@ describe('FeatureToggle', () => {
 
         describe('should return false', () => {
             it('if the feature toggle exists and is false', (done) => {
-                const featureToggles = {pc_welsh_ft: false};
-                const key = 'pc_welsh_ft';
+                const featureToggles = {document_upload: false};
+                const key = 'document_upload';
                 const isEnabled = FeatureToggle.isEnabled(featureToggles, key);
                 expect(isEnabled).to.equal(false);
                 done();
@@ -226,7 +245,7 @@ describe('FeatureToggle', () => {
 
             it('if the feature toggle does not exist', (done) => {
                 const featureToggles = {};
-                const key = 'pc_welsh_ft';
+                const key = 'document_upload';
                 const isEnabled = FeatureToggle.isEnabled(featureToggles, key);
                 expect(isEnabled).to.equal(false);
                 done();
@@ -234,14 +253,14 @@ describe('FeatureToggle', () => {
 
             it('if there are no feature toggles', (done) => {
                 const featureToggles = '';
-                const key = 'pc_welsh_ft';
+                const key = 'document_upload';
                 const isEnabled = FeatureToggle.isEnabled(featureToggles, key);
                 expect(isEnabled).to.equal(false);
                 done();
             });
 
             it('if the key is not specified', (done) => {
-                const featureToggles = {pc_welsh_ft: false};
+                const featureToggles = {document_upload: false};
                 const key = '';
                 const isEnabled = FeatureToggle.isEnabled(featureToggles, key);
                 expect(isEnabled).to.equal(false);

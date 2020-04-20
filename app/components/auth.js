@@ -1,0 +1,20 @@
+'use strict';
+
+const jwt = require('jsonwebtoken');
+const config = require('config');
+const logger = require('app/components/logger')('Init');
+
+const createToken = (req, partyId, payload = {}) => {
+    const conf = config.auth.jwt;
+    logger.info(`Using ${conf.secret === 'JwtSecretKey' ? 'local' : 'Azure KV'} secret`);
+
+    payload.authorities = [];
+    const token = jwt.sign(payload, conf.secret, {subject: partyId, expiresIn: conf.ttl});
+
+    req.session.token = token;
+    return token;
+};
+
+module.exports = {
+    createToken: createToken
+};

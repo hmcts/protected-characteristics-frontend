@@ -1,58 +1,95 @@
 const supportedBrowsers = require('../crossbrowser/supportedBrowsers.js');
 
-const browser = process.env.SAUCELABS_BROWSER || 'chrome';
-const tunnelName = process.env.TUNNEL_IDENTIFIER || '';
-
-const setupConfig = {
-    'tests': './paths/*.js',
-    'output': './output',
-    'timeout': 20000,
-    'helpers': {
-        WebDriverIO: {
-            url: process.env.TEST_E2E_FRONTEND_URL || 'https://localhost:3000',
-            browser: supportedBrowsers[browser].browserName,
-            waitforTimeout: 60000,
-            cssSelectorsEnabled: 'true',
-            windowSize: '1600x900',
-            timeouts: {
-                script: 60000,
-                'page load': 60000,
-                implicit: 20000
-            },
-            'host': 'ondemand.saucelabs.com',
-            'port': 80,
-            'user': process.env.SAUCE_USERNAME,
-            'key': process.env.SAUCE_ACCESS_KEY,
-            desiredCapabilities: getDesiredCapabilities()
-        },
-
-        'JSWait': {
-            'require': './helpers/JSWait.js'
-        },
-
-        'SauceLabsReportingHelper': {
-            'require': './helpers/SauceLabsReportingHelper.js'
+// eslint-disable-next-line no-unused-vars
+const browser = process.env.SAUCELABS_BROWSER;
+const tunnelName = process.env.TUNNEL_IDENTIFIER || 'reformtunnel';
+const getBrowserConfig = (browserGroup) => {
+    const browserConfig = [];
+    for (const candidateBrowser in supportedBrowsers[browserGroup]) {
+        if (candidateBrowser) {
+            const desiredCapability = supportedBrowsers[browserGroup][candidateBrowser];
+            desiredCapability.tunnelIdentifier = tunnelName;
+            desiredCapability.acceptSslCerts = true;
+            desiredCapability.tags = ['pcq-frontend'];
+            browserConfig.push({
+                browser: desiredCapability.browserName,
+                desiredCapabilities: desiredCapability
+            });
+        } else {
+            console.error('ERROR: supportedBrowsers.js is empty or incorrectly defined');
         }
-    },
-    'include': {
-        'I': './pages/steps.js'
-    },
-    'mocha': {
-        'reporterOptions': {
-            'reportDir': process.env.E2E_CROSSBROWSER_OUTPUT_DIR || './output',
-            'reportName': browser + '_report',
-            'reportTitle': 'Crossbrowser results for: ' + browser.toUpperCase(),
-            'inlineAssets': true
-        }
-    },
-    'name': 'frontEnd Tests'
+    }
+    return browserConfig;
 };
 
-function getDesiredCapabilities() {
-    const desiredCapability = supportedBrowsers[browser];
-    desiredCapability.tunnelIdentifier = tunnelName;
-    desiredCapability.tags = ['pcq'];
-    return desiredCapability;
-}
+const setupConfig = {
+    output: `${process.cwd()}/functional-output`,
+    helpers: {
+        WebDriverIO: {
+            url: process.env.TEST_URL || 'https://pcq.aat.platform.hmcts.net',
+            browser,
+            cssSelectorsEnabled: 'true',
+            host: 'ondemand.eu-central-1.saucelabs.com',
+            port: 80,
+            region: 'eu',
+            sauceConnect: true,
+            services: ['sauce'],
+            user: process.env.SAUCE_USERNAME,
+            key: process.env.SAUCE_ACCESS_KEY,
+            desiredCapabilities: {}
+        },
+        SauceLabsReportingHelper: {
+            require: './helpers/SauceLabsReportingHelper.js'
+        },
+    },
+    gherkin: {
+        features: 'features/probate.feature',
+        steps: ['./step_definitions/probatepcqjourney.js']
+    },
+    include: {
+        'I': './pages/steps.js'
+    },
+    plugins: {
+        autoDelay: {
+            enabled: true,
+            delayAfter: 2000
+        }
+    },
+    mocha: {
+        reporterOptions: {
+            'codeceptjs-cli-reporter': {
+                stdout: '-',
+                options:
+                    {steps: true}
+            },
+            'mochawesome': {
+                stdout: process.env.E2E_CROSSBROWSER_OUTPUT_DIR + 'console.log',
+                'options': {
+                    'reportDir': process.env.E2E_CROSSBROWSER_OUTPUT_DIR || './functional-output',
+                    'reportName': 'index',
+                    'reportTitle': 'Crossbrowser results',
+                    'inlineAssets': true
+                }
+            }
+        }
+    },
+    multiple: {
+        microsoftIE11: {
+            browsers: getBrowserConfig('microsoftIE11')
+        },
+        microsoftEdge: {
+            browsers: getBrowserConfig('microsoftEdge')
+        },
+        chrome: {
+            browsers: getBrowserConfig('chrome')
+        },
+        firefox: {
+            browsers: getBrowserConfig('firefox')
+        },
+        safari: {
+            browsers: getBrowserConfig('safari')
+        }
+    }
+};
 
 exports.config = setupConfig;

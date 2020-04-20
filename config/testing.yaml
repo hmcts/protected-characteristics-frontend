@@ -1,0 +1,40 @@
+
+# This is used in E2E testing
+appName: 'frontend'
+project: 'pcq'
+version: 'x.x-laptop'
+deployment_env: 'local'
+
+service:
+  name: 'pcq-frontend'
+
+e2e:
+  frontendUrl: 'https://pcq.aat.platform.hmcts.net'
+  proxyServer: ''
+  proxyBypassList: ''
+  outputDirectory: './functional-output'
+  defaultEnvironmentNodeEnv: 'development'
+  waitForTimeoutValue: 5000
+  waitForActionValue: 100
+  runBasicTests: false
+
+saucelabs:
+  browser: 'chrome'
+  username: 'username'
+  key: 'privatekey'
+  tunnelId: 'reformtunnel'
+  waitForTimeout: 5000
+  smartWait: 5000
+
+
+showSitemap: true
+
+http:
+  port: 3001
+
+session:
+  expires: 10000 # ms
+  ttl: 60 # s
+
+features:
+  idam: false

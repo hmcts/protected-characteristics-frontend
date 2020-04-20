@@ -2,7 +2,7 @@
 
 const ValidationStep = require('app/core/steps/ValidationStep');
 const moment = require('moment');
-const config = require('app/config');
+const config = require('config');
 const utils = require('app/components/step-utils');
 
 class DateStep extends ValidationStep {
@@ -21,9 +21,10 @@ class DateStep extends ValidationStep {
         dateNames.forEach((dateName) => {
             const [day, month, year] = [`${dateName}-day`, `${dateName}-month`, `${dateName}-year`];
 
-            ctx[day] = ctx[day] ? parseInt(ctx[day]) : ctx[day];
-            ctx[month] = ctx[month] ? parseInt(ctx[month]) : ctx[month];
-            ctx[year] = ctx[year] ? parseInt(ctx[year]) : ctx[year];
+            const setDate = (d) => (ctx[d] ? parseInt(ctx[d]) || ctx[d] : ctx[d]);
+            ctx[day] = setDate(day);
+            ctx[month] = setDate(month);
+            ctx[year] = setDate(year);
 
             const date = moment(`${ctx[day]}/${ctx[month]}/${ctx[year]}`, config.dateFormat).parseZone();
 

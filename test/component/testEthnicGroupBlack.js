@@ -3,7 +3,7 @@
 const TestWrapper = require('test/util/TestWrapper');
 const ApplicantReligion = require('app/steps/ui/religion');
 const testCommonContent = require('test/component/common/testCommonContent.js');
-const config = require('app/config');
+const config = require('config');
 const basePath = config.app.basePath;
 
 describe('ApplicantEthnicBackgroundBlack', () => {
@@ -25,9 +25,33 @@ describe('ApplicantEthnicBackgroundBlack', () => {
             testWrapper.testContent(done);
         });
 
-        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion}`, (done) => {
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - African`, (done) => {
             const data = {
                 ethnicity: 14
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Caribbean`, (done) => {
+            const data = {
+                ethnicity: 15
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Another`, (done) => {
+            const data = {
+                ethnicity: 16
+            };
+
+            testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);
+        });
+
+        it(`test it redirects to applicant religion page: ${expectedNextUrlForApplicantReligion} - Prefer not to say`, (done) => {
+            const data = {
+                ethnicity: 0
             };
 
             testWrapper.testRedirect(done, data, expectedNextUrlForApplicantReligion);

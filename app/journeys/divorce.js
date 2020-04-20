@@ -10,8 +10,7 @@ const stepList = {
     ApplicantEnglishLevel: 'ApplicantSex',
     ApplicantSex: 'ApplicantGenderSameAsSex',
     ApplicantGenderSameAsSex: 'ApplicantSexualOrientation',
-    ApplicantSexualOrientation: 'ApplicantMaritalStatus',
-    ApplicantMaritalStatus: 'ApplicantEthnicGroup',
+    ApplicantSexualOrientation: 'ApplicantEthnicGroup',
     ApplicantEthnicGroup: {
         White: 'ApplicantEthnicBackgroundWhite',
         Mixed: 'ApplicantEthnicBackgroundMixed',

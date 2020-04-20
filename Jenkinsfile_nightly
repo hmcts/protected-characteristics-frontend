@@ -2,7 +2,10 @@
 
 properties([
 // H allow predefined but random minute see https://en.wikipedia.org/wiki/Cron#Non-standard_characters
-pipelineTriggers([cron('H 05 * * *')])
+pipelineTriggers([cron('H 05 * * *')]),
+parameters([
+        string(name: 'URL_TO_TEST', defaultValue: 'https://pcq.aat.platform.hmcts.net', description: 'The URL you want to run these tests against')
+])
 ])
 
 @Library("Infrastructure")
@@ -11,9 +14,30 @@ def type = "nodejs"
 def product = "pcq"
 def component = "frontend"
 
+def secrets = [
+  'pcq-${env}': [
+    secret('jwt-secret', 'JWT_SECRET')
+  ]
+]
+
+static LinkedHashMap<String, Object> secret(String secretName, String envVar) {
+  [ $class: 'AzureKeyVaultSecret',
+    secretType: 'Secret',
+    name: secretName,
+    version: '',
+    envVariable: envVar
+  ]
+}
+
 withNightlyPipeline(type, product, component) {
-  env.TEST_URL = "http://pcq-frontend-staging.service.core-compute-aat.internal"
-  enableMutationTest();
-  enableSlackNotifications('#pcq-builds')
-  enableSecurityScan()
+    env.TEST_URL = params.URL_TO_TEST
+    loadVaultSecrets(secrets)
+    enableMutationTest();
+    enableSlackNotifications('#pcq-builds')
+    enableSecurityScan()
+    enableCrossBrowserTest()
+
+    after('crossBrowserTest') {
+                steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+    }
 }

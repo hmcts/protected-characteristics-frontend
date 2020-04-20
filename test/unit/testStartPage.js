@@ -20,7 +20,6 @@ describe('StartPage', () => {
                 sessionID: 'some session id',
                 session: {
                     returnUrl: 'http://some-return-url/',
-                    language: 'cy',
                     ctx: {}
                 }
             };
@@ -28,7 +27,7 @@ describe('StartPage', () => {
             const ctx = StartPage.getContextData(req);
             expect(ctx).to.deep.equal({
                 sessionID: 'some session id',
-                returnUrl: 'http://some-return-url/?locale=cy'
+                returnUrl: 'http://some-return-url/'
             });
             done();
         });
@@ -37,7 +36,6 @@ describe('StartPage', () => {
             const req = {
                 sessionID: 'some session id',
                 session: {
-                    language: 'cy',
                     ctx: {}
                 }
             };
@@ -58,6 +56,26 @@ describe('StartPage', () => {
             };
             [ctx, formdata] = StartPage.action(ctx, formdata);
             expect(ctx).to.deep.equal({});
+        });
+    });
+
+    describe('generateContent()', () => {
+        it('should return variable text for a service', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = StartPage.generateContent({}, formdata);
+            expect(content.paragraph2).to.equal('Your answers won&rsquo;t affect your claim.');
+        });
+
+        it('should return variable text for a service in welsh', () => {
+            const formdata = {
+                serviceId: 'cmc',
+                actor: 'claimant'
+            };
+            const content = StartPage.generateContent({}, formdata, 'cy');
+            expect(content.paragraph2).to.equal('Ni fydd eich atebion yn effeithio ar eich hawliad.');
         });
     });
 });
