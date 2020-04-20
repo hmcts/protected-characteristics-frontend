@@ -33,8 +33,8 @@ describe('registerIncomingService', () => {
             returnUrl: 'http://invoking-service-return-url/',
             language: 'en',
             form: {
-                serviceId: 'INVOKING_SERVICE_ID',
-                actor: 'CITIZEN',
+                serviceId: 'invoking_service_id',
+                actor: 'citizen',
                 pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                 ccdCaseId: 1234567890123456,
                 partyId: 'applicant@email.com',
