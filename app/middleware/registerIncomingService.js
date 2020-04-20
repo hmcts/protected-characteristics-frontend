@@ -2,6 +2,7 @@
 
 const logger = require('app/components/logger')('Init');
 const auth = require('app/components/auth');
+const stringUtils = require('../components/string-utils');
 
 const formParams = [
     'serviceId',
@@ -25,7 +26,7 @@ const registerIncomingService = (req, res) => {
     form.channel = req.query.channel ? req.query.channel : 1;
 
     if (req.query.returnUrl) {
-        req.session.returnUrl = req.query.returnUrl;
+        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
     } else {
         logger.warn('Missing parameter from incoming service: returnUrl');
     }
