@@ -18,7 +18,7 @@ const registerIncomingService = (req, res) => {
     const form = req.session.form;
     formParams.forEach(param => {
         if (req.query[param]) {
-            form[param] = req.query[param];
+            form[param] = req.query[param].toLowerCase();
         } else {
             logger.warn('Missing parameter from incoming service: ' + param);
         }
