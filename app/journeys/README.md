@@ -9,9 +9,9 @@ To add a new service specific journey, start by copying the `default.json` file 
 (`<serviceid>.json`).
 
 Inside this file is an object containing an ordered list of key/value pairs which represent a step and the step that you will directed to on post. 
-Keys with an object as it's value represent the various options that can be chosen in that step and the step that they will be directed to based on their choice.
+Keys with an object as its value represent the various options that can be chosen in that step and the step that they will be directed to based on their choice.
 
-As an example, if your service asks the user their dat of birth and so asking it here is irrelevant, then you may want to remove the 'dateofbirth' step.
+As an example, if your service asks the user their date of birth and so asking it here is irrelevant, then you may want to remove the 'dateofbirth' step.
 The default journey looks like this:
 ```$json
 StartPage: 'ApplicantDateOfBirth',
