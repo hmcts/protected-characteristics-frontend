@@ -4,26 +4,5 @@
     "actors": [
       "APPLICANT"
     ]
-  },
-  {
-    "serviceId": "CMC",
-    "actors": [
-      "CLAIMANT",
-      "DEFENDANT"
-    ]
-  },
-  {
-    "serviceId": "DIVORCE",
-    "actors": [
-      "APPLICANT",
-      "RESPONDENT"
-    ]
-  },
-  {
-    "serviceId": "SSCS",
-    "actors": [
-      "APPELLANT",
-      "APPOINTEE"
-    ]
   }
 ]
