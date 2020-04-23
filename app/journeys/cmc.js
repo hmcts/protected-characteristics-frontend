@@ -1,8 +1,7 @@
 'use strict';
 
 const stepList = {
-    StartPage: 'ApplicantDateOfBirth',
-    ApplicantDateOfBirth: 'ApplicantLanguage',
+    StartPage: 'ApplicantLanguage',
     ApplicantLanguage: {
         otherLanguage: 'ApplicantEnglishLevel',
         otherwise: 'ApplicantSex'
@@ -10,7 +9,8 @@ const stepList = {
     ApplicantEnglishLevel: 'ApplicantSex',
     ApplicantSex: 'ApplicantGenderSameAsSex',
     ApplicantGenderSameAsSex: 'ApplicantSexualOrientation',
-    ApplicantSexualOrientation: 'ApplicantEthnicGroup',
+    ApplicantSexualOrientation: 'ApplicantMaritalStatus',
+    ApplicantMaritalStatus: 'ApplicantEthnicGroup',
     ApplicantEthnicGroup: {
         White: 'ApplicantEthnicBackgroundWhite',
         Mixed: 'ApplicantEthnicBackgroundMixed',

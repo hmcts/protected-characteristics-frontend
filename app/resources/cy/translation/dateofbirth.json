@@ -2,46 +2,49 @@
   "question": "Beth yw eich dyddiad geni?",
   "enterDateHint": "Er enghraifft, 31 3 1980",
   "optionEnterDate": "Rhowch eich dyddiad geni",
+  "day": "Diwrnod",
+  "month": "Mis",
+  "year": "Blwyddyn",
 
   "errors": {
     "dob-day": {
       "required": {
-        "summary": "[CY] You haven&rsquo;t entered the day that you were born",
-        "message": "[CY] Enter the day you were born"
+        "summary": "Nid ydych wedi nodi&rsquo;r diwrnod y cawsant eu geni",
+        "message": "Nodwch y diwrnod y cawsant eu geni"
       },
       "invalid": {
-        "summary": "[CY] You haven&rsquo;t entered a valid day that you were born",
-        "message": "[CY] Enter a valid day of birth"
+        "summary": "Nid ydych wedi nodi diwrnod dilys ar gyfer pryd cawsant eu geni",
+        "message": "Nodwch ddiwrnod geni dilys"
       }
     },
     "dob-month": {
       "required": {
-        "summary": "[CY] You haven&rsquo;t entered the month that you were born",
-        "message": "[CY] Enter the month you were born"
+        "summary": "Nid ydych wedi nodi&rsquo;r mis y cawsant eu geni",
+        "message": "Nodwch y mis y cawsant eu geni"
       },
       "invalid": {
-        "summary": "[CY] You haven&rsquo;t entered a valid month that you were born",
-        "message": "[CY] Enter a valid month of birth"
+        "summary": "Nid ydych wedi nodi mis dilys ar gyfer pryd cawsant eu geni",
+        "message": "Nodwch fis geni dilys"
       }
     },
     "dob-year": {
       "required": {
-        "summary": "[CY] You haven&rsquo;t entered the year that you were born",
-        "message": "[CY] Enter the year you were born"
+        "summary": "Nid ydych wedi nodi&rsquo;r flwyddyn ar gyfer pryd cawsant eu geni",
+        "message": "Nodwch y flwyddyn y cawsant eu geni"
       },
       "invalid": {
-        "summary": "[CY] You haven&rsquo;t entered a valid year that you were born",
-        "message": "[CY] Enter a valid year of birth"
+        "summary": "Nid ydych wedi nodi blwyddyn ddilys ar gyfer pryd cawsant eu geni",
+        "message": "Nodwch flwyddyn geni ddilys"
       }
     },
     "dob": {
       "invalid": {
-        "summary": "[CY] You need to enter a valid date of birth",
-        "message": "[CY] Enter a valid date of birth"
+        "summary": "Mae angen ichi nodi dyddiad geni dilys",
+        "message": "Nodwch ddyddiad geni dilys"
       },
       "dateInFuture": {
-        "summary": "[CY] You must enter a date of birth in the past",
-        "message": "[CY] Enter a date in the past"
+        "summary": "Mae&rsquo;n rhaid ichi nodi dyddiad geni sydd yn y gorffennol",
+        "message": "Nodwch ddyddiad yn y gorffennol"
       }
     }
   }
