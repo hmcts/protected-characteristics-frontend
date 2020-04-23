@@ -6,6 +6,6 @@ module.exports = {
     TestccdCaseId: '1234567890123456',
     TestpartyId: 'test@gmail.com',
     TestserviceId: 'probate',
-    Testactor: 'citizen',
+    Testactor: 'applicant',
     TestVerison: '1'
 };
