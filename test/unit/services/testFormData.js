@@ -24,7 +24,7 @@ describe('FormDataService', () => {
                 'Authorization': 'Bearer ' + token,
                 'X-Correlation-Id': correlationId
             }
-        }).post(config.services.orchestration.paths.forms, expectedForm)
+        }).post(config.services.pcqBackend.paths.forms, expectedForm)
             .reply(200, expectedForm);
 
         co(function* () {

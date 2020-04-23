@@ -1,4 +1,6 @@
-
+---
+service:
+  name: 'pcq-frontend'
 questionsVersion: 1
 frontendPublicHttpProtocol: 'http'
 environment: 'prod'
@@ -24,7 +26,7 @@ auth:
     ttl: '8h'
     secret: 'JwtSecretKey'
 services:
-  orchestration:
+  pcqBackend:
     url: 'http://localhost:4550'
     port: 4550
     paths:
@@ -79,3 +81,6 @@ livenessEndpoint: "/health/liveness"
 healthEndpoint: "/health"
 appInsights:
   instrumentationKey: ''
+health:
+  timeout: 5000
+  deadline: 15000
