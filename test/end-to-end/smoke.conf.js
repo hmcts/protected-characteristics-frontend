@@ -3,7 +3,7 @@ exports.config = {
     helpers: {
         Puppeteer: {
             url: 'https://pcq.aat.platform.hmcts.net',
-            show: true,
+            show: false,
             headless: false,
             chrome: {
                 'ignoreHTTPSErrors': true,
