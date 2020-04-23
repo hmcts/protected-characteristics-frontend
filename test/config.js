@@ -5,7 +5,7 @@ module.exports = {
     TestUseProxy: process.env.TEST_USE_PROXY || 'true',
     TestccdCaseId: '1234567890123456',
     TestpartyId: 'test@gmail.com',
-    TestserviceId: 'PROBATE',
-    Testactor: 'CITIZEN',
+    TestserviceId: 'probate',
+    Testactor: 'citizen',
     TestVerison: '1'
 };
