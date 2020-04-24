@@ -175,7 +175,7 @@ class Step {
         const correlationId = req.session.correlationId;
         const formData = ServiceMapper.map(
             'FormData',
-            [config.services.orchestration.url, sessionID]
+            [config.services.pcqBackend.url, sessionID]
         );
         // Set the completed date
         formdata.completedDate = moment().toISOString();
