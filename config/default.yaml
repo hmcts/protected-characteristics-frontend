@@ -47,7 +47,7 @@ redis:
     sameSite: 'lax'
 dateFormat: 'DD/MM/YYYY'
 hostname: 'localhost:3000'
-gaTrackingId: 'UA-XXXXXXXX-X'
+gaTrackingId: 'UA-159942801-1'
 enableTracking: 'true'
 links:
   cookies: '/cookies'
