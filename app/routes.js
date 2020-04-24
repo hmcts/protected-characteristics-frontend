@@ -8,12 +8,15 @@ const get = require('lodash').get;
 const shutter = require('app/shutter');
 const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
+const validateParams = require('app/middleware/validateParams');
 const setJourney = require('app/middleware/setJourney');
 
 router.use(shutter);
 router.use(initSession);
 router.use(registerIncomingService);
 router.use(setJourney);
+
+router.get('*', (req, res, next) => validateParams(req, res, next));
 
 router.all('*', (req, res, next) => {
     const correlationId = get(req.session, 'correlationId', 'init');
