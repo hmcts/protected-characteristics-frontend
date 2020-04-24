@@ -25,6 +25,10 @@ class ApplicantDateOfBirth extends DateStep {
             const today = new Date();
             today.setHours(0, 0, 0, 0);
 
+            if (ctx['dob-year'] >= today.getFullYear() + 1) {
+                errors.push(FieldError('dob-year', 'invalid', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
+            }
+
             if (dob >= today) {
                 errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
             }

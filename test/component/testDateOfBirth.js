@@ -49,6 +49,18 @@ describe('ApplicantDateOfBirth', () => {
             testWrapper.testErrors(done, data, 'invalid', errorsToTest);
         });
 
+        it('test errors message displayed for invalid year', (done) => {
+            const errorsToTest = ['dob-year'];
+            const data = {
+                'dob_provided': 1,
+                'dob-day': '12',
+                'dob-month': '12',
+                'dob-year': '2021'
+            };
+
+            testWrapper.testErrors(done, data, 'invalid', errorsToTest);
+        });
+
         it('test errors message displayed for non-numeric day', (done) => {
             const errorsToTest = ['dob-day'];
             const data = {
