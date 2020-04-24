@@ -1,4 +1,6 @@
-
+---
+service:
+  name: 'pcq-frontend'
 questionsVersion: 1
 frontendPublicHttpProtocol: 'http'
 environment: 'prod'
@@ -25,7 +27,7 @@ auth:
     ttl: '8h'
     secret: 'JwtSecretKey'
 services:
-  orchestration:
+  pcqBackend:
     url: 'http://localhost:4550'
     port: 4550
     paths:
@@ -46,7 +48,7 @@ redis:
     sameSite: 'lax'
 dateFormat: 'DD/MM/YYYY'
 hostname: 'localhost:3000'
-gaTrackingId: 'UA-XXXXXXXX-X'
+gaTrackingId: 'UA-159942801-1'
 enableTracking: 'true'
 links:
   cookies: '/cookies'
@@ -80,3 +82,6 @@ livenessEndpoint: "/health/liveness"
 healthEndpoint: "/health"
 appInsights:
   instrumentationKey: ''
+health:
+  timeout: 5000
+  deadline: 15000

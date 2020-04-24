@@ -163,6 +163,8 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
         store: utils.getStore(config.redis, session)
     }));
 
+    healthcheck.setup(app);
+
     app.use((req, res, next) => {
         if (!req.session) {
             return next(new Error('Unable to reach redis'));
@@ -219,8 +221,6 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
     }
 
     app.post('*', sanitizeRequestBody);
-
-    app.use(healthcheck);
 
     app.use(`${config.livenessEndpoint}`, (req, res) => {
         res.json({status: 'UP'});

@@ -4,7 +4,7 @@ const Service = require('./Service');
 
 class FormData extends Service {
     post(token, correlationId, data = {}) {
-        const url = this.endpoint + this.config.services.orchestration.paths.forms;
+        const url = this.endpoint + this.config.services.pcqBackend.paths.forms;
         this.log('Post application form data');
         const headers = {
             'Content-Type': 'application/json',

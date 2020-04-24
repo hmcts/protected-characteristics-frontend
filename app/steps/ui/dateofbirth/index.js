@@ -17,7 +17,7 @@ class ApplicantDateOfBirth extends DateStep {
         return ['dob'];
     }
 
-    handlePost(ctx, errors) {
+    handlePost(ctx, errors, formdata, session) {
         [ctx, errors] = super.handlePost(ctx, errors);
         if (ctx.dob_provided === 1) {
             const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
@@ -26,7 +26,7 @@ class ApplicantDateOfBirth extends DateStep {
             today.setHours(0, 0, 0, 0);
 
             if (dob >= today) {
-                errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent()));
+                errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
             }
         }
 

@@ -2,6 +2,9 @@
   "question": "What is your date of birth?",
   "enterDateHint": "For example, 12 09 1987",
   "optionEnterDate": "Enter your date of birth",
+  "day": "Day",
+  "month": "Month",
+  "year": "Year",
 
   "errors": {
     "dob-day": {
