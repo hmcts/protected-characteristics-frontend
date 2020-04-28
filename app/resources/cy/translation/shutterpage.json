@@ -1,5 +1,8 @@
 {
   "title": "Mae'n ddrwg gennym, mae problem gyda'r gwasanaeth",
   "header": "Mae'n ddrwg gennym, mae problem gyda'r gwasanaeth",
-  "paragraph1": "Rydym wedi arbed eich atebion a byddwn yn eich cyfeirio yn ôl at eich cais yn awr."
+  "paragraph1": "Rydym wedi arbed eich atebion a byddwn yn eich cyfeirio yn ôl at eich cais yn awr.",
+  "paragraph1_noUrl": "[CY] Please select your service below:",
+
+  "PROBATE": "Brofiant"
 }
