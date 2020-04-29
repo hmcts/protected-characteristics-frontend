@@ -6,6 +6,21 @@ class ShutterPage extends Step {
     static getUrl() {
         return '/offline';
     }
+
+    getContextData(req) {
+        const ctx = super.getContextData(req);
+        if (req.session.returnUrl) {
+            ctx.returnUrl = req.session.returnUrl;
+        }
+
+        return ctx;
+    }
+
+    action(ctx, formdata) {
+        super.action(ctx, formdata);
+        delete ctx.returnUrl;
+        return [ctx, formdata];
+    }
 }
 
 module.exports = ShutterPage;

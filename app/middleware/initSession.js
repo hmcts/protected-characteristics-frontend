@@ -16,6 +16,9 @@ const initSession = (req, res, next) => {
         };
         req.session.back = [];
     }
+    if (!req.session.validParameters) {
+        req.session.validParameters = false;
+    }
     next();
 };
 

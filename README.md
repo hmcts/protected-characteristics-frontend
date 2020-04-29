@@ -51,7 +51,7 @@ Open [https://localhost:4000](https://localhost:4000) in a browser
 Before submitting a Pull Request you will be required to run:
 `$ yarn eslint`
 
-We have a number of rules relating to code style that can be found in [.eslintrc.js](https://github.com/hmcts/probate-caveats-frontend/blob/develop/.eslintrc.js).
+We have a number of rules relating to code style that can be found in [.eslintrc.js](.eslintrc.js).
 
 ### Config
 
@@ -79,6 +79,20 @@ For accessibility tests:
 For test coverage:
 `$ yarn test-coverage`
 
+## Registering a service with PCQ
+
+When your service has got approval and is ready to integrate with PCQ 
+you will firstly need to add your service to the [registered service JSON file](app/registeredServices.json).
+Add a new object to the array with your service id and list of actors. 
+
+There are 3 pages which require specific wording regarding your service. 
+Please see the [README](app/resources/en/translation/variable/README.md) for adding your services text.
+
+If there are questions you want to be excluded from the questionnaire because they are irrelevant (such as asking someone if they are married when coming from the divorce app), 
+please see the [README](app/journeys/README.md) for creating a service specific journey.
+
+
+
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](https://github.com/hmcts/probate-caveats-frontend/blob/develop/LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) file for details
