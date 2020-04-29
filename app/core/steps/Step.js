@@ -9,6 +9,7 @@ const ServiceMapper = require('app/utils/ServiceMapper');
 const FeatureToggle = require('app/utils/FeatureToggle');
 const utils = require('app/components/step-utils');
 const moment = require('moment');
+const logger = require('app/components/logger');
 
 class Step {
 
@@ -107,11 +108,10 @@ class Step {
         if (formdata && formdata.serviceId && formdata.actor) {
             let variableContent;
             try {
-                variableContent = require(`app/resources/${language}/translation/variable/${formdata.serviceId}`);
+                variableContent = require(`app/resources/${language}/translation/variable/${formdata.serviceId}`)[formdata.actor];
             } catch (e) {
-                throw new ReferenceError(`Step ${this.name} has no variable-text.json file in its resource folder for service ${formdata.serviceId}`);
+                logger().info(`Step ${this.name} has no variable-text.json file in its resource folder for service ${formdata.serviceId}`);
             }
-            variableContent = variableContent[formdata.actor];
             if (variableContent) {
                 Object.assign(this.content, variableContent[this.section]);
             }

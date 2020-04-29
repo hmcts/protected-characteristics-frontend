@@ -24,7 +24,6 @@ describe('Healthcheck', () => {
                     if (err) {
                         throw err;
                     }
-                    console.log(res.body);
                     expect(res.body).to.have.property('status').and.equal('UP');
                     expect(res.body).to.have.property('pcq-backend');
                     expect(res.body).to.have.property('buildInfo');
@@ -49,7 +48,6 @@ describe('Healthcheck', () => {
                     if (err) {
                         throw err;
                     }
-                    console.log(res.body);
                     expect(res.body).to.have.property('status').and.equal('DOWN');
                     expect(res.body).to.have.property('pcq-backend');
                     expect(res.body).to.have.property('buildInfo');
