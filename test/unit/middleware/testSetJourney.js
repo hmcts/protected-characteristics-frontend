@@ -65,4 +65,28 @@ describe('setJourney', () => {
 
         done();
     });
+
+    it('should set req.journey with default journey when journey file not found', (done) => {
+        const req = {
+            session: {
+                form: {
+                    serviceId: 'NO_JOURNEY_FILE_FOR_ME'
+                }
+            }
+        };
+        const res = {};
+        const next = sinon.spy();
+
+        setJourney(req, res, next);
+
+        expect(req.session).to.deep.equal({
+            form: {
+                serviceId: 'NO_JOURNEY_FILE_FOR_ME',
+            },
+            journey: defaultJourney
+        });
+        expect(next.calledOnce).to.equal(true);
+
+        done();
+    });
 });
