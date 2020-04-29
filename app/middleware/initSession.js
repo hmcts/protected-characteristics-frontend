@@ -16,7 +16,10 @@ const initSession = (req, res, next) => {
         };
         req.session.back = [];
     }
-    next();
+
+    if (next) {
+        next();
+    }
 };
 
 module.exports = initSession;
