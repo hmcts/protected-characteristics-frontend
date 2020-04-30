@@ -19,7 +19,10 @@ const initSession = (req, res, next) => {
     if (!req.session.validParameters) {
         req.session.validParameters = false;
     }
-    next();
+
+    if (next) {
+        next();
+    }
 };
 
 module.exports = initSession;
