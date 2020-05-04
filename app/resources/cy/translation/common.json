@@ -15,6 +15,7 @@
   "delete": "Dileu",
   "answer": "Ateb",
   "send": "Anfon",
+  "error": "Gwall",
   "errorSummaryHeading": "Problem",
   "numberBelow21" : "cyntaf, ail, trydydd, pedwerydd, pumed, chweched, seithfed, wythfed, nawfed, degfed, unfed ar ddeg, deuddegfed, trydydd ar ddeg, pedwerydd ar ddeg, pymthegfed, unfed ar bymtheg, ail ar bymtheg, deunawfed, pedwerydd ar bymtheg, ugeinfed",
   "months": "Ionawr, Chwefror, Mawrth, Ebrill, Mai, Mehefin, Gorffennaf, Awst, Medi, Hydref, Tachwedd, Rhagfyr",
