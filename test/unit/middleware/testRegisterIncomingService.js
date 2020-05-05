@@ -131,6 +131,33 @@ describe('registerIncomingService', () => {
         });
     });
     describe('route', () => {
+
+        afterEach(() => {
+            nock.cleanAll();
+        });
+
+        it('should redirect to /start-page if the backend is up', (done) => {
+            nock('http://localhost:4000')
+                .get('/health')
+                .reply(
+                    200,
+                    {'pcq-backend': {'actualStatus': 'UP'}}
+                );
+            const server = app.init();
+            const agent = request.agent(server.app);
+            agent.get('/service-endpoint?serviceId=PROBATE&actor=APPLICANT&pcqId=12&ccdCaseId=12&partyId=12&returnUrl=test')
+                .expect(302)
+                .end((err, res) => {
+                    server.http.close();
+                    if (err) {
+                        throw err;
+                    }
+                    expect(res.redirect).to.equal(true);
+                    expect(res.header.location).to.equal('/start-page');
+                    done();
+                });
+        });
+
         it('should redirect to /offline if the backend is down', (done) => {
             nock(config.services.pcqBackend.url)
                 .get('/health')
@@ -140,7 +167,7 @@ describe('registerIncomingService', () => {
                 );
             const server = app.init();
             const agent = request.agent(server.app);
-            agent.get('/service-endpoint')
+            agent.get('/service-endpoint?returnUrl=test.com')
                 .expect(302)
                 .end((err, res) => {
                     server.http.close();

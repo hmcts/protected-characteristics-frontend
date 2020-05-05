@@ -20,7 +20,6 @@ router.get('/service-endpoint', (req, res) => {
     asyncFetch
         .fetch('http://localhost:4000/health', {}, fetchRes => fetchRes.json())
         .then(json => {
-            console.log(json);
             if (json['pcq-backend'] && json['pcq-backend'].actualStatus === 'UP') {
                 // Reset the session on registering a new incoming service
                 req.session.regenerate(() => {
