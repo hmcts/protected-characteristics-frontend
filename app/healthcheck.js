@@ -1,6 +1,7 @@
 'use strict';
 
 const healthcheck = require('@hmcts/nodejs-healthcheck');
+const logger = require('app/components/logger')('Init');
 const os = require('os');
 const config = require('config');
 const getStore = require('app/components/utils').getStore;
@@ -17,6 +18,9 @@ const checks = {
     'pcq-backend': healthcheck.web(`${config.services.pcqBackend.url}/health`, {
         callback: (err, res) => {
             const status = err ? 'DOWN' : res.body.status;
+            if (status === 'DOWN') {
+                logger.info('pcq-backend is DOWN');
+            }
             return healthcheck.up({actualStatus: status, comment: statusComment});
         },
         timeout: 5000,
@@ -25,7 +29,11 @@ const checks = {
 };
 if (sessionStore.constructor.name === 'RedisStore') {
     checks.redis = healthcheck.raw(() => {
-        return sessionStore.client.status === 'ready' ? healthcheck.up() : healthcheck.down();
+        const healthy = sessionStore.client.status === 'ready';
+        if (!healthy) {
+            logger.info('redis is DOWN');
+        }
+        return healthy ? healthcheck.up() : healthcheck.down();
     });
 }
 
