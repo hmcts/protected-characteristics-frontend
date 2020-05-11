@@ -9,7 +9,6 @@ service:
   name: 'pcq-frontend'
 
 tokenKeys:
-  registered: 'REGISTERED_TOKEN_KEY'
   notregistered: 'NOTREGISTERED_TOKEN_KEY'
 
 e2e:

@@ -59,6 +59,14 @@ describe('VerifyToken', () => {
     });
 
     it('should successfully verify a valid req query with a matching token', (done) => {
+        const rewire = require('rewire');
+        const verifyTokenRewired = rewire('app/components/verify-token');
+        verifyTokenRewired.__set__('config', {
+            tokenKeys: {
+                registered: 'REGISTERED_TOKEN_KEY'
+            }
+        });
+
         const reqQuery = {
             serviceId: 'REGISTERED',
             actor: 'APPLICANT',
@@ -70,7 +78,7 @@ describe('VerifyToken', () => {
                 '1a5e3ecd000d74a5baa2967b0c958de'
         };
 
-        expect(verifyToken(reqQuery)).to.equal(true);
+        expect(verifyTokenRewired(reqQuery)).to.equal(true);
         done();
     });
 });
