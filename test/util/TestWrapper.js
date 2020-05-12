@@ -34,21 +34,25 @@ class TestWrapper {
     }
 
     testContent(done, data = {}, excludeKeys = [], cookies = []) {
-        const contentToCheck = cloneDeep(filter(this.content, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
-        const substitutedContent = this.substituteContent(data, contentToCheck);
-        const res = this.agent.get(this.pageUrl);
+        this.agent.post('/prepare-session-field')
+            .send({validParameters: true})
+            .end(() => {
+                const contentToCheck = cloneDeep(filter(this.content, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
+                const substitutedContent = this.substituteContent(data, contentToCheck);
+                const res = this.agent.get(this.pageUrl);
 
-        if (cookies.length) {
-            const cookiesString = this.setCookiesString(res, cookies);
-            res.set('Cookie', cookiesString);
-        }
+                if (cookies.length) {
+                    const cookiesString = this.setCookiesString(res, cookies);
+                    res.set('Cookie', cookiesString);
+                }
 
-        res.expect('Content-type', /html/)
-            .then(response => {
-                this.assertContentIsPresent(response.text, substitutedContent);
-                done();
-            })
-            .catch(done);
+                res.expect('Content-type', /html/)
+                    .then(response => {
+                        this.assertContentIsPresent(response.text, substitutedContent);
+                        done();
+                    })
+                    .catch(done);
+            });
     }
 
     testDataPlayback(done, data = {}, excludeKeys = [], cookies = []) {
