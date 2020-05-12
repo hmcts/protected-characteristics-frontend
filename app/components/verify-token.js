@@ -23,8 +23,8 @@ const verifyToken = (reqQuery) => {
 
     let verified = false;
     if (token && tokenKey) {
+        logger.info(`Using ${tokenKey === 'SERVICE_TOKEN_KEY' ? 'local' : 'Azure KV'} secret for service token key`);
         const key = crypto.scryptSync(tokenKey, 'salt', 32);
-
         const strParams = JSON.stringify(params);
         const cipher = crypto.createCipheriv(algorithm, key, iv);
         let encrypted = cipher.update(strParams, 'utf8', 'hex');

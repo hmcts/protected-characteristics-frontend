@@ -18,11 +18,11 @@ describe('registerIncomingService', () => {
                 returnUrl: 'invoking-service-return-url/',
                 language: 'en',
                 channel: 2,
-                token: '79d3c3968c1b94baa8753a66c72a3382aacb1152f20fac4ba2ad7c754adf464a538a77496a281db63b2caaa49' +
-                    '380fcb5f4210a0fc3933a0c4d5f2f790c026df47946c7b8640dc476f47a12822df5c38590dc16c9c9b4143ccca4a' +
-                    '76f32aa1bb16a3bd24a0dd30cd31f8ca5f93a46a99ed931f95b20914604b6bddef910b23dbf49f61c2c98c073e0b' +
-                    '1f0d4ac2d5b7d05f6cb5cf518eb77c93aaea05970ca3d8f8d571a4983227c0daedbf3ec1ae7666ff490ef8876e73' +
-                    'e789ff6db55ae1253444764877a0016b0bb98f6be6a67372c91ae8766a0a411e09cea66fb729a5a089a'
+                token: '35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e156400899e8923bb878b4b62c64' +
+                    '17de175468ce6e7aab65af57b7ec70139ffe48983550ed3a59e5b0a5b0038327a3c0e142d1d5a429ec97243306af0' +
+                    '38236bf833b544011d7ee38f405c4c9f006bdbb40383fed91dbea3cc668b4c494a9a009e6e669c29e29a6afe79c95' +
+                    'bf2a5367ed0e361ebefbe2ec0f09f122387cdfac4f26e6ef828c704ff0c77e6a47e77269318732daaf8f050eded0e' +
+                    'df86ed7faddc6a6b5c78c109e3a9cdfefd022987e2a859004836663af9d45c7f5ebf525013228e9'
             },
             session: {
                 form: {}
@@ -84,10 +84,10 @@ describe('registerIncomingService', () => {
                 pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                 partyId: 'applicant@email.com',
                 returnUrl: 'invoking-service-return-url/',
-                token: '79d3c3968c1b94baa8753a66c72a3382aacb1152f20fac4ba2ad7c754adf464a538a77496a281db63b2caaa49' +
-                    '380fcb5f4210a0fc3933a0c4d5f2f790c026df47946c7b8640dc476f47a12822df5c3852a8f925ec2fa8cb56b362' +
-                    'e35b8befd90a2cf40805231047c6643faa3abb8a251816a9c1b8755a96430547aa707a0956cef577267298bdd665' +
-                    '5131d1cac9d18ba23cdbd2c73ebab4f31c24c52e0c7f32d9f76d230ddcc1f67a54507bd3460d24f'
+                token: '35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e156400899e8923bb878b4b62c6417' +
+                    'de175468ce6e7aab65af57b7ec70139ffe48983550ed3a59e5b0a5b0038327a3c0e1c543da6e0da50a716781b61faf0' +
+                    '49a97bf238f80990cb923917b3c0c29ba1f7e802dd00d9d24fcbceb913332827863ebb07e5e3ce28120afab3d492494' +
+                    'ee93297da5fe8dea2f262a5a5b8af95520f143464289569a95d5dd2da55b8da0869c73'
             },
             session: {
                 form: {}

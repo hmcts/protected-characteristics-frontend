@@ -33,7 +33,7 @@ services:
     paths:
       forms: '/pcq/backend/submitAnswers'
 tokenKeys:
-  probate: 'PROBATE_TOKEN_KEY'
+  probate: 'SERVICE_TOKEN_KEY'
 redis:
   host: 'localhost'
   port: 6379
