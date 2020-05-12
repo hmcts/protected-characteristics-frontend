@@ -12,7 +12,6 @@ withPipeline(type, product, component) {
     sh 'yarn setup'
   }
 
-  installCharts()
   enableAksStagingDeployment()
   disableLegacyDeployment()
   // enableSlackNotifications('#pcq-builds')
