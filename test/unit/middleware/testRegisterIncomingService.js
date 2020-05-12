@@ -116,11 +116,11 @@ describe('registerIncomingService', () => {
                 pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                 partyId: 'applicant@email.com',
                 returnUrl: 'http://invoking-service-return-url/',
-                token: 'f041d695f4114e7338f1a1b2b3e8f8d7340b5bf8a8675f4a3305883a8164c960240de4b5d55d8cfcf4b925b2ddcf' +
-                    '76b31ce87b119f2f77a9c9399c33116dcdd29cc58fd866a2c15f25a02f15637b9bf931f72d3b4bb7f726d5e1a4b991b' +
-                    'a6cacf0f82c37e228870fb5c4f05aa652bc555c860025e9a616cf2836586fdbc9dd6e948d819b463cea89bcd09f4052' +
-                    '539f6b958f29da8ab84bf94233a255ed0efb9ed4d4ba78463b70dad7618505ac4d49909dcd4329b299e6daa52f2394f' +
-                    '706fdf0'
+                token: '13008eff475abb48ecf18b9e6ea316fa61a0c371f95ff75977cc92093397d765e3b124d4d058f1345e812f76d4ff' +
+                    '47d4e1a0949da0aacfb2721247aa4fd380729777ebfbb2f068af034189cd6b22f7368c002444e1c8c8f4d7d436aa339' +
+                    'b9cb034e551917d27e9ef6008a0930c29f6baecadcb61baf46409eadbbc274b0fdca322fc3bcd6e96848c8a75495e74' +
+                    '5d83152b9fed597839d4caf52bdfa3ec2491d801d53af860e749ce313f89858fc908848acc9328e643d89b613cbf3b6' +
+                    '2056a44'
             },
             session: {
                 form: {}

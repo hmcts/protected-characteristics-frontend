@@ -9,7 +9,7 @@ service:
   name: 'pcq-frontend'
 
 tokenKeys:
-  notregistered: 'NOTREGISTERED_TOKEN_KEY'
+  notregistered: 'SERVICE_TOKEN_KEY'
 
 e2e:
   frontendUrl: 'https://pcq.aat.platform.hmcts.net'
