@@ -1,9 +1,9 @@
 nodejs:
   applicationPort: 4000
-  memoryRequests: "1024Mi"
-  cpuRequests: "500m"
-  memoryLimits: "2048Mi"
-  cpuLimits: "1500m"
+  memoryRequests: "512Mi"
+  cpuRequests: "100m"
+  memoryLimits: "1024Mi"
+  cpuLimits: "500m"
   environment:
     PUBLIC_PROTOCOL: https
     REFORM_TEAM: pcq
