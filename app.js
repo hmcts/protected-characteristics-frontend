@@ -228,7 +228,7 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
 
     app.use((req, res, next) => {
         if (['test', 'testing'].includes(app.get('env'))) {
-            res.locals.launchDarkly = new LaunchDarkly({offline: true}).getInstance();
+            res.locals.launchDarkly = new LaunchDarkly({offline: true}, ftValue).getInstance();
         } else {
             res.locals.launchDarkly = new LaunchDarkly({diagnosticOptOut: true}).getInstance();
         }
