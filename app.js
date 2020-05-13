@@ -258,6 +258,8 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
         http = server.listen(port, () => {
             console.log(`Application started: http://localhost:${port}${config.app.basePath}`);
         });
+
+        server.on('close', () => new LaunchDarkly().close());
     } else {
         http = app.listen(port, () => {
             console.log(`Application started: http://localhost:${port}${config.app.basePath}`);
