@@ -4,9 +4,8 @@ const expect = require('chai').expect;
 const LaunchDarkly = require('app/components/launch-darkly');
 
 describe('LaunchDarkly', () => {
-    afterEach(() => {
-        new LaunchDarkly().close();
-    });
+    before(() => new LaunchDarkly().close());
+    afterEach(() => new LaunchDarkly().close());
 
     it('should create a new launchdarkly instance', (done) => {
         const ld = new LaunchDarkly({offline: true}, true).getInstance();
