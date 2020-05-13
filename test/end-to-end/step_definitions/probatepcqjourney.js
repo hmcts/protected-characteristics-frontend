@@ -4,6 +4,10 @@
 const {I} = inject();
 const TestConfigurator = new (require('test/end-to-end/helpers/TestConfigurator'))();
 const pcqId = TestConfigurator.setPcqId();
+Before((test) => {
+    // perform your code
+    test.retries(3); // retry test 3 times
+});
 Given('I am a probate Citizen user', () => {
     //To:Do : Probate team
 });
@@ -32,7 +36,7 @@ When('I submit all pcq questions', () => {
 });
 
 Then('a record successfully created in database', () => {
-    //To:Do : Probate team
+    //To:Do:
 });
 
 When('I submit No for all pcq questions', () => {
