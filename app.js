@@ -25,9 +25,9 @@ const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
 const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
-const LaunchDarkly = require('launchdarkly-node-server-sdk');
+const LaunchDarkly = require('app/components/launch-darkly');
 
-exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
+exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
     const port = config.app.port;
     const releaseVersion = packageJson.version;
@@ -228,14 +228,9 @@ exports.init = function(isA11yTest = false, a11yTestSession = {}, ftValue) {
 
     app.use((req, res, next) => {
         if (['test', 'testing'].includes(app.get('env'))) {
-            res.locals.launchDarkly = {
-                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey, {offline: true}),
-                ftValue: ftValue
-            };
+            res.locals.launchDarkly = new LaunchDarkly({offline: true}).getInstance();
         } else {
-            res.locals.launchDarkly = {
-                client: LaunchDarkly.init(config.featureToggles.launchDarklyKey, {diagnosticOptOut: true})
-            };
+            res.locals.launchDarkly = new LaunchDarkly({diagnosticOptOut: true}).getInstance();
         }
 
         next();
