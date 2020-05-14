@@ -25,10 +25,8 @@ describe('ShutterPage', () => {
             };
 
             const ctx = ShutterPage.getContextData(req);
-            expect(ctx).to.deep.equal({
-                sessionID: 'some session id',
-                returnUrl: 'some-return-url'
-            });
+            expect(ctx).have.property('sessionID', 'some session id');
+            expect(ctx).to.have.property('returnUrl', 'some-return-url');
             done();
         });
 
@@ -41,9 +39,29 @@ describe('ShutterPage', () => {
             };
 
             const ctx = ShutterPage.getContextData(req);
-            expect(ctx).to.deep.equal({
-                sessionID: 'some session id'
-            });
+            expect(ctx).have.property('sessionID', 'some session id');
+            expect(ctx).to.not.have.property('returnUrl');
+            done();
+        });
+
+        it('should return the context with the services array', (done) => {
+            const req = {
+                sessionID: 'some session id',
+                session: {
+                    ctx: {}
+                }
+            };
+
+            const ctx = ShutterPage.getContextData(req);
+            expect(ctx).have.deep.property('services',
+                [{
+                    'actors': [
+                        'APPLICANT'
+                    ],
+                    'redirectLink': 'https://www.apply-for-probate.service.gov.uk/dashboard',
+                    'serviceId': 'PROBATE'
+                }]
+            );
             done();
         });
     });

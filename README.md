@@ -83,7 +83,10 @@ For test coverage:
 
 When your service has got approval and is ready to integrate with PCQ 
 you will firstly need to add your service to the [registered service JSON file](app/registeredServices.json).
-Add a new object to the array with your service id and list of actors. 
+Add a new object to the array with your service id, list of actors, and a redirect link.
+
+When the PCQ service endpoint is called it will verify the serviceId that has been passed and is in the list of registered services. If it's not, the user will be shown the 'service down' page. 
+The redirect link is used in case there is a problem with PCQ and the users session has been lost. In this case PCQ will not know the return url, that was passed in the invocation parameters, and will instead show a list of registered services and their associated redirect link. 
 
 There are 3 pages which require specific wording regarding your service. 
 Please see the [README](app/resources/en/translation/variable/README.md) for adding your services text.
