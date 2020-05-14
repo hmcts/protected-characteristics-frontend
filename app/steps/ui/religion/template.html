@@ -1,11 +1,11 @@
 {% extends "includes/two_thirds_form.html" %}
 
 {% from "govuk/components/radios/macro.njk" import govukRadios %}
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/input/macro.njk" import govukInput %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
 
 {% set otherDetailsHtml %}
-    {{ govukTextarea({
+    {{ govukInput({
         name: "religion_other",
         id: "religion_other",
         label: {
