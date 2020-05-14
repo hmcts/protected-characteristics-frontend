@@ -77,6 +77,28 @@ describe('ApplicantDateOfBirth', () => {
             done();
         });
 
+        it('should return the error for an invalid date', (done) => {
+            ctx = {
+                'dob_provided': 1,
+                'dob-day': '31',
+                'dob-month': '02',
+                'dob-year': '2012'
+            };
+            errors = [];
+            [ctx, errors] = ApplicantDateOfBirth.handlePost(ctx, errors, formdata, session);
+            expect(errors).to.deep.equal([
+                {
+                    field: 'dob',
+                    href: '#dob',
+                    msg: {
+                        summary: content.errors.dob.invalid.summary,
+                        message: content.errors.dob.invalid.message
+                    }
+                }
+            ]);
+            done();
+        });
+
         it('should return the required fields set to null if no options are selected', (done) => {
             ctx = {};
             errors = [];

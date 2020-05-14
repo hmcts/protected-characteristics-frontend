@@ -16,7 +16,7 @@
         {% endif %}
     {% endif %}
 
-    {{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}{% if govuk %} - {{ govuk }}{% endif %}
+    {% if errors %}{{ common.error }}: {% endif %}{{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}{% if govuk %} - {{ govuk }}{% endif %}
 {% endblock %}
 
 {% block head %}
