@@ -66,7 +66,7 @@ describe('StartPage', () => {
                 actor: 'claimant'
             };
             const content = StartPage.generateContent({}, formdata);
-            expect(content.paragraph2).to.equal('Your answers won&rsquo;t affect your claim.');
+            expect(content.paragraph2).to.equal('Your answers will not affect your claim.');
         });
 
         it('should return variable text for a service in welsh', () => {
