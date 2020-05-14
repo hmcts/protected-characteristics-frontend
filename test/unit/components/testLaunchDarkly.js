@@ -12,7 +12,6 @@ describe('LaunchDarkly', () => {
 
         // eslint-disable-next-line no-unused-expressions
         expect(ld.client).to.not.be.undefined;
-        expect(ld.ftValue).to.equal(true);
         done();
     });
 

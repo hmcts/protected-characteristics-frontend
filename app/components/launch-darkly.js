@@ -4,9 +4,24 @@ const config = require('config');
 const launchDarkly = require('launchdarkly-node-server-sdk');
 
 class LaunchDarkly {
-    constructor(options, ftValue) {
+    constructor() {
+        this.ready = false;
+        const options = config.featureToggles.enabled ? {diagnosticOptOut: true} : {offline: true};
         this.client = launchDarkly.init(config.featureToggles.launchDarklyKey, options);
-        this.ftValue = ftValue;
+        this.client.once('ready', () => {
+            this.ready = true;
+        });
+    }
+
+    variation(...params) {
+        if (!this.ready) {
+            this.client.once('ready', () => {
+                this.ready = true;
+                return this.client.variation(...params);
+            });
+        } else {
+            return this.client.variation(...params);
+        }
     }
 
     close() {
@@ -15,9 +30,12 @@ class LaunchDarkly {
 }
 
 class Singleton {
-    constructor(options = {}, ftValue = false) {
+    constructor(options = {}, ftValue = {}) {
         if (!Singleton.instance) {
             Singleton.instance = new LaunchDarkly(options, ftValue);
+
+            process.on('SIGINT', () => this.close);
+            process.on('exit', () => this.close);
         }
     }
 

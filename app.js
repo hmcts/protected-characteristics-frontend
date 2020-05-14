@@ -25,7 +25,6 @@ const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
 const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
-const LaunchDarkly = require('app/components/launch-darkly');
 
 exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
@@ -227,12 +226,10 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     });
 
     app.use((req, res, next) => {
-        if (['test', 'testing'].includes(app.get('env'))) {
-            res.locals.launchDarkly = new LaunchDarkly({offline: true}, ftValue).getInstance();
-        } else {
-            res.locals.launchDarkly = new LaunchDarkly({diagnosticOptOut: true}).getInstance();
+        res.locals.launchDarkly = {};
+        if (ftValue) {
+            res.locals.launchDarkly.ftValue = ftValue;
         }
-
         next();
     });
 
@@ -258,8 +255,6 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
         http = server.listen(port, () => {
             console.log(`Application started: http://localhost:${port}${config.app.basePath}`);
         });
-
-        server.on('close', () => new LaunchDarkly().close());
     } else {
         http = app.listen(port, () => {
             console.log(`Application started: http://localhost:${port}${config.app.basePath}`);
