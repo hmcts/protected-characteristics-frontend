@@ -1,5 +1,8 @@
 {
   "title": "Sorry, there is a problem with the service",
   "header": "Sorry, there is a problem with the service",
-  "paragraph1": "We have saved your answers and will direct you back to your application now."
+  "paragraph1": "We have saved your answers and will direct you back to your application now.",
+  "paragraph1_noUrl": "Please select your service below:",
+
+  "PROBATE": "Probate"
 }

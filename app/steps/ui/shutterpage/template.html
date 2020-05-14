@@ -5,7 +5,18 @@
     <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
             <h1 class="govuk-heading-l">{{ content.header | safe }}</h1>
-            <p class="govuk-body">{{ content.paragraph1 | safe }}</p>
+            <p class="govuk-body">
+                {{ (content.paragraph1 if fields.returnUrl.value else content.paragraph1_noUrl) | safe }}
+            </p>
+            {% if not fields.returnUrl.value %}
+                <ul class="govuk-list govuk-list--bullet">
+                    {% for service in fields.services.value %}
+                        <li><a class="govuk-link"
+                               href="{{ service.redirectLink | safe }}">{{ content[service.serviceId] | safe }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
         </div>
     </div>
     <ul class="govuk-form-group">
