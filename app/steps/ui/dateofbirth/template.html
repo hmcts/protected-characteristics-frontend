@@ -67,7 +67,7 @@
             {
                 value: '1',
                 text: content["optionEnterDate"],
-                checked: true if fields.dob_provided.value == '1',
+                checked: (true if fields.dob_provided.value == '1' or not fields.dob_provided.value),
                 conditional: {
                 html: dateOfBirthHtml
             }
