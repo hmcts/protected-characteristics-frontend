@@ -43,7 +43,7 @@ const setupConfig = {
         },
     },
     gherkin: {
-        features: 'features/probate.feature',
+        features: 'crossbrowser-feature/probate.feature',
         steps: ['./step_definitions/probatepcqjourney.js']
     },
     include: {
