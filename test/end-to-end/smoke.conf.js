@@ -25,7 +25,7 @@ exports.config = {
         I: 'test/end-to-end/pages/steps.js'
     },
     gherkin: {
-        features: 'smokefeature/smoke.feature',
+        features: 'features/smoke.feature',
         steps: ['./smoke/smoketest.js']
     },
     reporters: ['allure'],
