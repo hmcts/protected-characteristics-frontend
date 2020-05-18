@@ -23,8 +23,8 @@ const checks = {
             }
             return healthcheck.up({actualStatus: status, comment: statusComment});
         },
-        timeout: 5000,
-        deadline: 10000
+        timeout: 10000,
+        deadline: 20000
     })
 };
 if (sessionStore.constructor.name === 'RedisStore') {
