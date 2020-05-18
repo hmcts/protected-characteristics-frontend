@@ -36,7 +36,7 @@ When('I submit all pcq questions', () => {
 });
 
 Then('a record successfully created in database', () => {
-    //To:Do : Probate team
+    //To:Do:
 });
 
 When('I submit No for all pcq questions', () => {

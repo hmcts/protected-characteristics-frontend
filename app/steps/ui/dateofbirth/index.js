@@ -2,6 +2,8 @@
 
 const DateStep = require('app/core/steps/DateStep');
 const FieldError = require('app/components/error');
+const config = require('config');
+const moment = require('moment');
 
 class ApplicantDateOfBirth extends DateStep {
 
@@ -19,18 +21,29 @@ class ApplicantDateOfBirth extends DateStep {
 
     handlePost(ctx, errors, formdata, session) {
         [ctx, errors] = super.handlePost(ctx, errors);
-        if (ctx.dob_provided === 1) {
-            const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
+        const ctxDay = ctx['dob-day'],
+            ctxMonth = ctx['dob-month'],
+            ctxYear = ctx['dob-year'];
 
-            if (ctx['dob-year'] > today.getFullYear()) {
-                errors.push(FieldError('dob-year', 'invalid', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
-            }
+        // If at least 1 DoB field has been entered.
+        if (ctx.dob_provided === 1 && (ctxDay || ctxMonth || ctxYear)) {
+            const isValid = moment(`${ctxDay}/${ctxMonth}/${ctxYear}`, config.dateFormat).isValid();
+            if (isValid) {
+                const dob = new Date(`${ctx['dob-year']}-${ctx['dob-month']}-${ctx['dob-day']}`);
 
-            if (dob >= today) {
-                errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                if (ctx['dob-year'] > today.getFullYear()) {
+                    errors.push(FieldError('dob-year', 'invalid', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
+                }
+
+                if (dob >= today) {
+                    errors.push(FieldError('dob', 'dateInFuture', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
+                }
+            } else {
+                errors.push(FieldError('dob', 'invalid', this.resourcePath, this.generateContent({}, {}, session.language), session.language));
             }
         }
 
@@ -44,6 +57,7 @@ class ApplicantDateOfBirth extends DateStep {
         }
         return [isValid, errors];
     }
+
     action(ctx, formdata) {
         super.action(ctx, formdata);
         if (ctx.dob_provided === 0) {

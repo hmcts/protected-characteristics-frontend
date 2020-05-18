@@ -8,6 +8,9 @@ deployment_env: 'local'
 service:
   name: 'pcq-frontend'
 
+featureToggles:
+  enabled: false
+
 e2e:
   frontendUrl: 'https://pcq.aat.platform.hmcts.net'
   proxyServer: ''

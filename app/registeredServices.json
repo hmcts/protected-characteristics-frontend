@@ -3,6 +3,7 @@
     "serviceId": "PROBATE",
     "actors": [
       "APPLICANT"
-    ]
+    ],
+    "redirectLink": "https://www.apply-for-probate.service.gov.uk/dashboard"
   }
 ]

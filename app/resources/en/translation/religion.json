@@ -8,7 +8,7 @@
   "optionMuslim": "Muslim",
   "optionSikh": "Sikh",
   "optionOther": "Any other religion",
-  "optionOtherDetails": "Please describe your religion",
+  "optionOtherDetails": "Your religion (optional)",
 
   "errors": {
     "religion": {

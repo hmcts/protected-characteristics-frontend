@@ -2,23 +2,13 @@
 
 const expect = require('chai').expect;
 const sinon = require('sinon');
+const rewire = require('rewire');
 const FeatureToggle = require('app/utils/FeatureToggle');
-const config = require('config');
+const RewiredFeatureToggle = rewire('app/utils/FeatureToggle');
 
 describe('FeatureToggle', () => {
     describe('checkToggle()', () => {
         it('should call the callback function when the api returns successfully', (done) => {
-            const LaunchDarkly = require('launchdarkly-node-server-sdk');
-            const dataSource = LaunchDarkly.FileDataSource({
-                paths: ['test/data/launchdarkly/simple_flag_data.yaml']
-            });
-            const ldConfig = {
-                updateProcessor: dataSource,
-                sendEvents: false
-            };
-
-            const ldClient = LaunchDarkly.init(config.featureToggles.launchDarklyKey, ldConfig);
-
             const params = {
                 req: {
                     session: {
@@ -29,7 +19,7 @@ describe('FeatureToggle', () => {
                 next: () => true,
                 redirectPage: '/dummy-page',
                 launchDarkly: {
-                    client: ldClient
+                    ftValue: {'ft_shutter_all': true}
                 },
                 featureToggleKey: 'ft_shutter_all',
                 callback: sinon.spy()
@@ -37,7 +27,7 @@ describe('FeatureToggle', () => {
             const featureToggle = new FeatureToggle();
 
             featureToggle.checkToggle(params);
-            // Checking a second call the ld doesn't hang
+            // Checking a second call that ld doesn't hang
             featureToggle.checkToggle(params);
 
             setTimeout(() => {
@@ -51,13 +41,19 @@ describe('FeatureToggle', () => {
                     featureToggleKey: params.featureToggleKey
                 })).to.equal(true);
 
-                ldClient.close();
-
                 done();
             }, 1000);
         });
 
-        it('should call next() with an error when the api returns an error', (done) => {
+        it('should call next() when the api returns an error', (done) => {
+            class FeatureToggleStub {
+                getInstance() {
+                    return true;
+                }
+                variation() {
+                    throw new Error('Test error');
+                }
+            }
             const params = {
                 req: {
                     session: {
@@ -67,18 +63,16 @@ describe('FeatureToggle', () => {
                 res: {},
                 next: sinon.spy(),
                 redirectPage: '/dummy-page',
-                launchDarkly: {
-                    client: false
-                },
+                launchDarkly: {},
                 featureToggleKey: 'ft_fees_api',
                 callback: () => true
             };
-            const featureToggle = new FeatureToggle();
+            RewiredFeatureToggle.__set__('LaunchDarkly', FeatureToggleStub);
+            const featureToggle = new RewiredFeatureToggle();
 
             featureToggle.checkToggle(params);
 
             expect(params.next.calledOnce).to.equal(true);
-            expect(params.next.calledWith(new Error())).to.equal(true);
 
             done();
         });

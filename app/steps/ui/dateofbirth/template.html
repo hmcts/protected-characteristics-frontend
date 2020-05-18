@@ -30,19 +30,22 @@
                     classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-day"].error or fields["dob"].error),
                     name: "day",
                     label: content["day"]  | safe,
-                    value: fields["dob-day"].value | safe
+                    value: fields["dob-day"].value | safe,
+                    autocomplete: "bday-day"
                 },
                 {
                     classes: "govuk-input--width-2" + (" govuk-input--error" if fields["dob-month"].error or fields["dob"].error),
                     name: "month",
                     label: content["month"]  | safe,
-                    value: fields["dob-month"].value | safe
+                    value: fields["dob-month"].value | safe,
+                    autocomplete: "bday-month"
                 },
                 {
                     classes: "govuk-input--width-4" + (" govuk-input--error" if fields["dob-year"].error or fields["dob"].error),
                     name: "year",
                     label: content["year"]  | safe,
-                    value: fields["dob-year"].value | safe
+                    value: fields["dob-year"].value | safe,
+                    autocomplete: "bday-year"
                 }
             ]
         }) }}
@@ -64,7 +67,7 @@
             {
                 value: '1',
                 text: content["optionEnterDate"],
-                checked: true if fields.dob_provided.value == '1',
+                checked: (true if fields.dob_provided.value == '1' or not fields.dob_provided.value),
                 conditional: {
                 html: dateOfBirthHtml
             }
