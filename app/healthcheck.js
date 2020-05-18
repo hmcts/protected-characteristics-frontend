@@ -19,7 +19,8 @@ const checks = {
         callback: (err, res) => {
             const status = err ? 'DOWN' : res.body.status;
             if (status === 'DOWN') {
-                logger.info('pcq-backend is DOWN');
+                logger.warn('pcq-backend is DOWN');
+                logger.warn(err);
             }
             return healthcheck.up({actualStatus: status, comment: statusComment});
         },
