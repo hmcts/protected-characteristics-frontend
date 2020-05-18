@@ -1,2 +1,11 @@
 <link href="{{ globals.basePath }}/public/stylesheets/application.css" media="screen" rel="stylesheet" type="text/css" />
 <!--[if IE 8]><link rel="stylesheet" media="screen" href="{{ globals.basePath }}/public/stylesheets/application-ie8.css"/><![endif]-->
+
+<!-- Google Tag Manager -->
+{% if globals.enableTracking == "true" %}
+    <script nonce="{{ globals.nonce }}">
+        var gtmId = "{{ globals.gtmId }}";
+    </script>
+    <script src="{{ globals.basePath }}/public/javascripts/google-tag-manager.js"></script>
+{% endif %}
+<!-- End Google Tag Manager -->

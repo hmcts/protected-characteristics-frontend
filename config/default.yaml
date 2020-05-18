@@ -48,8 +48,8 @@ redis:
     httpOnly: true
     sameSite: 'lax'
 dateFormat: 'DD/MM/YYYY'
-hostname: 'localhost:3000'
-gaTrackingId: 'UA-159942801-1'
+hostname: 'localhost:4000'
+gtmId: 'GTM-MTR39DR'
 enableTracking: 'true'
 links:
   cookies: '/cookies'
