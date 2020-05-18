@@ -23,7 +23,6 @@ redis:
   enabled: USE_REDIS
   secret: REDIS_SECRET
 hostname: FRONTEND_HOSTNAME
-gtmId: GTM_ID
 enableTracking: ENABLE_TRACKING
 links:
   survey: SURVEY

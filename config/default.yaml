@@ -49,7 +49,6 @@ redis:
     sameSite: 'lax'
 dateFormat: 'DD/MM/YYYY'
 hostname: 'localhost:4000'
-gtmId: 'GTM-MTR39DR'
 enableTracking: 'true'
 links:
   cookies: '/cookies'
