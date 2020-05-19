@@ -16,13 +16,14 @@ const strykerConfiguration = config => {
                 'app/steps/ui/**/index.js'
             ],
         files: ['**/*'],
-        maxConcurrentTestRunners: 2,
+        maxConcurrentTestRunners: 1,
         symlinkNodeModules: false,
         htmlReporter: {baseDir: 'functional-output/mutation-assets'},
         mochaOptions: {
             files:
                 [
-                    'test/unit/*'
+                    'test/unit/*',
+                    'test/component/*'
                 ],
             timeout: 8000
         },
