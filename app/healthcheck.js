@@ -19,12 +19,13 @@ const checks = {
         callback: (err, res) => {
             const status = err ? 'DOWN' : res.body.status;
             if (status === 'DOWN') {
-                logger.info('pcq-backend is DOWN');
+                logger.warn('pcq-backend is DOWN');
+                logger.warn(err);
             }
             return healthcheck.up({actualStatus: status, comment: statusComment});
         },
-        timeout: 5000,
-        deadline: 10000
+        timeout: 10000,
+        deadline: 20000
     })
 };
 if (sessionStore.constructor.name === 'RedisStore') {
