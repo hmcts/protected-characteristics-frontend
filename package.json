@@ -21,7 +21,7 @@
     "test": "NODE_ENV=testing npm run test:unit -- $@ && npm run test:component -- $@",
     "test:unit": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error mocha test/unit --reporter spec --recursive --timeout 10000",
     "test:component": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error mocha test/component --reporter spec --recursive --timeout 10000",
-    "test:a11y": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 30000",
+    "test:a11y": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 30000 --exit",
     "test:accessibility": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 15000",
     "test:e2e": "NODE_ENV=testing NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
     "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps -p allure",
