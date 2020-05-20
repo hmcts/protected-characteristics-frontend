@@ -6,6 +6,7 @@ const initSteps = require('app/core/initSteps');
 const logger = require('app/components/logger');
 const get = require('lodash').get;
 const shutter = require('app/shutter');
+const info = require('app/middleware/info');
 const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const validateParams = require('app/middleware/validateParams');
@@ -43,8 +44,6 @@ router.use((req, res, next) => {
     next();
 });
 
-router.get('/health/liveness', (req, res) => {
-    res.json({status: 'UP'});
-});
+router.get('/info', (req, res) => info(req, res));
 
 module.exports = router;
