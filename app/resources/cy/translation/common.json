@@ -1,5 +1,5 @@
 {
-  "phase": "Alpha",
+  "phase": "Beta",
   "feedback": "Mae hwn yn wasanaeth newydd - bydd eich <a aria-label=\"Adborth: Bydd y ddolen hon yn agor mewn ffenestr newydd. Bydd angen ichi ddychwelyd i&rsquo;r ffenestr hon i barhau gyda&rsquo;ch cais.\" href=\"{smartSurveyFeedbackUrl}?pageurl={currentPageUrl}\" class=\"govuk-link\" target=\"_blank\" rel=\"external noopener noreferrer\">adborth</a> yn ein helpu ni i&rsquo;w wella.",
   "languageToggle": "<a href=\"?lng=en\" class=\"govuk-link language\">English</a>",
   "govuk": "GOV.UK",
@@ -39,5 +39,7 @@
   "whyAskingParagraph": "Mae'r wybodaeth hon yn ein helpu i sicrhau ein bod yn trin pobl yn gyfartal ac yn deg. Mae'n ein helpu i gyflawni ein hymrwymiad i gydraddoldeb (o dan Ddeddf Cydraddoldeb 2010).",
   "serviceTelephoneNumber": "0300 123 7050",
   "serviceTelephoneOpeningHours": "Dydd Llun i ddydd Gwener, 8:00am i 2:00pm",
+  "helplineNumber": "0300 303 0654",
+  "helplineHours": "Dydd Llun i ddydd Gwener, 8:30am tan 5.00pm",
   "serviceEmail": "contactpcq@justice.gov.uk"
 }

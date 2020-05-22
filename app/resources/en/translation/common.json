@@ -1,5 +1,5 @@
 {
-  "phase": "Alpha",
+  "phase": "Beta",
   "feedback": "This is a new service – your <a href=\"{smartSurveyFeedbackUrl}?pageurl={currentPageUrl}\" class=\"govuk-link\" target=\"_blank\" rel=\"external noopener noreferrer\" aria-label=\"Feedback: This link will open in a new tab. You'll need to return to this tab to continue with your application.\">feedback</a> will help us to improve it.",
   "languageToggle": "<a href=\"?lng=cy\" class=\"govuk-link language\">Cymraeg</a>",
   "govuk": "GOV.UK",
@@ -39,5 +39,7 @@
   "whyAskingParagraph": "This information helps us check that we&rsquo;re treating people equally and fairly. It helps us to meet our commitment to equality (under the Equality Act 2010).",
   "serviceTelephoneNumber": "0300 123 7050",
   "serviceTelephoneOpeningHours": "Monday to Friday, 9:30am to 5pm",
+  "helplineNumber": "0300 303 0648",
+  "helplineHours": "Monday to Friday, 8:00am to 8:00pm. Saturday, 8:00am to 2:00pm",
   "serviceEmail": "contactpcq@justice.gov.uk"
 }
