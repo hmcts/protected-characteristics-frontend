@@ -72,13 +72,8 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     // Content security policy to allow just assets from same domain
     app.use(helmet.contentSecurityPolicy({
         directives: {
-            defaultSrc: [
-                '\'self\''
-            ],
-            fontSrc: [
-                '\'self\' data:',
-                'fonts.gstatic.com'
-            ],
+            defaultSrc: ['\'self\''],
+            fontSrc: ['\'self\' data:', 'fonts.gstatic.com'],
             scriptSrc: [
                 '\'self\'',
                 '\'sha256-+6WnXIl4mbFTCARd8N3COQmT3bJJmo32N8q8ZSQAIcU=\'',
@@ -90,17 +85,9 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
                 'vcc-eu4b.8x8.com',
                 `'nonce-${uuid}'`
             ],
-            connectSrc: [
-                '\'self\'',
-                'www.google-analytics.com'
-            ],
-            mediaSrc: [
-                '\'self\''
-            ],
-            frameSrc: [
-                'vcc-eu4.8x8.com',
-                'vcc-eu4b.8x8.com'
-            ],
+            connectSrc: ['\'self\'', 'www.google-analytics.com'],
+            mediaSrc: ['\'self\''],
+            frameSrc: ['vcc-eu4.8x8.com', 'vcc-eu4b.8x8.com'],
             imgSrc: [
                 '\'self\'',
                 '\'self\' data:',
@@ -203,8 +190,12 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
             req.session.language = 'en';
         }
 
-        if (req.query && req.query.locale && config.languages.includes(req.query.locale)) {
-            req.session.language = req.query.locale;
+        if (req.query) {
+            if (req.query.lng && config.languages.includes(req.query.lng)) {
+                req.session.language = req.query.lng;
+            } else if (req.query.locale && config.languages.includes(req.query.locale)) {
+                req.session.language = req.query.locale;
+            }
         }
 
         if (isA11yTest && !isEmpty(a11yTestSession)) {
