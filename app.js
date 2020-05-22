@@ -190,12 +190,8 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
             req.session.language = 'en';
         }
 
-        if (req.query) {
-            if (req.query.lng && config.languages.includes(req.query.lng)) {
-                req.session.language = req.query.lng;
-            } else if (req.query.locale && config.languages.includes(req.query.locale)) {
-                req.session.language = req.query.locale;
-            }
+        if (req.query && req.query.lng && config.languages.includes(req.query.lng)) {
+            req.session.language = req.query.lng;
         }
 
         if (isA11yTest && !isEmpty(a11yTestSession)) {
