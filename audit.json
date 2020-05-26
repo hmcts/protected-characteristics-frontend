@@ -27,6 +27,7 @@
   "10095_Backup File Disclosure_https://pcq.aat.platform.hmcts.net/sitemap.xml.tar_GET": "ignore",
   "10095_Backup File Disclosure_https://pcq.aat.platform.hmcts.net/sitemap.tar_GET": "ignore",
   "10095_Backup File Disclosure_https://pcq.aat.platform.hmcts.net/public/javascripts/back-button.tar_GET": "ignore",
+  "10095_Backup File Disclosure_https://pcq.aat.platform.hmcts.net/public/javascripts/back-button.js.tar_GET": "ignore",
   "10095_Backup File Disclosure_https://pcq.aat.platform.hmcts.net/public/javascripts/govuk-frontend/govuk/all.js.backup_GET": "ignore",
   "10104_User Agent Fuzzer_https://pcq.aat.platform.hmcts.net/public/javascripts_GET": "ignore",
   "10104_User Agent Fuzzer_https://pcq.aat.platform.hmcts.net/public_GET": "ignore",
