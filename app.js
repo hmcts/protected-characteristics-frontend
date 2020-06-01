@@ -25,6 +25,7 @@ const uuidv4 = require('uuid/v4');
 const uuid = uuidv4();
 const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
+const invoker = require('app/middleware/invoker');
 
 exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
@@ -263,6 +264,11 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
         http = app.listen(port, () => {
             console.log(`Application started: http://localhost:${port}${config.app.basePath}`);
         });
+    }
+
+    // PCQ Invoker
+    if (config.environment !== 'prod') {
+        invoker.addTo(app);
     }
 
     app.all('*', (req, res) => {
