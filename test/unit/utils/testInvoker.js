@@ -15,7 +15,7 @@ describe('Invoker', () => {
         it('should fill all fields when they are empty', (done) => {
             const service = 'SERVICE';
             const actor = 'ACTOR';
-            const fields = ['serviceId', 'actor', 'pcqId', 'ccdCaseId', 'partyId', 'language', 'returnUrl'];
+            const fields = ['serviceId', 'actor', 'pcqId', 'ccdCaseId', 'partyId', 'language', 'returnUrl', 'default'];
 
             const formFiller = invoker.fillForm(service, actor, fields);
 
@@ -26,6 +26,7 @@ describe('Invoker', () => {
             expect(formFiller.partyId).to.equal('SERVICE_ACTOR@test.gov.uk');
             expect(formFiller.returnUrl).to.equal('SERVICE_ACTOR.test.gov.uk');
             expect(formFiller.language).to.equal('en');
+            expect(formFiller.default).to.equal('');
 
             done();
         });
