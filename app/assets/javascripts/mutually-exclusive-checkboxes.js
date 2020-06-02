@@ -1,10 +1,12 @@
 (function() {
     'use strict';
 
-    const toggleElements = (elementsList1, elementsList2) => {
-        for (const selectedElement of elementsList1) {
-            selectedElement.addEventListener('click', () => {
-                for (const elementToDeselect of elementsList2) {
+    const toggleElements = function (elementsList1, elementsList2) {
+        for (let i = 0; i < elementsList1.length; i++) {
+            const selectedElement = elementsList1[i];
+            selectedElement.addEventListener('click', function () {
+                for (let j = 0; j < elementsList2.length; j++) {
+                    const elementToDeselect = elementsList2[j];
                     const controls = elementToDeselect.getAttribute('aria-controls');
                     if (controls) {
                         const controlledElement = document.querySelector('#' + controls);

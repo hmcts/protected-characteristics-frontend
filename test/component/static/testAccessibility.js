@@ -19,8 +19,8 @@ describe('accessibility', () => {
         it('test content loaded on the page', (done) => {
             const contentData = {
                 myAbilityLink: config.links.myAbilityLink,
-                helpLineNumber: commonContent.helpTelephoneNumber,
-                helpLineHours: commonContent.helpTelephoneOpeningHours,
+                helpLineNumber: commonContent.helplineNumber,
+                helpLineHours: commonContent.helplineHours,
                 callChargesLink: config.links.callCharges,
                 equalityAdvisorLink: config.links.equalityAdvisorLink,
                 wcag21Link: config.links.wcag21Link,

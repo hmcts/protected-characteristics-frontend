@@ -21,13 +21,15 @@
 
             <h2 class="govuk-heading-m">{{ content.dataWeCollectHeading | safe }}</h2>
             <p class="govuk-body">{{ content.dataWeCollectParagraph1 | safe }}</p>
-            {{ unorderedList([content["dataWeCollect-item1"], content["dataWeCollect-item2"], content["dataWeCollect-item3"], content["dataWeCollect-item4"], content["dataWeCollect-item5"], content["dataWeCollect-item6"]]) }}
+            {{ unorderedList([content["dataWeCollect-item1"], content["dataWeCollect-item2"], content["dataWeCollect-item3"],
+                content["dataWeCollect-item4"], content["dataWeCollect-item5"], content["dataWeCollect-item6"],
+                content["dataWeCollect-item7"], content["dataWeCollect-item8"], content["dataWeCollect-item9"]]) }}
 
             <h2 class="govuk-heading-m">{{ content.usingYourDataHeading | safe }}</h2>
             <p class="govuk-body">{{ content.usingYourDataParagraph1 | safe }}</p>
             <p class="govuk-body">{{ content.usingYourDataParagraph2 | safe }}</p>
             <p class="govuk-body">{{ content.usingYourDataParagraph3 | replace("{cookiesLink}", globals.links.cookies) | safe }}</p>
-            {{ unorderedList([content["usingYourData-item1"], content["usingYourData-item2"], content["usingYourData-item3"], content["usingYourData-item4"]]) }}
+            {{ unorderedList([content["usingYourData-item1"], content["usingYourData-item2"], content["usingYourData-item3"]]) }}
 
             <h2 class="govuk-heading-m">{{ content.storingYourDataHeading1 | safe }}</h2>
             <p class="govuk-body">{{ content.storingYourDataParagraph1 | safe }}</p>
@@ -38,11 +40,10 @@
 
             <h2 class="govuk-heading-m">{{ content.sharingYourDataHeading1 | safe }}</h2>
             <p class="govuk-body">{{ content.sharingYourDataParagraph1 | safe }}</p>
-            <p class="govuk-body">{{ content.sharingYourDataParagraph2 | replace("{goodThingsFoundationLink}", globals.links.goodThingsFoundation) | safe }}</p>
-            <p class="govuk-body">{{ content.sharingYourDataParagraph3 | safe }}</p>
-            <p class="govuk-body">{{ content.sharingYourDataParagraph4 | replace("{termsLink}", globals.links.terms) | safe }}</p>
+            <p class="govuk-body">{{ content.sharingYourDataParagraph2 | safe }}</p>
+            <p class="govuk-body">{{ content.sharingYourDataParagraph3 | replace("{termsLink}", globals.links.terms) | safe }}</p>
             <h3 class="govuk-heading-s">{{ content.sharingYourDataHeading2 | safe }}</h3>
-            <p class="govuk-body">{{ content.sharingYourDataParagraph5 | safe }}</p>
+            <p class="govuk-body">{{ content.sharingYourDataParagraph4 | safe }}</p>
 
             <h2 class="govuk-heading-m">{{ content.yourRightsHeading | safe }}</h2>
             <p class="govuk-body">{{ content.yourRightsParagraph1 | safe }}</p>

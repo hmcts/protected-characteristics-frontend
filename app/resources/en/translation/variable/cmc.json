@@ -1,7 +1,7 @@
 {
   "claimant": {
     "startpage": {
-      "paragraph2": "Your answers won&rsquo;t affect your claim."
+      "paragraph2": "Your answers will not affect your claim."
     },
     "endpage": {
       "paragraph1": "The next steps are to check your claim details."
@@ -12,7 +12,7 @@
   },
   "defendant": {
     "startpage": {
-      "paragraph2": "Your answers won&rsquo;t affect your case."
+      "paragraph2": "Your answers will not affect your case."
     },
     "endpage": {
       "paragraph1": "The next steps are to check your case details."

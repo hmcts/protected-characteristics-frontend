@@ -25,3 +25,4 @@ infrastructure/.terraform
 /mochawesome-report/
 functional-output
 /config/dev.yaml
+stryker.log

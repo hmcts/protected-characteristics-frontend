@@ -8,6 +8,9 @@ deployment_env: 'local'
 service:
   name: 'pcq-frontend'
 
+featureToggles:
+  enabled: false
+
 tokenKeys:
   notregistered: 'SERVICE_TOKEN_KEY'
 

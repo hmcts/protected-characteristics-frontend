@@ -16,11 +16,16 @@
         {% endif %}
     {% endif %}
 
-    {{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}{% if govuk %} - {{ govuk }}{% endif %}
+    {% if errors %}{{ common.error }}: {% endif %}{{ title | safe }}{% if title and serviceName %} - {% endif %}{% if serviceName %}{{ serviceName }}{% endif %}{% if govuk %} - {{ govuk }}{% endif %}
 {% endblock %}
 
 {% block head %}
+    {% include "includes/tag_manager.html" %}
     {% include "includes/head.html" %}
+{% endblock %}
+
+{% block bodyStart %}
+    {% include "includes/tag_manager_nojs.html" %}
 {% endblock %}
 
 {% block header %}

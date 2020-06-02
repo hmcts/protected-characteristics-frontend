@@ -60,7 +60,7 @@ for (const step in steps) {
                     });
             });
 
-            after(function (done) {
+            after((done) => {
                 nock.cleanAll();
                 server.http.close();
                 done();
