@@ -26,9 +26,9 @@ describe('FeatureToggle', () => {
             };
             const featureToggle = new FeatureToggle();
 
-            featureToggle.routeCheckToggle(params);
+            featureToggle.checkToggle(params);
             // Checking a second call that ld doesn't hang
-            featureToggle.routeCheckToggle(params);
+            featureToggle.checkToggle(params);
 
             setTimeout(() => {
                 expect(params.callback.calledTwice).to.equal(true);
@@ -70,7 +70,7 @@ describe('FeatureToggle', () => {
             RewiredFeatureToggle.__set__('LaunchDarkly', FeatureToggleStub);
             const featureToggle = new RewiredFeatureToggle();
 
-            featureToggle.routeCheckToggle(params);
+            featureToggle.checkToggle(params);
 
             expect(params.next.calledOnce).to.equal(true);
 

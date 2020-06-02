@@ -10,7 +10,7 @@ class FeatureToggle {
     }
 
     callCheckToggle(req, res, next, launchDarkly, featureToggleKey, callback, redirectPage) {
-        return this.routeCheckToggle({
+        return this.checkToggle({
             req,
             res,
             next,
@@ -21,13 +21,23 @@ class FeatureToggle {
         });
     }
 
-    routeCheckToggle(params) {
+    checkToggle(params) {
+        const featureToggleKey = config.featureToggles[params.featureToggleKey];
+        const ldUser = config.featureToggles.launchDarklyUser;
         const sessionId = params.req.session.id;
+
+        let ldDefaultValue = false;
+
+        if (params.launchDarkly.ftValue && params.launchDarkly.ftValue[params.featureToggleKey]) {
+            ldDefaultValue = params.launchDarkly.ftValue[params.featureToggleKey];
+        }
+
         try {
-            this.checkToggle(params.featureToggleKey, (err, showFeature) => {
+            this.launchDarkly.variation(featureToggleKey, ldUser, ldDefaultValue, (err, showFeature) => {
                 if (err) {
                     params.next();
                 } else {
+                    logger(sessionId).info(`Checking feature toggle: ${params.featureToggleKey}, isEnabled: ${showFeature}`);
                     params.callback({
                         req: params.req,
                         res: params.res,
@@ -37,21 +47,10 @@ class FeatureToggle {
                         featureToggleKey: params.featureToggleKey
                     });
                 }
-            }, sessionId, params.launchDarkly.ftValue);
+            });
         } catch (err) {
             params.next();
         }
-    }
-
-    checkToggle(featureToggleKey, callback, sessionId, ftValue) {
-        const ldUser = config.featureToggles.launchDarklyUser;
-        const toggleKey = config.featureToggles[featureToggleKey];
-        const defaultValue = ftValue && ftValue[featureToggleKey] ? ftValue[featureToggleKey] : false;
-
-        this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
-            logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
-            callback(err, enabled);
-        });
     }
 
     togglePage(params) {
