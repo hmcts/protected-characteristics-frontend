@@ -1,7 +1,8 @@
 'use strict';
 
 const expect = require('chai').expect;
-const verifyToken = require('app/components/verify-token');
+const rewire = require('rewire');
+const {verifyToken} = require('app/components/encryption-token');
 
 describe('VerifyToken', () => {
     it('should fail verification if token is missing from req query', (done) => {
@@ -59,8 +60,7 @@ describe('VerifyToken', () => {
     });
 
     it('should successfully verify a valid req query with a matching token', (done) => {
-        const rewire = require('rewire');
-        const verifyTokenRewired = rewire('app/components/verify-token');
+        const verifyTokenRewired = rewire('app/components/encryption-token');
         verifyTokenRewired.__set__('config', {
             tokenKeys: {
                 registered: 'REGISTERED_TOKEN_KEY'
@@ -78,7 +78,7 @@ describe('VerifyToken', () => {
                 '1a5e3ecd000d74a5baa2967b0c958de'
         };
 
-        expect(verifyTokenRewired(reqQuery)).to.equal(true);
+        expect(verifyTokenRewired.verifyToken(reqQuery)).to.equal(true);
         done();
     });
 });

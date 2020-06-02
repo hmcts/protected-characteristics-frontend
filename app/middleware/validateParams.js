@@ -4,7 +4,7 @@ const FeatureToggle = require('app/utils/FeatureToggle');
 const featureToggle = new FeatureToggle();
 
 const pathWhitelist = [
-    '/offline', '/invoker', '/invoker/formFiller'
+    '/offline', '/invoker', '/invoker/formFiller', '/invoker/genToken'
 ];
 
 const validateParams = (req, res, next) => {

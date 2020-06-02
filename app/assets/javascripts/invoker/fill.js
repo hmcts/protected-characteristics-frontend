@@ -18,8 +18,8 @@
         const actor = document.querySelector('#actor-select').value;
 
         const formFillerUrl = `/invoker/formFiller?service=${service}&actor=${actor}&fields=${emptyFields.join(',')}`;
-        fetch(formFillerUrl).then(function (res) {
-            res.json().then(function (json) {
+        fetch(formFillerUrl).then((res) => {
+            res.json().then((json) => {
                 Object.keys(json).forEach(key => {
                     const input = document.getElementById(key);
                     if (input) {
