@@ -3,6 +3,8 @@
 const expect = require('chai').expect;
 const sinon = require('sinon');
 const rewire = require('rewire');
+const app = require('app');
+const request = require('supertest');
 const invoker = rewire('app/middleware/invoker');
 
 describe('Invoker', () => {
@@ -55,6 +57,55 @@ describe('Invoker', () => {
             expect(redirectUrl).to.equal('/service-endpoint?serviceId=a&actor=b&pcqId=c&ccdCaseId=d&partyId=e&returnUrl=f&language=g');
 
             done();
+        });
+    });
+
+    describe('Routing', () => {
+        it('should load the invoker page', (done) => {
+            const server = app.init(false, {}, {ft_invoker: true});
+            const agent = request.agent(server.app);
+            agent.get('/invoker')
+                .expect(200)
+                .end((err, res) => {
+                    server.http.close();
+                    if (err) {
+                        throw err;
+                    }
+                    expect(res.text).to.contain('PCQ Invoker');
+                    done();
+                });
+        });
+
+        it('should redirect when invoker feature is off', (done) => {
+            const server = app.init(false, {}, {ft_invoker: false});
+            const agent = request.agent(server.app);
+            agent.get('/invoker')
+                .expect(302)
+                .end((err, res) => {
+                    server.http.close();
+                    if (err) {
+                        throw err;
+                    }
+                    expect(res.header.location).to.equal('404');
+                    done();
+                });
+        });
+
+        it('should not load in prod environment', (done) => {
+            const rewiredApp = rewire('app');
+            rewiredApp.__set__('config.environment', 'prod');
+            const server = rewiredApp.init(false, {}, {ft_invoker: true});
+            const agent = request.agent(server.app);
+            agent.get('/invoker')
+                .expect(404)
+                .end((err, res) => {
+                    server.http.close();
+                    if (err) {
+                        throw err;
+                    }
+                    expect(res.text).to.contain('Page not found');
+                    done();
+                });
         });
     });
 });

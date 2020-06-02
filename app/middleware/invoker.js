@@ -23,13 +23,8 @@ const postForm = (req, res) => {
 
 const addTo = (app) => {
     app.all('/invoker*', (req, res, next) => {
-        featureToggle.checkToggle('ft_invoker', (err, enabled) => {
-            if (err || !enabled) {
-                res.redirect('/404');
-            } else {
-                next();
-            }
-        }, req.session.id);
+        featureToggle.callCheckToggle(req, res, next, res.locals.launchDarkly, 'ft_invoker',
+            featureToggle.togglePage, '404');
     });
 
     app.get('/invoker', render);
