@@ -14,7 +14,7 @@ class ShutterPage extends Step {
             ctx.returnUrl = req.session.returnUrl;
         }
 
-        ctx.services = registeredServices || [];
+        ctx.redirectLinks = Object.assign({}, ...registeredServices.map(service => service.redirectLinks));
 
         return ctx;
     }
@@ -22,7 +22,7 @@ class ShutterPage extends Step {
     action(ctx, formdata) {
         super.action(ctx, formdata);
         delete ctx.returnUrl;
-        delete ctx.services;
+        delete ctx.redirectLinks;
         return [ctx, formdata];
     }
 }
