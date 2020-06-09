@@ -13,7 +13,6 @@ const gitProperties = require('git.properties');
 const gitCommitId = gitProperties.git.commit.id;
 const gitRevision = process.env.GIT_REVISION;
 
-const statusComment = 'Please disregard \'status\' and take \'actualStatus\' as the absolute truth.';
 const checks = {
     'pcq-backend': healthcheck.web(`${config.services.pcqBackend.url}/health`, {
         callback: (err, res) => {
@@ -22,25 +21,29 @@ const checks = {
                 logger.warn('pcq-backend is DOWN');
                 logger.warn(err);
             }
-            return healthcheck.up({actualStatus: status, comment: statusComment});
+            return status === 'UP' ? healthcheck.up() : healthcheck.down();
         },
         timeout: 10000,
         deadline: 20000
     })
 };
+const readinessChecks = {};
 if (sessionStore.constructor.name === 'RedisStore') {
-    checks.redis = healthcheck.raw(() => {
+    const redisHealthcheck = healthcheck.raw(() => {
         const healthy = sessionStore.client.status === 'ready';
         if (!healthy) {
             logger.info('redis is DOWN');
         }
         return healthy ? healthcheck.up() : healthcheck.down();
     });
+    checks.redis = redisHealthcheck;
+    readinessChecks.redis = redisHealthcheck;
 }
 
 const setup = app => {
     healthcheck.addTo(app, {
         checks: checks,
+        readinessChecks: readinessChecks,
         buildInfo: {
             name: config.service.name,
             host: os.hostname(),

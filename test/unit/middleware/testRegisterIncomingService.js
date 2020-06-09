@@ -141,7 +141,7 @@ describe('registerIncomingService', () => {
                 .get('/health')
                 .reply(
                     200,
-                    {'pcq-backend': {'actualStatus': 'UP'}}
+                    {'pcq-backend': {'status': 'UP'}}
                 );
             const server = app.init();
             const agent = request.agent(server.app);
