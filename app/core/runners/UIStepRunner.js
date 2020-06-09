@@ -24,7 +24,7 @@ class UIStepRunner {
             forEach(errors, (error) =>
                 req.log.info({type: 'Validation Message', url: step.constructor.getUrl()}, JSON.stringify(error))
             );
-            errors = [...errors || [], ...req.session.ctx.errors || []];
+            errors = errors ? errors.concat(req.session.ctx.errors) : req.session.ctx.errors;
             delete req.session.ctx.errors;
 
             const content = step.generateContent(ctx, formdata, session.language);
