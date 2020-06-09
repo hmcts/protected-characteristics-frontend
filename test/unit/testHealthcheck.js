@@ -42,17 +42,15 @@ describe('Healthcheck', () => {
             const server = app.init();
             const agent = request.agent(server.app);
             agent.get('/health')
-                .expect(200)
+                .expect(500)
                 .end((err, res) => {
                     server.http.close();
                     if (err) {
                         throw err;
                     }
-                    expect(res.body).to.have.property('status').and.equal('UP');
+                    expect(res.body).to.have.property('status').and.equal('DOWN');
                     expect(res.body).to.have.property('pcq-backend').and.deep.equal({
-                        actualStatus: 'DOWN',
-                        comment: 'Please disregard \'status\' and take \'actualStatus\' as the absolute truth.',
-                        status: 'UP'
+                        status: 'DOWN'
                     });
                     expect(res.body).to.have.property('buildInfo');
                     done();

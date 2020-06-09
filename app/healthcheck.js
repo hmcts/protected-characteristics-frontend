@@ -13,7 +13,6 @@ const gitProperties = require('git.properties');
 const gitCommitId = gitProperties.git.commit.id;
 const gitRevision = process.env.GIT_REVISION;
 
-const statusComment = 'Please disregard \'status\' and take \'actualStatus\' as the absolute truth.';
 const checks = {
     'pcq-backend': healthcheck.web(`${config.services.pcqBackend.url}/health`, {
         callback: (err, res) => {
@@ -22,7 +21,7 @@ const checks = {
                 logger.warn('pcq-backend is DOWN');
                 logger.warn(err);
             }
-            return healthcheck.up({actualStatus: status, comment: statusComment});
+            return status === 'UP' ? healthcheck.up() : healthcheck.down();
         },
         timeout: 10000,
         deadline: 20000
