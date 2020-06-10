@@ -7,7 +7,7 @@ const FeatureToggle = require('app/utils/FeatureToggle');
 const RewiredFeatureToggle = rewire('app/utils/FeatureToggle');
 
 describe('FeatureToggle', () => {
-    describe('checkToggle()', () => {
+    describe('callCheckToggle()', () => {
         it('should call the callback function when the api returns successfully', (done) => {
             const params = {
                 req: {
@@ -15,20 +15,23 @@ describe('FeatureToggle', () => {
                         form: {}
                     }
                 },
-                res: {},
-                next: () => true,
-                redirectPage: '/dummy-page',
-                launchDarkly: {
-                    ftValue: {'ft_shutter_all': true}
+                res: {
+                    locals: {
+                        launchDarkly: {
+                            ftValue: {'ft_shutter_all': true}
+                        }
+                    }
                 },
+                next: () => true,
                 featureToggleKey: 'ft_shutter_all',
-                callback: sinon.spy()
+                callback: sinon.spy(),
+                redirectPage: '/dummy-page'
             };
             const featureToggle = new FeatureToggle();
 
-            featureToggle.checkToggle(params);
+            featureToggle.callCheckToggle(...Object.values(params));
             // Checking a second call that ld doesn't hang
-            featureToggle.checkToggle(params);
+            featureToggle.callCheckToggle(...Object.values(params));
 
             setTimeout(() => {
                 expect(params.callback.calledTwice).to.equal(true);
@@ -62,15 +65,14 @@ describe('FeatureToggle', () => {
                 },
                 res: {},
                 next: sinon.spy(),
-                redirectPage: '/dummy-page',
-                launchDarkly: {},
                 featureToggleKey: 'ft_fees_api',
-                callback: () => true
+                callback: () => true,
+                redirectPage: '/dummy-page'
             };
             RewiredFeatureToggle.__set__('LaunchDarkly', FeatureToggleStub);
             const featureToggle = new RewiredFeatureToggle();
 
-            featureToggle.checkToggle(params);
+            featureToggle.callCheckToggle(...Object.values(params));
 
             expect(params.next.calledOnce).to.equal(true);
 
