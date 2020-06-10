@@ -50,7 +50,9 @@ describe('Healthcheck', () => {
                     }
                     expect(res.body).to.have.property('status').and.equal('DOWN');
                     expect(res.body).to.have.property('pcq-backend').and.deep.equal({
-                        status: 'DOWN'
+                        'actualStatus': 'DOWN',
+                        'comment': '\'actualStatus\' is the same as \'status\'. It is there for backwards compatibility. Please disregard.',
+                        'status': 'DOWN'
                     });
                     expect(res.body).to.have.property('buildInfo');
                     done();
