@@ -165,9 +165,7 @@
         </div>
     </div>
 
-    <script src="{{ globals.basePath }}/public/javascripts/invoker/fill.js"></script>
-    <script src="{{ globals.basePath }}/public/javascripts/invoker/clear.js"></script>
-    <script id="actor-select-script" src="{{ globals.basePath }}/public/javascripts/invoker/actor-select.js">
+    <script id="invoker-script" src="{{ globals.basePath }}/public/javascripts/invoker.js">
         {{ actorList | dump | safe }}
     </script>
 {% endblock %}
