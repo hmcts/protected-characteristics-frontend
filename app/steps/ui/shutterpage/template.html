@@ -12,7 +12,7 @@
                 <ul class="govuk-list govuk-list--bullet">
                     {% for service, link in fields.redirectLinks.value %}
                         <li><a class="govuk-link"
-                               href="{{ link | safe }}">{{ content[service] | safe }}</a></li>
+                               href="{{ link }}">{{ content[service] | safe }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}
