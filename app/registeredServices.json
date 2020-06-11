@@ -8,5 +8,16 @@
       "probate": "https://www.apply-for-probate.service.gov.uk/dashboard",
       "caveats": "https://www.apply-for-probate.service.gov.uk/caveats/dashboard"
     }
+  },
+  {
+    "serviceId": "DIVORCE",
+    "actors": [
+      "PETITIONER",
+      "RESPONDENT"
+    ],
+    "redirectLinks": {
+      "divorce_petitioner": "https://www.apply-divorce.service.gov.uk",
+      "divorce_respondent": "https://www.respond-divorce.service.gov.uk"
+    }
   }
 ]

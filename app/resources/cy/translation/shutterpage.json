@@ -4,6 +4,8 @@
   "paragraph1": "Rydym wedi arbed eich atebion a byddwn yn eich cyfeirio yn ôl at eich cais yn awr.",
   "paragraph1_noUrl": "Dewisiwch eich gwasanaeth isod os gwelwch yn dda:",
 
-  "probate": "Brofiant",
-  "caveats": "Brofiant Cafeat"
+  "probate": "Gwneud cais am brofiant",
+  "caveats": "Atal grant profiant",
+  "divorce_petitioner": "Gwneud cais am ysgariad",
+  "divorce_respondent": "Ymateb i gais am ysgariad"
 }

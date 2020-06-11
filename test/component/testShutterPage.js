@@ -26,7 +26,9 @@ describe('shutter-page', () => {
                     testWrapper.testContent(done, {}, [
                         'paragraph1_noUrl',
                         'probate',
-                        'caveats'
+                        'caveats',
+                        'divorce_petitioner',
+                        'divorce_respondent'
                     ]);
                 });
         });
