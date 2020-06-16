@@ -8,5 +8,14 @@
       "probate": "https://www.apply-for-probate.service.gov.uk/dashboard",
       "caveats": "https://www.apply-for-probate.service.gov.uk/caveats/dashboard"
     }
+  },
+  {
+    "serviceId": "SSCS",
+    "actors": [
+      "APPELLANT"
+    ],
+    "redirectLinks": {
+      "sscs": "TBD"
+    }
   }
 ]

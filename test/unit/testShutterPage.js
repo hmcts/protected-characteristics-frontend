@@ -56,7 +56,8 @@ describe('ShutterPage', () => {
             expect(ctx).have.deep.property('redirectLinks',
                 {
                     'probate': 'https://www.apply-for-probate.service.gov.uk/dashboard',
-                    'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard'
+                    'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard',
+                    'sscs': 'TBD'
                 }
             );
             done();
