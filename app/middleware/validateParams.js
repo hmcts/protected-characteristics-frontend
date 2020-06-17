@@ -3,11 +3,15 @@
 const FeatureToggle = require('app/utils/FeatureToggle');
 const featureToggle = new FeatureToggle();
 
+const pathWhitelist = [
+    '/offline', '/invoker', '/invoker/formFiller'
+];
+
 const validateParams = (req, res, next) => {
-    if (!req.session.validParameters && req.path !== '/offline') {
-        featureToggle.callCheckToggle(req, res, next, res.locals.launchDarkly, 'ft_enforce_params', featureToggle.toggleExistingPage, 'offline');
-    } else {
+    if (req.session.validParameters || pathWhitelist.includes(req.path)) {
         next();
+    } else {
+        featureToggle.callCheckToggle(req, res, next, res.locals.launchDarkly, 'ft_enforce_params', featureToggle.toggleExistingPage, 'offline');
     }
 };
 
