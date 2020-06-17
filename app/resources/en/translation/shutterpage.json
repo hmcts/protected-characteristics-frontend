@@ -4,5 +4,6 @@
   "paragraph1": "We have saved your answers and will direct you back to your application now.",
   "paragraph1_noUrl": "Please select your service below:",
 
-  "PROBATE": "Probate"
+  "probate": "Apply for probate",
+  "caveats": "Stop a grant of probate"
 }
