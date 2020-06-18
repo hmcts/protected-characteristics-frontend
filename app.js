@@ -1,6 +1,6 @@
 'use strict';
 
-/* eslint no-console: 0 no-unused-vars: 0 */
+/* eslint no-console: 0 no-unused-vars: 0 */ 
 
 const logger = require('app/components/logger');
 const path = require('path');
