@@ -13,40 +13,34 @@ const gitProperties = require('git.properties');
 const gitCommitId = gitProperties.git.commit.id;
 const gitRevision = process.env.GIT_REVISION;
 
-const statusComment = '\'actualStatus\' is the same as \'status\'. It is there for backwards compatibility. Please disregard.';
+const statusComment = 'Please disregard \'status\' and take \'actualStatus\' as the absolute truth.';
 const checks = {
     'pcq-backend': healthcheck.web(`${config.services.pcqBackend.url}/health`, {
         callback: (err, res) => {
-            const status = err ? 'DOWN' : res.body.status || 'DOWN';
+            const status = err ? 'DOWN' : res.body.status;
             if (status === 'DOWN') {
                 logger.warn('pcq-backend is DOWN');
                 logger.warn(err);
             }
-            // DEPRECATED: To be removed after all services stop depending on 'actualStatus'
-            const options = {actualStatus: status, comment: statusComment};
-            return status === 'UP' ? healthcheck.up(options) : healthcheck.down(options);
+            return healthcheck.up({actualStatus: status, comment: statusComment});
         },
         timeout: 10000,
         deadline: 20000
     })
 };
-const readinessChecks = {};
 if (sessionStore.constructor.name === 'RedisStore') {
-    const redisHealthcheck = healthcheck.raw(() => {
+    checks.redis = healthcheck.raw(() => {
         const healthy = sessionStore.client.status === 'ready';
         if (!healthy) {
             logger.info('redis is DOWN');
         }
         return healthy ? healthcheck.up() : healthcheck.down();
     });
-    checks.redis = redisHealthcheck;
-    readinessChecks.redis = redisHealthcheck;
 }
 
 const setup = app => {
     healthcheck.addTo(app, {
         checks: checks,
-        readinessChecks: readinessChecks,
         buildInfo: {
             name: config.service.name,
             host: os.hostname(),
