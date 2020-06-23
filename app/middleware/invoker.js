@@ -23,7 +23,7 @@ const postForm = (req, res) => {
 
 const addTo = (app) => {
     app.all('/invoker*', (req, res, next) => {
-        featureToggle.callCheckToggle(req, res, next, res.locals.launchDarkly, 'ft_invoker',
+        featureToggle.callCheckToggle(req, res, next, 'ft_invoker',
             featureToggle.togglePage, '404');
     });
 
