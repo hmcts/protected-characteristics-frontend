@@ -4,8 +4,8 @@ const logger = require('app/components/logger')('Init');
 const auth = require('app/components/auth');
 const stringUtils = require('../components/string-utils');
 const registeredServices = require('app/registeredServices');
-const verifyToken = require('app/components/verify-token');
 const featureToggle = new (require('app/utils/FeatureToggle'))();
+const {verifyToken} = require('app/components/encryption-token');
 
 const formParams = [
     {name: 'serviceId', required: true},

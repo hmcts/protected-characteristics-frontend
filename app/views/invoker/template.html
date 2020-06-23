@@ -137,6 +137,7 @@
         </div>
         <div class="govuk-grid-column-one-quarter">
             {{ govukButton({
+                attributes: {id: "gen-token-btn"},
                 text: "Generate Token",
                 classes: "govuk-button--secondary govuk-!-width-full govuk-!-margin-top-6",
                 preventDoubleClick: true
@@ -165,6 +166,7 @@
         </div>
     </div>
 
+    <script src="{{ globals.basePath }}/public/javascripts/invoker/gen-token.js"></script>
     <script id="invoker-script" src="{{ globals.basePath }}/public/javascripts/invoker.js">
         {{ actorList | dump | safe }}
     </script>
