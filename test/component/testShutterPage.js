@@ -25,7 +25,8 @@ describe('shutter-page', () => {
                 .end(() => {
                     testWrapper.testContent(done, {}, [
                         'paragraph1_noUrl',
-                        'PROBATE'
+                        'probate',
+                        'caveats'
                     ]);
                 });
         });

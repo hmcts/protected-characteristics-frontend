@@ -10,9 +10,9 @@
             </p>
             {% if not fields.returnUrl.value %}
                 <ul class="govuk-list govuk-list--bullet">
-                    {% for service in fields.services.value %}
+                    {% for service, link in fields.redirectLinks.value %}
                         <li><a class="govuk-link"
-                               href="{{ service.redirectLink | safe }}">{{ content[service.serviceId] | safe }}</a></li>
+                               href="{{ link }}">{{ content[service] | safe }}</a></li>
                     {% endfor %}
                 </ul>
             {% endif %}

@@ -35,14 +35,14 @@ describe('FeatureToggle', () => {
 
             setTimeout(() => {
                 expect(params.callback.calledTwice).to.equal(true);
-                expect(params.callback.calledWith({
+                expect(params.callback.args[1]).to.deep.equal([{
                     req: params.req,
                     res: params.res,
                     next: params.next,
                     redirectPage: params.redirectPage,
                     isEnabled: true,
                     featureToggleKey: params.featureToggleKey
-                })).to.equal(true);
+                }]);
 
                 done();
             }, 1000);
