@@ -53,14 +53,11 @@ describe('ShutterPage', () => {
             };
 
             const ctx = ShutterPage.getContextData(req);
-            expect(ctx).have.deep.property('services',
-                [{
-                    'actors': [
-                        'APPLICANT'
-                    ],
-                    'redirectLink': 'https://www.apply-for-probate.service.gov.uk/dashboard',
-                    'serviceId': 'PROBATE'
-                }]
+            expect(ctx).have.deep.property('redirectLinks',
+                {
+                    'probate': 'https://www.apply-for-probate.service.gov.uk/dashboard',
+                    'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard'
+                }
             );
             done();
         });

@@ -12,7 +12,7 @@ class UIStepRunner {
     }
 
     handleGet(step, req, res) {
-        let errors = null;
+        let errors = req.session.ctx.errors || null;
         const session = req.session;
         const formdata = session.form;
         const commonContent = require(`app/resources/${session.language}/translation/common`);
@@ -24,6 +24,9 @@ class UIStepRunner {
             forEach(errors, (error) =>
                 req.log.info({type: 'Validation Message', url: step.constructor.getUrl()}, JSON.stringify(error))
             );
+            errors = errors ? errors.concat(req.session.ctx.errors) : req.session.ctx.errors;
+            delete req.session.ctx.errors;
+
             const content = step.generateContent(ctx, formdata, session.language);
             const fields = step.generateFields(session.language, ctx, errors, formdata);
             if (req.query.source === 'back') {
@@ -91,13 +94,10 @@ class UIStepRunner {
 
                 res.redirect(nextStepUrl);
             } else {
-                forEach(errors, (error) =>
-                    req.log.info({type: 'Validation Message', url: step.constructor.getUrl()}, JSON.stringify(error))
-                );
-                const content = step.generateContent(ctx, formdata, session.language);
-                const fields = step.generateFields(session.language, ctx, errors, formdata);
-                const common = step.commonContent(session.language);
-                res.render(step.template, {content, fields, errors, common});
+                session.ctx.errors = errors;
+                set(session.ctx, step.section, ctx);
+
+                res.redirect(303, step.constructor.getUrl());
             }
         }).catch((error) => {
             req.log.error(error);

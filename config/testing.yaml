@@ -4,6 +4,7 @@ appName: 'frontend'
 project: 'pcq'
 version: 'x.x-laptop'
 deployment_env: 'local'
+environment: 'test'
 
 service:
   name: 'pcq-frontend'

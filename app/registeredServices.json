@@ -4,6 +4,9 @@
     "actors": [
       "APPLICANT"
     ],
-    "redirectLink": "https://www.apply-for-probate.service.gov.uk/dashboard"
+    "redirectLinks": {
+      "probate": "https://www.apply-for-probate.service.gov.uk/dashboard",
+      "caveats": "https://www.apply-for-probate.service.gov.uk/caveats/dashboard"
+    }
   }
 ]
