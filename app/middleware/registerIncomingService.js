@@ -4,6 +4,7 @@ const logger = require('app/components/logger')('Init');
 const auth = require('app/components/auth');
 const stringUtils = require('../components/string-utils');
 const registeredServices = require('app/registeredServices');
+const featureToggle = new (require('app/utils/FeatureToggle'))();
 const {verifyToken} = require('app/components/encryption-token');
 
 const formParams = [
@@ -55,10 +56,20 @@ const validatedService = (serviceId) => {
 
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
-    if (verifyToken(req.query)) {
-        handleIncomingParameters(req);
-    }
-    res.redirect('/start-page');
+
+    featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
+        if (err) {
+            req.log.error(err);
+        } else if (enabled) {
+            if (verifyToken(req.query)) {
+                handleIncomingParameters(req);
+            }
+        } else {
+            handleIncomingParameters(req);
+        }
+
+        res.redirect('/start-page');
+    }, req, res);
 };
 
 module.exports = registerIncomingService;
