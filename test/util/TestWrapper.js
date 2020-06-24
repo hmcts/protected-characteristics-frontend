@@ -91,7 +91,8 @@ class TestWrapper {
 
         res.type('form')
             .send(data)
-            .expect('Content-type', 'text/html; charset=utf-8')
+            .redirects(1)
+            .expect(200)
             .then(res => {
                 forEach(expectedErrors, (value) => {
                     expect(res.text).to.contain(value[type].summary);

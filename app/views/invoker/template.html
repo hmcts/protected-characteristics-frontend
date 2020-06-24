@@ -1,0 +1,171 @@
+{% extends "includes/layout.html" %}
+
+{% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/fieldset/macro.njk" import govukFieldset %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+{% block head %}{% include "includes/head.html" %}{% endblock %}
+{% block bodyStart %}{% endblock %}
+{% block beforeContent %}{% endblock %}
+
+{% block content %}
+    <form id="invoker-form" class="form" method="post">
+        <input type="hidden" name="_csrf" value="{{ csrfToken }}">
+        {% call govukFieldset({
+            legend: {
+                text: "PCQ Invoker",
+                classes: "govuk-fieldset__legend--l",
+                isPageHeading: true
+            }
+        }) %}
+
+            <div class="govuk-grid-row">
+                <div class="govuk-grid-column-one-half">
+
+                    {{ govukInput({
+                        label: {
+                            text: "Service ID"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "serviceId",
+                        name: "serviceId"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "Actor"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "actor",
+                        name: "actor"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "CCD Case ID"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "ccdCaseId",
+                        name: "ccdCaseId"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "PCQ ID"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "pcqId",
+                        name: "pcqId"
+                    }) }}
+
+                </div>
+                <div class="govuk-grid-column-one-half">
+
+                    {{ govukInput({
+                        label: {
+                            text: "Party ID"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "partyId",
+                        name: "partyId"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "Language"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "language",
+                        name: "language"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "Return URL"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "returnUrl",
+                        name: "returnUrl"
+                    }) }}
+
+                    {{ govukInput({
+                        label: {
+                            text: "Token"
+                        },
+                        classes: "govuk-!-width-full",
+                        id: "token",
+                        name: "token"
+                    }) }}
+
+                </div>
+            </div>
+
+        {% endcall %}
+    </form>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-quarter">
+            {{ govukSelect({
+                id: "service-select",
+                name: "service",
+                label: {
+                    text: "Service"
+                },
+                classes: "govuk-!-width-full",
+                items: serviceList
+            }) }}
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            {{ govukSelect({
+                id: "actor-select",
+                name: "actor",
+                label: {
+                    text: "Actor"
+                },
+                classes: "govuk-!-width-full"
+            }) }}
+        </div>
+
+        <div class="govuk-grid-column-one-quarter">
+            {{ govukButton({
+                attributes: {id: "fill-btn"},
+                text: "Fill",
+                classes: "govuk-button--secondary govuk-!-width-full govuk-!-margin-top-6",
+                preventDoubleClick: true
+            }) }}
+        </div>
+        <div class="govuk-grid-column-one-quarter">
+            {{ govukButton({
+                text: "Generate Token",
+                classes: "govuk-button--secondary govuk-!-width-full govuk-!-margin-top-6",
+                preventDoubleClick: true
+            }) }}
+        </div>
+    </div>
+
+    <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+            {{ govukButton({
+                attributes: {id: "clear-btn"},
+                text: "Clear",
+                classes: "govuk-button--secondary govuk-!-width-full govuk-!-margin-top-6",
+                preventDoubleClick: true,
+                value: "Submit"
+            }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+            {{ govukButton({
+                attributes: {form: "invoker-form"},
+                text: "Invoke",
+                classes: "govuk-!-width-full govuk-!-margin-top-6",
+                preventDoubleClick: true,
+                value: "Submit"
+            }) }}
+        </div>
+    </div>
+
+    <script id="invoker-script" src="{{ globals.basePath }}/public/javascripts/invoker.js">
+        {{ actorList | dump | safe }}
+    </script>
+{% endblock %}
