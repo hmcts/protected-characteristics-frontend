@@ -22,7 +22,7 @@
             <p class="govuk-body">{{ content.paragraph8 | safe }}</p>
             {{ unorderedList([
                 content["list2-probate"] | replace("{helpLineNumber}", common.helplineNumber),
-                content["list2-divorce"] | replace("{helpLineNumber}", common.helplineNumber)
+                content["list2-sscs"] | replace("{helpLineNumber}", common.helplineNumber)
             ]) }}
             <p class="govuk-body">{{ content.paragraph9 | replace("{helpLineHours}", common.helplineHours) | replace("{callChargesLink}", globals.links.callCharges) | safe }}</p>
             <p class="govuk-body">{{ content.paragraph10 | safe }}</p>
@@ -32,7 +32,7 @@
             <p class="govuk-body">{{ content.paragraph8 | safe }}</p>
             {{ unorderedList([
                 content["list2-probate"] | replace("{helpLineNumber}", common.helplineNumber),
-                content["list2-divorce"] | replace("{helpLineNumber}", common.helplineNumber)
+                content["list2-sscs"] | replace("{helpLineNumber}", common.helplineNumber)
             ]) }}
             <p class="govuk-body">{{ content.paragraph9 | replace("{helpLineHours}", common.helplineHours)  | replace("{callChargesLink}", globals.links.callCharges) | safe }}</p>
             <p class="govuk-body">{{ content.paragraph10 | safe }}</p>
