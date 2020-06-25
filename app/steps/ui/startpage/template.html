@@ -32,7 +32,8 @@
                 {{ govukButton({
                     text: common.dontWantToAnswer | safe,
                     classes: "govuk-button--secondary",
-                    href: fields.returnUrl.value
+                    preventDoubleClick: true,
+                    attributes: {formaction: "/opt-out"}
                 }) }}
             {% endif %}
         </li>
