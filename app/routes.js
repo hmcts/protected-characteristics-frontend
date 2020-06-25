@@ -10,6 +10,7 @@ const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const validateParams = require('app/middleware/validateParams');
 const setJourney = require('app/middleware/setJourney');
+const optOut = require('app/middleware/optOut');
 
 router.use(shutter);
 router.use(initSession);
@@ -29,6 +30,8 @@ router.get('/', (req, res) => {
     req.log.info({tags: 'Analytics'}, 'Application Started');
     res.redirect(`${config.app.basePath}/start-page`);
 });
+
+router.post('/opt-out', optOut);
 
 router.use((req, res, next) => {
     const steps = initSteps([`${__dirname}/steps/ui`], req.session.language);

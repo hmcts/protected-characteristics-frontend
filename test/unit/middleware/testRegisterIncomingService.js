@@ -6,6 +6,7 @@ const jwt = require('jsonwebtoken');
 const config = require('config');
 const app = require('app');
 const nock = require('nock');
+const rewire = require('rewire');
 const request = require('supertest');
 const registerIncomingService = require('app/middleware/registerIncomingService');
 
@@ -167,7 +168,7 @@ describe('registerIncomingService', () => {
                 );
             const server = app.init();
             const agent = request.agent(server.app);
-            agent.get('/service-endpoint?returnUrl=test.com')
+            agent.get('/service-endpoint')
                 .expect(302)
                 .end((err, res) => {
                     server.http.close();
@@ -176,6 +177,30 @@ describe('registerIncomingService', () => {
                     }
                     expect(res.redirect).to.equal(true);
                     expect(res.header.location).to.equal('/offline');
+                    done();
+                });
+        });
+
+        it('should redirect to /start-page if the backend is DOWN and backend \'enabled\' is set to false', (done) => {
+            nock('http://localhost:4000')
+                .get('/health')
+                .reply(
+                    200,
+                    {'pcq-backend': {'actualStatus': 'DOWN'}}
+                );
+            const rewiredApp = rewire('app');
+            rewiredApp.__set__('config.services.pcqBackend.enabled', 'false');
+            const server = rewiredApp.init();
+            const agent = request.agent(server.app);
+            agent.get('/service-endpoint?serviceId=PROBATE&actor=APPLICANT&pcqId=12&ccdCaseId=12&partyId=12&returnUrl=test')
+                .expect(302)
+                .end((err, res) => {
+                    server.http.close();
+                    if (err) {
+                        throw err;
+                    }
+                    expect(res.redirect).to.equal(true);
+                    expect(res.header.location).to.equal('/start-page');
                     done();
                 });
         });
