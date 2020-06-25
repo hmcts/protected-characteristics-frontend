@@ -30,7 +30,6 @@ auth:
     secret: 'JwtSecretKey'
 services:
   pcqBackend:
-    enabled: 'true'
     url: 'http://localhost:4550'
     port: 4550
     paths:
