@@ -54,13 +54,22 @@ describe('Invoker', () => {
     describe('content()', () => {
         it('should return the correct content', (done) => {
             expect(invoker.content).to.deep.equal({
-                serviceList: [{
-                    value: 'PROBATE',
-                    text: 'PROBATE'
-                }],
+                serviceList: [
+                    {
+                        value: 'PROBATE',
+                        text: 'PROBATE'
+                    },
+                    {
+                        value: 'SSCS',
+                        text: 'SSCS'
+                    }
+                ],
                 actorList: {
                     'PROBATE': [
                         'APPLICANT'
+                    ],
+                    'SSCS': [
+                        'APPELLANT'
                     ]
                 }
             });
