@@ -11,13 +11,11 @@ const logger = require('app/components/logger')('Init');
 
 router.get('/service-endpoint', (req, res) => {
     const serviceDown = () => {
+        if (req.query.returnUrl) {
+            req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
+        }
         res.redirect(`${config.app.basePath}/offline`);
     };
-
-    // Put return url in session for use in case of 'offline' scenario
-    if (req.query.returnUrl) {
-        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
-    }
 
     asyncFetch
         .fetch('http://localhost:4000/health', {}, fetchRes => fetchRes.json())

@@ -57,6 +57,11 @@ const validatedService = (serviceId) => {
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
 
+    // Put return url in session now for use in case of 'offline' scenario
+    if (req.query.returnUrl) {
+        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
+    }
+
     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
         if (err) {
             req.log.error(err);
