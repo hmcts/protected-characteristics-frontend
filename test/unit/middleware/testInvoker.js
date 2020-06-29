@@ -60,6 +60,34 @@ describe('Invoker', () => {
         });
     });
 
+    describe('genToken()', () => {
+        it('should generate a valid encryption token for the provided fields', (done) => {
+            const genToken = invoker.__get__('genToken');
+            const req = {
+                query: {
+                    serviceId: 'PROBATE',
+                    actor: 'b',
+                    ccdCaseId: 'd',
+                    pcqId: 'c',
+                    partyId: 'e',
+                    language: 'g',
+                    returnUrl: 'f'
+                }
+            };
+            const res = {
+                json: sinon.spy()
+            };
+
+            genToken(req, res);
+            const token = res.json.args[0][0].token;
+            expect(token).to.equal('35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e192493b6d5' +
+                '3a3ca147a44d3ac917cb5ad5c637ddee2b478db196ec0545f5342f79cc85f51074d5e4110653d63d1d272dcfd17a7e5a84' +
+                '58cce7ca21ba1806a5effc8379a1da531332ab52cd52d69e2a0f8');
+
+            done();
+        });
+    });
+
     describe('Routing', () => {
         it('should load the invoker page', (done) => {
             const server = app.init(false, {}, {ft_invoker: true});

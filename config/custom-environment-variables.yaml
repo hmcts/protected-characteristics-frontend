@@ -16,6 +16,8 @@ services:
   pcqBackend:
     enabled: PCQ_BACKEND_ENABLED
     url: PCQ_BACKEND_URL
+tokenKeys:
+  probate: PROBATE_TOKEN_KEY
 redis:
   host: REDIS_HOST
   port: REDIS_PORT
