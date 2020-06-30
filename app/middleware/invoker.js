@@ -4,7 +4,9 @@ const invoker = new (require('app/utils/Invoker'))();
 const featureToggle = new (require('app/utils/FeatureToggle'))();
 
 const render = (req, res) => {
-    res.render('invoker/template', invoker.content, (err, html) => {
+    const content = invoker.content;
+    content.timestamp = Date.now();
+    res.render('invoker/template', content, (err, html) => {
         if (err) {
             req.log.error(err);
             return res.status(500);
