@@ -27,6 +27,7 @@ nodejs:
         - jwt-secret
         - launchdarkly-key
         - probate-token-key
+        - divorce-token-key
 
 redis:
   cluster:

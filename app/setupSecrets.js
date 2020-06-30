@@ -15,6 +15,7 @@ const setupSecrets = () => {
         setSecret('secrets.pcq.launchdarkly-key', 'featureToggles.launchDarklyKey');
         // ------------------------------------------ Token Keys ------------------------------------------
         setSecret('secrets.pcq.probate-token-key', 'tokenKeys.probate'); // Probate
+        setSecret('secrets.pcq.divorce-token-key', 'tokenKeys.divorce'); // Divorce
     }
 };
 
