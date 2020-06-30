@@ -166,7 +166,7 @@
         </div>
     </div>
 
-    <script id="invoker-script" src="{{ globals.basePath }}/public/javascripts/invoker.js">
+    <script id="invoker-script" src="{{ globals.basePath }}/public/javascripts/invoker.js?t={{ timestamp }}">
         {{ actorList | dump | safe }}
     </script>
 {% endblock %}
