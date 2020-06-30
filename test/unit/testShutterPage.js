@@ -57,7 +57,7 @@ describe('ShutterPage', () => {
                 {
                     'probate': 'https://www.apply-for-probate.service.gov.uk/dashboard',
                     'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard',
-                    'sscs': 'TBD'
+                    'sscs': 'https://www.gov.uk/appeal-benefit-decision/submit-appeal'
                 }
             );
             done();
