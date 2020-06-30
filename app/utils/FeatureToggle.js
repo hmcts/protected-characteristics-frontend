@@ -9,48 +9,39 @@ class FeatureToggle {
         this.launchDarkly = new LaunchDarkly().getInstance();
     }
 
-    callCheckToggle(req, res, next, launchDarkly, featureToggleKey, callback, redirectPage) {
-        return this.checkToggle({
-            req,
-            res,
-            next,
-            launchDarkly,
-            featureToggleKey,
-            callback,
-            redirectPage
-        });
-    }
-
-    checkToggle(params) {
-        const featureToggleKey = config.featureToggles[params.featureToggleKey];
-        const ldUser = config.featureToggles.launchDarklyUser;
-        const sessionId = params.req.session.id;
-
-        let ldDefaultValue = false;
-
-        if (params.launchDarkly.ftValue && params.launchDarkly.ftValue[params.featureToggleKey]) {
-            ldDefaultValue = params.launchDarkly.ftValue[params.featureToggleKey];
-        }
-
+    callCheckToggle(req, res, next, featureToggleKey, callback, redirectPage) {
         try {
-            this.launchDarkly.variation(featureToggleKey, ldUser, ldDefaultValue, (err, showFeature) => {
+            this.checkToggle(featureToggleKey, (err, showFeature) => {
                 if (err) {
-                    params.next();
+                    next();
                 } else {
-                    logger(sessionId).info(`Checking feature toggle: ${params.featureToggleKey}, isEnabled: ${showFeature}`);
-                    params.callback({
-                        req: params.req,
-                        res: params.res,
-                        next: params.next,
-                        redirectPage: params.redirectPage,
+                    callback({
+                        req: req,
+                        res: res,
+                        next: next,
+                        redirectPage: redirectPage,
                         isEnabled: showFeature,
-                        featureToggleKey: params.featureToggleKey
+                        featureToggleKey: featureToggleKey
                     });
                 }
-            });
+            }, req, res);
         } catch (err) {
-            params.next();
+            next();
         }
+    }
+
+    checkToggle(featureToggleKey, callback, req, res) {
+        const ldUser = config.featureToggles.launchDarklyUser;
+        const toggleKey = config.featureToggles[featureToggleKey];
+        const sessionId = req.session.id;
+
+        const ftValue = res.locals ? res.locals.launchDarkly.ftValue : null;
+        const defaultValue = ftValue && ftValue[featureToggleKey] ? ftValue[featureToggleKey] : false;
+
+        this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
+            logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
+            callback(err, enabled);
+        });
     }
 
     togglePage(params) {
