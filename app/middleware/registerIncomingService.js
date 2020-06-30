@@ -4,6 +4,8 @@ const logger = require('app/components/logger')('Init');
 const auth = require('app/components/auth');
 const stringUtils = require('../components/string-utils');
 const registeredServices = require('app/registeredServices');
+const featureToggle = new (require('app/utils/FeatureToggle'))();
+const {verifyToken} = require('app/components/encryption-token');
 
 const formParams = [
     {name: 'serviceId', required: true},
@@ -13,9 +15,7 @@ const formParams = [
     {name: 'partyId', required: true}
 ];
 
-const registerIncomingService = (req, res) => {
-    logger.info(req.query);
-
+const handleIncomingParameters = req => {
     const missingRequiredParams = [];
 
     const form = req.session.form;
@@ -42,17 +42,39 @@ const registerIncomingService = (req, res) => {
     } else if (!validatedService(req.query.serviceId)) {
         logger.error(`Service ${req.query.serviceId} is not registered with PCQ`);
     } else {
+        logger.info('Parameters verified successfully.');
         req.session.validParameters = true;
         // Create the JWT Token after the required parameters have been set.
         auth.createToken(req, req.session.form.partyId);
     }
-
-    res.redirect('/start-page');
 };
 
 const validatedService = (serviceId) => {
     return Boolean(serviceId &&
         registeredServices.map(s => s.serviceId.toLowerCase()).includes(serviceId.toLowerCase()));
+};
+
+const registerIncomingService = (req, res) => {
+    logger.info(req.query);
+
+    // Put return url in session now for use in case of 'offline' scenario
+    if (req.query.returnUrl) {
+        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
+    }
+
+    featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
+        if (err) {
+            req.log.error(err);
+        } else if (enabled) {
+            if (verifyToken(req.query)) {
+                handleIncomingParameters(req);
+            }
+        } else {
+            handleIncomingParameters(req);
+        }
+
+        res.redirect('/start-page');
+    }, req, res);
 };
 
 module.exports = registerIncomingService;

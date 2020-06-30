@@ -1,6 +1,7 @@
 'use strict';
 
 const uuidv4 = require('uuid/v4');
+const {generateToken} = require('app/components/encryption-token');
 const registeredServices = require('app/registeredServices');
 
 class Invoker {
@@ -62,6 +63,10 @@ class Invoker {
             default:
                 return '';
         }
+    }
+
+    generateToken(params) {
+        return generateToken(params);
     }
 
 }

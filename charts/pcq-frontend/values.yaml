@@ -26,6 +26,7 @@ nodejs:
         - frontend-redis-access-key
         - jwt-secret
         - launchdarkly-key
+        - probate-token-key
 
 redis:
   cluster:
