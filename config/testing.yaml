@@ -12,6 +12,9 @@ service:
 featureToggles:
   enabled: false
 
+tokenKeys:
+  notregistered: 'SERVICE_TOKEN_KEY'
+
 e2e:
   frontendUrl: 'https://pcq.aat.platform.hmcts.net'
   proxyServer: ''

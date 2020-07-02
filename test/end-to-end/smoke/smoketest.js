@@ -1,21 +1,24 @@
 'use strict';
 const serviceEndpointUrl = require('test/end-to-end/utils').serviceEndpointUrl;
+const {generateToken} = require('app/components/encryption-token');
 const uuidv4 = require('uuid/v4');
 /* eslint-disable no-undef */
 // eslint-disable-next-line no-unused-vars
 const {I} = inject();
 
+const params = {
+    serviceId: 'PROBATE',
+    actor: 'CITIZEN',
+    pcqId: uuidv4(),
+    ccdCaseId: '1234567890123456',
+    partyId: 'test@gmail.com',
+    returnUrl: 'dummy-return-url',
+    language: 'en'
+};
+params.token = generateToken(params);
+
 Given('user is on pcq start page', () => {
-    I.amOnPage(serviceEndpointUrl(
-        {
-            serviceId: 'PROBATE',
-            actor: 'CITIZEN',
-            pcqId: uuidv4(),
-            ccdCaseId: '1234567890123456',
-            partyId: 'test@gmail.com',
-            returnUrl: 'dummy-return-url',
-            language: 'en'
-        }));
+    I.amOnPage(serviceEndpointUrl(params));
 });
 
 Then('user should see Equality and diversity questions', () => {
