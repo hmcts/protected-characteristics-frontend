@@ -8,7 +8,7 @@ const app = require('app');
 const nock = require('nock');
 const rewire = require('rewire');
 const request = require('supertest');
-const {registerIncomingService} = require('app/middleware/registerIncomingService');
+const {setSession, registerIncomingService} = require('app/middleware/registerIncomingService');
 
 describe('registerIncomingService', () => {
     describe('middleware', () => {
@@ -37,6 +37,7 @@ describe('registerIncomingService', () => {
                 redirect: sinon.spy()
             };
 
+            setSession(req);
             registerIncomingService(req, res);
 
             setTimeout(() => {
@@ -72,6 +73,7 @@ describe('registerIncomingService', () => {
                 redirect: sinon.spy()
             };
 
+            setSession(req);
             registerIncomingService(req, res);
 
             setTimeout(() => {
@@ -107,6 +109,7 @@ describe('registerIncomingService', () => {
                 redirect: sinon.spy()
             };
 
+            setSession(req);
             registerIncomingService(req, res);
 
             setTimeout(() => {
@@ -141,6 +144,7 @@ describe('registerIncomingService', () => {
                 redirect: sinon.spy()
             };
 
+            setSession(req);
             registerIncomingService(req, res);
 
             setTimeout(() => {

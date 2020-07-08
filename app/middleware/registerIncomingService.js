@@ -79,9 +79,6 @@ const validatedService = (serviceId) => {
 
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
-
-    setSession(req);
-
     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
         if (err) {
             req.log.error(err);
