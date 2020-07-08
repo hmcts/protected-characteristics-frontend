@@ -7,35 +7,58 @@ const registeredServices = require('app/registeredServices');
 const featureToggle = new (require('app/utils/FeatureToggle'))();
 const {verifyToken} = require('app/components/encryption-token');
 
-const formParams = [
+// This excludes the token as this is handled separately
+const pcqParameters = [
     {name: 'serviceId', required: true},
     {name: 'actor', required: true},
     {name: 'pcqId', required: true},
     {name: 'ccdCaseId', required: false},
-    {name: 'partyId', required: true}
+    {name: 'partyId', required: true},
+    {name: 'returnUrl', required: true},
+    {name: 'language', required: false}
 ];
 
-const handleIncomingParameters = req => {
+const setSession = req => {
+    const session = req.session;
+    const form = session.form;
+
+    pcqParameters.forEach(param => {
+        const value = req.query[param.name];
+        if (value) {
+            switch (param.name) {
+                case 'serviceId':
+                case 'actor':
+                    form[param.name] = typeof value === 'string' ? value.toLowerCase() : value;
+                    break;
+                case 'pcqId':
+                case 'ccdCaseId':
+                case 'partyId':
+                    form[param.name] = value;
+                    break;
+                case 'returnUrl':
+                    session[param.name] = stringUtils.prefixHttps(value);
+                    break;
+                case 'language':
+                    session[param.name] = value;
+                    break;
+                default:
+                    break;
+            }
+        }
+    });
+
+    form.channel = req.query.channel ? req.query.channel : 1;
+};
+
+const validateParameters = req => {
     const missingRequiredParams = [];
 
-    const form = req.session.form;
-    formParams.forEach(param => {
-        if (req.query[param.name]) {
-            form[param.name] = typeof req.query[param.name] === 'string' ? req.query[param.name].toLowerCase() : req.query[param.name];
-        } else if (param.required) {
+    pcqParameters.forEach(param => {
+        // If a required parameter is missing
+        if (param.required && !req.query[param.name]) {
             missingRequiredParams.push(param.name);
         }
     });
-    form.channel = req.query.channel ? req.query.channel : 1;
-
-    if (req.query.returnUrl) {
-        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
-    } else {
-        missingRequiredParams.push('returnUrl');
-    }
-    if (req.query.language) {
-        req.session.language = req.query.language;
-    }
 
     if (missingRequiredParams.length > 0) {
         logger.error('Missing required parameters: ' + missingRequiredParams.join(', '));
@@ -57,37 +80,24 @@ const validatedService = (serviceId) => {
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
 
-    setBaseSession(req);
+    setSession(req);
 
     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
         if (err) {
             req.log.error(err);
         } else if (enabled) {
             if (verifyToken(req.query)) {
-                handleIncomingParameters(req);
+                validateParameters(req);
             }
         } else {
-            handleIncomingParameters(req);
+            validateParameters(req);
         }
 
         res.redirect('/start-page');
     }, req, res);
 };
 
-// These values are required to be in the session for app functionality (i.e for 'offline' pages).
-const setBaseSession = req => {
-    if (req.query.returnUrl) {
-        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
-    }
-    if (req.query.serviceId && typeof req.query.serviceId === 'string') {
-        req.session.form.serviceId = req.query.serviceId.toLowerCase();
-    }
-    if (req.query.actor && typeof req.query.actor === 'string') {
-        req.session.form.actor = req.query.actor.toLowerCase();
-    }
-};
-
 module.exports = {
     registerIncomingService: registerIncomingService,
-    setBaseSession: setBaseSession
+    setSession: setSession
 };

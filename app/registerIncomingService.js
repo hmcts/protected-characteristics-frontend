@@ -1,7 +1,7 @@
 'use strict';
 
 const router = require('express').Router();
-const {registerIncomingService, setBaseSession} = require('app/middleware/registerIncomingService');
+const {registerIncomingService, setSession} = require('app/middleware/registerIncomingService');
 const initSession = require('app/middleware/initSession');
 const config = require('config');
 const AsyncFetch = require('app/utils/AsyncFetch');
@@ -10,7 +10,7 @@ const logger = require('app/components/logger')('Init');
 
 router.get('/service-endpoint', (req, res) => {
     const serviceDown = () => {
-        setBaseSession(req);
+        setSession(req);
         res.redirect(`${config.app.basePath}/offline`);
     };
 
