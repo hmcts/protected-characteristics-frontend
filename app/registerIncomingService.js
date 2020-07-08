@@ -1,19 +1,16 @@
 'use strict';
 
 const router = require('express').Router();
-const registerIncomingService = require('app/middleware/registerIncomingService');
+const {registerIncomingService, setBaseSession} = require('app/middleware/registerIncomingService');
 const initSession = require('app/middleware/initSession');
 const config = require('config');
 const AsyncFetch = require('app/utils/AsyncFetch');
 const asyncFetch = new AsyncFetch();
-const stringUtils = require('app/components/string-utils');
 const logger = require('app/components/logger')('Init');
 
 router.get('/service-endpoint', (req, res) => {
     const serviceDown = () => {
-        if (req.query.returnUrl) {
-            req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
-        }
+        setBaseSession(req);
         res.redirect(`${config.app.basePath}/offline`);
     };
 

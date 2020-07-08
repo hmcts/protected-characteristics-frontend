@@ -8,7 +8,7 @@ const app = require('app');
 const nock = require('nock');
 const rewire = require('rewire');
 const request = require('supertest');
-const registerIncomingService = require('app/middleware/registerIncomingService');
+const {registerIncomingService} = require('app/middleware/registerIncomingService');
 
 describe('registerIncomingService', () => {
     describe('middleware', () => {

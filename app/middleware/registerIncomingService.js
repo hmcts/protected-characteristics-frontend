@@ -57,10 +57,7 @@ const validatedService = (serviceId) => {
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
 
-    // Put return url in session now for use in case of 'offline' scenario
-    if (req.query.returnUrl) {
-        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
-    }
+    setBaseSession(req);
 
     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
         if (err) {
@@ -77,4 +74,20 @@ const registerIncomingService = (req, res) => {
     }, req, res);
 };
 
-module.exports = registerIncomingService;
+// These values are required to be in the session for app functionality (i.e for 'offline' pages).
+const setBaseSession = req => {
+    if (req.query.returnUrl) {
+        req.session.returnUrl = stringUtils.prefixHttps(req.query.returnUrl);
+    }
+    if (req.query.serviceId && typeof req.query.serviceId === 'string') {
+        req.session.form.serviceId = req.query.serviceId.toLowerCase();
+    }
+    if (req.query.actor && typeof req.query.actor === 'string') {
+        req.session.form.actor = req.query.actor.toLowerCase();
+    }
+};
+
+module.exports = {
+    registerIncomingService: registerIncomingService,
+    setBaseSession: setBaseSession
+};
