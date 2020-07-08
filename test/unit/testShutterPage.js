@@ -83,7 +83,7 @@ describe('ShutterPage', () => {
                 actor: 'claimant'
             };
             const content = ShutterPage.generateContent({}, formdata);
-            expect(content.paragraph1).to.equal('We have saved your answers and will direct you back to your application now.');
+            expect(content.paragraph1).to.equal('We have saved your answers and will direct you back to your claim now.');
         });
 
         it('should return variable text for a service in welsh', () => {
