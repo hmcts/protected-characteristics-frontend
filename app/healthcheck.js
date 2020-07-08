@@ -13,9 +13,12 @@ const gitProperties = require('git.properties');
 const gitCommitId = gitProperties.git.commit.id;
 const gitRevision = process.env.GIT_REVISION;
 
-const statusComment = '\'actualStatus\' is the same as \'status\'. It is there for backwards compatibility. Please disregard.';
-const checks = {
-    'pcq-backend': healthcheck.web(`${config.services.pcqBackend.url}/health`, {
+const checks = {};
+const readinessChecks = {};
+
+if (config.services.pcqBackend.enabled === 'true') {
+    const statusComment = '\'actualStatus\' is the same as \'status\'. It is there for backwards compatibility. Please disregard.';
+    checks['pcq-backend'] = healthcheck.web(`${config.services.pcqBackend.url}/health`, {
         callback: (err, res) => {
             const status = err ? 'DOWN' : res.body.status || 'DOWN';
             if (status === 'DOWN') {
@@ -28,9 +31,9 @@ const checks = {
         },
         timeout: 10000,
         deadline: 20000
-    })
-};
-const readinessChecks = {};
+    });
+}
+
 if (sessionStore.constructor.name === 'RedisStore') {
     const redisHealthcheck = healthcheck.raw(() => {
         const healthy = sessionStore.client.status === 'ready';
