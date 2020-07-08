@@ -57,8 +57,8 @@ describe('ShutterPage', () => {
                 {
                     'probate': 'https://www.apply-for-probate.service.gov.uk/dashboard',
                     'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard',
-                    'cmc_claimant': 'https://www.moneyclaims.service.gov.uk/eligibility/eligible',
-                    'cmc_defendant': 'https://www.moneyclaims.service.gov.uk/first-contact/claim-reference'
+                    'cmc_claimant': 'https://www.moneyclaims.service.gov.uk/dashboard',
+                    'cmc_defendant': 'https://www.moneyclaims.service.gov.uk/dashboard'
                 }
             );
             done();

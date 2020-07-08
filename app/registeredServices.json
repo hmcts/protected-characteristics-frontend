@@ -16,8 +16,8 @@
       "DEFENDANT"
     ],
     "redirectLinks": {
-      "cmc_claimant": "https://www.moneyclaims.service.gov.uk/eligibility/eligible",
-      "cmc_defendant": "https://www.moneyclaims.service.gov.uk/first-contact/claim-reference"
+      "cmc_claimant": "https://www.moneyclaims.service.gov.uk/dashboard",
+      "cmc_defendant": "https://www.moneyclaims.service.gov.uk/dashboard"
     }
   }
 ]
