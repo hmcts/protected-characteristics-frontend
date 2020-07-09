@@ -95,6 +95,6 @@ const registerIncomingService = (req, res) => {
 };
 
 module.exports = {
-    registerIncomingService: registerIncomingService,
-    setSession: setSession
+    registerIncomingService,
+    setSession
 };
