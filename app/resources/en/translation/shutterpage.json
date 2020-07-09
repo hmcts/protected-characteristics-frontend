@@ -5,5 +5,7 @@
   "paragraph1_noUrl": "Please select your service below:",
 
   "probate": "Apply for probate",
-  "caveats": "Stop an application for probate"
+  "caveats": "Stop an application for probate",
+  "cmc_claimant": "Make a money claim",
+  "cmc_defendant": "Respond to a money claim"
 }
