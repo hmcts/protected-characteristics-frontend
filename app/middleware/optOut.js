@@ -4,7 +4,7 @@ const config = require('config');
 const ServiceMapper = require('app/utils/ServiceMapper');
 const moment = require('moment');
 
-const optOut = (req, res) => {
+const clearAnswers = (req, res) => {
     const token = req.session.token;
     const correlationId = req.session.correlationId;
     const formData = ServiceMapper.map(
@@ -14,6 +14,7 @@ const optOut = (req, res) => {
     // Set the completed date
     const form = req.session.form;
     form.completedDate = moment().toISOString();
+
     form.pcqAnswers = {}; // Remove PCQ answers
     req.session.ctx = {}; // Clear ctx as well
 
@@ -26,6 +27,15 @@ const optOut = (req, res) => {
             req.log.error(err);
             res.redirect(redirect);
         });
+};
+
+const optOut = (req, res) => {
+    const form = req.session.form;
+    if (form.pcqAnswers && Object.keys(form.pcqAnswers).length > 0) {
+        return clearAnswers(req, res);
+    }
+
+    res.redirect(req.session.returnUrl || '/offline');
 };
 
 module.exports = optOut;

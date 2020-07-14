@@ -57,6 +57,8 @@ describe('ShutterPage', () => {
                 {
                     'probate': 'https://www.apply-for-probate.service.gov.uk/dashboard',
                     'caveats': 'https://www.apply-for-probate.service.gov.uk/caveats/dashboard',
+                    'cmc_claimant': 'https://www.moneyclaims.service.gov.uk/dashboard',
+                    'cmc_defendant': 'https://www.moneyclaims.service.gov.uk/dashboard',
                     'divorce_petitioner': 'https://www.apply-divorce.service.gov.uk',
                     'divorce_respondent': 'https://www.respond-divorce.service.gov.uk'
                 }
@@ -83,7 +85,7 @@ describe('ShutterPage', () => {
                 actor: 'claimant'
             };
             const content = ShutterPage.generateContent({}, formdata);
-            expect(content.paragraph1).to.equal('We have saved your answers and will direct you back to your application now.');
+            expect(content.paragraph1).to.equal('We have saved your answers and will direct you back to your claim now.');
         });
 
         it('should return variable text for a service in welsh', () => {
