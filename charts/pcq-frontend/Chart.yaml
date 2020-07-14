@@ -6,3 +6,11 @@ version: 1.2.2
 maintainers:
   - name: HMCTS PCQ Team
     email: pcq-action-group@HMCTS.NET
+dependencies:
+  - name: nodejs
+    version: 2.0.1
+    repository: '@hmctspublic'
+  - name: redis
+    version: 10.5.7
+    repository: '@stable'
+    condition: redis.enabled
