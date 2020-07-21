@@ -27,6 +27,7 @@ nodejs:
         - jwt-secret
         - launchdarkly-key
         - probate-token-key
+        - cmc-token-key
         - sscs-token-key
 
 redis:

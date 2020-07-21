@@ -6,5 +6,7 @@
 
   "probate": "Apply for probate",
   "caveats": "Stop an application for probate",
+  "cmc_claimant": "Make a money claim",
+  "cmc_defendant": "Respond to a money claim",
   "sscs": "Appeal a benefit decision"
 }

@@ -6,5 +6,7 @@
 
   "probate": "Gwneud cais am brofiant",
   "caveats": "Atal cais am brofiant",
+  "cmc_claimant": "Gwneud hawliad am arian",
+  "cmc_defendant": "Ymateb i hawliad am arian",
   "sscs": "Apelio yn erbyn penderfyniad ynghylch budd-daliadau"
 }
