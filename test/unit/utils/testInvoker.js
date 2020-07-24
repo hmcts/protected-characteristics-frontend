@@ -62,6 +62,10 @@ describe('Invoker', () => {
                     {
                         value: 'CMC',
                         text: 'CMC'
+                    },
+                    {
+                        value: 'DIVORCE',
+                        text: 'DIVORCE'
                     }
                 ],
                 actorList: {
@@ -71,6 +75,10 @@ describe('Invoker', () => {
                     'CMC': [
                         'CLAIMANT',
                         'DEFENDANT'
+                    ],
+                    'DIVORCE': [
+                        'PETITIONER',
+                        'RESPONDENT'
                     ]
                 }
             });

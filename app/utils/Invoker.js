@@ -28,7 +28,7 @@ class Invoker {
     serviceEndpoint(form) {
         const qs = Object.keys(form)
             .filter(key => form[key] !== '' && key !== '_csrf')
-            .map(key => key + '=' + form[key])
+            .map(key => key + '=' + encodeURIComponent(form[key]))
             .join('&');
 
         return '/service-endpoint?' + qs;

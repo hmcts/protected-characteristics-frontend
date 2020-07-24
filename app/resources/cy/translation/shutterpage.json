@@ -7,5 +7,7 @@
   "probate": "Gwneud cais am brofiant",
   "caveats": "Atal cais am brofiant",
   "cmc_claimant": "Gwneud hawliad am arian",
-  "cmc_defendant": "Ymateb i hawliad am arian"
+  "cmc_defendant": "Ymateb i hawliad am arian",
+  "divorce_petitioner": "Gwneud cais am ysgariad",
+  "divorce_respondent": "Ymateb I gais am ysgariad"
 }
