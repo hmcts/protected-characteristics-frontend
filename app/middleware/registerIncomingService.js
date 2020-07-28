@@ -93,22 +93,6 @@ const registerIncomingService = (req, res) => {
         .catch(err => {
             req.log.error(err);
         });
-
-    // return new Promise(resolve => {
-    //     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
-    //         if (err) {
-    //             req.log.error(err);
-    //         } else if (enabled) {
-    //             if (verifyToken(req.query)) {
-    //                 validateParameters(req);
-    //             }
-    //         } else {
-    //             validateParameters(req);
-    //         }
-    //
-    //         resolve();
-    //     }, req, res);
-    // });
 };
 
 module.exports = {
