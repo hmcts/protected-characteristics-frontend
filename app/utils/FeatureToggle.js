@@ -26,20 +26,6 @@ class FeatureToggle {
             });
     }
 
-    // checkToggle(featureToggleKey, callback, req, res) {
-    //     const ldUser = config.featureToggles.launchDarklyUser;
-    //     const toggleKey = config.featureToggles[featureToggleKey];
-    //     const sessionId = req.session.id;
-    //
-    //     const ftValue = res.locals ? res.locals.launchDarkly.ftValue : null;
-    //     const defaultValue = ftValue && ftValue[featureToggleKey] ? ftValue[featureToggleKey] : false;
-    //
-    //     this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
-    //         logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
-    //         callback(err, enabled);
-    //     });
-    // }
-
     checkToggle(featureToggleKey, req, res) {
         const ldUser = config.featureToggles.launchDarklyUser;
         const toggleKey = config.featureToggles[featureToggleKey];
