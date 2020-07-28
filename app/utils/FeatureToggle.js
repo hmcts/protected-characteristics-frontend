@@ -44,6 +44,28 @@ class FeatureToggle {
         });
     }
 
+    checkTogglePromise(featureToggleKey, req, res) {
+        const ldUser = config.featureToggles.launchDarklyUser;
+        const toggleKey = config.featureToggles[featureToggleKey];
+        const sessionId = req.session ? req.session.id : 'Init';
+
+        const ftValue = res.locals ? res.locals.launchDarkly.ftValue : null;
+        const defaultValue = ftValue && ftValue[featureToggleKey] ? ftValue[featureToggleKey] : false;
+
+        return new Promise((resolve, reject) => {
+            this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
+                logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
+
+                if (err) {
+                    logger(sessionId).error(`ERROR checking feature toggle: ${toggleKey}, err: ${err}`);
+                    reject(err);
+                } else {
+                    resolve(enabled);
+                }
+            });
+        });
+    }
+
     togglePage(params) {
         if (params.isEnabled) {
             params.next();
