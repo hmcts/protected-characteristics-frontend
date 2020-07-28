@@ -25,7 +25,7 @@ const setJourney = async (req, res) => {
 };
 
 const processSkipListFt = (skipListFt, req, res) => {
-    const promises = skipListFt.map(sl => featureToggle.checkTogglePromise(sl.ftKey, req, res));
+    const promises = skipListFt.map(sl => featureToggle.checkToggle(sl.ftKey, req, res));
     return Promise.all(promises)
         .then(values => {
             const processedList = [];

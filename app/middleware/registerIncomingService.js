@@ -79,21 +79,36 @@ const validatedService = (serviceId) => {
 
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
-    return new Promise(resolve => {
-        featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
-            if (err) {
-                req.log.error(err);
-            } else if (enabled) {
+
+    return featureToggle.checkToggle('ft_verify_token', req, res)
+        .then(enabled => {
+            if (enabled) {
                 if (verifyToken(req.query)) {
                     validateParameters(req);
                 }
             } else {
                 validateParameters(req);
             }
+        })
+        .catch(err => {
+            req.log.error(err);
+        });
 
-            resolve();
-        }, req, res);
-    });
+    // return new Promise(resolve => {
+    //     featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
+    //         if (err) {
+    //             req.log.error(err);
+    //         } else if (enabled) {
+    //             if (verifyToken(req.query)) {
+    //                 validateParameters(req);
+    //             }
+    //         } else {
+    //             validateParameters(req);
+    //         }
+    //
+    //         resolve();
+    //     }, req, res);
+    // });
 };
 
 module.exports = {
