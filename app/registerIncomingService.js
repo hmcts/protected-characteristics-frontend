@@ -22,10 +22,12 @@ router.get('/service-endpoint', (req, res) => {
 
     asyncFetch
         .fetch('http://localhost:4000/health', {}, fetchRes => fetchRes.json())
-        .then(json => {
+        .then(async json => {
             if ((json['pcq-backend'] && json['pcq-backend'].status === 'UP') || config.services.pcqBackend.enabled === 'false') {
-                setJourney(req, res);
-                registerIncomingService(req, res);
+                await registerIncomingService(req, res);
+                await setJourney(req, res);
+
+                res.redirect('/start-page');
             } else {
                 serviceDown();
             }
