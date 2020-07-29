@@ -96,13 +96,38 @@ describe('JourneyMap.js', () => {
 
             const journey = require('test/data/journeys/test');
             journey.skipList = [
-                'ApplicantDateOfBirth'
+                {stepName: 'ApplicantDateOfBirth'}
             ];
 
             const ctx = {};
             const journeyMap = new JourneyMap(journey);
             const nextStep = journeyMap.nextStep(currentStep, ctx);
             expect(nextStep).to.deep.equal({name: 'ApplicantLanguage'});
+            revert();
+            done();
+        });
+
+        it('should skip a step in the skip list and navigate to the specified next step', (done) => {
+            const revert = JourneyMap.__set__('steps', {
+                ApplicantDateOfBirth: {
+                    name: 'ApplicantDateOfBirth'
+                },
+                ApplicantSex: {
+                    name: 'ApplicantSex'
+                }
+            });
+
+            currentStep.name = 'StartPage';
+
+            const journey = require('test/data/journeys/test');
+            journey.skipList = [
+                {stepName: 'ApplicantDateOfBirth', nextStepName: 'ApplicantSex'}
+            ];
+
+            const ctx = {};
+            const journeyMap = new JourneyMap(journey);
+            const nextStep = journeyMap.nextStep(currentStep, ctx);
+            expect(nextStep).to.deep.equal({name: 'ApplicantSex'});
             revert();
             done();
         });

@@ -21,8 +21,13 @@ class JourneyMap {
             nextStepName = nextStepName[this.nextOptionStep(currentStep, ctx)];
         }
 
-        if (this.journey.skipList && this.journey.skipList.includes(nextStepName)) {
-            return this.nextStep(steps[nextStepName], ctx);
+        if (this.journey.skipList) {
+            const skipListNames = this.journey.skipList.map(sl => sl.stepName);
+            if (skipListNames.includes(nextStepName)) {
+                const skipStep = this.journey.skipList[skipListNames.indexOf(nextStepName)];
+                // If the skip step specifies the next step, use that, else find the next step.
+                return skipStep.nextStepName ? steps[skipStep.nextStepName] : this.nextStep(steps[nextStepName], ctx);
+            }
         }
 
         return steps[nextStepName];

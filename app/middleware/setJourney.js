@@ -25,13 +25,16 @@ const setJourney = async (req, res) => {
 };
 
 const processToggledQuestions = (toggledQuestions, req, res) => {
-    const promises = toggledQuestions.map(sl => featureToggle.checkToggle(sl.ftKey, req, res));
+    const promises = toggledQuestions.map(tq => featureToggle.checkToggle(tq.ftKey, req, res));
     return Promise.all(promises)
         .then(values => {
             const skipList = [];
-            toggledQuestions.forEach((sl, i) => {
+            toggledQuestions.forEach((tq, i) => {
                 if (values[i] === false) {
-                    skipList.push(sl.step);
+                    skipList.push({
+                        stepName: tq.stepName,
+                        ...(tq.nextStepName && {nextStepName: tq.nextStepName})
+                    });
                 }
             });
             return skipList;
@@ -43,7 +46,9 @@ const processToggledQuestions = (toggledQuestions, req, res) => {
              * If there was an error retrieving the toggles, we skip all questions that have toggles in order to prevent
              * a question from being erroneously shown to a user.
              */
-            return toggledQuestions.map(sl => sl.step);
+            return toggledQuestions.map(tq => {
+                return {stepName: tq.stepName};
+            });
         });
 };
 
