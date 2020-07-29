@@ -101,11 +101,11 @@ describe('setJourney', () => {
         await setJourney(req, res);
 
         const skipList = [
-            'ApplicantDateOfBirth',
-            'ApplicantSex'
+            'ApplicantLanguage',
+            'ApplicantSexualOrientation'
         ];
 
-        const journey = testJourney;
+        const journey = Object.assign({}, testJourney);
         journey.skipList = skipList;
 
         expect(req.session).to.deep.equal({
