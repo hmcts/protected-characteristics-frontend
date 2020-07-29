@@ -25,7 +25,7 @@ describe('JourneyMap.js', () => {
             const ctx = {
                 language: 'optionOther'
             };
-            const journeyMap = new JourneyMap();
+            const journeyMap = new JourneyMap({});
             const nextOptionStep = journeyMap.nextOptionStep(currentStep, ctx);
             expect(nextOptionStep).to.equal('otherLanguage');
             done();
@@ -33,7 +33,7 @@ describe('JourneyMap.js', () => {
 
         it('should return otherwise', (done) => {
             const ctx = {};
-            const journeyMap = new JourneyMap();
+            const journeyMap = new JourneyMap({});
             const nextOptionStep = journeyMap.nextOptionStep(currentStep, ctx);
             expect(nextOptionStep).to.equal('otherwise');
             done();
@@ -82,16 +82,36 @@ describe('JourneyMap.js', () => {
     });
 
     describe('nextStep() - With skip list', () => {
-        it('should skip a step if it is in the skip list', (done) => {
-            const revert = JourneyMap.__set__('steps', {
+        let revert;
+
+        beforeEach(() => {
+            revert = JourneyMap.__set__('steps', {
                 ApplicantDateOfBirth: {
                     name: 'ApplicantDateOfBirth'
                 },
                 ApplicantLanguage: {
                     name: 'ApplicantLanguage'
+                },
+                ApplicantSex: {
+                    name: 'ApplicantSex'
+                },
+                ApplicantGenderSameAsSex: {
+                    name: 'ApplicantGenderSameAsSex'
+                },
+                ApplicantSexualOrientation: {
+                    name: 'ApplicantSexualOrientation'
+                },
+                ApplicantMaritalStatus: {
+                    name: 'ApplicantMaritalStatus'
                 }
             });
+        });
 
+        afterEach(() => {
+            revert();
+        });
+
+        it('should skip a step if it is in the skip list', (done) => {
             currentStep.name = 'StartPage';
 
             const journey = require('test/data/journeys/test');
@@ -103,20 +123,10 @@ describe('JourneyMap.js', () => {
             const journeyMap = new JourneyMap(journey);
             const nextStep = journeyMap.nextStep(currentStep, ctx);
             expect(nextStep).to.deep.equal({name: 'ApplicantLanguage'});
-            revert();
             done();
         });
 
         it('should skip a step in the skip list and navigate to the specified next step', (done) => {
-            const revert = JourneyMap.__set__('steps', {
-                ApplicantDateOfBirth: {
-                    name: 'ApplicantDateOfBirth'
-                },
-                ApplicantSex: {
-                    name: 'ApplicantSex'
-                }
-            });
-
             currentStep.name = 'StartPage';
 
             const journey = require('test/data/journeys/test');
@@ -128,7 +138,55 @@ describe('JourneyMap.js', () => {
             const journeyMap = new JourneyMap(journey);
             const nextStep = journeyMap.nextStep(currentStep, ctx);
             expect(nextStep).to.deep.equal({name: 'ApplicantSex'});
-            revert();
+            done();
+        });
+
+        it('should skip a step in the skip list with linked skip steps', (done) => {
+            currentStep.name = 'StartPage';
+
+            const journey = require('test/data/journeys/test');
+            journey.skipList = [
+                {stepName: 'ApplicantDateOfBirth', nextStepName: 'ApplicantSex'},
+                {stepName: 'ApplicantSex'}
+            ];
+
+            const ctx = {};
+            const journeyMap = new JourneyMap(journey);
+            const nextStep = journeyMap.nextStep(currentStep, ctx);
+            expect(nextStep).to.deep.equal({name: 'ApplicantGenderSameAsSex'});
+            done();
+        });
+
+        it('should skip a step in the skip list with multiple linked skip steps - 1', (done) => {
+            currentStep.name = 'StartPage';
+
+            const journey = require('test/data/journeys/test');
+            journey.skipList = [
+                {stepName: 'ApplicantDateOfBirth', nextStepName: 'ApplicantSex'},
+                {stepName: 'ApplicantSex', nextStepName: 'ApplicantSexualOrientation'}
+            ];
+
+            const ctx = {};
+            const journeyMap = new JourneyMap(journey);
+            const nextStep = journeyMap.nextStep(currentStep, ctx);
+            expect(nextStep).to.deep.equal({name: 'ApplicantSexualOrientation'});
+            done();
+        });
+
+        it('should skip a step in the skip list with multiple linked skip steps - 2', (done) => {
+            currentStep.name = 'StartPage';
+
+            const journey = require('test/data/journeys/test');
+            journey.skipList = [
+                {stepName: 'ApplicantDateOfBirth', nextStepName: 'ApplicantSex'},
+                {stepName: 'ApplicantSex', nextStepName: 'ApplicantSexualOrientation'},
+                {stepName: 'ApplicantSexualOrientation'}
+            ];
+
+            const ctx = {};
+            const journeyMap = new JourneyMap(journey);
+            const nextStep = journeyMap.nextStep(currentStep, ctx);
+            expect(nextStep).to.deep.equal({name: 'ApplicantMaritalStatus'});
             done();
         });
     });
