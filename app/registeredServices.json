@@ -21,6 +21,17 @@
     }
   },
   {
+    "serviceId": "DIVORCE",
+    "actors": [
+      "PETITIONER",
+      "RESPONDENT"
+    ],
+    "redirectLinks": {
+      "divorce_petitioner": "https://www.apply-divorce.service.gov.uk",
+      "divorce_respondent": "https://www.respond-divorce.service.gov.uk"
+    }
+  },
+  {
     "serviceId": "SSCS",
     "actors": [
       "APPELLANT"

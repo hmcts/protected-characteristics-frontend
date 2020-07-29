@@ -64,6 +64,10 @@ describe('Invoker', () => {
                         text: 'CMC'
                     },
                     {
+                        value: 'DIVORCE',
+                        text: 'DIVORCE'
+                    },
+                    {
                         value: 'SSCS',
                         text: 'SSCS'
                     }
@@ -75,6 +79,10 @@ describe('Invoker', () => {
                     'CMC': [
                         'CLAIMANT',
                         'DEFENDANT'
+                    ],
+                    'DIVORCE': [
+                        'PETITIONER',
+                        'RESPONDENT'
                     ],
                     'SSCS': [
                         'APPELLANT'

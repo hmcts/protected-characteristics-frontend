@@ -16,6 +16,7 @@ const setupSecrets = () => {
         // ------------------------------------------ Token Keys ------------------------------------------
         setSecret('secrets.pcq.probate-token-key', 'tokenKeys.probate'); // Probate
         setSecret('secrets.pcq.cmc-token-key', 'tokenKeys.cmc'); // CMC
+        setSecret('secrets.pcq.divorce-token-key', 'tokenKeys.divorce'); // Divorce
         setSecret('secrets.pcq.sscs-token-key', 'tokenKeys.sscs'); // SSCS
     }
 };
