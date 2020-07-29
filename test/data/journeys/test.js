@@ -38,7 +38,7 @@ const stepList = {
     ApplicantPregnant: 'EndPage'
 };
 
-const skipListFt = [
+const toggledQuestions = [
     {step: 'ApplicantDateOfBirth', ftKey: 'ft_enabled'},
     {step: 'ApplicantLanguage', ftKey: 'ft_disabled'},
     {step: 'ApplicantSex', ftKey: 'ft_enabled'},
@@ -47,5 +47,5 @@ const skipListFt = [
 
 module.exports = {
     stepList,
-    skipListFt
+    toggledQuestions
 };
