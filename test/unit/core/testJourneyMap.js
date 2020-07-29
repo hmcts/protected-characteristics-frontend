@@ -81,6 +81,33 @@ describe('JourneyMap.js', () => {
         });
     });
 
+    describe('nextStep() - With skip list', () => {
+        it('should skip a step if it is in the skip list', (done) => {
+            const revert = JourneyMap.__set__('steps', {
+                ApplicantDateOfBirth: {
+                    name: 'ApplicantDateOfBirth'
+                },
+                ApplicantLanguage: {
+                    name: 'ApplicantLanguage'
+                }
+            });
+
+            currentStep.name = 'StartPage';
+
+            const journey = require('test/data/journeys/test');
+            journey.skipList = [
+                'ApplicantDateOfBirth'
+            ];
+
+            const ctx = {};
+            const journeyMap = new JourneyMap(journey);
+            const nextStep = journeyMap.nextStep(currentStep, ctx);
+            expect(nextStep).to.deep.equal({name: 'ApplicantLanguage'});
+            revert();
+            done();
+        });
+    });
+
     describe('stepList()', () => {
         it('should return the journey step list', (done) => {
             const journeyMap = new JourneyMap(defaultJourney);

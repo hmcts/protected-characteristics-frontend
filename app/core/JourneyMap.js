@@ -20,6 +20,11 @@ class JourneyMap {
         if (nextStepName !== null && typeof nextStepName === 'object') {
             nextStepName = nextStepName[this.nextOptionStep(currentStep, ctx)];
         }
+
+        if (this.journey.skipList && this.journey.skipList.includes(nextStepName)) {
+            return this.nextStep(steps[nextStepName], ctx);
+        }
+
         return steps[nextStepName];
     }
 
