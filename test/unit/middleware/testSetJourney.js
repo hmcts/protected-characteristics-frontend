@@ -101,8 +101,13 @@ describe('setJourney', () => {
         await setJourney(req, res);
 
         const skipList = [
-            'ApplicantLanguage',
-            'ApplicantSexualOrientation'
+            {
+                'stepName': 'ApplicantLanguage'
+            },
+            {
+                'stepName': 'ApplicantSexualOrientation',
+                'nextStepName': 'ApplicantEthnicGroup'
+            }
         ];
 
         const journey = Object.assign({}, testJourney);

@@ -39,10 +39,10 @@ const stepList = {
 };
 
 const toggledQuestions = [
-    {step: 'ApplicantDateOfBirth', ftKey: 'ft_enabled'},
-    {step: 'ApplicantLanguage', ftKey: 'ft_disabled'},
-    {step: 'ApplicantSex', ftKey: 'ft_enabled'},
-    {step: 'ApplicantSexualOrientation', ftKey: 'ft_disabled'}
+    {stepName: 'ApplicantDateOfBirth', ftKey: 'ft_enabled'},
+    {stepName: 'ApplicantLanguage', ftKey: 'ft_disabled'},
+    {stepName: 'ApplicantSex', ftKey: 'ft_enabled', nextStepName: 'ApplicantMaritalStatus'},
+    {stepName: 'ApplicantSexualOrientation', ftKey: 'ft_disabled', nextStepName: 'ApplicantEthnicGroup'}
 ];
 
 module.exports = {
