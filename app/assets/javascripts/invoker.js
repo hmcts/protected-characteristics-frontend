@@ -101,7 +101,7 @@
         const queries = [];
         for (const input of formInputs) {
             if (input.value.length !== 0 && input.name.match(/^(?!_csrf|token).+/gm)) {
-                queries.push(input.name + '=' + input.value);
+                queries.push(input.name + '=' + encodeURIComponent(input.value));
             }
         }
 

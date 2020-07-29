@@ -28,7 +28,9 @@ describe('shutter-page', () => {
                         'probate',
                         'caveats',
                         'cmc_claimant',
-                        'cmc_defendant'
+                        'cmc_defendant',
+                        'divorce_petitioner',
+                        'divorce_respondent'
                     ]);
                 });
         });
