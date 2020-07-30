@@ -37,4 +37,12 @@ const stepList = {
     ApplicantPregnant: 'EndPage'
 };
 
-module.exports.stepList = stepList;
+const toggledQuestions = [
+    {stepName: 'ApplicantDisability', ftKey: 'ft_sscs_disability_stage_1', nextStepName: 'ApplicantDisabilityImplicationAreas'},
+    {stepName: 'ApplicantDisabilityImplicationAreas', ftKey: 'ft_sscs_disability_stage_2'},
+];
+
+module.exports = {
+    stepList,
+    toggledQuestions
+};
