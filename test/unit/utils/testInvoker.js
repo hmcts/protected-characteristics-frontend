@@ -78,7 +78,8 @@ describe('Invoker', () => {
                     ],
                     'DIVORCE': [
                         'PETITIONER',
-                        'RESPONDENT'
+                        'RESPONDENT',
+                        'CORESPONDENT'
                     ]
                 }
             });
