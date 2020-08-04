@@ -74,12 +74,13 @@ describe('optOut', () => {
             });
         });
 
-        it('should clear the pcq answers and ctx from the session', (done) => {
+        it('should set the optOut flag and clear the pcq answers and ctx from the session', (done) => {
             const res = {
                 redirect: sinon.spy()
             };
 
             optOut(req, res).then(() => {
+                expect(req.session.form.optOut).to.equal('Y');
                 expect(req.session.form.pcqAnswers).to.deep.equal({});
                 expect(req.session.ctx).to.deep.equal({});
                 done();

@@ -18,6 +18,9 @@ const clearAnswers = (req, res) => {
     form.pcqAnswers = {}; // Remove PCQ answers
     req.session.ctx = {}; // Clear ctx as well
 
+    // Set the opt out flag
+    form.optOut = 'Y';
+
     const redirect = req.session.returnUrl || '/offline';
     return formData.post(token, correlationId, form)
         .then(() => {
@@ -30,8 +33,8 @@ const clearAnswers = (req, res) => {
 };
 
 const optOut = (req, res) => {
-    const form = req.session.form;
-    if (form.pcqAnswers && Object.keys(form.pcqAnswers).length > 0) {
+    // The pcqAnswers property indicates the user has continued passed the start page and created a backend record
+    if (req.session.form.pcqAnswers) {
         return clearAnswers(req, res);
     }
 
