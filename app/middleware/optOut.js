@@ -18,8 +18,10 @@ const clearAnswers = (req, res) => {
     form.pcqAnswers = {}; // Remove PCQ answers
     req.session.ctx = {}; // Clear ctx as well
 
-    // Set the opt out flag
-    form.optOut = 'Y';
+    if (req.session.featureToggles.ft_opt_out) {
+        // Set the opt out flag
+        form.optOut = 'Y';
+    }
 
     const redirect = req.session.returnUrl || '/offline';
     return formData.post(token, correlationId, form)
