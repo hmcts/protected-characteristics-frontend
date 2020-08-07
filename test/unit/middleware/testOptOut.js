@@ -8,6 +8,7 @@ const optOut = require('app/middleware/optOut');
 
 describe('optOut', () => {
     let req = {};
+    let res = {};
 
     describe('with answers', () => {
 
@@ -28,9 +29,13 @@ describe('optOut', () => {
                         startpage: {},
                         dateofbirth: {dob_provided: 0},
                         language: {language_main: 1, english_language_level: null}
+                    },
+                    featureToggles: {
+                        ft_opt_out: true
                     }
                 }
             };
+            res = {redirect: sinon.spy()};
         });
 
         it('should redirect to the given return URL', (done) => {
@@ -42,9 +47,6 @@ describe('optOut', () => {
                 );
 
             req.session.returnUrl = 'http://test.com';
-            const res = {
-                redirect: sinon.spy()
-            };
 
             optOut(req, res).then(() => {
                 expect(res.redirect.calledOnce).to.equal(true);
@@ -62,9 +64,6 @@ describe('optOut', () => {
                 );
 
             req.session.returnUrl = 'http://test.com';
-            const res = {
-                redirect: sinon.spy()
-            };
 
             optOut(req, res).then(() => {
                 expect(res.redirect.calledOnce).to.equal(true);
@@ -74,12 +73,29 @@ describe('optOut', () => {
             });
         });
 
-        it('should clear the pcq answers and ctx from the session', (done) => {
-            const res = {
-                redirect: sinon.spy()
-            };
+        it('opt-out on - should set the optOut flag and retain the session', (done) => {
+            nock('http://localhost:4550')
+                .post('/pcq/backend/submitAnswers', body => {
+                    expect(body.optOut).to.equal('Y');
+                    return body;
+                })
+                .reply(
+                    200,
+                    {status: ':thumbs_up:'}
+                );
 
             optOut(req, res).then(() => {
+                expect(req.session.form).to.not.have.property('optOut');
+                expect(req.session.form.pcqAnswers).to.deep.equal(req.session.form.pcqAnswers);
+                expect(req.session.ctx).to.deep.equal(req.session.ctx);
+                done();
+            });
+        });
+
+        it('opt-out off - should not set the optOut flag and clear the pcq answers and ctx from the session', (done) => {
+            req.session.featureToggles.ft_opt_out = false;
+            optOut(req, res).then(() => {
+                expect(req.session.form).to.not.have.property('optOut');
                 expect(req.session.form.pcqAnswers).to.deep.equal({});
                 expect(req.session.ctx).to.deep.equal({});
                 done();
@@ -103,6 +119,7 @@ describe('optOut', () => {
                     }
                 }
             };
+            res = {redirect: sinon.spy()};
         });
 
         it('should redirect to the given return URL', (done) => {
@@ -114,9 +131,6 @@ describe('optOut', () => {
                 );
 
             req.session.returnUrl = 'http://test.com';
-            const res = {
-                redirect: sinon.spy()
-            };
 
             optOut(req, res);
             expect(res.redirect.calledOnce).to.equal(true);
@@ -134,9 +148,6 @@ describe('optOut', () => {
                 );
 
             req.session.returnUrl = 'http://test.com';
-            const res = {
-                redirect: sinon.spy()
-            };
 
             optOut(req, res);
             expect(res.redirect.calledOnce).to.equal(true);
@@ -148,10 +159,6 @@ describe('optOut', () => {
         it('should not call clearAnswers if there are no answers', (done) => {
             const rewiredOptOut = rewire('app/middleware/optOut');
             rewiredOptOut.__set__('clearAnswers', sinon.spy());
-
-            const res = {
-                redirect: sinon.spy()
-            };
 
             optOut(req, res);
             // eslint-disable-next-line no-unused-expressions
