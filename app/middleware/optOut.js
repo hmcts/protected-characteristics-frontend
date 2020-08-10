@@ -15,12 +15,19 @@ const clearAnswers = (req, res) => {
     const form = req.session.form;
     form.completedDate = moment().toISOString();
 
-    form.pcqAnswers = {}; // Remove PCQ answers
-    req.session.ctx = {}; // Clear ctx as well
+    if (req.session.featureToggles.ft_opt_out) {
+        // Set the opt out flag
+        form.optOut = 'Y';
+    } else {
+        form.pcqAnswers = {}; // Remove PCQ answers
+        req.session.ctx = {}; // Clear ctx as well
+    }
 
     const redirect = req.session.returnUrl || '/offline';
     return formData.post(token, correlationId, form)
         .then(() => {
+            // We delete the flag (if exists) in case the user clicks back into PCQ
+            delete form.optOut;
             res.redirect(redirect);
         })
         .catch(err => {
@@ -30,8 +37,8 @@ const clearAnswers = (req, res) => {
 };
 
 const optOut = (req, res) => {
-    const form = req.session.form;
-    if (form.pcqAnswers && Object.keys(form.pcqAnswers).length > 0) {
+    // The pcqAnswers property indicates the user has continued passed the start page and created a backend record
+    if (req.session.form.pcqAnswers) {
         return clearAnswers(req, res);
     }
 

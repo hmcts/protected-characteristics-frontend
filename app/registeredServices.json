@@ -24,7 +24,8 @@
     "serviceId": "DIVORCE",
     "actors": [
       "PETITIONER",
-      "RESPONDENT"
+      "RESPONDENT",
+      "CORESPONDENT"
     ],
     "redirectLinks": {
       "divorce_petitioner": "https://www.apply-divorce.service.gov.uk",
