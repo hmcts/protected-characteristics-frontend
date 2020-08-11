@@ -90,15 +90,15 @@ describe('registerIncomingService', () => {
         it('should assign a valid JWT token to the session', (done) => {
             const req = {
                 query: {
-                    serviceId: 'PROBATE',
-                    actor: 'APPLICANT',
+                    serviceId: 'CMC',
+                    actor: 'CLAIMANT',
                     pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                     partyId: 'applicant@email.com',
                     returnUrl: 'invoking-service-return-url/',
-                    token: '35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e156400899e8923bb878b4b62c6417' +
-                        'de175468ce6e7aab65af57b7ec70139ffe48983550ed3a59e5b0a5b0038327a3c0e1c543da6e0da50a716781b61faf0' +
-                        '49a97bf238f80990cb923917b3c0c29ba1f7e802dd00d9d24fcbceb913332827863ebb07e5e3ce28120afab3d492494' +
-                        'ee93297da5fe8dea2f262a5a5b8af95520f143464289569a95d5dd2da55b8da0869c73'
+                    token: '3b74573af3cf7403d07f8f9b58e8fbfae5b41a389469858da85f94caf089a4dd3bdfa79bfd347275329900c5' +
+                        '4e06eee027383c3b2cfe5fb0258033e72bd8cc82334d69d2ac2d11208cd825b52b1a9b77b2dd48e344018c4cf7f' +
+                        'fc08297beb6cb6f344a70fe9bcd21d0cf1af6b1d69858442853ce245b66ce086818e3faed638d38db4036f396db' +
+                        '28f20bd333db5a2d9207671fc69c551d112fc23fd9c7f9eae41cbecb9b2bd37457268c6f14e751507c'
                 },
                 session: {
                     form: {}
