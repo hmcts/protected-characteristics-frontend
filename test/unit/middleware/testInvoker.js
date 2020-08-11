@@ -65,7 +65,7 @@ describe('Invoker', () => {
             const genToken = invoker.__get__('genToken');
             const req = {
                 query: {
-                    serviceId: 'PROBATE',
+                    serviceId: 'CMC',
                     actor: 'b',
                     ccdCaseId: 'd',
                     pcqId: 'c',
@@ -80,9 +80,9 @@ describe('Invoker', () => {
 
             genToken(req, res);
             const token = res.json.args[0][0].token;
-            expect(token).to.equal('35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e192493b6d5' +
-                '3a3ca147a44d3ac917cb5ad5c637ddee2b478db196ec0545f5342f79cc85f51074d5e4110653d63d1d272dcfd17a7e5a84' +
-                '58cce7ca21ba1806a5effc8379a1da531332ab52cd52d69e2a0f8');
+            expect(token).to.equal('3b74573af3cf7403d07f8f9b58e8fbfa94ee6020841b2ca867aa2a8ccc3a7c402ecd95ba6a' +
+                '8a83519d908f5915769d16e471e29f3cabb28b5b2c970c0227365d0d952adb5443c37121e601c31847cca4063fd34245e1f' +
+                'a351260956a64b496db9d32145be475847a486a08a397746b64');
 
             done();
         });
