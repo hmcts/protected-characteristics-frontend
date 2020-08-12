@@ -5,7 +5,6 @@ const router = require('express').Router();
 const initSteps = require('app/core/initSteps');
 const logger = require('app/components/logger');
 const get = require('lodash').get;
-const shutter = require('app/shutter');
 const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const validateParams = require('app/middleware/validateParams');
@@ -13,7 +12,6 @@ const setJourney = require('app/middleware/setJourney');
 const optOut = require('app/middleware/optOut');
 const featureToggle = new (require('app/utils/FeatureToggle'))();
 
-router.use(shutter);
 router.use(initSession);
 router.use(registerIncomingService);
 router.use(setJourney);

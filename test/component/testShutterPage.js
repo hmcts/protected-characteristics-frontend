@@ -6,7 +6,7 @@ describe('shutter-page', () => {
     let testWrapper;
 
     beforeEach(() => {
-        testWrapper = new TestWrapper('ShutterPage', {ft_shutter_all: true});
+        testWrapper = new TestWrapper('ShutterPage');
     });
 
     afterEach(() => {
