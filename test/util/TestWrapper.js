@@ -34,21 +34,23 @@ class TestWrapper {
     }
 
     testContent(done, data = {}, excludeKeys = [], cookies = []) {
-        const contentToCheck = cloneDeep(filter(this.content, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
-        const substitutedContent = this.substituteContent(data, contentToCheck);
-        const res = this.agent.get(this.pageUrl);
+        this.setValidParameters(() => {
+            const contentToCheck = cloneDeep(filter(this.content, (value, key) => !excludeKeys.includes(key) && key !== 'errors'));
+            const substitutedContent = this.substituteContent(data, contentToCheck);
+            const res = this.agent.get(this.pageUrl);
 
-        if (cookies.length) {
-            const cookiesString = this.setCookiesString(res, cookies);
-            res.set('Cookie', cookiesString);
-        }
+            if (cookies.length) {
+                const cookiesString = this.setCookiesString(res, cookies);
+                res.set('Cookie', cookiesString);
+            }
 
-        res.expect('Content-type', /html/)
-            .then(response => {
-                this.assertContentIsPresent(response.text, substitutedContent);
-                done();
-            })
-            .catch(done);
+            res.expect('Content-type', /html/)
+                .then(response => {
+                    this.assertContentIsPresent(response.text, substitutedContent);
+                    done();
+                })
+                .catch(done);
+        });
     }
 
     testDataPlayback(done, data = {}, excludeKeys = [], cookies = []) {
@@ -78,29 +80,31 @@ class TestWrapper {
     }
 
     testErrors(done, data, type, onlyKeys = [], cookies = []) {
-        const contentErrors = get(this.content, 'errors', {});
-        const expectedErrors = cloneDeep(isEmpty(onlyKeys) ? contentErrors : filter(contentErrors, (value, key) => onlyKeys.includes(key)));
-        assert.isNotEmpty(expectedErrors);
-        this.substituteErrorsContent(data, expectedErrors, type);
-        const res = this.agent.post(`${this.pageUrl}`);
+        this.setValidParameters(() => {
+            const contentErrors = get(this.content, 'errors', {});
+            const expectedErrors = cloneDeep(isEmpty(onlyKeys) ? contentErrors : filter(contentErrors, (value, key) => onlyKeys.includes(key)));
+            assert.isNotEmpty(expectedErrors);
+            this.substituteErrorsContent(data, expectedErrors, type);
+            const res = this.agent.post(`${this.pageUrl}`);
 
-        if (cookies.length) {
-            const cookiesString = this.setCookiesString(res, cookies);
-            res.set('Cookie', cookiesString);
-        }
+            if (cookies.length) {
+                const cookiesString = this.setCookiesString(res, cookies);
+                res.set('Cookie', cookiesString);
+            }
 
-        res.type('form')
-            .send(data)
-            .redirects(1)
-            .expect(200)
-            .then(res => {
-                forEach(expectedErrors, (value) => {
-                    expect(res.text).to.contain(value[type].summary);
-                    expect(res.text).to.contain(value[type].message);
-                });
-                done();
-            })
-            .catch((err) => done(err));
+            res.type('form')
+                .send(data)
+                .redirects(1)
+                .expect(200)
+                .then(res => {
+                    forEach(expectedErrors, (value) => {
+                        expect(res.text).to.contain(value[type].summary);
+                        expect(res.text).to.contain(value[type].message);
+                    });
+                    done();
+                })
+                .catch((err) => done(err));
+        });
     }
 
     testStatus500Page(done, postData) {
@@ -140,6 +144,14 @@ class TestWrapper {
             .expect(302)
             .then(() => done())
             .catch((err) => done(err));
+    }
+
+    setValidParameters(callback) {
+        this.agent.post('/prepare-session-field')
+            .send({validParameters: true})
+            .end(() => {
+                callback();
+            });
     }
 
     substituteContent(data, contentToSubstitute) {
@@ -199,7 +211,7 @@ class TestWrapper {
         if (cookies.length) {
             let cookiesString;
 
-            for (let i=0; i<cookies.length; i++) {
+            for (let i = 0; i < cookies.length; i++) {
                 const cookieName = cookies[i].name;
                 const cookieContent = JSON.stringify(cookies[i].content);
                 cookiesString = `${cookieName}=${cookieContent},`;
