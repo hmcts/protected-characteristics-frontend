@@ -18,7 +18,6 @@ featureToggles:
   ft_shutter_all: 'shutter-all'
   ft_enforce_params: 'enforce-params'
   ft_verify_token: 'verify-token'
-  ft_invoker: 'invoker'
   ft_opt_out: 'opt-out'
   appwideToggles: []
 app:

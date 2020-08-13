@@ -90,7 +90,7 @@ describe('Invoker', () => {
 
     describe('Routing', () => {
         it('should load the invoker page', (done) => {
-            const server = app.init(false, {}, {ft_invoker: true});
+            const server = app.init(false, {});
             const agent = request.agent(server.app);
             agent.get('/invoker')
                 .expect(200)
@@ -104,25 +104,10 @@ describe('Invoker', () => {
                 });
         });
 
-        it('should redirect when invoker feature is off', (done) => {
-            const server = app.init(false, {}, {ft_invoker: false});
-            const agent = request.agent(server.app);
-            agent.get('/invoker')
-                .expect(302)
-                .end((err, res) => {
-                    server.http.close();
-                    if (err) {
-                        throw err;
-                    }
-                    expect(res.header.location).to.equal('404');
-                    done();
-                });
-        });
-
         it('should not load in prod environment', (done) => {
             const rewiredApp = rewire('app');
             rewiredApp.__set__('config.environment', 'prod');
-            const server = rewiredApp.init(false, {}, {ft_invoker: true});
+            const server = rewiredApp.init(false, {});
             const agent = request.agent(server.app);
             agent.get('/invoker')
                 .expect(404)
