@@ -113,4 +113,41 @@ describe('api-utils', () => {
         });
     });
 
+    describe('asyncFetch', () => {
+        it('return error on fetch failure', async () => {
+            nock('http://localhost:8888')
+                .get('/health')
+                .reply(
+                    400
+                );
+
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            try {
+                await utils.asyncFetch('http://localhost:8888/health', fetchOptions, res => res.text());
+            } catch (e) {
+                expect(e.message).to.equal('Bad Request');
+            }
+
+            nock.cleanAll();
+        });
+
+        it('return error on fetch failure with buffer body', async () => {
+            nock('http://localhost:8888')
+                .get('/health')
+                .reply(
+                    400,
+                    Buffer.from('test', 'utf8')
+                );
+
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            try {
+                await utils.asyncFetch('http://localhost:8888/health', fetchOptions, res => res.buffer());
+            } catch (e) {
+                expect(e.message).to.equal('Bad Request');
+            }
+
+            nock.cleanAll();
+        });
+    });
+
 });
