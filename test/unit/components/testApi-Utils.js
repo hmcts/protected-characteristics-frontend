@@ -133,7 +133,7 @@ describe('api-utils', () => {
 
         it('return error on fetch failure with buffer body', async () => {
             nock('http://localhost:8888')
-                .get('/health')
+                .get('/info')
                 .reply(
                     400,
                     Buffer.from('test', 'utf8')
@@ -141,7 +141,7 @@ describe('api-utils', () => {
 
             const fetchOptions = utils.fetchOptions(null, 'GET', {});
             try {
-                await utils.asyncFetch('http://localhost:8888/health', fetchOptions, res => res.buffer());
+                await utils.asyncFetch('http://localhost:8888/info', fetchOptions, res => res.buffer());
             } catch (e) {
                 expect(e.message).to.equal('Bad Request');
             }
