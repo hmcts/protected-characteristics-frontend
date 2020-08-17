@@ -3,8 +3,11 @@
 const expect = require('chai').expect;
 const utils = require('app/components/api-utils');
 const config = require('config');
+const nock = require('nock');
 
 describe('api-utils', () => {
+
+    const testUrl = 'http://localhost:8888/test';
 
     describe('Verify body value within fetchOptions', () => {
         const expectedFetchOptions = {
@@ -35,4 +38,79 @@ describe('api-utils', () => {
             done();
         });
     });
+
+    describe('fetchJson', () => {
+        it('returns valid json on GET request', async () => {
+            nock('http://localhost:8888')
+                .get('/test')
+                .reply(
+                    200,
+                    {expect: 'this json'}
+                );
+
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            const json = await utils.fetchJson(testUrl, fetchOptions);
+
+            expect(json).to.deep.equal({expect: 'this json'});
+            nock.cleanAll();
+        });
+
+        it('catch error on GET request failure', async () => {
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            const error = await utils.fetchJson(testUrl, fetchOptions);
+
+            expect(error.message).to.contain('FetchError');
+        });
+    });
+
+    describe('fetchText', () => {
+        it('returns valid text on GET request', async () => {
+            nock('http://localhost:8888')
+                .get('/test')
+                .reply(
+                    200,
+                    'I expect this text'
+                );
+
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            const text = await utils.fetchText(testUrl, fetchOptions);
+
+            expect(text).to.equal('I expect this text');
+            nock.cleanAll();
+        });
+
+        it('catch error on GET request failure', async () => {
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            const error = await utils.fetchText(testUrl, fetchOptions);
+
+            expect(error.message).to.contain('FetchError');
+        });
+    });
+
+    describe('fetchBuffer', () => {
+        it('returns valid buffer on GET request', async () => {
+            nock('http://localhost:8888')
+                .get('/test')
+                .reply(
+                    200,
+                    'I expect this text'
+                );
+
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            const buffer = await utils.fetchBuffer(testUrl, fetchOptions);
+
+            expect(buffer.equals(Buffer.from('I expect this text', 'utf8'))).to.equal(true);
+            nock.cleanAll();
+        });
+
+        it('catch error on GET request failure', async () => {
+            const fetchOptions = utils.fetchOptions(null, 'GET', {});
+            try {
+                await utils.fetchBuffer(testUrl, fetchOptions);
+            } catch (e) {
+                expect(e.message).to.contain('FetchError');
+            }
+        });
+    });
+
 });
