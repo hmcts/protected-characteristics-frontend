@@ -37,8 +37,20 @@ withNightlyPipeline(type, product, component) {
     enableSlackNotifications('#pcq-builds')
     enableSecurityScan()
     enableCrossBrowserTest()
-
+    enableFullFunctionalTest(200)
     after('crossBrowserTest') {
-                steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+    }
+
+    after('fullFunctionalTest') {
+
+        publishHTML target: [
+                allowMissing : true,
+                alwaysLinkToLastBuild: true,
+                keepAll : true,
+                reportDir : "output",
+                reportFiles : "PCQ-e2e-result.html",
+                reportName : "PCQ E2E functional tests result"
+        ]
     }
 }
