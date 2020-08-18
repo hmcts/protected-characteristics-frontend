@@ -64,9 +64,7 @@ describe('api-utils', () => {
                 enabled: 'false'
             };
             const memoryStore = utils.getStore(redisConfig, session);
-            const memoryStoreName = memoryStore.constructor.name;
-
-            expect(memoryStoreName).to.equal('MemoryStore');
+            expect(memoryStore.constructor.name).to.equal('MemoryStore');
         });
     });
 
