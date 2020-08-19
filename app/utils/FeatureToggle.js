@@ -10,37 +10,41 @@ class FeatureToggle {
     }
 
     callCheckToggle(req, res, next, featureToggleKey, callback, redirectPage) {
-        try {
-            this.checkToggle(featureToggleKey, (err, showFeature) => {
-                if (err) {
-                    next();
-                } else {
-                    callback({
-                        req: req,
-                        res: res,
-                        next: next,
-                        redirectPage: redirectPage,
-                        isEnabled: showFeature,
-                        featureToggleKey: featureToggleKey
-                    });
-                }
-            }, req, res);
-        } catch (err) {
-            next();
-        }
+        return this.checkToggle(featureToggleKey, req, res)
+            .then(enabled => {
+                callback({
+                    req: req,
+                    res: res,
+                    next: next,
+                    redirectPage: redirectPage,
+                    isEnabled: enabled,
+                    featureToggleKey: featureToggleKey
+                });
+            })
+            .catch(() => {
+                next();
+            });
     }
 
-    checkToggle(featureToggleKey, callback, req, res) {
+    checkToggle(featureToggleKey, req, res) {
         const ldUser = config.featureToggles.launchDarklyUser;
         const toggleKey = config.featureToggles[featureToggleKey];
-        const sessionId = req.session.id;
+        const sessionId = req.session ? req.session.id : 'Init';
 
         const ftValue = res.locals ? res.locals.launchDarkly.ftValue : null;
         const defaultValue = ftValue && ftValue[featureToggleKey] ? ftValue[featureToggleKey] : false;
 
-        this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
-            logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
-            callback(err, enabled);
+        return new Promise((resolve, reject) => {
+            this.launchDarkly.variation(toggleKey, ldUser, defaultValue, (err, enabled) => {
+                logger(sessionId).info(`Checking feature toggle: ${toggleKey}, isEnabled: ${enabled}`);
+
+                if (err) {
+                    logger(sessionId).error(`ERROR checking feature toggle: ${toggleKey}, err: ${err}`);
+                    reject(err);
+                } else {
+                    resolve(enabled);
+                }
+            });
         });
     }
 

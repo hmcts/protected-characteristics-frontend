@@ -31,5 +31,14 @@
       "divorce_petitioner": "https://www.apply-divorce.service.gov.uk",
       "divorce_respondent": "https://www.respond-divorce.service.gov.uk"
     }
+  },
+  {
+    "serviceId": "SSCS",
+    "actors": [
+      "APPELLANT"
+    ],
+    "redirectLinks": {
+      "sscs": "https://www.gov.uk/appeal-benefit-decision/submit-appeal"
+    }
   }
 ]
