@@ -60,7 +60,8 @@ describe('ShutterPage', () => {
                     'cmc_claimant': 'https://www.moneyclaims.service.gov.uk/dashboard',
                     'cmc_defendant': 'https://www.moneyclaims.service.gov.uk/dashboard',
                     'divorce_petitioner': 'https://www.apply-divorce.service.gov.uk',
-                    'divorce_respondent': 'https://www.respond-divorce.service.gov.uk'
+                    'divorce_respondent': 'https://www.respond-divorce.service.gov.uk',
+                    'sscs': 'https://www.gov.uk/appeal-benefit-decision/submit-appeal'
                 }
             );
             done();

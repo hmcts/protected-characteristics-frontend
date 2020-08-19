@@ -79,19 +79,20 @@ const validatedService = (serviceId) => {
 
 const registerIncomingService = (req, res) => {
     logger.info(req.query);
-    featureToggle.checkToggle('ft_verify_token', (err, enabled) => {
-        if (err) {
-            req.log.error(err);
-        } else if (enabled) {
-            if (verifyToken(req.query)) {
+
+    return featureToggle.checkToggle('ft_verify_token', req, res)
+        .then(enabled => {
+            if (enabled) {
+                if (verifyToken(req.query)) {
+                    validateParameters(req);
+                }
+            } else {
                 validateParameters(req);
             }
-        } else {
-            validateParameters(req);
-        }
-
-        res.redirect('/start-page');
-    }, req, res);
+        })
+        .catch(err => {
+            req.log.error(err);
+        });
 };
 
 module.exports = {
