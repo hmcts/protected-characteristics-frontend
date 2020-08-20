@@ -6,6 +6,7 @@ const setJourney = rewire('app/middleware/setJourney');
 const defaultJourney = require('app/journeys/default');
 const probateJourney = require('app/journeys/probate');
 const testJourney = require('test/data/journeys/test');
+const cmcJourney = rewire('app/journeys/cmc');
 
 describe('setJourney', () => {
     it('should set req.journey with the default journey when no form session', async () => {
@@ -17,7 +18,7 @@ describe('setJourney', () => {
         await setJourney(req, res);
 
         expect(req.session).to.deep.equal({
-            journey: defaultJourney
+            journey: defaultJourney()
         });
     });
 
@@ -30,7 +31,7 @@ describe('setJourney', () => {
         await setJourney(req, res);
 
         expect(req.session).to.deep.equal({
-            journey: defaultJourney,
+            journey: defaultJourney(),
             form: {}
         });
     });
@@ -51,7 +52,7 @@ describe('setJourney', () => {
             form: {
                 serviceId: 'PROBATE',
             },
-            journey: probateJourney
+            journey: probateJourney()
         });
     });
 
@@ -71,7 +72,7 @@ describe('setJourney', () => {
             form: {
                 serviceId: 'NO_JOURNEY_FILE_FOR_ME',
             },
-            journey: defaultJourney
+            journey: defaultJourney()
         });
     });
 
@@ -94,7 +95,7 @@ describe('setJourney', () => {
             },
         };
 
-        setJourney.__set__('getBaseJourney', () => {
+        const revert = setJourney.__set__('getBaseJourney', () => {
             return require('test/data/journeys/test');
         });
 
@@ -110,7 +111,7 @@ describe('setJourney', () => {
             }
         ];
 
-        const journey = Object.assign({}, testJourney);
+        const journey = Object.assign({}, testJourney());
         journey.skipList = skipList;
 
         expect(req.session).to.deep.equal({
@@ -118,6 +119,58 @@ describe('setJourney', () => {
                 serviceId: 'TEST',
             },
             journey: journey
+        });
+
+        revert();
+    });
+
+    describe('by actor', () => {
+        it('sets journey by actor - 1', async () => {
+            const req = {
+                session: {
+                    form: {
+                        serviceId: 'CMC',
+                        actor: 'CLAIMANT'
+                    }
+                }
+            };
+            const res = {};
+
+            const claimantJourney = cmcJourney.__get__('claimant');
+
+            await setJourney(req, res);
+
+            expect(req.session).to.deep.equal({
+                form: {
+                    serviceId: 'CMC',
+                    actor: 'CLAIMANT'
+                },
+                journey: {stepList: claimantJourney}
+            });
+        });
+
+        it('sets journey by actor - 2', async () => {
+            const req = {
+                session: {
+                    form: {
+                        serviceId: 'CMC',
+                        actor: 'DEFENDANT'
+                    }
+                }
+            };
+            const res = {};
+
+            const defendantJourney = cmcJourney.__get__('defendant');
+
+            await setJourney(req, res);
+
+            expect(req.session).to.deep.equal({
+                form: {
+                    serviceId: 'CMC',
+                    actor: 'DEFENDANT'
+                },
+                journey: {stepList: defendantJourney}
+            });
         });
     });
 });

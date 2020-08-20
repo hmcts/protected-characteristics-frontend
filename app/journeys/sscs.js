@@ -42,7 +42,9 @@ const toggledQuestions = [
     {stepName: 'ApplicantDisabilityImplicationAreas', ftKey: 'ft_sscs_disability_stage_2'},
 ];
 
-module.exports = {
-    stepList,
-    toggledQuestions
+module.exports = () => {
+    return {
+        stepList,
+        toggledQuestions
+    };
 };
