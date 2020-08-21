@@ -189,5 +189,6 @@
   "10021_X-Content-Type-Options Header Missing_https://pcq.aat.platform.hmcts.net/ruxitagentjs_ICA2SVfqru_10193200616095656.js_GET": "ignore",
   "10098_Cross-Domain Misconfiguration_https://pcq.aat.platform.hmcts.net/ruxitagentjs_ICA2SVfqru_10193200616095656.js_GET": "ignore",
   "10035_Strict-Transport-Security Header Not Set_https://pcq.aat.platform.hmcts.net/ruxitagentjs_ICA2SVfqru_10193200616095656.js_GET": "ignore",
-  "10096_Timestamp Disclosure - Unix_https://pcq.aat.platform.hmcts.net/privacy-policy_GET": "ignore"
+  "10096_Timestamp Disclosure - Unix_https://pcq.aat.platform.hmcts.net/privacy-policy_GET": "ignore",
+  "10096_Timestamp Disclosure - Unix_https://pcq.aat.platform.hmcts.net/assets/images/govuk-apple-touch-icon-152x152.png_GET": "ignore"
 }
