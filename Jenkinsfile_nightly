@@ -40,14 +40,6 @@ withNightlyPipeline(type, product, component) {
     }
 
     after('fullFunctionalTest') {
-
-        publishHTML target: [
-                allowMissing : true,
-                alwaysLinkToLastBuild: true,
-                keepAll : true,
-                reportDir : "output",
-                reportFiles : "PCQ-e2e-result.html",
-                reportName : "PCQ E2E functional tests result"
-        ]
+        steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
     }
 }
