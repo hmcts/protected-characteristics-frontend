@@ -34,7 +34,6 @@ withNightlyPipeline(type, product, component) {
     env.TEST_URL = params.URL_TO_TEST
     loadVaultSecrets(secrets)
     enableSlackNotifications('#pcq-builds')
-    enableSecurityScan()
     enableFullFunctionalTest(20)
     after('crossBrowserTest') {
         steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'

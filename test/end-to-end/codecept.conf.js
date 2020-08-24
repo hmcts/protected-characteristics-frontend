@@ -2,8 +2,8 @@ exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
         Puppeteer: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
-            show: false,
+            url: 'https://pcq.aat.platform.hmcts.net',
+            show: true,
             headless: false,
             chrome: {
                 'ignoreHTTPSErrors': true,
@@ -24,7 +24,23 @@ exports.config = {
     include: {
         I: 'test/end-to-end/pages/steps.js'
     },
-    mocha: {},
+    mocha: {
+        reporterOptions: {
+            'codeceptjs-cli-reporter': {
+                stdout: '-',
+                options: {steps: true}
+            },
+            mochawesome: {
+                stdout: './functional-output/console.log',
+                options: {
+                    // eslint-disable-next-line no-undef
+                    reportDir: './mochawesome-report',
+                    reportName: 'index',
+                    inlineAssets: true
+                }
+            }
+        }
+    },
     bootstrap: null,
     teardown: null,
     hooks: [],
