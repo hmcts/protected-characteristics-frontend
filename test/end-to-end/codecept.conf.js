@@ -25,7 +25,7 @@ exports.config = {
         I: 'test/end-to-end/pages/steps.js'
     },
     mocha: {
-        'reporterOptions': {
+        reporterOptions: {
             'codeceptjs-cli-reporter': {
                 'stdout': '-',
                 'options': {'steps': true}
@@ -34,7 +34,7 @@ exports.config = {
                 'stdout': '-',
                 'options': {'mochaFile': './functional-output/result.xml'}
             },
-            'mochawesome': {
+            mochawesome: {
                 'stdout': './functional-output/console.log',
                 'options': {
                     'reportDir': process.cwd()+'./functional-output',

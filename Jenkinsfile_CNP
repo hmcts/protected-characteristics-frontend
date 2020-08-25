@@ -42,7 +42,6 @@ withPipeline(type, product, component) {
   }
 
   after('functionalTest:preview') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'smoke-output/**/*'
     steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
   }
 }
