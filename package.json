@@ -23,8 +23,8 @@
     "test:component": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error mocha test/component --reporter spec --recursive --timeout 10000",
     "test:a11y": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 30000 --exit",
     "test:accessibility": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 15000",
-    "test:e2e": "NODE_ENV=testing NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
-    "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
+    "test:e2e": "NODE_ENV=testing NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mocha-multi",
+    "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mocha-multi",
     "test:crossbrowser": "./bin/run-crossbrowser-tests.sh",
     "test:smoke": "./bin/run-smoke-tests.sh",
     "lint": "NODE_PATH=. eslint .",
@@ -43,7 +43,7 @@
     "stub:feature-toggles": "NODE_PATH=. node test/service-stubs/feature-toggles.js",
     "test-crossbrowser-e2e": "NODE_ENV=testing LOG_LEVEL=OFF NODE_PATH=. node_modules/.bin/codeceptjs run-multiple ${BROWSER_GROUP:-'--all'} -c test/end-to-end/saucelabs.conf.js --steps --reporter mocha-multi",
     "test:crossbrowser_chrome": "NODE_PATH=. codeceptjs run-multiple chrome -c test/end-to-end/saucelabs.conf.js --plugins retryFailedStep --steps --reporter mocha-multi",
-    "test:fullfunctional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome"
+    "test:fullfunctional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mocha-multi"
   },
   "pre-commit": [
     "lint"
