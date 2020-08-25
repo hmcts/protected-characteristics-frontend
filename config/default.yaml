@@ -96,3 +96,6 @@ appInsights:
 health:
   timeout: 5000
   deadline: 15000
+e2e:
+  outputDirectory: './functional-output'
+    runBasicTests: false

@@ -1,3 +1,4 @@
+const CONF = require('./config');
 exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
@@ -37,11 +38,17 @@ exports.config = {
             mochawesome: {
                 'stdout': './functional-output/console.log',
                 'options': {
-                    'reportDir': process.cwd()+'./functional-output',
+                    'reportDir': './functional-output',
                     'reportName': 'index',
                     'inlineAssets': true
                 }
             }
+        }
+    },
+    multiple: {
+        parallel: {
+            chunks: configureChunks(),
+            browsers: ['chrome']
         }
     },
     bootstrap: null,
@@ -63,15 +70,16 @@ exports.config = {
             deleteSuccessful: true,
             ignoreSteps: ['wait*', 'fill*', 'grab*', 'set*', 'click*', 'select*', 'am*'],
             screenshotsForAllureReport: true
-        },
-        allure: {
-            enabled: true,
-            // enableScreenshotDiffPlugin: true,
-        },
-        autoDelay: {
-            enabled: true
         }
     },
     tests: './test/*_test.js',
     name: 'pcq-frontend'
 };
+// Reduce chunks on Preview env
+function configureChunks() {
+    // eslint-disable-next-line no-undef
+    if (CONF.e2e.runBasicTests === 'true') {
+        return 2;
+    }
+    return 5;
+}
