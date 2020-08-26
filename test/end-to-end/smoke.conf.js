@@ -37,7 +37,7 @@ exports.config = {
             mochawesome: {
                 'stdout': './smoke-output/console.log',
                 'options': {
-                    'reportDir': './smoke-output/mochawesome',
+                    'reportDir': './smoke-output',
                     'reportName': 'index',
                     charts: true,
                     'inlineAssets': true
