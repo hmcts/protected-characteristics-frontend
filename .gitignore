@@ -23,7 +23,7 @@ git.properties.json
 .scannerwork/
 infrastructure/.terraform
 /mochawesome-report/
-functional-output/
+functional-output
 smoke-output/
 /config/dev.yaml
 .stryker-tmp/
