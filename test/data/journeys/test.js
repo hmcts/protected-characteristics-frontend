@@ -1,7 +1,8 @@
 'use strict';
 
 const stepList = {
-    StartPage: 'ApplicantLanguage',
+    StartPage: 'ApplicantDateOfBirth',
+    ApplicantDateOfBirth: 'ApplicantLanguage',
     ApplicantLanguage: {
         otherLanguage: 'ApplicantEnglishLevel',
         otherwise: 'ApplicantSex'
@@ -38,8 +39,10 @@ const stepList = {
 };
 
 const toggledQuestions = [
-    {stepName: 'ApplicantDisability', ftKey: 'ft_sscs_disability_stage_1', nextStepName: 'ApplicantDisabilityImplicationAreas'},
-    {stepName: 'ApplicantDisabilityImplicationAreas', ftKey: 'ft_sscs_disability_stage_2'},
+    {stepName: 'ApplicantDateOfBirth', ftKey: 'ft_enabled'},
+    {stepName: 'ApplicantLanguage', ftKey: 'ft_disabled'},
+    {stepName: 'ApplicantSex', ftKey: 'ft_enabled', nextStepName: 'ApplicantMaritalStatus'},
+    {stepName: 'ApplicantSexualOrientation', ftKey: 'ft_disabled', nextStepName: 'ApplicantEthnicGroup'}
 ];
 
 module.exports = {
