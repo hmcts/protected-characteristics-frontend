@@ -76,12 +76,11 @@ const validatedService = (serviceId) => {
         registeredServices.map(s => s.serviceId.toLowerCase()).includes(serviceId.toLowerCase()));
 };
 
-const registerIncomingService = (req, res) => {
+const registerIncomingService = (req) => {
     logger.info(req.query);
     if (verifyToken(req.query)) {
         validateParameters(req);
     }
-    res.redirect('/start-page');
 };
 
 module.exports = {
