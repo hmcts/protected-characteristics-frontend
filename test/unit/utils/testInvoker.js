@@ -66,6 +66,10 @@ describe('Invoker', () => {
                     {
                         value: 'DIVORCE',
                         text: 'DIVORCE'
+                    },
+                    {
+                        value: 'SSCS',
+                        text: 'SSCS'
                     }
                 ],
                 actorList: {
@@ -80,6 +84,9 @@ describe('Invoker', () => {
                         'PETITIONER',
                         'RESPONDENT',
                         'CORESPONDENT'
+                    ],
+                    'SSCS': [
+                        'APPELLANT'
                     ]
                 }
             });

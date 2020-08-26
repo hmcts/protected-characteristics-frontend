@@ -2,7 +2,7 @@ const supportedBrowsers = {
     microsoftIE11: {
         ie11: {
             browserName: 'internet explorer',
-            name: 'IE11',
+            name: 'PCQ_WIN10_IE11_11',
             platform: 'Windows 10',
             version: '11.285'
         }
@@ -10,7 +10,7 @@ const supportedBrowsers = {
     microsoftEdge: {
         edge: {
             browserName: 'MicrosoftEdge',
-            name: 'Edge_Win10',
+            name: 'PCQ_WIN10_EDGE_18',
             platform: 'Windows 10',
             version: '18.17763'
         }
@@ -18,13 +18,13 @@ const supportedBrowsers = {
     chrome: {
         chrome_win_latest: {
             browserName: 'chrome',
-            name: 'DIV_WIN_CHROME_LATEST',
+            name: 'PCQ_WIN10_CHROME_LATEST',
             platform: 'Windows 10',
             version: 'latest'
         },
         chrome_mac_latest: {
             browserName: 'chrome',
-            name: 'MAC_CHROME_LATEST',
+            name: 'PCQ_MAC_CHROME_LATEST',
             platform: 'macOS 10.13',
             version: 'latest'
         }
@@ -32,13 +32,13 @@ const supportedBrowsers = {
     firefox: {
         firefox_win_latest: {
             browserName: 'firefox',
-            name: 'WIN_FIREFOX_LATEST',
+            name: 'PCQ_WIN10_FIREFOX_LATEST',
             platform: 'Windows 10',
             version: 'latest'
         },
         firefox_mac_latest: {
             browserName: 'firefox',
-            name: 'MAC_FIREFOX_LATEST',
+            name: 'PCQ_MAC_FIREFOX_LATEST',
             platform: 'macOS 10.13',
             version: 'latest'
         },
@@ -46,7 +46,7 @@ const supportedBrowsers = {
     safari: {
         safari11: {
             browserName: 'safari',
-            name: 'DIV_SAFARI_11',
+            name: 'PCQ_MAC_SAFARI_11',
             platform: 'macOS 10.13',
             OS: 'Mac 10.13',
             Browser: 'safari',

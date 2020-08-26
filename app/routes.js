@@ -9,14 +9,12 @@ const shutter = require('app/shutter');
 const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const validateParams = require('app/middleware/validateParams');
-const setJourney = require('app/middleware/setJourney');
 const optOut = require('app/middleware/optOut');
 const featureToggle = new (require('app/utils/FeatureToggle'))();
 
 router.use(shutter);
 router.use(initSession);
 router.use(registerIncomingService);
-router.use(setJourney);
 
 router.get('*', (req, res, next) => validateParams(req, res, next));
 
