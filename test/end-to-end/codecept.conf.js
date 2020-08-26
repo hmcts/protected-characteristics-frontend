@@ -1,3 +1,4 @@
+const CONF = require('config');
 exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
@@ -27,19 +28,19 @@ exports.config = {
     mocha: {
         reporterOptions: {
             'codeceptjs-cli-reporter': {
-                'stdout': '-',
-                'options': {'steps': true}
+                stdout: '-',
+                options: {steps: true}
             },
             'mocha-junit-reporter': {
-                'stdout': '-',
-                'options': {'mochaFile': './functional-output/result.xml'}
+                stdout: '-',
+                options: {mochaFile: './functional-output/result.xml'}
             },
             mochawesome: {
-                'stdout': './functional-output/console.log',
-                'options': {
-                    'reportDir': process.cwd()+'./functional-output',
-                    'reportName': 'index',
-                    'inlineAssets': true
+                stdout: './functional-output/console.log',
+                options: {
+                    reportDir: CONF.e2e.outputDirectory,
+                    reportName: 'index',
+                    inlineAssets: true
                 }
             }
         }
