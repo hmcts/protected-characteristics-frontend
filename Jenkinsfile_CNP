@@ -32,8 +32,8 @@ withPipeline(type, product, component) {
   loadVaultSecrets(secrets)
   // enableSlackNotifications('#pcq-builds')
   after('functionalTest:aat') {
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'smoke-output/**/*'
-    steps.archiveArtifacts allowEmptyArchive: true, artifacts: 'functional-output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/smoke-output/**/*'
+    steps.archiveArtifacts allowEmptyArchive: true, artifacts: '**/functional-output/**/*'
   }
 
   before('functionalTest:preview') {
