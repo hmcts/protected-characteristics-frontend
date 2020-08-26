@@ -12,7 +12,7 @@ const {setSession, registerIncomingService} = require('app/middleware/registerIn
 
 describe('registerIncomingService', () => {
     describe('middleware', () => {
-        it('should assign valid incoming query params to the session and redirect to the start page', (done) => {
+        it('should assign valid incoming query params to the session and redirect to the start page', async () => {
             const req = {
                 query: {
                     serviceId: 'PROBATE',
@@ -38,31 +38,25 @@ describe('registerIncomingService', () => {
             };
 
             setSession(req);
-            registerIncomingService(req, res);
+            await registerIncomingService(req, res);
 
-            setTimeout(() => {
-                expect(req.session).to.deep.equal({
-                    returnUrl: 'https://invoking-service-return-url/',
-                    language: 'en',
-                    form: {
-                        serviceId: 'probate',
-                        actor: 'applicant',
-                        pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
-                        ccdCaseId: 1234567890123456,
-                        partyId: 'applicant@email.com',
-                        channel: 2
-                    },
-                    token: req.session.token,
-                    validParameters: true
-                });
-                expect(res.redirect.calledOnce).to.equal(true);
-                expect(res.redirect.calledWith('/start-page')).to.equal(true);
-
-                done();
-            }, 100);
+            expect(req.session).to.deep.equal({
+                returnUrl: 'https://invoking-service-return-url/',
+                language: 'en',
+                form: {
+                    serviceId: 'probate',
+                    actor: 'applicant',
+                    pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
+                    ccdCaseId: 1234567890123456,
+                    partyId: 'applicant@email.com',
+                    channel: 2
+                },
+                token: req.session.token,
+                validParameters: true
+            });
         });
 
-        it('should assign default params to the session when none passed and redirect to the start page', (done) => {
+        it('should assign default params to the session when none passed and redirect to the start page', async () => {
             const req = {
                 query: {},
                 session: {
@@ -74,20 +68,14 @@ describe('registerIncomingService', () => {
             };
 
             setSession(req);
-            registerIncomingService(req, res);
+            await registerIncomingService(req, res);
 
-            setTimeout(() => {
-                expect(req.session).to.deep.equal({
-                    form: {channel: 1}
-                });
-                expect(res.redirect.calledOnce).to.equal(true);
-                expect(res.redirect.calledWith('/start-page')).to.equal(true);
-
-                done();
-            }, 100);
+            expect(req.session).to.deep.equal({
+                form: {channel: 1}
+            });
         });
 
-        it('should assign a valid JWT token to the session', (done) => {
+        it('should assign a valid JWT token to the session', async () => {
             const req = {
                 query: {
                     serviceId: 'CMC',
@@ -109,19 +97,16 @@ describe('registerIncomingService', () => {
             };
 
             setSession(req);
-            registerIncomingService(req, res);
+            await registerIncomingService(req, res);
 
-            setTimeout(() => {
-                const validToken = jwt.verify(req.session.token, config.auth.jwt.secret, (err) => {
-                    return !err;
-                });
+            const validToken = jwt.verify(req.session.token, config.auth.jwt.secret, (err) => {
+                return !err;
+            });
 
-                expect(validToken).to.equal(true);
-                done();
-            }, 100);
+            expect(validToken).to.equal(true);
         });
 
-        it('should not create a token or validate the service if its not registered', (done) => {
+        it('should not create a token or validate the service if its not registered', async () => {
             const req = {
                 query: {
                     serviceId: 'NOTREGISTERED',
@@ -144,14 +129,10 @@ describe('registerIncomingService', () => {
             };
 
             setSession(req);
-            registerIncomingService(req, res);
+            await registerIncomingService(req, res);
 
-            setTimeout(() => {
-                expect(req.session).to.not.have.property('token');
-                expect(req.session).to.not.have.property('validParameters');
-
-                done();
-            }, 100);
+            expect(req.session).to.not.have.property('token');
+            expect(req.session).to.not.have.property('validParameters');
         });
     });
     describe('route', () => {
