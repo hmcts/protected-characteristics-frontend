@@ -28,11 +28,20 @@ exports.config = {
         reporterOptions: {
             'codeceptjs-cli-reporter': {
                 stdout: '-',
-                options: {steps: true}
+                'options': {'steps': true}
             },
             'mocha-junit-reporter': {
-                stdout: '-',
-                options: {mochaFile: './smoke-output/result.xml'}
+                'stdout': '-',
+                'options': {'mochaFile': './smoke-output/result.xml'}
+            },
+            mochawesome: {
+                'stdout': '-',
+                'options': {
+                    'reportDir': './smoke-output',
+                    'reportName': 'index',
+                    charts: true,
+                    'inlineAssets': true
+                }
             }
         }
     },
