@@ -3,6 +3,7 @@
 const router = require('express').Router();
 const {registerIncomingService, setSession} = require('app/middleware/registerIncomingService');
 const initSession = require('app/middleware/initSession');
+const setJourney = require('app/middleware/setJourney');
 const config = require('config');
 const AsyncFetch = require('app/utils/AsyncFetch');
 const asyncFetch = new AsyncFetch();
@@ -21,9 +22,12 @@ router.get('/service-endpoint', (req, res) => {
 
     asyncFetch
         .fetch('http://localhost:4000/health', {}, fetchRes => fetchRes.json())
-        .then(json => {
+        .then(async json => {
             if ((json['pcq-backend'] && json['pcq-backend'].status === 'UP') || config.services.pcqBackend.enabled === 'false') {
-                registerIncomingService(req, res);
+                await registerIncomingService(req, res);
+                await setJourney(req, res);
+
+                res.redirect('/start-page');
             } else {
                 serviceDown();
             }

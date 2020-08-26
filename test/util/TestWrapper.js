@@ -8,6 +8,7 @@ const config = require('config');
 const request = require('supertest');
 const initSteps = require('app/core/initSteps');
 const steps = initSteps([`${__dirname}/../../app/steps/ui`], 'en');
+const setJourney = require('app/middleware/setJourney');
 
 class TestWrapper {
     constructor(stepName, ftValue) {
@@ -27,6 +28,9 @@ class TestWrapper {
             set(req.session, req.params.field, req.params.value);
             res.send('OK');
         });
+
+        // Set the journey for each test.
+        routes.use('*', (req, res, next) => setJourney(req, res).then(() => next()));
 
         config.app.useCSRFProtection = 'false';
         this.server = app.init(false, {}, ftValue);

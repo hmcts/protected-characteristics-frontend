@@ -8,7 +8,7 @@ const RewiredFeatureToggle = rewire('app/utils/FeatureToggle');
 
 describe('FeatureToggle', () => {
     describe('callCheckToggle()', () => {
-        it('should call the callback function when the api returns successfully', (done) => {
+        it('should call the callback function when the api returns successfully', async () => {
             const params = {
                 req: {
                     session: {
@@ -29,34 +29,32 @@ describe('FeatureToggle', () => {
             };
             const featureToggle = new FeatureToggle();
 
-            featureToggle.callCheckToggle(...Object.values(params));
-            // Checking a second call that ld doesn't hang
-            featureToggle.callCheckToggle(...Object.values(params));
+            await featureToggle.callCheckToggle(...Object.values(params));
+            // Checking ld doesn't hang with a second call
+            await featureToggle.callCheckToggle(...Object.values(params));
 
-            setTimeout(() => {
-                expect(params.callback.calledTwice).to.equal(true);
-                expect(params.callback.args[1]).to.deep.equal([{
-                    req: params.req,
-                    res: params.res,
-                    next: params.next,
-                    redirectPage: params.redirectPage,
-                    isEnabled: true,
-                    featureToggleKey: params.featureToggleKey
-                }]);
-
-                done();
-            }, 1000);
+            expect(params.callback.calledTwice).to.equal(true);
+            expect(params.callback.args[1]).to.deep.equal([{
+                req: params.req,
+                res: params.res,
+                next: params.next,
+                redirectPage: params.redirectPage,
+                isEnabled: true,
+                featureToggleKey: params.featureToggleKey
+            }]);
         });
 
-        it('should call next() when the api returns an error', (done) => {
+        it('should call next() when the api returns an error', async () => {
             class FeatureToggleStub {
                 getInstance() {
                     return true;
                 }
+
                 variation() {
                     throw new Error('Test error');
                 }
             }
+
             const params = {
                 req: {
                     session: {
@@ -72,11 +70,9 @@ describe('FeatureToggle', () => {
             RewiredFeatureToggle.__set__('LaunchDarkly', FeatureToggleStub);
             const featureToggle = new RewiredFeatureToggle();
 
-            featureToggle.callCheckToggle(...Object.values(params));
+            await featureToggle.callCheckToggle(...Object.values(params));
 
             expect(params.next.calledOnce).to.equal(true);
-
-            done();
         });
     });
 
