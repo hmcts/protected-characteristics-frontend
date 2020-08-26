@@ -1,4 +1,3 @@
-
 # This is used in E2E testing
 appName: 'frontend'
 project: 'pcq'
@@ -15,15 +14,7 @@ featureToggles:
 tokenKeys:
   notregistered: 'SERVICE_TOKEN_KEY'
 
-e2e:
-  frontendUrl: 'https://pcq.aat.platform.hmcts.net'
-  proxyServer: ''
-  proxyBypassList: ''
-  outputDirectory: './functional-output'
-  defaultEnvironmentNodeEnv: 'development'
-  waitForTimeoutValue: 5000
-  waitForActionValue: 100
-  runBasicTests: false
+testUrl: 'http://localhost:4000'
 
 saucelabs:
   browser: 'chrome'
@@ -32,7 +23,6 @@ saucelabs:
   tunnelId: 'reformtunnel'
   waitForTimeout: 5000
   smartWait: 5000
-
 
 showSitemap: true
 

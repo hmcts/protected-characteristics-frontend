@@ -24,7 +24,7 @@
     "test:a11y": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 30000 --exit",
     "test:accessibility": "NODE_ENV=testing NODE_PATH=. LOG_LEVEL=error ENABLE_TRACKING=false mocha test/accessibility --timeout 15000",
     "test:e2e": "NODE_ENV=testing NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mochawesome",
-    "test:functional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps -p allure",
+    "test:functional": "./bin/run-functional-tests.sh",
     "test:crossbrowser": "./bin/run-crossbrowser-tests.sh",
     "test:smoke": "./bin/run-smoke-tests.sh",
     "lint": "NODE_PATH=. eslint .",
