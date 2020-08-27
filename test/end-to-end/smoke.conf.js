@@ -1,7 +1,7 @@
 const CONF = require('config');
 
 exports.config = {
-    output: process.cwd()+'/functional-output',
+    output: process.cwd() + '/smoke-output',
     helpers: {
         Puppeteer: {
             url: CONF.testUrl,
@@ -26,23 +26,30 @@ exports.config = {
     include: {
         I: 'test/end-to-end/pages/steps.js'
     },
+    mocha: {
+        reporterOptions: {
+            'codeceptjs-cli-reporter': {
+                stdout: '-',
+                'options': {'steps': true}
+            },
+            'mocha-junit-reporter': {
+                'stdout': '-',
+                'options': {'mochaFile': './smoke-output/result.xml'}
+            },
+            mochawesome: {
+                'stdout': './smoke-output/console.log',
+                'options': {
+                    'reportDir': './smoke-output',
+                    'reportName': 'index',
+                    charts: true,
+                    'inlineAssets': true
+                }
+            }
+        }
+    },
     gherkin: {
         features: 'features/smoke.feature',
         steps: ['./smoke/smoketest.js']
-    },
-    reporters: ['allure'],
-    reporterOptions: {
-        allure: {
-            outputDir: 'allure-results',
-            disableWebdriverStepsReporting: true,
-            disableWebdriverScreenshotsReporting: true,
-            useCucumberStepReporter: false
-        }
-    },
-    plugins: {
-        allure: {
-            enabled: true
-        }
     },
     bootstrap: null,
     teardown: null,
