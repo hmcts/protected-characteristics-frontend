@@ -44,8 +44,7 @@ for (const step in steps) {
             }
 
             before((done) => {
-                const ftValue = step.name === 'ShutterPage' ? {ft_shutter_all: true} : null;
-                server = app.init(true, sessionData, ftValue);
+                server = app.init(true, sessionData);
 
                 agent = request.agent(server.app);
                 co(function* () {

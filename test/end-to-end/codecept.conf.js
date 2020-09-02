@@ -1,8 +1,9 @@
+const CONF = require('config');
 exports.config = {
     output: process.cwd()+'/functional-output',
     helpers: {
         Puppeteer: {
-            url: 'https://pcq-frontend-staging.service.core-compute-aat.internal',
+            url: CONF.testUrl,
             show: false,
             headless: false,
             chrome: {
@@ -14,8 +15,8 @@ exports.config = {
                 },
                 args: [
                     '--no-sandbox',
-                    '--proxy-server=proxyout.reform.hmcts.net:8080',
-                    '--proxy-bypass-list=*beta*LB.reform.hmcts.net',
+                    `--proxy-server=${process.env.E2E_PROXY_SERVER || ''}`,
+                    `--proxy-bypass-list=${process.env.E2E_PROXY_BYPASS || ''}`,
                     '--window-size=1440,1400'
                 ]
             }
@@ -24,7 +25,26 @@ exports.config = {
     include: {
         I: 'test/end-to-end/pages/steps.js'
     },
-    mocha: {},
+    mocha: {
+        reporterOptions: {
+            'codeceptjs-cli-reporter': {
+                stdout: '-',
+                'options': {'steps': true}
+            },
+            'mocha-junit-reporter': {
+                'stdout': '-',
+                'options': {'mochaFile': './functional-output/result.xml'}
+            },
+            mochawesome: {
+                'stdout': './functional-output/console.log',
+                'options': {
+                    'reportDir': './functional-output/mochawesome',
+                    'reportName': 'index',
+                    'inlineAssets': true
+                }
+            }
+        }
+    },
     bootstrap: null,
     teardown: null,
     hooks: [],
