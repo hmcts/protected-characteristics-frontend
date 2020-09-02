@@ -1,5 +1,6 @@
 'use strict';
 // eslint-disable-next-line no-unused-vars
+const CONF = require('config');
 const testConfig = require('test/config');
 const uuidv4 = require('uuid/v4');
 const request = require('request');
@@ -7,6 +8,8 @@ const assert = require('chai').assert;
 
 class TestConfigurator {
     constructor() {
+        console.log(`Running tests against URL: ${CONF.testUrl}`);
+
         this.testBaseUrl = testConfig.TestGetUserUrl;
         this.testProxy = testConfig.TestProxy;
         this.testUseProxy = testConfig.TestUseProxy;
