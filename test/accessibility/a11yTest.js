@@ -14,7 +14,8 @@ const nock = require('nock');
 const config = require('config');
 const commonSessionData = {
     form: {},
-    back: []
+    back: [],
+    validParameters: true
 };
 
 Object.keys(steps)
