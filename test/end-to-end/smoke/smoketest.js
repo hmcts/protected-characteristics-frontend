@@ -2,8 +2,11 @@
 const serviceEndpointUrl = require('test/end-to-end/utils').serviceEndpointUrl;
 const {generateToken} = require('app/components/encryption-token');
 const uuidv4 = require('uuid/v4');
+const CONF = require('config');
 /* eslint-disable no-undef */
 // eslint-disable-next-line no-unused-vars
+console.log(`Running tests against URL: ${CONF.testUrl}`);
+
 const {I} = inject();
 
 const params = {

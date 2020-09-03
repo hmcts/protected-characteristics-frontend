@@ -20,6 +20,7 @@ describe('EndPage', () => {
 
         it('test link to return URL is present', (done) => {
             const sessionData = {
+                validParameters: true,
                 returnUrl: 'http://invoking-service-return-url'
             };
 
