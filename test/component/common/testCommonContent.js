@@ -9,12 +9,14 @@ class TestCommonContent {
             const testWrapper = new TestWrapper(page);
 
             it('test help block content is loaded on page', (done) => {
-                const playbackData = {
-                    whyAskingParagraph: commonContent.whyAskingParagraph,
-                    whyAsking: commonContent.whyAsking
-                };
+                testWrapper.setValidParameters(() => {
+                    const playbackData = {
+                        whyAskingParagraph: commonContent.whyAskingParagraph,
+                        whyAsking: commonContent.whyAsking
+                    };
 
-                testWrapper.testDataPlayback(done, playbackData);
+                    testWrapper.testDataPlayback(done, playbackData);
+                });
             });
 
             testWrapper.destroy();
