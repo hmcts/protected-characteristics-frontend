@@ -18,12 +18,12 @@ describe('FeatureToggle', () => {
                 res: {
                     locals: {
                         launchDarkly: {
-                            ftValue: {'ft_shutter_all': true}
+                            ftValue: {'ft_test': true}
                         }
                     }
                 },
                 next: () => true,
-                featureToggleKey: 'ft_shutter_all',
+                featureToggleKey: 'ft_test',
                 callback: sinon.spy(),
                 redirectPage: '/dummy-page'
             };

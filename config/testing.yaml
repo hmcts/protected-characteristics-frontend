@@ -10,6 +10,7 @@ service:
 
 featureToggles:
   enabled: false
+  ft_test: 'test'
 
 tokenKeys:
   notregistered: 'SERVICE_TOKEN_KEY'
