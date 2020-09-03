@@ -24,6 +24,7 @@ git.properties.json
 infrastructure/.terraform
 /mochawesome-report/
 functional-output
+smoke-output/
 /config/dev.yaml
 .stryker-tmp/
 stryker.log
