@@ -34,7 +34,7 @@
     "test:codecov-upload": "NODE_ENV=test NODE_PATH=. istanbul cover _mocha './test/**/test*.js' -- -R spec && codecov",
     "test:coverage": "NODE_ENV=testing NODE_PATH=. istanbul cover _mocha './test/**/test*.js'",
     "test:mutation": "npm run git-info && NODE_ENV=testing NODE_PATH=. stryker run test/mutation/stryker.conf.js",
-    "sonar-scan": "node_modules/sonar-scanner/bin/sonar-scanner -Dsonar.projectName='pcq-frontend' -Dsonar.sources=app -Dsonar.cpd.exclusions=app/steps/** -Dsonar.exclusions=app/journeys/**,app/assets/**,app/healthcheck.js -Dsonar.language=js -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info",
+    "sonar-scan": "sonar-scanner -Dsonar.projectName='pcq-frontend' -Dsonar.sources=app -Dsonar.cpd.exclusions=app/steps/** -Dsonar.exclusions=app/journeys/**,app/assets/**,app/healthcheck.js -Dsonar.language=js -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info",
     "git-info": "node-git-info-json",
     "//": "The below scripts are just stubs, don't use them in production",
     "stub:pcq-backend": "NODE_PATH=. node test/service-stubs/pcq-backend.js",
@@ -120,8 +120,7 @@
     "selenium-standalone": "^6.17.0",
     "sinon": "^1.17.7",
     "sinon-chai": "^3.3.0",
-    "sonar-scanner": "^3.1.0",
-    "sonarqube-scanner": "^2.6.0",
+    "sonarqube-scanner": "^2.7.0",
     "supertest": "^4.0.2",
     "watch": "^1.0.2",
     "webdriverio": "^4.14.4"

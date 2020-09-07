@@ -6832,12 +6832,7 @@ snapdragon@^0.8.1:
     source-map-resolve "^0.5.0"
     use "^3.1.0"
 
-sonar-scanner@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/sonar-scanner/-/sonar-scanner-3.1.0.tgz#51c1c1101f54b98abc5d8565209b1d9232979343"
-  integrity sha1-UcHBEB9UuYq8XYVlIJsdkjKXk0M=
-
-sonarqube-scanner@^2.6.0:
+sonarqube-scanner@^2.7.0:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/sonarqube-scanner/-/sonarqube-scanner-2.7.0.tgz#41c9ae129e9f80e12853986189278238f0c3f189"
   integrity sha512-7PJUPyTbTlDO6/5ljQnv/zaiLZO8305J1ISvkMfFlt2GToVm63xJLvhiiO2feGeXRhXhdC/bTfQr5PmBE/Km5Q==
