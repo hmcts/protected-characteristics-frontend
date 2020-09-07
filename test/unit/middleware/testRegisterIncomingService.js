@@ -93,7 +93,6 @@ describe('registerIncomingService', () => {
                 }
             };
             const res = {
-                locals: {launchDarkly: {ftValue: {ft_verify_token: true}}},
                 redirect: sinon.spy()
             };
 
