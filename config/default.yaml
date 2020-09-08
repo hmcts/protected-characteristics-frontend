@@ -15,7 +15,6 @@ featureToggles:
     firstName: 'PCQ'
     lastName: 'Frontend'
     key: '3a96565155d056217ec19ac363a5b7a7'
-  ft_verify_token: 'verify-token'
   ft_opt_out: 'opt-out'
   ft_sscs_disability_stage_1: 'sscs-disability-stage-1'
   ft_sscs_disability_stage_2: 'sscs-disability-stage-2'
