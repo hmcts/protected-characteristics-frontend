@@ -140,7 +140,7 @@ describe('registerIncomingService', () => {
 
         it('should redirect to /start-page if the backend is up', (done) => {
             nock('http://localhost:4000')
-                .get('/health')
+                .get('/health/readiness')
                 .reply(
                     200,
                     {'pcq-backend': {'status': 'UP'}}
@@ -184,7 +184,7 @@ describe('registerIncomingService', () => {
 
         it('should redirect to /start-page if the backend is DOWN and backend \'enabled\' is set to false', (done) => {
             nock('http://localhost:4000')
-                .get('/health')
+                .get('/health/readiness')
                 .reply(
                     200,
                     {'pcq-backend': {'actualStatus': 'DOWN'}}

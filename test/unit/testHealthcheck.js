@@ -10,7 +10,7 @@ describe('Healthcheck', () => {
     describe('/health endpoint', () => {
         it('should return the correct params', (done) => {
             nock(config.services.pcqBackend.url)
-                .get('/health')
+                .get('/health/readiness')
                 .reply(
                     200,
                     {'status': 'UP'}

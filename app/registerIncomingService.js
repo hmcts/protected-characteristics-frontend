@@ -21,7 +21,7 @@ router.get('/service-endpoint', (req, res) => {
     };
 
     asyncFetch
-        .fetch('http://localhost:4000/health', {}, fetchRes => fetchRes.json())
+        .fetch('http://localhost:4000/health/readiness', {}, fetchRes => fetchRes.json())
         .then(async json => {
             if ((json['pcq-backend'] && json['pcq-backend'].status === 'UP') || config.services.pcqBackend.enabled === 'false') {
                 registerIncomingService(req);
