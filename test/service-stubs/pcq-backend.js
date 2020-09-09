@@ -12,7 +12,7 @@ const SUBMIT_ANSWERS_URL = config.services.pcqBackend.paths.forms;
 
 app.use(bodyParser.json());
 
-router.get('/health', (req, res) => {
+router.get('/health/readiness', (req, res) => {
     res.contentType('application/json');
     res.status(200);
     res.send({status: 'UP'});
