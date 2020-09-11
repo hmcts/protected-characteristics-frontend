@@ -9,7 +9,7 @@
   "list1-item4": "llywio&#39;r rhan fwyaf o&#39;r wefan gan ddefnyddio meddalwedd adnabod llais",
   "list1-item5": "gwrando ar y rhan fwyaf o&#39;r wefan gan ddefnyddio darllenydd sgrin (gan gynnwys fersiynau diweddaraf JAWS, NVDA a VoiceOver)",
   "paragraph3": "Rydym hefyd wedi sicrhau ein bod wedi defnyddio iaith syml.",
-  "paragraph4": "Gallwch gael cyngor gan <a href=\"{myAbilityLink}\" class=\"govuk-link\" target=\"_blank\" rel=\"external noopener\">AbilityNet</a> ynghylch gwneud eich dyfais yn haws i’w defnyddio os oes gennych anabledd.",
+  "paragraph4": "Gallwch gael cyngor gan <a href=\"{myAbilityLink}\" class=\"govuk-link\" target=\"_blank\" rel=\"external noopener noreferrer\">AbilityNet</a> ynghylch gwneud eich dyfais yn haws i’w defnyddio os oes gennych anabledd.",
 
   "heading2": "Pa mor hygyrch yw&#39;r wefan hon?",
   "paragraph5": "Mae&rsquo;r wefan yn cydymffurfio &acirc; WCAG 2.1 AA ac mae hefyd yn defnyddio fersiwn ddiweddaraf System Dylunio GOV.UK. Rydym hefyd wedi profi&#39;r wefan yn fewnol ac yn allanol i sicrhau ein bod yn cydymffurfio &acirc;&rsquo;r safonau hygyrchedd diweddaraf.",
@@ -22,21 +22,21 @@
   "list2-divorce": "Gwasanaeth Ysgariad: 0300 303 5171",
   "list2-probate": "Gwasanaeth Profiant: 0300 303 0654",
   "list2-sscs": "Apelio i Dribiwnlys Nawdd Cymdeithasol a Chynnal Plant: 0300 303 5170",
-  "paragraph9": "{helpLineHours}<br><a target=\"_blank\" rel=\"external noopener\" href=\"{callChargesLink}\" class=\"govuk-link\">Gwybodaeth am brisiau galwadau</a>",
+  "paragraph9": "{helpLineHours}<br><a target=\"_blank\" rel=\"external noopener noreferrer\" href=\"{callChargesLink}\" class=\"govuk-link\">Gwybodaeth am brisiau galwadau</a>",
   "paragraph10": "Byddwn yn ystyried eich cais ac yn ymateb o fewn 10 diwrnod gwaith.",
 
   "heading4": "Riportio problemau hygyrchedd gyda&#39;r wefan hon",
   "paragraph11": "Rydym wastad yn ceisio gwella hygyrchedd y wefan hon. Os byddwch yn cael unrhyw broblemau nad ydynt wedi&rsquo;u cynnwys ar y dudalen hon, neu&rsquo;n credu nad ydym yn bodloni&rsquo;r gofynion o ran hygyrchedd, cysylltwch &acirc;:",
 
   "heading5": "Y Weithdrefn Orfodi",
-  "paragraph12": "Y Comisiwn Cydraddoldeb a Hawliau Dynol (EHRC) sy&rsquo;n gyfrifol am orfodi Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau a Rhaglenni Symudol) (Rhif 2) 2018 (y &lsquo;rheoliadau hygyrchedd&rsquo;). Os ydych chi&rsquo;n anhapus gyda&rsquo;r ffordd rydym yn ymateb i&rsquo;ch cwyn, <a href=\"{equalityAdvisorLink}\" target=\"_blank\" rel=\"external noopener\" class=\"govuk-link\">cysylltwch &acirc;&rsquo;r Gwasanaeth Cynghori a Chymorth Cydraddoldeb (EASS)</a>.",
+  "paragraph12": "Y Comisiwn Cydraddoldeb a Hawliau Dynol (EHRC) sy&rsquo;n gyfrifol am orfodi Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau a Rhaglenni Symudol) (Rhif 2) 2018 (y &lsquo;rheoliadau hygyrchedd&rsquo;). Os ydych chi&rsquo;n anhapus gyda&rsquo;r ffordd rydym yn ymateb i&rsquo;ch cwyn, <a href=\"{equalityAdvisorLink}\" target=\"_blank\" rel=\"external noopener noreferrer\" class=\"govuk-link\">cysylltwch &acirc;&rsquo;r Gwasanaeth Cynghori a Chymorth Cydraddoldeb (EASS)</a>.",
 
   "heading6": "Cysylltu &acirc; ni dros y ff&ocirc;n",
   "paragraph13": "Rydym yn darparu gwasanaeth cyfnewid negeseuon testun ar gyfer pobl byddar, pobl sydd &acirc; nam ar eu clyw a phobl sydd &acirc; nam ar eu lleferydd.",
 
   "heading7": "Gwybodaeth dechnegol am hygyrchedd y wefan hon",
   "paragraph14": "Mae GLlTEM wedi ymrwymo i sicrhau bod ei wefannau yn hygyrch, a hynny yn unol &acirc; Rheoliadau Hygyrchedd Cyrff y Sector Cyhoeddus (Gwefannau a Rhaglenni Symudol) (Rhif 2) 2018.",
-  "paragraph15": "Mae&rsquo;r wefan hon yn cydymffurfio&rsquo;n llwyr &acirc; <a href=\"{wcag21Link}\" target=\"_blank\" rel=\"external noopener\" class=\"govuk-link\">Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.1</a> safon AA.",
+  "paragraph15": "Mae&rsquo;r wefan hon yn cydymffurfio&rsquo;n llwyr &acirc; <a href=\"{wcag21Link}\" target=\"_blank\" rel=\"external noopener noreferrer\" class=\"govuk-link\">Canllawiau Hygyrchedd Cynnwys Gwe fersiwn 2.1</a> safon AA.",
 
   "heading8": "Paratoi&#39;r datganiad hygyrchedd hwn",
   "paragraph16": "Cafodd y datganiad hwn ei baratoi ar yr 28ain o Fai 2020. Cafodd ei ddiweddaru diwethaf ar yr 28ain o Fai 2020.",
