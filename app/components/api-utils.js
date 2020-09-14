@@ -6,8 +6,8 @@ const fetch = require('node-fetch');
 const HttpsProxyAgent = require('https-proxy-agent');
 const config = require('config');
 
-const buildRequest = (url, fetchOptions) => {
-    return new fetch.Request(url, fetchOptions);
+const buildRequest = (url, options) => {
+    return new fetch.Request(url, options);
 };
 
 const retryOptions = () => {
@@ -17,7 +17,7 @@ const retryOptions = () => {
     };
 };
 
-const asyncFetch = (url, fetchOptions, parseBody) => {
+const asyncFetch = (url, options, parseBody) => {
     const isHealthOrInfo = endsWith(url, 'health') || endsWith(url, 'info');
 
     if (!isHealthOrInfo) {
@@ -25,7 +25,7 @@ const asyncFetch = (url, fetchOptions, parseBody) => {
     }
 
     return new Promise((resolve, reject) => {
-        const asyncReq = buildRequest(url, fetchOptions);
+        const asyncReq = buildRequest(url, options);
         fetch(asyncReq, retryOptions())
             .then(res => {
                 if (!isHealthOrInfo) {
@@ -55,20 +55,20 @@ const asyncFetch = (url, fetchOptions, parseBody) => {
     });
 };
 
-const fetchJson = (url, fetchOptions) => {
-    return asyncFetch(url, fetchOptions, res => res.json())
+const fetchJson = (url, options) => {
+    return asyncFetch(url, options, res => res.json())
         .then(json => json)
         .catch(err => err);
 };
 
-const fetchText = (url, fetchOptions) => {
-    return asyncFetch(url, fetchOptions, res => res.text())
+const fetchText = (url, options) => {
+    return asyncFetch(url, options, res => res.text())
         .then(text => text)
         .catch(err => err);
 };
 
-const fetchBuffer = (url, fetchOptions) => {
-    return asyncFetch(url, fetchOptions, res => res.buffer())
+const fetchBuffer = (url, options) => {
+    return asyncFetch(url, options, res => res.buffer())
         .then(buffer => buffer)
         .catch(err => {
             logger.error(`Error${err}`);

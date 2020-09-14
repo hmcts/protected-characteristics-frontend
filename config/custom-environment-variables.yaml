@@ -38,3 +38,4 @@ utils:
     retryDelay: RETRY_DELAY
 appInsights:
   instrumentationKey: APPINSIGHTS_INSTRUMENTATION_KEY
+testUrl: TEST_URL

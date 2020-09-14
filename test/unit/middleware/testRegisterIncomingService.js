@@ -12,40 +12,37 @@ const {setSession, registerIncomingService} = require('app/middleware/registerIn
 
 describe('registerIncomingService', () => {
     describe('middleware', () => {
-        it('should assign valid incoming query params to the session and redirect to the start page', async () => {
+        it('should assign valid incoming query params to the session and redirect to the start page', () => {
             const req = {
                 query: {
-                    serviceId: 'PROBATE',
-                    actor: 'APPLICANT',
+                    serviceId: 'CMC',
+                    actor: 'CLAIMANT',
                     pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                     ccdCaseId: 1234567890123456,
                     partyId: 'applicant@email.com',
                     returnUrl: 'invoking-service-return-url/',
                     language: 'en',
                     channel: 2,
-                    token: '35c2d8724dd2660d503314e9e641bfec60450b184eaf5ec42703f8cc0a8981e156400899e8923bb878b4b62c64' +
-                        '17de175468ce6e7aab65af57b7ec70139ffe48983550ed3a59e5b0a5b0038327a3c0e142d1d5a429ec97243306af0' +
-                        '38236bf833b544011d7ee38f405c4c9f006bdbb40383fed91dbea3cc668b4c494a9a009e6e669c29e29a6afe79c95' +
-                        'bf2a5367ed0e361ebefbe2ec0f09f122387cdfac4f26e6ef828c704ff0c77e6a47e77269318732daaf8f050eded0e' +
-                        'df86ed7faddc6a6b5c78c109e3a9cdfefd022987e2a859004836663af9d45c7f5ebf525013228e9'
+                    token: '3b74573af3cf7403d07f8f9b58e8fbfae5b41a389469858da85f94caf089a4dd3bdfa79bfd347275329900c54' +
+                        'e06eee027383c3b2cfe5fb0258033e72bd8cc82334d69d2ac2d11208cd825b52b1a9b7769f8aafaa15b9c4d9e433' +
+                        'cb3f49f5b29047a22f48005c37dd9a4e9cba5c11ac95b8b42197c3928a9afd475f5141ed7cd8d56b848b464ea191' +
+                        'af59df6d85156dc63f20baf0bf6dfe064984b6cc98486f362940ee262b48a13086913999fa18116f7270f5e509a3' +
+                        '4b515304f0aeff45e75f23b60cb0053d03b9ed96116815f055855065fcb4dd73ffab1db137e6d30013f'
                 },
                 session: {
                     form: {}
                 }
             };
-            const res = {
-                redirect: sinon.spy()
-            };
 
             setSession(req);
-            await registerIncomingService(req, res);
+            registerIncomingService(req);
 
             expect(req.session).to.deep.equal({
                 returnUrl: 'https://invoking-service-return-url/',
                 language: 'en',
                 form: {
-                    serviceId: 'probate',
-                    actor: 'applicant',
+                    serviceId: 'cmc',
+                    actor: 'claimant',
                     pcqId: '78e69022-2468-4370-a88e-bea2a80fa51f',
                     ccdCaseId: 1234567890123456,
                     partyId: 'applicant@email.com',
@@ -93,7 +90,6 @@ describe('registerIncomingService', () => {
                 }
             };
             const res = {
-                locals: {launchDarkly: {ftValue: {ft_verify_token: true}}},
                 redirect: sinon.spy()
             };
 
