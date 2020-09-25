@@ -1,7 +1,11 @@
 'use strict';
 
 const pathWhitelist = [
-    '/offline', '/invoker', '/invoker/formFiller', '/invoker/genToken'
+    '/offline',
+    // Invoker
+    '/invoker', '/invoker/formFiller', '/invoker/genToken',
+    // Static Pages
+    '/cookies', '/privacy-policy', '/accessibility-statement', '/terms-conditions'
 ];
 
 const validateParams = (req, res, next) => {
