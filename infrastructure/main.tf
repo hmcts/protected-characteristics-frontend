@@ -1,5 +1,5 @@
 provider "azurerm" {
-  version = "1.44.0"
+  features {}
 }
 
 locals {
@@ -14,7 +14,7 @@ data "azurerm_subnet" "core_infra_redis_subnet" {
 }
 
 module "pcq-frontend-redis-cache" {
-  source   = "git@github.com:hmcts/cnp-module-redis?ref=master"
+  source   = "git@github.com:hmcts/cnp-module-redis?ref=azurermv2"
   product     = "${var.product}-${var.component}-redis-cache"
   location = "${var.location}"
   env      = "${var.env}"
