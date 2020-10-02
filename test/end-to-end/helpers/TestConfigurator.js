@@ -17,7 +17,7 @@ class TestConfigurator {
 
     getUserData(pcqid) {
         request({
-            url: `http://pcq-backend-staging.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
+            url: `http://pcq-backend-aat.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
             method: 'GET',
             proxy: this.testProxy,
             headers: {'content-type': 'application/json'},
