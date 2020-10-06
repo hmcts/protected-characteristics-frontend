@@ -187,6 +187,8 @@ class Step {
         delete ctx.sessionID;
         delete ctx.featureToggles;
         delete ctx._csrf;
+        // We delete the optOut flag (if exists) in case the user had opted out but changed their mind.
+        delete formdata.optOut;
         return [ctx, formdata];
     }
 

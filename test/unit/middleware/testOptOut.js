@@ -29,9 +29,6 @@ describe('optOut', () => {
                         startpage: {},
                         dateofbirth: {dob_provided: 0},
                         language: {language_main: 1, english_language_level: null}
-                    },
-                    featureToggles: {
-                        ft_opt_out: true
                     }
                 }
             };
@@ -73,7 +70,7 @@ describe('optOut', () => {
             });
         });
 
-        it('opt-out on - should set the optOut flag and retain the session', (done) => {
+        it('should set the optOut flag and retain the session', (done) => {
             nock('http://localhost:4550')
                 .post('/pcq/backend/submitAnswers', body => {
                     expect(body.optOut).to.equal('Y');
@@ -85,19 +82,9 @@ describe('optOut', () => {
                 );
 
             optOut(req, res).then(() => {
-                expect(req.session.form).to.not.have.property('optOut');
+                expect(req.session.form).to.have.property('optOut');
                 expect(req.session.form.pcqAnswers).to.deep.equal(req.session.form.pcqAnswers);
                 expect(req.session.ctx).to.deep.equal(req.session.ctx);
-                done();
-            });
-        });
-
-        it('opt-out off - should not set the optOut flag and clear the pcq answers and ctx from the session', (done) => {
-            req.session.featureToggles.ft_opt_out = false;
-            optOut(req, res).then(() => {
-                expect(req.session.form).to.not.have.property('optOut');
-                expect(req.session.form.pcqAnswers).to.deep.equal({});
-                expect(req.session.ctx).to.deep.equal({});
                 done();
             });
         });
