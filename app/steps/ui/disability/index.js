@@ -1,11 +1,21 @@
 'use strict';
 
-const ValidationStep = require('app/core/steps/ValidationStep');
+const MultiPartValidationStep = require('app/core/steps/MultiPartValidationStep');
+const DisabilityImplications = require('app/steps/ui/disabilityimplications/index');
+const DisabilityImplicationsAreas = require('app/steps/ui/disabilityimplicationsareas/index');
 
-class ApplicantDisability extends ValidationStep {
+class ApplicantDisability extends MultiPartValidationStep {
 
     static getUrl() {
         return '/disability';
+    }
+
+    childSteps() {
+        return [DisabilityImplications, DisabilityImplicationsAreas];
+    }
+
+    deleteChildFields(ctx) {
+        return ctx.disability_conditions !== 1;
     }
 
     get requiredFields() {

@@ -42,4 +42,111 @@ describe('ApplicantDisability', () => {
             done();
         });
     });
+
+    describe('formdata', () => {
+        it('should delete implications and implicationsareas formdata if set to', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'disability_impact': 1,
+                    'disability_other_details': 'qweqweqew',
+                    'disability_vision': 1,
+                    'disability_hearing': 1,
+                    'disability_mobility': 1,
+                    'disability_dexterity': 0,
+                    'disability_learning': 0,
+                    'disability_memory': 0,
+                    'disability_mental_health': 0,
+                    'disability_stamina': 0,
+                    'disability_social': 0,
+                    'disability_other': 1,
+                    'disability_none': 0
+                }
+            };
+            let ctx = {
+                'disability_conditions': 2
+            };
+            [ctx, formdata] = ApplicantDisability.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({});
+            done();
+        });
+
+        it('should delete implicationsareas formdata if set to', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'disability_other_details': 'qweqweqew',
+                    'disability_vision': 1,
+                    'disability_hearing': 1,
+                    'disability_mobility': 1,
+                    'disability_dexterity': 0,
+                    'disability_learning': 0,
+                    'disability_memory': 0,
+                    'disability_mental_health': 0,
+                    'disability_stamina': 0,
+                    'disability_social': 0,
+                    'disability_other': 1,
+                    'disability_none': 0
+                }
+            };
+            let ctx = {
+                'disability_conditions': 0
+            };
+            [ctx, formdata] = ApplicantDisability.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({});
+            done();
+        });
+
+        it('should delete implications formdata if set to', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'disability_impact': 2,
+                }
+            };
+            let ctx = {
+                'disability_conditions': 2
+            };
+            [ctx, formdata] = ApplicantDisability.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({});
+            done();
+        });
+
+        it('should not delete implications and implicationsareas formdata if not set', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'disability_impact': 1,
+                    'disability_other_details': 'qweqweqew',
+                    'disability_vision': 1,
+                    'disability_hearing': 1,
+                    'disability_mobility': 1,
+                    'disability_dexterity': 0,
+                    'disability_learning': 0,
+                    'disability_memory': 0,
+                    'disability_mental_health': 0,
+                    'disability_stamina': 0,
+                    'disability_social': 0,
+                    'disability_other': 1,
+                    'disability_none': 0
+                }
+            };
+            let ctx = {
+                'disability_conditions': 1
+            };
+            [ctx, formdata] = ApplicantDisability.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({
+                'disability_impact': 1,
+                'disability_other_details': 'qweqweqew',
+                'disability_vision': 1,
+                'disability_hearing': 1,
+                'disability_mobility': 1,
+                'disability_dexterity': 0,
+                'disability_learning': 0,
+                'disability_memory': 0,
+                'disability_mental_health': 0,
+                'disability_stamina': 0,
+                'disability_social': 0,
+                'disability_other': 1,
+                'disability_none': 0
+            });
+            done();
+        });
+    });
 });
