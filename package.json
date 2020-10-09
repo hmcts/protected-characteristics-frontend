@@ -33,7 +33,7 @@
     "test:fullfunctional": "NODE_PATH=. node ./node_modules/codeceptjs/bin/codecept.js run -c ./test/end-to-end/ --steps --reporter mocha-multi",
     "sonar-scan": "sonar-scanner -Dsonar.projectName='pcq-frontend' -Dsonar.sources=app -Dsonar.cpd.exclusions=app/steps/** -Dsonar.exclusions=app/journeys/**,app/assets/**,app/healthcheck.js -Dsonar.language=js -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info",
     "git-info": "node-git-info-json",
-    "//": "The below scripts are just stubs, don't use them in production",
+    "//": "The below scripts are just stubs, don't use them in production.",
     "stub:pcq-backend": "NODE_PATH=. node test/service-stubs/pcq-backend.js",
     "stub:feature-toggles": "NODE_PATH=. node test/service-stubs/feature-toggles.js"
   },
