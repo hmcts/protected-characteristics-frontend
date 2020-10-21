@@ -16,8 +16,8 @@ class FormatUrl {
         return `${config.frontendPublicHttpProtocol.toLowerCase()}://${req.get('host')}`;
     }
 
-    static getCleanPageUrl(url, index) {
-        return '/' + url.split('?')[0].split('/')[index];
+    static getCleanPageUrl(pageUrl, index) {
+        return '/' + pageUrl.split('?')[0].split('/')[index];
     }
 }
 

@@ -36,9 +36,9 @@ class Step {
         return [];
     }
 
-    constructor(steps, section = null, resourcePath, i18next, schema, language = 'en') {
+    constructor(steps, section, resourcePath, i18next, schema, language = 'en') {
         this.steps = steps;
-        this.section = section;
+        this.section = section || null;
         this.resourcePath = resourcePath;
         this.templatePath = `ui/${resourcePath}`;
         this.content = require(`app/resources/${language}/translation/${resourcePath}`);
