@@ -5,10 +5,57 @@ const sinon = require('sinon');
 const chai = require('chai');
 const expect = chai.expect;
 const sinonChai = require('sinon-chai');
+const initSteps = require('app/core/initSteps');
+const steps = initSteps([`${__dirname}/../../../app/steps/ui`], 'en');
+const journey = require('app/journeys/default');
 
 chai.use(sinonChai);
 
 describe('OptionGetRunner', () => {
+    it('Test GET redirect', () => {
+        const step = steps.StartPage;
+        const req = {
+            params: ['redirect'],
+            session: {
+                ctx: {StartPage: {}},
+                journey: journey
+            },
+            sessionID: '123'
+        };
+
+        const res = {redirect: sinon.spy()};
+
+        const runner = new OptionGetRunner();
+        runner.handleGet(step, req, res);
+
+        expect(res.redirect.calledOnce).to.equal(true);
+        expect(res.redirect.args[0][0]).to.equal('/date-of-birth');
+    });
+
+    it('Test GET', async () => {
+        const step = steps.StartPage;
+        const req = {
+            params: ['no-redirect'],
+            session: {
+                ctx: {StartPage: {}},
+                journey: journey,
+                language: 'en',
+                back: {push: () => 0}
+            },
+            query: {source: ''},
+            sessionID: '123'
+        };
+
+        const res = {
+            render: sinon.spy()
+        };
+
+        const runner = new OptionGetRunner();
+        await runner.handleGet(step, req, res);
+
+        expect(res.render.calledOnce).to.equal(true);
+    });
+
     it('Test POST', () => {
         const step = {name: 'test'};
 
