@@ -1,11 +1,20 @@
 'use strict';
 
-const ValidationStep = require('app/core/steps/ValidationStep');
+const MultiPartValidationStep = require('app/core/steps/MultiPartValidationStep');
+const ApplicantEnglishLevel = require('app/steps/ui/englishlevel/index');
 
-class ApplicantLanguage extends ValidationStep {
+class ApplicantLanguage extends MultiPartValidationStep {
 
     static getUrl() {
         return '/language';
+    }
+
+    childSteps() {
+        return [ApplicantEnglishLevel];
+    }
+
+    deleteChildFields(ctx) {
+        return ctx.language_main !== 2;
     }
 
     get requiredFields() {
@@ -13,11 +22,8 @@ class ApplicantLanguage extends ValidationStep {
     }
 
     action(ctx, formdata) {
-        if (ctx.language_main !== 2) {
-            ctx.english_language_level = null;
-            if (ctx.language_other) {
-                delete ctx.language_other;
-            }
+        if (ctx.language_main !== 2 && ctx.language_other) {
+            delete ctx.language_other;
         }
         return super.action(ctx, formdata);
     }

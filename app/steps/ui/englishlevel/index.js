@@ -1,15 +1,19 @@
 'use strict';
 
-const ValidationStep = require('app/core/steps/ValidationStep');
+const MultiPartValidationStep = require('app/core/steps/MultiPartValidationStep');
 
-class ApplicantEnglishLevel extends ValidationStep {
+class ApplicantEnglishLevel extends MultiPartValidationStep {
 
     static getUrl() {
         return '/english-level';
     }
 
-    get requiredFields() {
+    static fields() {
         return ['english_language_level'];
+    }
+
+    get requiredFields() {
+        return ApplicantEnglishLevel.fields();
     }
 }
 
