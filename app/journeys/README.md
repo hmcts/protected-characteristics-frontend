@@ -13,14 +13,14 @@ Keys with an object as its value represent the various options that can be chose
 
 As an example, if your service asks the user their date of birth and so asking it here is irrelevant, then you may want to remove the 'dateofbirth' step.
 The default journey looks like this:
-```$json
+```
 StartPage: 'ApplicantDateOfBirth',
 ApplicantDateOfBirth: 'ApplicantLanguage',
 ApplicantLanguage: {...}
 ```
 To remove the date of birth step, simply remove the `ApplicantDateOfBirth` line and set the value of `StartPage` to `ApplicantLanguage`.
 Here you're just saying, instead of directing me to the date of birth page, skip that and send me to the language question.
-```$json
+```
 StartPage: 'ApplicantLanguage',
 ApplicantLanguage: {...}
 ```

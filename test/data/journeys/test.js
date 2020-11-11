@@ -45,7 +45,9 @@ const toggledQuestions = [
     {stepName: 'ApplicantSexualOrientation', ftKey: 'ft_disabled', nextStepName: 'ApplicantEthnicGroup'}
 ];
 
-module.exports = {
-    stepList,
-    toggledQuestions
+module.exports = () => {
+    return {
+        stepList,
+        toggledQuestions
+    };
 };
