@@ -8,9 +8,10 @@ const getBaseJourney = name => {
 
 const setJourney = async (req, res) => {
     const journeyName = req.session.form ? req.session.form.serviceId || 'DEFAULT' : 'DEFAULT';
+    const actor = req.session.form ? req.session.form.actor || '' : '';
 
     try {
-        const journey = getBaseJourney(journeyName);
+        const journey = getBaseJourney(journeyName)(actor.toLowerCase());
 
         if (journey.toggledQuestions) {
             journey.skipList = await processToggledQuestions(journey.toggledQuestions, req, res);
@@ -18,7 +19,8 @@ const setJourney = async (req, res) => {
 
         req.session.journey = journey;
     } catch (err) {
-        req.session.journey = require('app/journeys/default');
+        logger(req.session.sessionId).error(err);
+        req.session.journey = require('app/journeys/default')();
     }
 
     return req.session.journey;
