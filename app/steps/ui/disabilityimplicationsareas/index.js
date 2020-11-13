@@ -1,6 +1,6 @@
 'use strict';
 
-const ValidationStep = require('app/core/steps/ValidationStep');
+const MultiPartValidationStep = require('app/core/steps/MultiPartValidationStep');
 
 const CHECKBOX_FIELDS = [
     'disability_vision',
@@ -16,10 +16,14 @@ const CHECKBOX_FIELDS = [
     'disability_none'
 ];
 
-class ApplicantDisabilityImplicationAreas extends ValidationStep {
+class ApplicantDisabilityImplicationAreas extends MultiPartValidationStep {
 
     static getUrl() {
         return '/disability-implications-areas';
+    }
+
+    static fields() {
+        return [...CHECKBOX_FIELDS, 'disability_other_details'];
     }
 
     getContextData(req, res, featureToggles) {

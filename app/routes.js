@@ -9,7 +9,6 @@ const initSession = require('app/middleware/initSession');
 const registerIncomingService = require('app/registerIncomingService');
 const validateParams = require('app/middleware/validateParams');
 const optOut = require('app/middleware/optOut');
-const featureToggle = new (require('app/utils/FeatureToggle'))();
 
 router.use(initSession);
 router.use(registerIncomingService);
@@ -28,7 +27,6 @@ router.get('/', (req, res) => {
     res.redirect(`${config.app.basePath}/start-page`);
 });
 
-router.post('/opt-out', (req, res, next) => featureToggle.callCheckToggle(req, res, next, 'ft_opt_out', featureToggle.toggleFeature));
 router.post('/opt-out', optOut);
 
 router.use((req, res, next) => {
