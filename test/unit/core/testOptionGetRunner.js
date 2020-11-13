@@ -18,7 +18,7 @@ describe('OptionGetRunner', () => {
             params: ['redirect'],
             session: {
                 ctx: {StartPage: {}},
-                journey: journey
+                journey: journey()
             },
             sessionID: '123'
         };
@@ -38,7 +38,7 @@ describe('OptionGetRunner', () => {
             params: ['no-redirect'],
             session: {
                 ctx: {StartPage: {}},
-                journey: journey,
+                journey: journey(),
                 language: 'en',
                 back: {push: () => 0}
             },
