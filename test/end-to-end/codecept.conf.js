@@ -4,8 +4,8 @@ exports.config = {
     helpers: {
         Puppeteer: {
             url: CONF.testUrl,
-            waitForTimeout: CONF.saucelabs.waitForTimeout,
-            waitForAction: CONF.saucelabs.smartWait,
+            waitForTimeout: 10000,
+            waitForAction: 5000,
             waitForNavigation: 'load',
             show: false,
             headless: false,
