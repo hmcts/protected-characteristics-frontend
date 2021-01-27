@@ -6,7 +6,6 @@ exports.config = {
             url: CONF.testUrl,
             waitForTimeout: 10000,
             waitForAction: 5000,
-            waitForNavigation: 'load',
             show: false,
             headless: false,
             chrome: {
