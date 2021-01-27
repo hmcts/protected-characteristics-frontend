@@ -6,7 +6,7 @@ const TestConfigurator = new (require('test/end-to-end/helpers/TestConfigurator'
 const pcqId = TestConfigurator.setPcqId();
 Before((test) => {
     // perform your code
-    test.retries(3); // retry test 3 times
+    test.retries(5); // retry test 5 times
 });
 Given('I am a probate Citizen user', () => {
     //To:Do : Probate team
