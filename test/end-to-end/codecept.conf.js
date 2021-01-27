@@ -5,7 +5,6 @@ exports.config = {
         Puppeteer: {
             url: CONF.testUrl,
             waitForTimeout: 10000,
-            waitForAction: 5000,
             show: false,
             headless: false,
             chrome: {
