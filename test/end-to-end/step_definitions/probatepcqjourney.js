@@ -31,7 +31,10 @@ When('I submit all pcq questions', () => {
     I.selectenglishethnicgroup();
     I.selectchristianreligion();
     I.selectyesdisability();
+    I.selectyeslimitedalot();
+    I.selectdisabilityimplicationsareas();
     I.selectyespregnant();
+    I.wait(2);
     I.see('You have answered the equality questions');
 });
 
@@ -52,6 +55,7 @@ When('I submit No for all pcq questions', () => {
     I.selectotherreligion();
     I.selectnodisability();
     I.selectnopregnant();
+    I.wait(2);
     I.see('You have answered the equality questions');
 });
 
@@ -67,6 +71,7 @@ When('I submit prefer not to say for all pcq questions', () => {
     I.selectreligionprefernottosay();
     I.disabilityprefernottosay();
     I.selectpregnantprefernottosay();
+    I.wait(2);
     I.see('You have answered the equality questions');
 });
 
