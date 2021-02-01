@@ -36,7 +36,11 @@ const setupConfig = {
             services: ['sauce'],
             user: process.env.SAUCE_USERNAME,
             key: process.env.SAUCE_ACCESS_KEY,
-            desiredCapabilities: {}
+            desiredCapabilities: {
+                'sauce:options': {
+                    name: 'CodeceptJS e2e test'
+                }
+            }
         },
         SauceLabsReportingHelper: {
             require: './helpers/SauceLabsReportingHelper.js'

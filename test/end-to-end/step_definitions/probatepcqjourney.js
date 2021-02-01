@@ -6,7 +6,7 @@ const TestConfigurator = new (require('test/end-to-end/helpers/TestConfigurator'
 const pcqId = TestConfigurator.setPcqId();
 Before((test) => {
     // perform your code
-    test.retries(3); // retry test 3 times
+    test.retries(10); // retry test 10 times
 });
 Given('I am a probate Citizen user', () => {
     //To:Do : Probate team
@@ -31,7 +31,10 @@ When('I submit all pcq questions', () => {
     I.selectenglishethnicgroup();
     I.selectchristianreligion();
     I.selectyesdisability();
+    I.selectyeslimitedalot();
+    I.selectdisabilityimplicationsareas();
     I.selectyespregnant();
+    I.wait(3);
     I.see('You have answered the equality questions');
 });
 
@@ -52,6 +55,7 @@ When('I submit No for all pcq questions', () => {
     I.selectotherreligion();
     I.selectnodisability();
     I.selectnopregnant();
+    I.wait(3);
     I.see('You have answered the equality questions');
 });
 
@@ -67,6 +71,7 @@ When('I submit prefer not to say for all pcq questions', () => {
     I.selectreligionprefernottosay();
     I.disabilityprefernottosay();
     I.selectpregnantprefernottosay();
+    I.wait(3);
     I.see('You have answered the equality questions');
 });
 
