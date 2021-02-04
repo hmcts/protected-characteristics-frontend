@@ -58,7 +58,7 @@
     "express": "^4.17.1",
     "express-session": "^1.16.2",
     "express-urlrewrite": "^1.2.0",
-    "govuk-frontend": "^3.5.0",
+    "govuk-frontend": "^3.10.2",
     "helmet": "^3.22.0",
     "https-proxy-agent": "^2.2.4",
     "i18next": "^17.0.11",
