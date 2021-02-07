@@ -326,5 +326,9 @@
   "30003_Integer Overflow Error_https://pcq.aat.platform.hmcts.net/terms-conditions?lng=en_GET": "ignore",
   "30003_Integer Overflow Error_https://pcq.aat.platform.hmcts.net/cookies?lng=cy_GET": "ignore",
   "30003_Integer Overflow Error_https://pcq.aat.platform.hmcts.net/offline?lng=en_GET": "ignore",
-  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/privacy-policy?lng=privacy-policy_GET": "ignore"
+  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/privacy-policy?lng=privacy-policy_GET": "ignore",
+  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/accessibility-statement?lng=accessibility-statement_GET": "ignore",
+  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/terms-conditions?lng=terms-conditions_GET": "ignore",
+  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/cookies?lng=cookies_GET": "ignore",
+  "6_Path Traversal_https://pcq.aat.platform.hmcts.net/offline?lng=offline_GET": "ignore"
 }
