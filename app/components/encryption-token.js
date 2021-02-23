@@ -4,10 +4,12 @@ const crypto = require('crypto');
 const config = require('config');
 const logger = require('app/components/logger')('Init');
 
-const algorithm = 'aes-256-cbc';
+const algorithmAesGcm256 = 'aes-256-gcm';
+const algorithmAesCbc256 = 'aes-256-cbc';
 const iv = Buffer.alloc(16, 0); // Initialization vector
 
-const generateToken = (params) => {
+const generateToken = (params, algorithm) => {
+    algorithm = algorithm || algorithmAesGcm256;
     const serviceId = params.serviceId;
     const tokenKey = config.tokenKeys[(serviceId || '').toLowerCase()];
 
@@ -27,6 +29,7 @@ const generateToken = (params) => {
     }
 
     return encrypted;
+
 };
 
 const verifyToken = (reqQuery) => {
@@ -40,7 +43,14 @@ const verifyToken = (reqQuery) => {
         if (verified) {
             logger.info('Token successfully verified.');
         } else {
-            logError('Tokens mismatched.');
+            const myTokenLegacy = generateToken(params, algorithmAesCbc256);
+            verified = myTokenLegacy === token;
+
+            if (verified) {
+                logger.info('Legacy token successfully verified.');
+            } else {
+                logError('Tokens mismatched.');
+            }
         }
     } else {
         logError('Token is missing from the query string.');
