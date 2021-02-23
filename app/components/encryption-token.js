@@ -4,11 +4,12 @@ const crypto = require('crypto');
 const config = require('config');
 const logger = require('app/components/logger')('Init');
 
-const algorithm = 'aes-256-gcm';
-const algorithmLegacy = 'aes-256-cbc';
+const algorithmAesGcm256 = 'aes-256-gcm';
+const algorithmAesCbc256 = 'aes-256-cbc';
 const iv = Buffer.alloc(16, 0); // Initialization vector
 
-const generateToken = (params) => {
+const generateToken = (params, algorithm) => {
+    algorithm = algorithm || algorithmAesGcm256;
     const serviceId = params.serviceId;
     const tokenKey = config.tokenKeys[(serviceId || '').toLowerCase()];
 
@@ -28,28 +29,7 @@ const generateToken = (params) => {
     }
 
     return encrypted;
-};
 
-const generateLegacyToken = (params) => {
-    const serviceId = params.serviceId;
-    const tokenKey = config.tokenKeys[(serviceId || '').toLowerCase()];
-
-    let encrypted = '';
-
-    if (!params.serviceId) {
-        logError('serviceId is missing from the incoming parameters.');
-    } else if (!tokenKey) {
-        logError(`Token key is missing for service id: ${serviceId}`);
-    } else {
-        logger.info(`Using ${tokenKey === 'SERVICE_TOKEN_KEY' ? 'local' : 'Azure KV'} secret for service token key`);
-        const key = crypto.scryptSync(tokenKey, 'salt', 32);
-        const strParams = JSON.stringify(params);
-        const cipher = crypto.createCipheriv(algorithmLegacy, key, iv);
-        encrypted = cipher.update(strParams, 'utf8', 'hex');
-        encrypted += cipher.final('hex');
-    }
-
-    return encrypted;
 };
 
 const verifyToken = (reqQuery) => {
@@ -63,7 +43,7 @@ const verifyToken = (reqQuery) => {
         if (verified) {
             logger.info('Token successfully verified.');
         } else {
-            const myTokenLegacy = generateLegacyToken(params);
+            const myTokenLegacy = generateToken(params, algorithmAesCbc256);
             verified = myTokenLegacy === token;
 
             if (verified) {
