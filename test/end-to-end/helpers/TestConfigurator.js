@@ -9,17 +9,12 @@ const assert = require('chai').assert;
 class TestConfigurator {
     constructor() {
         console.log(`Running tests against URL: ${CONF.testUrl}`);
-
-        this.testBaseUrl = testConfig.TestGetUserUrl;
-        this.testProxy = testConfig.TestProxy;
-        this.testUseProxy = testConfig.TestUseProxy;
     }
 
     getUserData(pcqid) {
         request({
-            url: `http://pcq-backend-staging.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
+            url: `http://pcq-backend-aat.service.core-compute-aat.internal/pcq/backend/getAnswer/${pcqid}`,
             method: 'GET',
-            proxy: this.testProxy,
             headers: {'content-type': 'application/json'},
             // eslint-disable-next-line no-unused-vars
         },
@@ -36,10 +31,6 @@ class TestConfigurator {
                 assert.equal(userData.versionNo, testConfig.TestVerison);
             }
         });
-    }
-
-    getProxy() {
-        return this.testProxy;
     }
 
     setPcqId() {

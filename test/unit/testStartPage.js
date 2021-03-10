@@ -57,6 +57,14 @@ describe('StartPage', () => {
             [ctx, formdata] = StartPage.action(ctx, formdata);
             expect(ctx).to.deep.equal({});
         });
+        it('removes the optOut flag from formdata if present', () => {
+            let formdata = {
+                optOut: 'Y'
+            };
+            let ctx = {};
+            [ctx, formdata] = StartPage.action(ctx, formdata);
+            expect(formdata).to.deep.equal({});
+        });
     });
 
     describe('generateContent()', () => {

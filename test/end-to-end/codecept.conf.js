@@ -4,6 +4,7 @@ exports.config = {
     helpers: {
         Puppeteer: {
             url: CONF.testUrl,
+            waitForTimeout: 10000,
             show: false,
             headless: false,
             chrome: {

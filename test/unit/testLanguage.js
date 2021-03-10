@@ -64,8 +64,39 @@ describe('ApplicantLanguage', () => {
             };
             [ctx, formdata] = ApplicantLanguage.action(ctx, formdata);
             expect(ctx).to.deep.equal({
-                language_main: 1,
-                english_language_level: null
+                language_main: 1
+            });
+            done();
+        });
+    });
+
+    describe('formdata', () => {
+        it('should delete child steps formdata if set to', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'english_language_level': 1
+                }
+            };
+            let ctx = {
+                'language_main': 1
+            };
+            [ctx, formdata] = ApplicantLanguage.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({});
+            done();
+        });
+
+        it('should not delete child steps formdata if not set', (done) => {
+            let formdata = {
+                pcqAnswers: {
+                    'english_language_level': 1
+                }
+            };
+            let ctx = {
+                'language_main': 2
+            };
+            [ctx, formdata] = ApplicantLanguage.action(ctx, formdata);
+            expect(formdata.pcqAnswers).to.deep.equal({
+                'english_language_level': 1
             });
             done();
         });

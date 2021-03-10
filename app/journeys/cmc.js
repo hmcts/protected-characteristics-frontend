@@ -1,7 +1,8 @@
 'use strict';
 
 const stepList = {
-    StartPage: 'ApplicantLanguage',
+    StartPage: 'ApplicantDateOfBirth',
+    ApplicantDateOfBirth: 'ApplicantLanguage',
     ApplicantLanguage: {
         otherLanguage: 'ApplicantEnglishLevel',
         otherwise: 'ApplicantSex'
@@ -37,4 +38,6 @@ const stepList = {
     ApplicantPregnant: 'EndPage'
 };
 
-module.exports.stepList = stepList;
+module.exports = () => {
+    return {stepList};
+};
