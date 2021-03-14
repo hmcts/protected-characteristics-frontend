@@ -3392,6 +3392,11 @@ hosted-git-info@^2.1.4:
   resolved "https://registry.yarnpkg.com/hosted-git-info/-/hosted-git-info-2.8.8.tgz#7539bd4bc1e0e0a895815a2e0262420b12858488"
   integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
 
+hpkp@2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/hpkp/-/hpkp-2.0.1.tgz#9422bc8671073e907c0557eceb101378547b0ce6"
+  integrity sha512-viDpriUy1l/pQWTFhFE8DCnn61sYLI7598tVrFsaDoYVPj6k0B3eeEWfsiuMKiJS5XrO0BghDtDGep/2ZkjGmg==
+
 html_codesniffer@^2.4.1:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/html_codesniffer/-/html_codesniffer-2.5.1.tgz#d76d124b8f5cd0e58b3c1b142fd095a40573ea28"
