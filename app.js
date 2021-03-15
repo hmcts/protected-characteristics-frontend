@@ -26,8 +26,6 @@ const uuid = uuidv4();
 const sanitizeRequestBody = require('app/middleware/sanitizeRequestBody');
 const isEmpty = require('lodash').isEmpty;
 const invoker = require('app/middleware/invoker');
-const hpkp = require('hpkp');
-const nocache = require('nocache');
 
 exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     const app = express();
@@ -114,7 +112,7 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     }));
 
     // Http public key pinning
-    app.use(hpkp({
+    app.use(helmet.hpkp({
         maxAge: 900,
         sha256s: ['AbCdEf123=', 'XyzABC123=']
     }));
@@ -124,7 +122,7 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
         policy: 'origin'
     }));
 
-    app.use(nocache());
+    app.use(helmet.noCache());
 
     app.use(helmet.xssFilter({setOnOldIE: true}));
 
