@@ -92,7 +92,7 @@
     "allure-commandline": "^2.13.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "codeceptjs": "^2.5.0",
+    "codeceptjs": "^3.0.5",
     "codecov": "^4.0.0-0",
     "eslint": "^6.8.0",
     "eslint-plugin-mocha": "^6.0.0",
@@ -115,11 +115,12 @@
     "sonarqube-scanner": "^2.8.0",
     "supertest": "^4.0.2",
     "watch": "^1.0.2",
-    "webdriverio": "^4.14.4"
+    "webdriverio": "^7.2.3"
   },
   "resolutions": {
     "ini": "^1.3.8",
     "minimist": "^1.2.5",
-    "axios": "^0.21.1"
+    "axios": "^0.21.1",
+    "y18n": "^3.2.2"
   }
 }
