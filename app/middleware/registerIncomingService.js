@@ -17,6 +17,16 @@ const pcqParameters = [
     {name: 'language', required: false}
 ];
 
+const pcqLiteParameters = [
+    {name: 'serviceId', required: true},
+    {name: 'actor', required: true},
+    {name: 'pcqId', required: false},
+    {name: 'ccdCaseId', required: false},
+    {name: 'partyId', required: false},
+    {name: 'returnUrl', required: false},
+    {name: 'language', required: false}
+];
+
 const setSession = req => {
     const session = req.session;
     const form = session.form;
@@ -52,12 +62,21 @@ const setSession = req => {
 const validateParameters = req => {
     const missingRequiredParams = [];
 
-    pcqParameters.forEach(param => {
+    if (isPcqLite(req.query.serviceId)) {
+        pcqLiteParameters.forEach(param => {
+            // If a required parameter is missing
+            if (param.required && !req.query[param.name]) {
+                missingRequiredParams.push(param.name);
+            }
+        });
+    } else {
+        pcqParameters.forEach(param => {
         // If a required parameter is missing
-        if (param.required && !req.query[param.name]) {
-            missingRequiredParams.push(param.name);
-        }
-    });
+            if (param.required && !req.query[param.name]) {
+                missingRequiredParams.push(param.name);
+            }
+        });
+    }
 
     if (missingRequiredParams.length > 0) {
         logger.error('Missing required parameters: ' + missingRequiredParams.join(', '));
@@ -67,6 +86,7 @@ const validateParameters = req => {
         logger.info('Parameters verified successfully.');
         req.session.validParameters = true;
         // Create the JWT Token after the required parameters have been set.
+        // ** this needs to be commented out for PCQLite to work without needing PartyID
         auth.createToken(req, req.session.form.partyId);
     }
 };
@@ -74,6 +94,16 @@ const validateParameters = req => {
 const validatedService = (serviceId) => {
     return Boolean(serviceId &&
         registeredServices.map(s => s.serviceId.toLowerCase()).includes(serviceId.toLowerCase()));
+};
+
+const isPcqLite = (req_serviceId) => {
+    let isPcqLite = false;
+    registeredServices.map(s => s).forEach(service => {
+        if ((service.serviceId.toLowerCase()).includes(req_serviceId.toLowerCase())) {
+            isPcqLite = (service.pcqLite);
+        }
+    });
+    return isPcqLite;
 };
 
 const registerIncomingService = (req) => {

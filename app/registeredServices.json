@@ -7,7 +7,8 @@
     "redirectLinks": {
       "probate": "https://www.apply-for-probate.service.gov.uk/dashboard",
       "caveats": "https://www.apply-for-probate.service.gov.uk/caveats/dashboard"
-    }
+    },
+    "pcqLite" : true
   },
   {
     "serviceId": "CMC",
@@ -18,7 +19,8 @@
     "redirectLinks": {
       "cmc_claimant": "https://www.moneyclaims.service.gov.uk/dashboard",
       "cmc_defendant": "https://www.moneyclaims.service.gov.uk/dashboard"
-    }
+    },
+    "pcqLite" : false
   },
   {
     "serviceId": "DIVORCE",
@@ -30,7 +32,8 @@
     "redirectLinks": {
       "divorce_petitioner": "https://www.apply-divorce.service.gov.uk",
       "divorce_respondent": "https://www.respond-divorce.service.gov.uk"
-    }
+    },
+    "pcqLite" : false
   },
   {
     "serviceId": "SSCS",
@@ -39,6 +42,7 @@
     ],
     "redirectLinks": {
       "sscs": "https://www.gov.uk/appeal-benefit-decision/submit-appeal"
-    }
+    },
+    "pcqLite" : false
   }
 ]

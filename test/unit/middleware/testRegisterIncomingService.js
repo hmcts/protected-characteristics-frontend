@@ -131,6 +131,30 @@ describe('registerIncomingService', () => {
             expect(req.session).to.not.have.property('token');
             expect(req.session).to.not.have.property('validParameters');
         });
+
+        it('should require only serviceID and actor when PCQLite is true', () => {
+            const req = {
+                query: {
+                    serviceId: 'PROBATE',
+                    actor: 'APPLICANT'
+                },
+                session: {
+                    form: {}
+                }
+            };
+
+            setSession(req);
+            registerIncomingService(req);
+
+            expect(req.session).to.deep.equal({
+                form: {
+                    serviceId: 'probate',
+                    actor: 'applicant',
+                    'channel': 1
+                }
+            });
+        });
+
     });
     describe('route', () => {
 
