@@ -20,7 +20,7 @@ const pcqParameters = [
 const pcqLiteParameters = [
     {name: 'serviceId', required: true},
     {name: 'actor', required: true},
-    {name: 'pcqId', required: false},
+    {name: 'pcqId', required: true},
     {name: 'ccdCaseId', required: false},
     {name: 'partyId', required: false},
     {name: 'returnUrl', required: false},
@@ -86,8 +86,10 @@ const validateParameters = req => {
         logger.info('Parameters verified successfully.');
         req.session.validParameters = true;
         // Create the JWT Token after the required parameters have been set.
-        // ** this needs to be commented out for PCQLite to work without needing PartyID
-        auth.createToken(req, req.session.form.partyId);
+        // Ignored for PCQLite as PartyID is absent.
+        if (!isPcqLite(req.query.serviceId)) {
+            auth.createToken(req, req.session.form.partyId);
+        }
     }
 };
 
@@ -108,7 +110,7 @@ const isPcqLite = (req_serviceId) => {
 
 const registerIncomingService = (req) => {
     logger.info(req.query);
-    if (verifyToken(req.query)) {
+    if (isPcqLite(req.query.serviceId) || verifyToken(req.query)) {
         validateParameters(req);
     }
 };
