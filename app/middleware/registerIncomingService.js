@@ -101,7 +101,8 @@ const validatedService = (serviceId) => {
 const isPcqLite = (req_serviceId) => {
     let isPcqLite = false;
     registeredServices.map(s => s).forEach(service => {
-        if ((service.serviceId.toLowerCase()).includes(req_serviceId.toLowerCase())) {
+        if ((typeof req_serviceId !== 'undefined' && req_serviceId)
+            && (service.serviceId.toLowerCase()).includes(req_serviceId.toLowerCase())) {
             isPcqLite = (service.pcqLite);
         }
     });
