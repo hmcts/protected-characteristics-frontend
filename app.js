@@ -252,6 +252,7 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
     if (['development', 'testing'].includes(config.nodeEnvironment)) {
         const sslDirectory = path.join(__dirname, 'app', 'resources', 'localhost-ssl');
         const sslOptions = {
+            secureProtocol: 'TLSv1_2_method',
             key: fs.readFileSync(path.join(sslDirectory, 'localhost.key')),
             cert: fs.readFileSync(path.join(sslDirectory, 'localhost.crt'))
         };
