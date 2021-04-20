@@ -19,7 +19,6 @@ RUN yarn install \
     && rm -rf /opt/app/.git
 
 # ---- Runtime image ----
-USER hmcts
 FROM base as runtime
 COPY --from=build ${WORKDIR}/app app/
 COPY --from=build ${WORKDIR}/config config/
