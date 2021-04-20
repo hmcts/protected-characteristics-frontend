@@ -253,7 +253,6 @@ exports.init = function (isA11yTest = false, a11yTestSession = {}, ftValue) {
         const sslDirectory = path.join(__dirname, 'app', 'resources', 'localhost-ssl');
         const sslOptions = {
             minVersion: 'TLSv1.2',
-            maxVersion: 'TLSv1.2',
             key: fs.readFileSync(path.join(sslDirectory, 'localhost.key')),
             cert: fs.readFileSync(path.join(sslDirectory, 'localhost.crt'))
         };
