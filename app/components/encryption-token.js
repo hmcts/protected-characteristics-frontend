@@ -23,6 +23,9 @@ const generateToken = (params, algorithm) => {
         logger.info(`Using ${tokenKey === 'SERVICE_TOKEN_KEY' ? 'local' : 'Azure KV'} secret for service token key`);
         const key = crypto.scryptSync(tokenKey, 'salt', 32);
         const strParams = JSON.stringify(params);
+
+        logger.info('Params string: ' + strParams);
+
         const cipher = crypto.createCipheriv(algorithm, key, iv);
         encrypted = cipher.update(strParams, 'utf8', 'hex');
         encrypted += cipher.final('hex');
@@ -39,6 +42,9 @@ const verifyToken = (reqQuery) => {
     if (token) {
         const myToken = generateToken(params);
         verified = myToken === token;
+
+        logger.info('Token myToken: ' + myToken);
+        logger.info('Token probate: ' + token);
 
         if (verified) {
             logger.info('Token successfully verified.');
