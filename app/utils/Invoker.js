@@ -32,7 +32,7 @@ class Invoker {
             .map(key => key + '=' + encodeURIComponent(form[key]))
             .join('&');
 
-        return '/service-endpoint?' + qs;
+        return 'https://pcq.aat.platform.hmcts.net/service-endpoint?' + qs;
     }
 
     fillForm(service, actor, fields) {

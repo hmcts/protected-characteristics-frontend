@@ -54,7 +54,7 @@ describe('Invoker', () => {
 
             postForm(req, res);
             const redirectUrl = res.redirect.args[0][0];
-            expect(redirectUrl).to.equal('/service-endpoint?serviceId=a&actor=b&pcqId=c&ccdCaseId=d&partyId=e&returnUrl=f&language=g');
+            expect(redirectUrl).to.equal('https://pcq.aat.platform.hmcts.net/service-endpoint?serviceId=a&actor=b&pcqId=c&ccdCaseId=d&partyId=e&returnUrl=f&language=g');
 
             done();
         });
