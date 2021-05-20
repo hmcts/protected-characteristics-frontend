@@ -23,12 +23,28 @@
         }
     }
 
+    function changePcqLiteStatus(service) {
+        const pcqLiteListRaw = document.querySelector('#pcqlite-invoker-script').innerHTML;
+        const pcqLiteList = pcqLiteListRaw ? JSON.parse(pcqLiteListRaw.trim()) : [];
+
+        if (pcqLiteList[service]) {
+        document.querySelector('#pcqlite-label').innerHTML = "PCQ Lite : On";
+        } else {
+        document.querySelector('#pcqlite-label').innerHTML = "PCQ Lite : Off";
+        }
+
+    }
+
     // Add onChange event listener
     document.querySelector('#service-select')
         .addEventListener('change', (evt => changeActorList(evt.target.value)));
+    document.querySelector('#service-select')
+        .addEventListener('change', (evt => changePcqLiteStatus(evt.target.value)));
     // Initialise the select options
-    window.onload = () => changeActorList(document.querySelector('#service-select').value);
-
+    window.onload = function() {
+    changeActorList(document.querySelector('#service-select').value);
+    changePcqLiteStatus(document.querySelector('#service-select').value);
+    }
 }).call(this);
 
 // ------------ Clear ------------

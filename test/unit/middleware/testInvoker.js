@@ -31,6 +31,30 @@ describe('Invoker', () => {
 
             done();
         });
+
+        it('should fill only serviceID and actor when PCQLite is true', (done) => {
+            const formFiller = invoker.__get__('formFiller');
+            const req = {
+                query: {
+                    service: 'PROBATE',
+                    actor: 'APPLICANT',
+                    fields: 'serviceId,actor,partyId,returnUrl'
+                }
+            };
+            const res = {
+                json: sinon.spy()
+            };
+
+            formFiller(req, res);
+            const resJson = res.json.args[0][0];
+
+            expect(resJson.serviceId).to.equal('PROBATE');
+            expect(resJson.actor).to.equal('APPLICANT');
+            expect(resJson.partyId).to.equal('');
+            expect(resJson.returnUrl).to.equal('');
+
+            done();
+        });
     });
 
     describe('postForm()', () => {
