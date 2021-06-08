@@ -46,7 +46,7 @@ describe('Invoker', () => {
             };
 
             const serviceEndpoint = invoker.serviceEndpoint(form);
-            expect(serviceEndpoint).to.equal('/service-endpoint?serviceId=a&actor=b&pcqId=c&ccdCaseId=d&partyId=e&returnUrl=f&language=g');
+            expect(serviceEndpoint).to.equal('https://pcq.aat.platform.hmcts.net/service-endpoint?serviceId=a&actor=b&pcqId=c&ccdCaseId=d&partyId=e&returnUrl=f&language=g');
             done();
         });
     });

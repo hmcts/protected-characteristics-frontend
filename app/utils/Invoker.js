@@ -3,6 +3,7 @@
 const uuidv4 = require('uuid/v4');
 const {generateToken} = require('app/components/encryption-token');
 const registeredServices = require('app/registeredServices');
+const logger = require('app/components/logger')('Init');
 
 class Invoker {
 
@@ -31,7 +32,7 @@ class Invoker {
             .map(key => key + '=' + encodeURIComponent(form[key]))
             .join('&');
 
-        return '/service-endpoint?' + qs;
+        return 'https://pcq.aat.platform.hmcts.net/service-endpoint?' + qs;
     }
 
     fillForm(service, actor, fields) {
@@ -66,6 +67,9 @@ class Invoker {
     }
 
     generateToken(params) {
+        logger.info('Invoker params: ' + params);
+        logger.info('Invoker old token: ' + generateToken(params, 'aes-256-cbc'));
+        logger.info('Invoker new token: ' + generateToken(params));
         return generateToken(params);
     }
 
